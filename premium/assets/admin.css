@@ -1,0 +1,60 @@
+.seofyme-tools h2,
+.seofyme-redirects h2,
+.seofyme-workouts h2 {
+	margin-top: 1.75rem;
+}
+
+.seofyme-social-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 1.5rem;
+}
+
+@media (max-width: 960px) {
+	.seofyme-social-grid {
+		grid-template-columns: 1fr;
+	}
+}
+
+.seofyme-social-preview-card {
+	margin-top: 1rem;
+	padding: 1rem;
+	border: 1px solid #dcdcde;
+	background: #f6f7f7;
+	max-width: 480px;
+}
+
+.seofyme-preview-title {
+	font-size: 1.1rem;
+	font-weight: 600;
+	margin: 0.35rem 0;
+}
+
+.seofyme-preview-desc {
+	color: #50575e;
+	margin-bottom: 0.35rem;
+}
+
+.seofyme-preview-url {
+	color: #2271b1;
+	font-size: 12px;
+	text-transform: uppercase;
+}
+
+.seofyme-suggestion-list li {
+	margin-bottom: 0.4rem;
+}
+
+#seofyme-ai-results button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	margin: 0.25rem 0;
+}
+
+.seofyme-workout {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	padding: 1rem 1.25rem;
+	margin: 1rem 0;
+}

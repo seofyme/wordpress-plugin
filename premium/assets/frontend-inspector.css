@@ -1,0 +1,50 @@
+#seofyme-fe-inspector {
+	position: fixed;
+	right: 16px;
+	bottom: 16px;
+	z-index: 99999;
+	font-family: system-ui, sans-serif;
+}
+
+#seofyme-fe-toggle {
+	background: #111;
+	color: #fff;
+	border: 0;
+	border-radius: 999px;
+	padding: 10px 16px;
+	cursor: pointer;
+	box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+}
+
+#seofyme-fe-panel {
+	display: none;
+	width: min(360px, calc(100vw - 32px));
+	margin-bottom: 10px;
+	background: #fff;
+	border: 1px solid #ddd;
+	border-radius: 8px;
+	padding: 14px;
+	box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
+}
+
+#seofyme-fe-inspector.is-open #seofyme-fe-panel {
+	display: block;
+}
+
+#seofyme-fe-panel label {
+	display: block;
+	margin: 0.6rem 0;
+	font-size: 13px;
+}
+
+#seofyme-fe-panel input,
+#seofyme-fe-panel textarea {
+	width: 100%;
+	margin-top: 4px;
+	box-sizing: border-box;
+}
+
+#seofyme-fe-panel h3 {
+	margin: 0 0 0.5rem;
+	font-size: 15px;
+}
