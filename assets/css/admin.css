@@ -1,0 +1,64 @@
+.seofyme-wrap .seofyme-cards {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+	gap: 1rem;
+	margin-top: 1rem;
+}
+
+.seofyme-card {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	padding: 1rem 1.25rem;
+}
+
+.seofyme-serp-preview {
+	background: #f6f7f7;
+	border: 1px solid #dcdcde;
+	padding: 1rem;
+	margin-bottom: 1rem;
+	max-width: 640px;
+}
+
+.seofyme-serp-title {
+	color: #1a0dab;
+	font-size: 18px;
+	line-height: 1.3;
+}
+
+.seofyme-serp-url {
+	color: #006621;
+	font-size: 13px;
+	margin: 2px 0 4px;
+}
+
+.seofyme-serp-desc {
+	color: #545454;
+	font-size: 13px;
+}
+
+.seofyme-score--good { color: #008a20; font-weight: 600; }
+.seofyme-score--ok { color: #9a6700; font-weight: 600; }
+.seofyme-score--bad { color: #b32d2e; font-weight: 600; }
+
+.seofyme-check--good::before { content: "✓ "; color: #008a20; }
+.seofyme-check--ok::before { content: "• "; color: #9a6700; }
+.seofyme-check--bad::before { content: "✕ "; color: #b32d2e; }
+
+.seofyme-social-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 0 1.5rem;
+}
+
+@media (max-width: 960px) {
+	.seofyme-social-grid { grid-template-columns: 1fr; }
+}
+
+#seofyme-ai-results .button {
+	display: block;
+	width: 100%;
+	text-align: left;
+	margin: 0.25rem 0;
+	white-space: normal;
+	height: auto;
+}
