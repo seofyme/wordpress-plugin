@@ -38,7 +38,13 @@ class FrontendInspector {
 		if ( ! is_singular() || ! current_user_can( 'edit_post', get_queried_object_id() ) ) {
 			return;
 		}
-		wp_enqueue_style( 'seofyme-fe', SEOFYME_SEO_URL . 'assets/css/frontend-inspector.css', array(), SEOFYME_SEO_VERSION );
+		wp_enqueue_style(
+			'seofyme-seo-fonts',
+			'https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Sora:wght@400;500;600;700&display=swap',
+			array(),
+			null
+		);
+		wp_enqueue_style( 'seofyme-fe', SEOFYME_SEO_URL . 'assets/css/frontend-inspector.css', array( 'seofyme-seo-fonts' ), SEOFYME_SEO_VERSION );
 		wp_enqueue_script( 'seofyme-fe', SEOFYME_SEO_URL . 'assets/js/frontend-inspector.js', array(), SEOFYME_SEO_VERSION, true );
 		wp_localize_script(
 			'seofyme-fe',

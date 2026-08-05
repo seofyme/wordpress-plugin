@@ -43,36 +43,69 @@ class Analyzer {
 			);
 		}
 
-		$content   = wp_strip_all_tags( $post->post_content );
-		$title     = Post_Meta::resolved_title( $post_id );
-		$desc      = Post_Meta::resolved_description( $post_id );
-		$focus     = strtolower( Post_Meta::get( $post_id, Post_Meta::FOCUS_KW ) );
-		$words     = str_word_count( $content );
-		$checks    = array();
-		$score     = 0;
+		$content = wp_strip_all_tags( $post->post_content );
+		$title   = Post_Meta::resolved_title( $post_id );
+		$desc    = Post_Meta::resolved_description( $post_id );
+		$focus   = strtolower( Post_Meta::get( $post_id, Post_Meta::FOCUS_KW ) );
+		$words   = str_word_count( $content );
+		$checks  = array();
+		$score   = 0;
 
 		// Focus keyphrase present.
 		if ( $focus ) {
 			$checks[] = array( 'status' => 'good', 'message' => __( 'Focus keyphrase is set.', 'seofyme-seo' ) );
-			$score   += 15;
+			$score   += 10;
 		} else {
 			$checks[] = array( 'status' => 'bad', 'message' => __( 'Add a focus keyphrase.', 'seofyme-seo' ) );
 		}
 
-		// Keyphrase in title.
-		if ( $focus && false !== strpos( strtolower( $title ), $focus ) ) {
-			$checks[] = array( 'status' => 'good', 'message' => __( 'Focus keyphrase appears in the SEO title.', 'seofyme-seo' ) );
-			$score   += 15;
+		// Keyphrase in title (exact or word forms).
+		if ( $focus && Word_Forms::matches( $title, $focus ) ) {
+			$checks[] = array( 'status' => 'good', 'message' => __( 'Focus keyphrase (or a word form) appears in the SEO title.', 'seofyme-seo' ) );
+			$score   += 12;
 		} elseif ( $focus ) {
 			$checks[] = array( 'status' => 'ok', 'message' => __( 'Consider adding the focus keyphrase to the SEO title.', 'seofyme-seo' ) );
 		}
 
-		// Keyphrase in content.
-		if ( $focus && false !== strpos( strtolower( $content ), $focus ) ) {
-			$checks[] = array( 'status' => 'good', 'message' => __( 'Focus keyphrase appears in the content.', 'seofyme-seo' ) );
-			$score   += 15;
+		// Keyphrase in content with word forms.
+		if ( $focus && Word_Forms::matches( $content, $focus ) ) {
+			$checks[] = array( 'status' => 'good', 'message' => __( 'Focus keyphrase (or a word form) appears in the content.', 'seofyme-seo' ) );
+			$score   += 12;
 		} elseif ( $focus ) {
 			$checks[] = array( 'status' => 'bad', 'message' => __( 'Focus keyphrase was not found in the content.', 'seofyme-seo' ) );
+		}
+
+		// Related keyphrases + synonyms (up to 5).
+		$related = Post_Meta::get( $post_id, Post_Meta::KEYPHRASES, array() );
+		if ( ! is_array( $related ) ) {
+			$related = array();
+		}
+		$related_hits = 0;
+		foreach ( array_slice( $related, 0, 5 ) as $row ) {
+			$kp = strtolower( trim( (string) ( $row['keyphrase'] ?? '' ) ) );
+			if ( '' === $kp ) {
+				continue;
+			}
+			$synonyms = array_filter( array_map( 'trim', explode( ',', (string) ( $row['synonyms'] ?? '' ) ) ) );
+			$terms    = array_merge( array( $kp ), $synonyms );
+			$in_body  = false;
+			foreach ( $terms as $term ) {
+				if ( Word_Forms::matches( $content, $term ) || Word_Forms::matches( $title, $term ) ) {
+					$in_body = true;
+					break;
+				}
+			}
+			if ( $in_body ) {
+				++$related_hits;
+				/* translators: %s keyphrase */
+				$checks[] = array( 'status' => 'good', 'message' => sprintf( __( 'Related keyphrase “%s” (or synonym/word form) is used.', 'seofyme-seo' ), $kp ) );
+			} else {
+				/* translators: %s keyphrase */
+				$checks[] = array( 'status' => 'ok', 'message' => sprintf( __( 'Add related keyphrase “%s” or a synonym naturally in the text.', 'seofyme-seo' ), $kp ) );
+			}
+		}
+		if ( $related_hits > 0 ) {
+			$score += min( 15, $related_hits * 3 );
 		}
 
 		// Title length.
@@ -96,18 +129,18 @@ class Analyzer {
 		// Content length.
 		if ( $words >= 300 ) {
 			$checks[] = array( 'status' => 'good', 'message' => sprintf( /* translators: %d words */ __( 'Content length is solid (%d words).', 'seofyme-seo' ), $words ) );
-			$score   += 15;
+			$score   += 12;
 		} else {
 			$checks[] = array( 'status' => 'ok', 'message' => sprintf( /* translators: %d words */ __( 'Content is short (%d words). Aim for 300+ for competitive topics.', 'seofyme-seo' ), $words ) );
 		}
 
 		// Readability: sentence length approx.
-		$sentences = preg_split( '/[.!?]+/', $content, -1, PREG_SPLIT_NO_EMPTY );
-		$sentence_count = max( 1, count( $sentences ) );
-		$avg = $words / $sentence_count;
+		$sentences       = preg_split( '/[.!?]+/', $content, -1, PREG_SPLIT_NO_EMPTY );
+		$sentence_count  = max( 1, count( $sentences ) );
+		$avg             = $words / $sentence_count;
 		if ( $avg <= 20 ) {
 			$checks[] = array( 'status' => 'good', 'message' => __( 'Average sentence length is easy to read.', 'seofyme-seo' ) );
-			$score   += 10;
+			$score   += 8;
 		} else {
 			$checks[] = array( 'status' => 'ok', 'message' => __( 'Sentences are a bit long — shorter sentences improve readability.', 'seofyme-seo' ) );
 		}
@@ -115,7 +148,7 @@ class Analyzer {
 		// Headings.
 		if ( preg_match( '/<h2[\s>]/i', $post->post_content ) ) {
 			$checks[] = array( 'status' => 'good', 'message' => __( 'Content uses H2 subheadings.', 'seofyme-seo' ) );
-			$score   += 10;
+			$score   += 9;
 		} else {
 			$checks[] = array( 'status' => 'ok', 'message' => __( 'Add H2 subheadings to structure the page.', 'seofyme-seo' ) );
 		}

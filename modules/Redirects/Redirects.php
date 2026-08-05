@@ -47,10 +47,12 @@ class Redirects {
 			origin varchar(512) NOT NULL,
 			target varchar(512) NOT NULL,
 			type smallint(3) NOT NULL DEFAULT 301,
+			format varchar(20) NOT NULL DEFAULT 'plain',
 			enabled tinyint(1) NOT NULL DEFAULT 1,
 			created_at datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
 			PRIMARY KEY (id),
-			KEY origin (origin(191))
+			KEY origin (origin(191)),
+			KEY format (format)
 		) {$charset};";
 		require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 		dbDelta( $sql );
@@ -87,22 +89,26 @@ class Redirects {
 	/**
 	 * Create redirect.
 	 *
-	 * @param string $origin Origin.
+	 * @param string $origin Origin or regex.
 	 * @param string $target Target.
 	 * @param int    $type Type.
+	 * @param string $format plain|regex.
 	 * @return int|false
 	 */
-	public function create( $origin, $target, $type = 301 ) {
+	public function create( $origin, $target, $type = 301, $format = 'plain' ) {
 		global $wpdb;
-		$type = in_array( (int) $type, array( 301, 302, 307, 410, 451 ), true ) ? (int) $type : 301;
-		$ok   = $wpdb->insert(
+		$type   = in_array( (int) $type, array( 301, 302, 307, 410, 451 ), true ) ? (int) $type : 301;
+		$format = ( 'regex' === $format ) ? 'regex' : 'plain';
+		$origin = ( 'regex' === $format ) ? trim( (string) $origin ) : $this->normalize( $origin );
+		$ok     = $wpdb->insert(
 			$this->table(),
 			array(
-				'origin' => $this->normalize( $origin ),
-				'target' => esc_url_raw( $target ),
+				'origin' => $origin,
+				'target' => ( 0 === strpos( $target, 'http' ) || false !== strpos( $target, '$' ) ) ? $target : esc_url_raw( $target ),
 				'type'   => $type,
+				'format' => $format,
 			),
-			array( '%s', '%s', '%d' )
+			array( '%s', '%s', '%d', '%s' )
 		);
 		return $ok ? (int) $wpdb->insert_id : false;
 	}
@@ -130,17 +136,29 @@ class Redirects {
 	}
 
 	/**
-	 * Find enabled redirect.
+	 * Find enabled redirect (plain exact, then regex).
 	 *
 	 * @param string $path Path.
 	 * @return array|null
 	 */
 	public function find( $path ) {
 		global $wpdb;
-		$path = $this->normalize( $path );
+		$normalized = $this->normalize( $path );
 		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$this->table()} WHERE origin = %s AND enabled = 1 LIMIT 1", $path ), ARRAY_A );
-		return $row ?: null;
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$this->table()} WHERE origin = %s AND enabled = 1 AND format = 'plain' LIMIT 1", $normalized ), ARRAY_A );
+		if ( $row ) {
+			return $row;
+		}
+		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+		$regex_rows = $wpdb->get_results( "SELECT * FROM {$this->table()} WHERE enabled = 1 AND format = 'regex' ORDER BY id ASC", ARRAY_A ) ?: array();
+		foreach ( $regex_rows as $candidate ) {
+			$pattern = '#' . str_replace( '#', '\\#', $candidate['origin'] ) . '#';
+			if ( @preg_match( $pattern, $normalized ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+				$candidate['_match_path'] = $normalized;
+				return $candidate;
+			}
+		}
+		return null;
 	}
 
 	/**
@@ -152,22 +170,33 @@ class Redirects {
 		if ( is_admin() ) {
 			return;
 		}
-		$uri  = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '/';
+		$uri  = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '/';
 		$path = wp_parse_url( $uri, PHP_URL_PATH );
 		$row  = $this->find( is_string( $path ) ? $path : '/' );
 		if ( ! $row ) {
 			return;
 		}
-		$type = (int) $row['type'];
+		$type = absint( $row['type'] );
 		if ( in_array( $type, array( 410, 451 ), true ) ) {
 			status_header( $type );
-			wp_die( esc_html__( 'This content is no longer available.', 'seofyme-seo' ), '', array( 'response' => $type ) );
+			wp_die(
+				esc_html__( 'This content is no longer available.', 'seofyme-seo' ),
+				'',
+				array( 'response' => $type )
+			);
 		}
 		$target = $row['target'];
+		if ( 'regex' === ( $row['format'] ?? 'plain' ) && ! empty( $row['_match_path'] ) ) {
+			$pattern = '#' . str_replace( '#', '\\#', $row['origin'] ) . '#';
+			$replaced = @preg_replace( $pattern, $target, $row['_match_path'] ); // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
+			if ( is_string( $replaced ) && '' !== $replaced ) {
+				$target = $replaced;
+			}
+		}
 		if ( 0 !== strpos( $target, 'http' ) ) {
 			$target = home_url( $target );
 		}
-		wp_redirect( $target, $type ); // phpcs:ignore WordPress.Security.SafeRedirect
+		wp_redirect( $target, $type ); // phpcs:ignore WordPress.Security.SafeRedirect.wp_redirect_wp_redirect
 		exit;
 	}
 
@@ -247,7 +276,8 @@ class Redirects {
 		$this->create(
 			isset( $_POST['origin'] ) ? sanitize_text_field( wp_unslash( $_POST['origin'] ) ) : '',
 			isset( $_POST['target'] ) ? sanitize_text_field( wp_unslash( $_POST['target'] ) ) : '',
-			isset( $_POST['type'] ) ? (int) $_POST['type'] : 301
+			isset( $_POST['type'] ) ? (int) $_POST['type'] : 301,
+			isset( $_POST['format'] ) ? sanitize_key( wp_unslash( $_POST['format'] ) ) : 'plain'
 		);
 		wp_safe_redirect( admin_url( 'admin.php?page=seofyme-seo-redirects&notice=added' ) );
 		exit;
@@ -274,14 +304,25 @@ class Redirects {
 	 */
 	public function handle_import() {
 		if ( ! current_user_can( 'edit_others_posts' ) || ! check_admin_referer( 'seofyme_import_redirects' ) ) {
-			wp_die( 'Unauthorized' );
+			wp_die( esc_html__( 'Unauthorized', 'seofyme-seo' ) );
 		}
 		$count = 0;
 		if ( ! empty( $_FILES['csv']['tmp_name'] ) ) {
-			// phpcs:ignore WordPress.WP.AlternativeFunctions.file_system_operations_fopen
-			$handle = fopen( $_FILES['csv']['tmp_name'], 'r' ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput
-			if ( $handle ) {
-				while ( ( $row = fgetcsv( $handle ) ) !== false ) {
+			require_once ABSPATH . 'wp-admin/includes/file.php';
+			global $wp_filesystem;
+			if ( ! $wp_filesystem ) {
+				WP_Filesystem();
+			}
+
+			$tmp = wp_normalize_path( (string) $_FILES['csv']['tmp_name'] ); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			$raw = ( $wp_filesystem && is_callable( array( $wp_filesystem, 'get_contents' ) ) )
+				? $wp_filesystem->get_contents( $tmp )
+				: false;
+
+			if ( is_string( $raw ) && '' !== $raw ) {
+				$lines = preg_split( '/\r\n|\r|\n/', $raw );
+				foreach ( (array) $lines as $line ) {
+					$row = str_getcsv( $line );
 					if ( count( $row ) < 2 ) {
 						continue;
 					}
@@ -289,7 +330,6 @@ class Redirects {
 						++$count;
 					}
 				}
-				fclose( $handle );
 			}
 		}
 		wp_safe_redirect( admin_url( 'admin.php?page=seofyme-seo-redirects&notice=imported&count=' . $count ) );

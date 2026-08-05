@@ -50,8 +50,14 @@ class Autoloader {
 
 		$candidates = array(
 			self::$base . 'includes/' . $relative . '.php',
-			self::$base . 'modules/' . $relative . '.php',
 		);
+
+		// SeofymeSEO\Modules\Foo\Bar → modules/Foo/Bar.php (not modules/Modules/Foo/Bar.php).
+		if ( strpos( $relative, 'Modules/' ) === 0 ) {
+			$candidates[] = self::$base . 'modules/' . substr( $relative, strlen( 'Modules/' ) ) . '.php';
+		} else {
+			$candidates[] = self::$base . 'modules/' . $relative . '.php';
+		}
 
 		foreach ( $candidates as $file ) {
 			if ( is_readable( $file ) ) {

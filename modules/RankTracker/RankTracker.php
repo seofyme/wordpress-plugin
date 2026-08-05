@@ -1,0 +1,184 @@
+<?php
+/**
+ * Keyword rank tracker (manual + import-ready).
+ *
+ * @package SeofymeSEO
+ */
+
+namespace SeofymeSEO\Modules\RankTracker;
+
+use SeofymeSEO\Admin\Page_Shell;
+
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
+/**
+ * Tracks keywords and position snapshots.
+ */
+class RankTracker {
+
+	public const OPTION = 'seofyme_rank_keywords';
+
+	/**
+	 * Register.
+	 *
+	 * @return void
+	 */
+	public function register() {
+		add_action( 'admin_post_seofyme_rank_add', array( $this, 'handle_add' ) );
+		add_action( 'admin_post_seofyme_rank_update', array( $this, 'handle_update' ) );
+		add_action( 'admin_post_seofyme_rank_delete', array( $this, 'handle_delete' ) );
+	}
+
+	/**
+	 * All keywords.
+	 *
+	 * @return array
+	 */
+	public function all() {
+		$rows = get_option( self::OPTION, array() );
+		return is_array( $rows ) ? $rows : array();
+	}
+
+	/**
+	 * Save list.
+	 *
+	 * @param array $rows Rows.
+	 * @return void
+	 */
+	private function save( array $rows ) {
+		update_option( self::OPTION, array_values( $rows ), false );
+	}
+
+	/**
+	 * Render page.
+	 *
+	 * @return void
+	 */
+	public function render_page() {
+		if ( ! current_user_can( 'edit_others_posts' ) ) {
+			return;
+		}
+		$rows = $this->all();
+		Page_Shell::open(
+			__( 'Rank tracker', 'seofyme-seo' ),
+			__( 'Track focus keywords and log positions over time. Connect Search Console later for automation.', 'seofyme-seo' )
+		);
+		?>
+		<section class="seofyme-panel">
+			<h2><?php esc_html_e( 'Add keyword', 'seofyme-seo' ); ?></h2>
+			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+				<input type="hidden" name="action" value="seofyme_rank_add" />
+				<?php wp_nonce_field( 'seofyme_rank_add' ); ?>
+				<table class="form-table">
+					<tr><th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th><td><input name="keyword" class="regular-text" required /></td></tr>
+					<tr><th><?php esc_html_e( 'Target URL', 'seofyme-seo' ); ?></th><td><input name="url" class="regular-text" placeholder="<?php echo esc_attr( home_url( '/' ) ); ?>" /></td></tr>
+					<tr><th><?php esc_html_e( 'Current position', 'seofyme-seo' ); ?></th><td><input name="position" type="number" min="1" max="100" class="small-text" value="10" /></td></tr>
+				</table>
+				<?php submit_button( __( 'Track keyword', 'seofyme-seo' ) ); ?>
+			</form>
+		</section>
+		<section class="seofyme-panel">
+			<h2><?php esc_html_e( 'Tracked keywords', 'seofyme-seo' ); ?></h2>
+			<table class="widefat striped">
+				<thead><tr><th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'URL', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'Position', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'History', 'seofyme-seo' ); ?></th><th></th></tr></thead>
+				<tbody>
+				<?php if ( empty( $rows ) ) : ?>
+					<tr><td colspan="5"><?php esc_html_e( 'No keywords tracked yet.', 'seofyme-seo' ); ?></td></tr>
+				<?php else : ?>
+					<?php foreach ( $rows as $i => $row ) : ?>
+						<tr>
+							<td><strong><?php echo esc_html( $row['keyword'] ); ?></strong></td>
+							<td><?php echo esc_html( $row['url'] ); ?></td>
+							<td>
+								<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="seofyme-inline-form">
+									<input type="hidden" name="action" value="seofyme_rank_update" />
+									<input type="hidden" name="index" value="<?php echo esc_attr( (string) $i ); ?>" />
+									<?php wp_nonce_field( 'seofyme_rank_update' ); ?>
+									<input type="number" name="position" min="1" max="100" value="<?php echo esc_attr( (string) ( $row['position'] ?? '' ) ); ?>" class="small-text" />
+									<button class="button"><?php esc_html_e( 'Log', 'seofyme-seo' ); ?></button>
+								</form>
+							</td>
+							<td><code><?php echo esc_html( implode( ' → ', array_slice( array_column( $row['history'] ?? array(), 'position' ), -6 ) ) ); ?></code></td>
+							<td>
+								<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+									<input type="hidden" name="action" value="seofyme_rank_delete" />
+									<input type="hidden" name="index" value="<?php echo esc_attr( (string) $i ); ?>" />
+									<?php wp_nonce_field( 'seofyme_rank_delete' ); ?>
+									<button class="button-link-delete"><?php esc_html_e( 'Delete', 'seofyme-seo' ); ?></button>
+								</form>
+							</td>
+						</tr>
+					<?php endforeach; ?>
+				<?php endif; ?>
+				</tbody>
+			</table>
+		</section>
+		<?php
+		Page_Shell::close();
+	}
+
+	/**
+	 * Add keyword.
+	 *
+	 * @return void
+	 */
+	public function handle_add() {
+		if ( ! current_user_can( 'edit_others_posts' ) || ! check_admin_referer( 'seofyme_rank_add' ) ) {
+			wp_die( esc_html__( 'Unauthorized', 'seofyme-seo' ) );
+		}
+		$rows   = $this->all();
+		$pos    = isset( $_POST['position'] ) ? (int) $_POST['position'] : 0;
+		$rows[] = array(
+			'keyword'  => isset( $_POST['keyword'] ) ? sanitize_text_field( wp_unslash( $_POST['keyword'] ) ) : '',
+			'url'      => isset( $_POST['url'] ) ? esc_url_raw( wp_unslash( $_POST['url'] ) ) : home_url( '/' ),
+			'position' => $pos,
+			'history'  => array( array( 'time' => time(), 'position' => $pos ) ),
+		);
+		$this->save( $rows );
+		wp_safe_redirect( admin_url( 'admin.php?page=seofyme-seo-ranks' ) );
+		exit;
+	}
+
+	/**
+	 * Update position.
+	 *
+	 * @return void
+	 */
+	public function handle_update() {
+		if ( ! current_user_can( 'edit_others_posts' ) || ! check_admin_referer( 'seofyme_rank_update' ) ) {
+			wp_die( esc_html__( 'Unauthorized', 'seofyme-seo' ) );
+		}
+		$i    = isset( $_POST['index'] ) ? (int) $_POST['index'] : -1;
+		$pos  = isset( $_POST['position'] ) ? (int) $_POST['position'] : 0;
+		$rows = $this->all();
+		if ( isset( $rows[ $i ] ) ) {
+			$rows[ $i ]['position'] = $pos;
+			$rows[ $i ]['history'][] = array( 'time' => time(), 'position' => $pos );
+			$rows[ $i ]['history']   = array_slice( $rows[ $i ]['history'], -50 );
+			$this->save( $rows );
+		}
+		wp_safe_redirect( admin_url( 'admin.php?page=seofyme-seo-ranks' ) );
+		exit;
+	}
+
+	/**
+	 * Delete.
+	 *
+	 * @return void
+	 */
+	public function handle_delete() {
+		if ( ! current_user_can( 'edit_others_posts' ) || ! check_admin_referer( 'seofyme_rank_delete' ) ) {
+			wp_die( esc_html__( 'Unauthorized', 'seofyme-seo' ) );
+		}
+		$i    = isset( $_POST['index'] ) ? (int) $_POST['index'] : -1;
+		$rows = $this->all();
+		if ( isset( $rows[ $i ] ) ) {
+			unset( $rows[ $i ] );
+			$this->save( $rows );
+		}
+		wp_safe_redirect( admin_url( 'admin.php?page=seofyme-seo-ranks' ) );
+		exit;
+	}
+}

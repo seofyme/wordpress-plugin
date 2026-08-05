@@ -59,7 +59,7 @@ class Keyphrases {
 		while ( count( $items ) < self::MAX ) {
 			$items[] = array( 'keyphrase' => '', 'synonyms' => '' );
 		}
-		echo '<p class="description">' . esc_html__( 'Optimize for up to 5 keyphrases. Synonyms count in analysis.', 'seofyme-seo' ) . '</p>';
+		echo '<p class="description">' . esc_html__( 'Optimize for up to 5 related keyphrases. Synonyms and word forms count toward a full SEO check for each.', 'seofyme-seo' ) . '</p>';
 		foreach ( $items as $i => $item ) {
 			printf(
 				'<p><input type="text" class="widefat" name="seofyme_kp[%d][keyphrase]" placeholder="%s" value="%s" /></p>',

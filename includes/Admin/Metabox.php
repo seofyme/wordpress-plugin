@@ -67,65 +67,76 @@ class Metabox {
 		$cornerstone = Post_Meta::get( $post->ID, Post_Meta::CORNERSTONE );
 
 		$analysis = ( new Analyzer() )->analyze_post( $post->ID );
+		$score    = (int) $analysis['score'];
 		?>
 		<div class="seofyme-metabox">
-			<div class="seofyme-serp-preview">
-				<div class="seofyme-serp-title"><?php echo esc_html( $title ? $title : get_the_title( $post ) ); ?></div>
-				<div class="seofyme-serp-url"><?php echo esc_html( get_permalink( $post ) ); ?></div>
-				<div class="seofyme-serp-desc"><?php echo esc_html( $description ? $description : __( 'Meta description preview appears here.', 'seofyme-seo' ) ); ?></div>
-			</div>
+			<div class="seofyme-metabox__grid">
+				<div>
+					<div class="seofyme-serp-preview">
+						<span class="seofyme-serp-preview__label"><?php esc_html_e( 'Search preview', 'seofyme-seo' ); ?></span>
+						<div class="seofyme-serp-title"><?php echo esc_html( $title ? $title : get_the_title( $post ) ); ?></div>
+						<div class="seofyme-serp-url"><?php echo esc_html( get_permalink( $post ) ); ?></div>
+						<div class="seofyme-serp-desc"><?php echo esc_html( $description ? $description : __( 'Meta description preview appears here.', 'seofyme-seo' ) ); ?></div>
+					</div>
 
-			<p>
-				<label for="seofyme_focus_keyphrase"><strong><?php esc_html_e( 'Focus keyphrase', 'seofyme-seo' ); ?></strong></label>
-				<input type="text" class="widefat" id="seofyme_focus_keyphrase" name="seofyme_focus_keyphrase" value="<?php echo esc_attr( $focus ); ?>" />
-			</p>
-			<p>
-				<label for="seofyme_title"><strong><?php esc_html_e( 'SEO title', 'seofyme-seo' ); ?></strong></label>
-				<input type="text" class="widefat" id="seofyme_title" name="seofyme_title" value="<?php echo esc_attr( $title ); ?>" />
-				<span class="description"><?php esc_html_e( 'Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%', 'seofyme-seo' ); ?></span>
-			</p>
-			<p>
-				<label for="seofyme_description"><strong><?php esc_html_e( 'Meta description', 'seofyme-seo' ); ?></strong></label>
-				<textarea class="widefat" rows="3" id="seofyme_description" name="seofyme_description"><?php echo esc_textarea( $description ); ?></textarea>
-			</p>
-			<p>
-				<label for="seofyme_canonical"><strong><?php esc_html_e( 'Canonical URL', 'seofyme-seo' ); ?></strong></label>
-				<input type="url" class="widefat" id="seofyme_canonical" name="seofyme_canonical" value="<?php echo esc_attr( $canonical ); ?>" />
-			</p>
-			<p>
-				<label for="seofyme_robots"><strong><?php esc_html_e( 'Robots', 'seofyme-seo' ); ?></strong></label>
-				<select id="seofyme_robots" name="seofyme_robots">
-					<option value="index,follow" <?php selected( $robots, 'index,follow' ); ?>>index, follow</option>
-					<option value="noindex,follow" <?php selected( $robots, 'noindex,follow' ); ?>>noindex, follow</option>
-					<option value="index,nofollow" <?php selected( $robots, 'index,nofollow' ); ?>>index, nofollow</option>
-					<option value="noindex,nofollow" <?php selected( $robots, 'noindex,nofollow' ); ?>>noindex, nofollow</option>
-				</select>
-			</p>
-			<p>
-				<label>
-					<input type="checkbox" name="seofyme_cornerstone" value="1" <?php checked( $cornerstone, '1' ); ?> />
-					<?php esc_html_e( 'Cornerstone content', 'seofyme-seo' ); ?>
-				</label>
-			</p>
+					<div class="seofyme-field">
+						<label for="seofyme_focus_keyphrase"><?php esc_html_e( 'Focus keyphrase', 'seofyme-seo' ); ?></label>
+						<input type="text" class="widefat" id="seofyme_focus_keyphrase" name="seofyme_focus_keyphrase" value="<?php echo esc_attr( $focus ); ?>" />
+					</div>
+					<div class="seofyme-field">
+						<label for="seofyme_title"><?php esc_html_e( 'SEO title', 'seofyme-seo' ); ?></label>
+						<input type="text" class="widefat" id="seofyme_title" name="seofyme_title" value="<?php echo esc_attr( $title ); ?>" />
+						<span class="description"><?php esc_html_e( 'Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%', 'seofyme-seo' ); ?></span>
+					</div>
+					<div class="seofyme-field">
+						<label for="seofyme_description"><?php esc_html_e( 'Meta description', 'seofyme-seo' ); ?></label>
+						<textarea class="widefat" rows="3" id="seofyme_description" name="seofyme_description"><?php echo esc_textarea( $description ); ?></textarea>
+					</div>
+					<div class="seofyme-field-row">
+						<div class="seofyme-field">
+							<label for="seofyme_canonical"><?php esc_html_e( 'Canonical URL', 'seofyme-seo' ); ?></label>
+							<input type="url" class="widefat" id="seofyme_canonical" name="seofyme_canonical" value="<?php echo esc_attr( $canonical ); ?>" />
+						</div>
+						<div class="seofyme-field">
+							<label for="seofyme_robots"><?php esc_html_e( 'Robots', 'seofyme-seo' ); ?></label>
+							<select class="widefat" id="seofyme_robots" name="seofyme_robots">
+								<option value="index,follow" <?php selected( $robots, 'index,follow' ); ?>>index, follow</option>
+								<option value="noindex,follow" <?php selected( $robots, 'noindex,follow' ); ?>>noindex, follow</option>
+								<option value="index,nofollow" <?php selected( $robots, 'index,nofollow' ); ?>>index, nofollow</option>
+								<option value="noindex,nofollow" <?php selected( $robots, 'noindex,nofollow' ); ?>>noindex, nofollow</option>
+							</select>
+						</div>
+					</div>
+					<label class="seofyme-toggle">
+						<input type="checkbox" name="seofyme_cornerstone" value="1" <?php checked( $cornerstone, '1' ); ?> />
+						<?php esc_html_e( 'Cornerstone content', 'seofyme-seo' ); ?>
+					</label>
+				</div>
 
-			<div class="seofyme-analysis">
-				<h3><?php esc_html_e( 'Content analysis', 'seofyme-seo' ); ?></h3>
-				<p class="seofyme-score seofyme-score--<?php echo esc_attr( $analysis['label'] ); ?>">
-					<?php
-					printf(
-						/* translators: %d score */
-						esc_html__( 'SEO score: %d / 100', 'seofyme-seo' ),
-						(int) $analysis['score']
-					);
-					?>
-				</p>
-				<ul>
-					<?php foreach ( $analysis['checks'] as $check ) : ?>
-						<li class="seofyme-check seofyme-check--<?php echo esc_attr( $check['status'] ); ?>">
-							<?php echo esc_html( $check['message'] ); ?>
-						</li>
-					<?php endforeach; ?>
-				</ul>
+				<aside class="seofyme-analysis">
+					<div class="seofyme-analysis__top">
+						<div class="seofyme-score-ring" style="--sf-score: <?php echo esc_attr( (string) $score ); ?>;"><?php echo esc_html( (string) $score ); ?></div>
+						<div>
+							<h3><?php esc_html_e( 'Content analysis', 'seofyme-seo' ); ?></h3>
+							<p class="seofyme-score seofyme-score--<?php echo esc_attr( $analysis['label'] ); ?>">
+								<?php
+								printf(
+									/* translators: %d score */
+									esc_html__( '%d / 100', 'seofyme-seo' ),
+									$score
+								);
+								?>
+							</p>
+						</div>
+					</div>
+					<ul>
+						<?php foreach ( $analysis['checks'] as $check ) : ?>
+							<li class="seofyme-check seofyme-check--<?php echo esc_attr( $check['status'] ); ?>">
+								<?php echo esc_html( $check['message'] ); ?>
+							</li>
+						<?php endforeach; ?>
+					</ul>
+				</aside>
 			</div>
 		</div>
 		<?php

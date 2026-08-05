@@ -61,12 +61,22 @@ class Social {
 		);
 		echo '<div class="seofyme-social-grid">';
 		foreach ( $fields as $key => $label ) {
-			$val = Post_Meta::get( $post->ID, $key );
-			$name = 'seofyme_social[' . esc_attr( $key ) . ']';
+			$val  = Post_Meta::get( $post->ID, $key );
+			$name = 'seofyme_social[' . $key . ']';
 			if ( false !== strpos( $key, 'description' ) ) {
-				printf( '<p><label>%s<br><textarea class="widefat" rows="2" name="%s">%s</textarea></label></p>', esc_html( $label ), $name, esc_textarea( $val ) );
+				printf(
+					'<p><label>%1$s<br><textarea class="widefat" rows="2" name="%2$s">%3$s</textarea></label></p>',
+					esc_html( $label ),
+					esc_attr( $name ),
+					esc_textarea( $val )
+				);
 			} else {
-				printf( '<p><label>%s<br><input class="widefat" name="%s" value="%s" /></label></p>', esc_html( $label ), $name, esc_attr( $val ) );
+				printf(
+					'<p><label>%1$s<br><input class="widefat" name="%2$s" value="%3$s" /></label></p>',
+					esc_html( $label ),
+					esc_attr( $name ),
+					esc_attr( $val )
+				);
 			}
 		}
 		echo '</div>';

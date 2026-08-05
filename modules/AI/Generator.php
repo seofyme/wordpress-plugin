@@ -50,9 +50,14 @@ class Generator {
 	 * @return void
 	 */
 	public function render( $post ) {
-		echo '<p class="description">' . esc_html__( 'Draft titles and meta descriptions. Nothing saves until you apply a suggestion.', 'seofyme-seo' ) . '</p>';
-		echo '<p><button type="button" class="button button-primary" id="seofyme-ai-titles" data-post-id="' . esc_attr( (string) $post->ID ) . '">' . esc_html__( 'Generate titles', 'seofyme-seo' ) . '</button></p>';
-		echo '<p><button type="button" class="button" id="seofyme-ai-metas" data-post-id="' . esc_attr( (string) $post->ID ) . '">' . esc_html__( 'Generate descriptions', 'seofyme-seo' ) . '</button></p>';
+		$id = (string) $post->ID;
+		echo '<p class="description">' . esc_html__( 'Draft titles, metas, social copy, or optimization tips. Nothing saves until you click a suggestion.', 'seofyme-seo' ) . '</p>';
+		echo '<p><button type="button" class="button button-primary seofyme-ai-btn" data-kind="titles" data-post-id="' . esc_attr( $id ) . '">' . esc_html__( 'Generate titles', 'seofyme-seo' ) . '</button></p>';
+		echo '<p><button type="button" class="button seofyme-ai-btn" data-kind="metas" data-post-id="' . esc_attr( $id ) . '">' . esc_html__( 'Generate descriptions', 'seofyme-seo' ) . '</button></p>';
+		echo '<p><button type="button" class="button seofyme-ai-btn" data-kind="social_titles" data-post-id="' . esc_attr( $id ) . '">' . esc_html__( 'Social titles', 'seofyme-seo' ) . '</button></p>';
+		echo '<p><button type="button" class="button seofyme-ai-btn" data-kind="social_metas" data-post-id="' . esc_attr( $id ) . '">' . esc_html__( 'Social descriptions', 'seofyme-seo' ) . '</button></p>';
+		echo '<p><button type="button" class="button seofyme-ai-btn" data-kind="optimize" data-post-id="' . esc_attr( $id ) . '">' . esc_html__( 'Optimize keyphrase tips', 'seofyme-seo' ) . '</button></p>';
+		echo '<p><button type="button" class="button seofyme-ai-btn" data-kind="summarize" data-post-id="' . esc_attr( $id ) . '">' . esc_html__( 'Summarize', 'seofyme-seo' ) . '</button></p>';
 		echo '<div id="seofyme-ai-results"></div>';
 	}
 
@@ -86,10 +91,23 @@ class Generator {
 	private function prompt( $post, $kind ) {
 		$excerpt = wp_trim_words( wp_strip_all_tags( $post->post_content ), 120 );
 		$focus   = Post_Meta::get( $post->ID, Post_Meta::FOCUS_KW );
+		$format  = ' Reply with JSON only in this exact shape: {"items":["string1","string2",...]} — no markdown.';
 		if ( 'metas' === $kind ) {
-			return "Write 5 SEO meta descriptions (max 155 chars). Title: {$post->post_title}. Focus: {$focus}. Content: {$excerpt}. Return JSON array of strings only.";
+			return "Write 5 SEO meta descriptions (max 155 chars). Title: {$post->post_title}. Focus: {$focus}. Content: {$excerpt}." . $format;
 		}
-		return "Write 5 SEO titles (max 60 chars). Title: {$post->post_title}. Focus: {$focus}. Content: {$excerpt}. Return JSON array of strings only.";
+		if ( 'social_titles' === $kind ) {
+			return "Write 5 engaging social share titles for Facebook/X (max 70 chars). Title: {$post->post_title}. Focus: {$focus}. Content: {$excerpt}." . $format;
+		}
+		if ( 'social_metas' === $kind ) {
+			return "Write 5 social share descriptions for Facebook/X (max 160 chars). Title: {$post->post_title}. Focus: {$focus}. Content: {$excerpt}." . $format;
+		}
+		if ( 'summarize' === $kind ) {
+			return "Summarize this post in 3 short bullet points for a brief/social post. Title: {$post->post_title}. Content: {$excerpt}." . $format;
+		}
+		if ( 'optimize' === $kind ) {
+			return "Give 5 concrete edits to improve keyphrase placement/density for \"{$focus}\" without keyword stuffing. Title: {$post->post_title}. Content: {$excerpt}." . $format;
+		}
+		return "Write 5 SEO titles (max 60 chars). Title: {$post->post_title}. Focus: {$focus}. Content: {$excerpt}." . $format;
 	}
 
 	/**
@@ -102,14 +120,41 @@ class Generator {
 	private function fallback( $post, $kind ) {
 		$focus = Post_Meta::get( $post->ID, Post_Meta::FOCUS_KW );
 		$base  = $post->post_title;
-		if ( 'metas' === $kind ) {
+		if ( 'metas' === $kind || 'social_metas' === $kind ) {
 			$snip = wp_trim_words( wp_strip_all_tags( $post->post_content ), 22 );
+			$max  = 'social_metas' === $kind ? 160 : 155;
 			return array(
-				wp_html_excerpt( ( $focus ? $focus . ': ' : '' ) . $snip, 155 ),
-				wp_html_excerpt( 'Learn about ' . $base . '. ' . $snip, 155 ),
-				wp_html_excerpt( $base . ' — practical guide. ' . $snip, 155 ),
-				wp_html_excerpt( 'Discover ' . $base . '. ' . $snip, 155 ),
-				wp_html_excerpt( $snip, 155 ),
+				wp_html_excerpt( ( $focus ? $focus . ': ' : '' ) . $snip, $max ),
+				wp_html_excerpt( 'Learn about ' . $base . '. ' . $snip, $max ),
+				wp_html_excerpt( $base . ' — practical guide. ' . $snip, $max ),
+				wp_html_excerpt( 'Discover ' . $base . '. ' . $snip, $max ),
+				wp_html_excerpt( $snip, $max ),
+			);
+		}
+		if ( 'social_titles' === $kind ) {
+			return array(
+				wp_html_excerpt( $base, 70 ),
+				wp_html_excerpt( ( $focus ?: $base ) . ' — worth reading', 70 ),
+				wp_html_excerpt( 'New: ' . $base, 70 ),
+				wp_html_excerpt( $base . ' explained', 70 ),
+				wp_html_excerpt( 'Why ' . $base . ' matters', 70 ),
+			);
+		}
+		if ( 'summarize' === $kind ) {
+			return array(
+				'Overview of ' . $base,
+				'Key takeaways around ' . ( $focus ?: $base ),
+				'Next step: apply the ideas from this article.',
+			);
+		}
+		if ( 'optimize' === $kind ) {
+			$kw = $focus ?: 'your focus keyphrase';
+			return array(
+				'Add “' . $kw . '” near the start of the introduction.',
+				'Use “' . $kw . '” in at least one H2 subheading.',
+				'Keep density natural — roughly 0.5–2.5% of words.',
+				'Include a synonym of “' . $kw . '” in the conclusion.',
+				'Ensure the SEO title contains “' . $kw . '”.',
 			);
 		}
 		return array(
@@ -139,9 +184,13 @@ class Generator {
 				),
 				'body'    => wp_json_encode(
 					array(
-						'model'    => 'gpt-4o-mini',
-						'messages' => array(
-							array( 'role' => 'system', 'content' => 'SEO assistant. Reply with JSON arrays of strings only.' ),
+						'model'           => 'gpt-4o-mini',
+						'response_format' => array( 'type' => 'json_object' ),
+						'messages'        => array(
+							array(
+								'role'    => 'system',
+								'content' => 'You are an SEO assistant. Always reply with a JSON object: {"items":["..."]} where items is an array of strings. No markdown.',
+							),
 							array( 'role' => 'user', 'content' => $prompt ),
 						),
 					)
@@ -172,6 +221,7 @@ class Generator {
 					array(
 						'model'      => 'claude-3-5-haiku-latest',
 						'max_tokens' => 800,
+						'system'     => 'You are an SEO assistant. Always reply with a JSON object: {"items":["..."]} where items is an array of strings. No markdown.',
 						'messages'   => array( array( 'role' => 'user', 'content' => $prompt ) ),
 					)
 				),
@@ -181,7 +231,7 @@ class Generator {
 	}
 
 	/**
-	 * Parse LLM JSON.
+	 * Parse LLM JSON into a list of suggestion strings.
 	 *
 	 * @param array|\WP_Error $res Response.
 	 * @return array|\WP_Error
@@ -190,14 +240,115 @@ class Generator {
 		if ( is_wp_error( $res ) ) {
 			return $res;
 		}
-		$body = json_decode( wp_remote_retrieve_body( $res ), true );
-		$text = $body['choices'][0]['message']['content'] ?? ( $body['content'][0]['text'] ?? '' );
-		$text = preg_replace( '/^```(?:json)?\s*|\s*```$/', '', trim( (string) $text ) );
-		$data = json_decode( $text, true );
-		if ( ! is_array( $data ) ) {
-			return new \WP_Error( 'parse_error', 'Could not parse AI response' );
+
+		$code = (int) wp_remote_retrieve_response_code( $res );
+		$raw  = wp_remote_retrieve_body( $res );
+		$body = json_decode( $raw, true );
+
+		if ( ! is_array( $body ) ) {
+			return new \WP_Error( 'parse_error', __( 'Invalid response from AI provider.', 'seofyme-seo' ) );
 		}
-		return array_values( array_map( 'sanitize_text_field', $data ) );
+
+		if ( ! empty( $body['error']['message'] ) ) {
+			return new \WP_Error( 'api_error', (string) $body['error']['message'] );
+		}
+
+		if ( $code < 200 || $code >= 300 ) {
+			return new \WP_Error(
+				'api_error',
+				sprintf(
+					/* translators: %d: HTTP status code */
+					__( 'AI provider returned HTTP %d.', 'seofyme-seo' ),
+					$code
+				)
+			);
+		}
+
+		$text = $body['choices'][0]['message']['content'] ?? ( $body['content'][0]['text'] ?? '' );
+		$text = trim( (string) $text );
+		if ( '' === $text ) {
+			return new \WP_Error( 'parse_error', __( 'Empty AI response.', 'seofyme-seo' ) );
+		}
+
+		$items = $this->extract_items( $text );
+		if ( empty( $items ) ) {
+			return new \WP_Error( 'parse_error', __( 'Could not parse AI response', 'seofyme-seo' ) );
+		}
+
+		return array_values(
+			array_filter(
+				array_map( 'sanitize_text_field', $items ),
+				static function ( $item ) {
+					return '' !== $item;
+				}
+			)
+		);
+	}
+
+	/**
+	 * Pull string suggestions from free-form model output.
+	 *
+	 * @param string $text Model text.
+	 * @return string[]
+	 */
+	private function extract_items( $text ) {
+		$text = preg_replace( '/^```(?:json)?\s*/i', '', $text );
+		$text = preg_replace( '/\s*```$/', '', (string) $text );
+		$text = trim( (string) $text );
+
+		$data = json_decode( $text, true );
+		if ( null === $data ) {
+			if ( preg_match( '/\{.*\}/s', $text, $m ) ) {
+				$data = json_decode( $m[0], true );
+			}
+			if ( null === $data && preg_match( '/\[.*\]/s', $text, $m ) ) {
+				$data = json_decode( $m[0], true );
+			}
+		}
+
+		if ( ! is_array( $data ) ) {
+			return array();
+		}
+
+		// Bare list: ["a","b"].
+		if ( $this->is_list( $data ) ) {
+			return array_map( 'strval', $data );
+		}
+
+		// Preferred shape: {"items":[...]}.
+		foreach ( array( 'items', 'suggestions', 'titles', 'descriptions', 'tips', 'summary', 'results' ) as $key ) {
+			if ( isset( $data[ $key ] ) && is_array( $data[ $key ] ) ) {
+				return array_map( 'strval', array_values( $data[ $key ] ) );
+			}
+		}
+
+		// First nested string list, e.g. {"seo_titles":["..."]}.
+		foreach ( $data as $value ) {
+			if ( is_array( $value ) && $this->is_list( $value ) ) {
+				$strings = array_filter( $value, 'is_string' );
+				if ( count( $strings ) === count( $value ) && ! empty( $strings ) ) {
+					return array_map( 'strval', $strings );
+				}
+			}
+		}
+
+		return array();
+	}
+
+	/**
+	 * PHP 7.4-safe list check (array_is_list is 8.1+).
+	 *
+	 * @param array $arr Array.
+	 * @return bool
+	 */
+	private function is_list( array $arr ) {
+		if ( function_exists( 'array_is_list' ) ) {
+			return array_is_list( $arr );
+		}
+		if ( array() === $arr ) {
+			return true;
+		}
+		return array_keys( $arr ) === range( 0, count( $arr ) - 1 );
 	}
 
 	/**

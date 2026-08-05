@@ -36,10 +36,15 @@ class Options {
 			'ai_provider'         => 'openai',
 			'ai_api_key'          => '',
 			'bot_blocker'         => array(),
+			'llms_txt'            => true,
 			'indexnow_key'        => '',
 			'schema_aggregate'    => true,
 			'organization_name'   => '',
 			'organization_logo'   => '',
+			'whitelabel_enabled'  => false,
+			'whitelabel_name'     => '',
+			'email_reports'       => false,
+			'report_email'        => '',
 		);
 	}
 
@@ -140,8 +145,10 @@ class Options {
 		$out['ai_api_key']           = isset( $input['ai_api_key'] ) ? sanitize_text_field( $input['ai_api_key'] ) : '';
 		$out['indexnow_key']         = isset( $input['indexnow_key'] ) ? sanitize_text_field( $input['indexnow_key'] ) : '';
 		$out['bot_blocker']          = isset( $input['bot_blocker'] ) && is_array( $input['bot_blocker'] ) ? array_map( 'sanitize_text_field', $input['bot_blocker'] ) : array();
+		$out['whitelabel_name']      = isset( $input['whitelabel_name'] ) ? sanitize_text_field( $input['whitelabel_name'] ) : '';
+		$out['report_email']         = isset( $input['report_email'] ) ? sanitize_email( $input['report_email'] ) : '';
 
-		foreach ( array( 'noindex_search', 'noindex_author', 'xml_sitemap', 'schema_enabled', 'breadcrumbs', 'schema_aggregate' ) as $bool_key ) {
+		foreach ( array( 'noindex_search', 'noindex_author', 'xml_sitemap', 'schema_enabled', 'breadcrumbs', 'schema_aggregate', 'whitelabel_enabled', 'email_reports', 'llms_txt' ) as $bool_key ) {
 			$out[ $bool_key ] = ! empty( $input[ $bool_key ] );
 		}
 

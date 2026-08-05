@@ -40,6 +40,14 @@
 			$('<button type="button" class="button"/>').text(text).on('click', function () {
 				if (kind === 'metas') {
 					$('#seofyme_description').val(text).trigger('input');
+				} else if (kind === 'social_titles') {
+					$('input[name="seofyme_social[_seofyme_og_title]"]').val(text);
+					$('input[name="seofyme_social[_seofyme_twitter_title]"]').val(text);
+				} else if (kind === 'social_metas') {
+					$('textarea[name="seofyme_social[_seofyme_og_description]"]').val(text);
+					$('textarea[name="seofyme_social[_seofyme_twitter_description]"]').val(text);
+				} else if (kind === 'optimize' || kind === 'summarize') {
+					// Tips only — no field write.
 				} else {
 					$('#seofyme_title').val(text).trigger('input');
 				}
@@ -47,8 +55,8 @@
 		});
 	}
 
-	$(document).on('click', '#seofyme-ai-titles, #seofyme-ai-metas', function () {
-		var kind = this.id === 'seofyme-ai-metas' ? 'metas' : 'titles';
+	$(document).on('click', '.seofyme-ai-btn, #seofyme-ai-titles, #seofyme-ai-metas', function () {
+		var kind = $(this).data('kind') || (this.id === 'seofyme-ai-metas' ? 'metas' : 'titles');
 		$('#seofyme-ai-results').text('Generating…');
 		$.post(seofymeSEO.ajaxUrl, {
 			action: 'seofyme_ai_generate',
@@ -61,6 +69,47 @@
 				return;
 			}
 			renderAi(res.data.items, kind);
+		});
+	});
+
+	$(document).on('click', '.seofyme-image-save', function () {
+		var $row = $(this).closest('tr');
+		$.post(seofymeSEO.ajaxUrl, {
+			action: 'seofyme_image_save',
+			nonce: nonce(),
+			id: $row.data('id'),
+			alt: $row.find('.seofyme-image-alt').val()
+		}).done(function (res) {
+			if (res.success) $row.css('opacity', 0.5);
+		});
+	});
+
+	$(document).on('click', '.seofyme-insert-link', function () {
+		var $btn = $(this);
+		$.post(seofymeSEO.ajaxUrl, {
+			action: 'seofyme_insert_link',
+			nonce: nonce(),
+			source: $btn.data('source'),
+			url: $btn.data('url'),
+			title: $btn.data('title')
+		}).done(function (res) {
+			if (res.success) $btn.text('Linked').prop('disabled', true);
+		});
+	});
+
+	$(document).on('click', '.seofyme-restore-rev', function () {
+		var $btn = $(this);
+		$.post(seofymeSEO.ajaxUrl, {
+			action: 'seofyme_restore_revision',
+			nonce: nonce(),
+			post_id: $btn.data('post-id'),
+			index: $btn.data('index')
+		}).done(function (res) {
+			if (!res.success) return;
+			$('#seofyme_title').val(res.data.title || '');
+			$('#seofyme_description').val(res.data.description || '');
+			$('#seofyme_focus_keyphrase').val(res.data.focus || '');
+			$btn.text('Restored');
 		});
 	});
 

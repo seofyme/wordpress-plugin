@@ -12,6 +12,6 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 delete_option( 'seofyme_seo_options' );
 
 global $wpdb;
-$table = $wpdb->prefix . 'seofyme_redirects';
-// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-$wpdb->query( "DROP TABLE IF EXISTS {$table}" );
+$seofyme_redirects_table = $wpdb->prefix . 'seofyme_redirects';
+// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
+$wpdb->query( "DROP TABLE IF EXISTS {$seofyme_redirects_table}" );
