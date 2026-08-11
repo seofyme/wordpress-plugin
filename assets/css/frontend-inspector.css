@@ -7,19 +7,19 @@
 }
 
 #seofyme-fe-toggle {
-	background: #0f6e56;
+	background: #1b7fd1;
 	color: #fff;
 	border: 0;
 	border-radius: 10px;
 	padding: 11px 16px;
 	cursor: pointer;
 	font-weight: 600;
-	box-shadow: 0 8px 24px rgba(15, 110, 86, 0.28);
+	box-shadow: 0 8px 24px rgba(27, 127, 209, 0.28);
 	transition: background 0.15s ease, transform 0.15s ease;
 }
 
 #seofyme-fe-toggle:hover {
-	background: #0c5c48;
+	background: #1566a8;
 	transform: translateY(-1px);
 }
 
@@ -71,8 +71,8 @@
 
 #seofyme-fe-panel input:focus,
 #seofyme-fe-panel textarea:focus {
-	border-color: #7bc9b0;
-	outline: 2px solid #d8f3ea;
+	border-color: #7eb6e8;
+	outline: 2px solid #e8f3fc;
 }
 
 #seofyme-fe-save {
@@ -80,14 +80,14 @@
 	border: 0;
 	border-radius: 10px;
 	padding: 10px 14px;
-	background: #0f6e56;
+	background: #1b7fd1;
 	color: #fff;
 	font-weight: 600;
 	cursor: pointer;
 }
 
 #seofyme-fe-save:hover {
-	background: #0c5c48;
+	background: #1566a8;
 }
 
 .seofyme-fe-status {

@@ -1,14 +1,17 @@
 /* Seofyme SEO — admin UI (CacheRocket-aligned shell) */
 
 :root {
+	/* Palette locked to brand logo: electric blue + amber orange on ink. */
 	--sf-bg: #f4f6f8;
 	--sf-surface: #ffffff;
 	--sf-ink: #1a1f2c;
 	--sf-muted: #5b6575;
 	--sf-line: #e6eaf0;
-	--sf-accent: #0f6e56;
-	--sf-accent-strong: #0c5c48;
-	--sf-accent-soft: #e7f5f0;
+	--sf-accent: #1b7fd1;
+	--sf-accent-strong: #1566a8;
+	--sf-accent-soft: #e8f3fc;
+	--sf-highlight: #f0a019;
+	--sf-highlight-soft: #fff4de;
 	--sf-warn: #9a6700;
 	--sf-danger: #b42318;
 	--sf-good: #15803d;
@@ -118,7 +121,7 @@
 }
 
 .sf-nav a.is-active {
-	background: rgba(29, 184, 142, 0.18);
+	background: rgba(27, 127, 209, 0.24);
 	color: #fff;
 }
 
@@ -140,7 +143,7 @@
 }
 
 .sf-sidebar__foot a {
-	color: #7de2c3;
+	color: #7ec8ff;
 	text-decoration: none;
 }
 
@@ -245,8 +248,8 @@
 	margin-bottom: 0.55rem;
 	padding: 2px 8px;
 	border-radius: 999px;
-	background: var(--sf-accent-soft);
-	color: var(--sf-accent);
+	background: var(--sf-highlight-soft);
+	color: #9a6700;
 	font-size: 11px;
 	font-weight: 700;
 	text-transform: uppercase;
@@ -280,6 +283,16 @@
 .seofyme-wrap .button {
 	border-radius: 10px;
 	font-weight: 600;
+	border-color: var(--sf-line);
+	color: var(--sf-ink);
+	background: #fff;
+}
+
+.sf-wrap .button:hover,
+.seofyme-wrap .button:hover {
+	border-color: var(--sf-accent);
+	color: var(--sf-accent-strong);
+	background: var(--sf-accent-soft);
 }
 
 .sf-wrap .form-table th,
@@ -328,8 +341,8 @@
 .seofyme-metabox input:focus,
 .seofyme-metabox select:focus,
 .seofyme-metabox textarea:focus {
-	border-color: #7bc9b0 !important;
-	box-shadow: 0 0 0 3px #d8f3ea !important;
+	border-color: #7eb6e8 !important;
+	box-shadow: 0 0 0 3px var(--sf-accent-soft) !important;
 	outline: none !important;
 }
 
@@ -651,7 +664,7 @@
 }
 
 #seofyme-ai-results .button:hover {
-	border-color: #7bc9b0;
+	border-color: var(--sf-accent);
 }
 
 .seofyme-suggestion-list {
@@ -671,7 +684,7 @@
 }
 
 .seofyme-suggestion-list li a:hover {
-	border-color: #7bc9b0;
+	border-color: var(--sf-accent);
 	background: #fff;
 	text-decoration: none;
 }
