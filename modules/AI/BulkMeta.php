@@ -87,11 +87,13 @@ class BulkMeta {
 						<?php foreach ( $items as $item ) : ?>
 							<tr data-id="<?php echo esc_attr( (string) $item['id'] ); ?>">
 								<td><strong><?php echo esc_html( $item['title'] ); ?></strong></td>
-								<td><input class="widefat seofyme-bulk-title" value="<?php echo esc_attr( $item['seo_title'] ); ?>" /></td>
-								<td><textarea class="widefat seofyme-bulk-desc" rows="2"><?php echo esc_textarea( $item['seo_desc'] ); ?></textarea></td>
+								<td><input type="text" class="widefat seofyme-bulk-title" value="<?php echo esc_attr( $item['seo_title'] ); ?>" /></td>
+								<td><textarea class="widefat seofyme-bulk-desc" rows="3"><?php echo esc_textarea( $item['seo_desc'] ); ?></textarea></td>
 								<td>
-									<button type="button" class="button seofyme-bulk-draft"><?php esc_html_e( 'AI draft', 'seofyme-seo' ); ?></button>
-									<button type="button" class="button button-primary seofyme-bulk-apply"><?php esc_html_e( 'Approve', 'seofyme-seo' ); ?></button>
+									<div class="sf-row-actions">
+										<button type="button" class="button seofyme-bulk-draft"><?php esc_html_e( 'AI draft', 'seofyme-seo' ); ?></button>
+										<button type="button" class="button button-primary seofyme-bulk-apply"><?php esc_html_e( 'Approve', 'seofyme-seo' ); ?></button>
+									</div>
 								</td>
 							</tr>
 						<?php endforeach; ?>

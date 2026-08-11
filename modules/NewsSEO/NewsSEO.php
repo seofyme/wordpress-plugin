@@ -60,7 +60,7 @@ class NewsSEO {
 		$include = '' === $include ? '1' : $include;
 		?>
 		<p><label><input type="checkbox" name="seofyme_news_include" value="1" <?php checked( $include, '1' ); ?> /> <?php esc_html_e( 'Include in news sitemap', 'seofyme-seo' ); ?></label></p>
-		<p><label><?php esc_html_e( 'Genres', 'seofyme-seo' ); ?><br><input class="widefat" name="seofyme_news_genres" value="<?php echo esc_attr( (string) get_post_meta( $post->ID, '_seofyme_news_genres', true ) ); ?>" /></label></p>
+		<p><label><?php esc_html_e( 'Genres', 'seofyme-seo' ); ?><br><input type="text" class="widefat" name="seofyme_news_genres" value="<?php echo esc_attr( (string) get_post_meta( $post->ID, '_seofyme_news_genres', true ) ); ?>" /></label></p>
 		<?php
 	}
 

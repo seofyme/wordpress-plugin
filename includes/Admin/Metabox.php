@@ -120,10 +120,12 @@ class Metabox {
 							<h3><?php esc_html_e( 'Content analysis', 'seofyme-seo' ); ?></h3>
 							<p class="seofyme-score seofyme-score--<?php echo esc_attr( $analysis['label'] ); ?>">
 								<?php
-								printf(
-									/* translators: %d score */
-									esc_html__( '%d / 100', 'seofyme-seo' ),
-									$score
+								echo esc_html(
+									sprintf(
+										/* translators: %d: SEO score from 0 to 100. */
+										__( '%d / 100', 'seofyme-seo' ),
+										(int) $score
+									)
 								);
 								?>
 							</p>

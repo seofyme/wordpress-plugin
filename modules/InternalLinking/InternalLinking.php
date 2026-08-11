@@ -79,8 +79,7 @@ class InternalLinking {
 			array(
 				'post_type'      => get_post_types( array( 'public' => true ), 'names' ),
 				'post_status'    => 'publish',
-				'posts_per_page' => 8,
-				'post__not_in'   => array( $post_id ),
+				'posts_per_page' => 12,
 				's'              => implode( ' ', array_slice( $terms, 0, 3 ) ),
 				'no_found_rows'  => true,
 			)
@@ -88,11 +87,17 @@ class InternalLinking {
 
 		$out = array();
 		foreach ( $q->posts as $candidate ) {
+			if ( (int) $candidate->ID === (int) $post_id ) {
+				continue;
+			}
 			$out[] = array(
 				'id'    => $candidate->ID,
 				'title' => get_the_title( $candidate ),
 				'url'   => get_permalink( $candidate ),
 			);
+			if ( count( $out ) >= 8 ) {
+				break;
+			}
 		}
 		return $out;
 	}

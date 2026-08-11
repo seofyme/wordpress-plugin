@@ -74,7 +74,7 @@ class LocalSEO {
 		$keys = array( 'business_name', 'phone', 'email', 'street', 'city', 'region', 'postal', 'country', 'lat', 'lng', 'opening_hours', 'maps_embed' );
 		foreach ( $keys as $key ) {
 			$val = get_post_meta( $post->ID, '_seofyme_local_' . $key, true );
-			printf( '<p><label><strong>%1$s</strong><br><input class="widefat" name="seofyme_local[%2$s]" value="%3$s" /></label></p>', esc_html( ucwords( str_replace( '_', ' ', $key ) ) ), esc_attr( $key ), esc_attr( (string) $val ) );
+			printf( '<p><label><strong>%1$s</strong><br><input type="text" class="widefat" name="seofyme_local[%2$s]" value="%3$s" /></label></p>', esc_html( ucwords( str_replace( '_', ' ', $key ) ) ), esc_attr( $key ), esc_attr( (string) $val ) );
 		}
 	}
 

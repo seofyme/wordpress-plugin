@@ -45,13 +45,18 @@ class LinkAssistant {
 				array(
 					'post_type'      => array( 'post', 'page' ),
 					'post_status'    => 'publish',
-					'posts_per_page' => 5,
-					'post__not_in'   => array( $orphan['id'] ),
+					'posts_per_page' => 6,
 					's'              => $orphan['title'],
 					'no_found_rows'  => true,
 				)
 			);
-			$source = $candidates[0] ?? null;
+			$source = null;
+			foreach ( $candidates as $candidate ) {
+				if ( (int) $candidate->ID !== (int) $orphan['id'] ) {
+					$source = $candidate;
+					break;
+				}
+			}
 			$out[]  = array(
 				'orphan'      => $orphan,
 				'source_id'   => $source ? $source->ID : 0,

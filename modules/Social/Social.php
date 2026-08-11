@@ -72,7 +72,7 @@ class Social {
 				);
 			} else {
 				printf(
-					'<p><label>%1$s<br><input class="widefat" name="%2$s" value="%3$s" /></label></p>',
+					'<p><label>%1$s<br><input type="text" class="widefat" name="%2$s" value="%3$s" /></label></p>',
 					esc_html( $label ),
 					esc_attr( $name ),
 					esc_attr( $val )

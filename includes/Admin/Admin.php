@@ -96,8 +96,10 @@ class Admin {
 			return;
 		}
 
-		wp_enqueue_style( 'seofyme-seo-admin', SEOFYME_SEO_URL . 'assets/css/admin.css', array(), SEOFYME_SEO_VERSION );
-		wp_enqueue_script( 'seofyme-seo-admin', SEOFYME_SEO_URL . 'assets/js/admin.js', array( 'jquery' ), SEOFYME_SEO_VERSION, true );
+		$css_ver = SEOFYME_SEO_VERSION . '.' . (string) filemtime( SEOFYME_SEO_PATH . 'assets/css/admin.css' );
+		$js_ver  = SEOFYME_SEO_VERSION . '.' . (string) filemtime( SEOFYME_SEO_PATH . 'assets/js/admin.js' );
+		wp_enqueue_style( 'seofyme-seo-admin', SEOFYME_SEO_URL . 'assets/css/admin.css', array(), $css_ver );
+		wp_enqueue_script( 'seofyme-seo-admin', SEOFYME_SEO_URL . 'assets/js/admin.js', array( 'jquery' ), $js_ver, true );
 		wp_localize_script(
 			'seofyme-seo-admin',
 			'seofymeSEO',
@@ -194,11 +196,11 @@ class Admin {
 					<table class="form-table" role="presentation">
 						<tr>
 							<th><label for="title_separator"><?php esc_html_e( 'Title separator', 'seofyme-seo' ); ?></label></th>
-							<td><input name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[title_separator]" id="title_separator" value="<?php echo esc_attr( $o['title_separator'] ); ?>" class="small-text" /></td>
+							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[title_separator]" id="title_separator" value="<?php echo esc_attr( $o['title_separator'] ); ?>" class="small-text" /></td>
 						</tr>
 						<tr>
 							<th><label for="homepage_title"><?php esc_html_e( 'Homepage title', 'seofyme-seo' ); ?></label></th>
-							<td><input name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[homepage_title]" id="homepage_title" value="<?php echo esc_attr( $o['homepage_title'] ); ?>" class="regular-text" /></td>
+							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[homepage_title]" id="homepage_title" value="<?php echo esc_attr( $o['homepage_title'] ); ?>" class="regular-text" /></td>
 						</tr>
 						<tr>
 							<th><label for="homepage_description"><?php esc_html_e( 'Homepage description', 'seofyme-seo' ); ?></label></th>
@@ -206,11 +208,11 @@ class Admin {
 						</tr>
 						<tr>
 							<th><label for="organization_name"><?php esc_html_e( 'Organization name', 'seofyme-seo' ); ?></label></th>
-							<td><input name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[organization_name]" id="organization_name" value="<?php echo esc_attr( $o['organization_name'] ); ?>" class="regular-text" /></td>
+							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[organization_name]" id="organization_name" value="<?php echo esc_attr( $o['organization_name'] ); ?>" class="regular-text" /></td>
 						</tr>
 						<tr>
 							<th><label for="organization_logo"><?php esc_html_e( 'Organization logo URL', 'seofyme-seo' ); ?></label></th>
-							<td><input name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[organization_logo]" id="organization_logo" value="<?php echo esc_attr( $o['organization_logo'] ); ?>" class="regular-text" /></td>
+							<td><input type="url" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[organization_logo]" id="organization_logo" value="<?php echo esc_attr( $o['organization_logo'] ); ?>" class="regular-text" /></td>
 						</tr>
 						<tr>
 							<th><?php esc_html_e( 'Features', 'seofyme-seo' ); ?></th>
@@ -225,7 +227,23 @@ class Admin {
 				</section>
 
 				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'AI drafting', 'seofyme-seo' ); ?></h2>
+					<h2><?php esc_html_e( 'Seofyme Cloud AI', 'seofyme-seo' ); ?></h2>
+					<p class="description"><?php esc_html_e( 'Paste your Seofyme Cloud API keys. Cloud drafting is metered on your plan and cannot be bypassed locally.', 'seofyme-seo' ); ?></p>
+					<table class="form-table" role="presentation">
+						<tr>
+							<th><label for="seofyme_public_key"><?php esc_html_e( 'Public key', 'seofyme-seo' ); ?></label></th>
+							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[seofyme_public_key]" id="seofyme_public_key" value="<?php echo esc_attr( $o['seofyme_public_key'] ?? '' ); ?>" class="regular-text" autocomplete="off" /></td>
+						</tr>
+						<tr>
+							<th><label for="seofyme_secret_key"><?php esc_html_e( 'Secret key', 'seofyme-seo' ); ?></label></th>
+							<td><input type="password" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[seofyme_secret_key]" id="seofyme_secret_key" value="<?php echo esc_attr( $o['seofyme_secret_key'] ?? '' ); ?>" class="regular-text" autocomplete="off" /></td>
+						</tr>
+					</table>
+				</section>
+
+				<section class="seofyme-panel">
+					<h2><?php esc_html_e( 'BYO AI (optional fallback)', 'seofyme-seo' ); ?></h2>
+					<p class="description"><?php esc_html_e( 'Used only when Seofyme Cloud keys are empty.', 'seofyme-seo' ); ?></p>
 					<table class="form-table" role="presentation">
 						<tr>
 							<th><label for="ai_provider"><?php esc_html_e( 'Provider', 'seofyme-seo' ); ?></label></th>
@@ -277,7 +295,7 @@ class Admin {
 						<tr>
 							<th><label for="indexnow_key"><?php esc_html_e( 'Key', 'seofyme-seo' ); ?></label></th>
 							<td>
-								<input name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[indexnow_key]" id="indexnow_key" value="<?php echo esc_attr( $o['indexnow_key'] ); ?>" class="regular-text" />
+								<input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[indexnow_key]" id="indexnow_key" value="<?php echo esc_attr( $o['indexnow_key'] ); ?>" class="regular-text" />
 								<p class="description"><?php esc_html_e( 'Leave empty to auto-generate.', 'seofyme-seo' ); ?></p>
 							</td>
 						</tr>
@@ -295,7 +313,7 @@ class Admin {
 						</tr>
 						<tr>
 							<th><label for="whitelabel_name"><?php esc_html_e( 'Brand name', 'seofyme-seo' ); ?></label></th>
-							<td><input name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[whitelabel_name]" id="whitelabel_name" value="<?php echo esc_attr( $o['whitelabel_name'] ); ?>" class="regular-text" placeholder="Acme SEO" /></td>
+							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[whitelabel_name]" id="whitelabel_name" value="<?php echo esc_attr( $o['whitelabel_name'] ); ?>" class="regular-text" placeholder="Acme SEO" /></td>
 						</tr>
 						<tr>
 							<th><?php esc_html_e( 'Email reports', 'seofyme-seo' ); ?></th>

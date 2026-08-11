@@ -71,6 +71,9 @@ class AuthorSEO {
 		if ( ! current_user_can( 'edit_user', $user_id ) ) {
 			return;
 		}
+		if ( ! isset( $_POST['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['_wpnonce'] ) ), 'update-user_' . $user_id ) ) {
+			return;
+		}
 		foreach ( array( 'seofyme_job_title', 'seofyme_knows_about', 'seofyme_same_as', 'seofyme_education' ) as $key ) {
 			if ( isset( $_POST[ $key ] ) ) {
 				update_user_meta( $user_id, $key, sanitize_text_field( wp_unslash( $_POST[ $key ] ) ) );

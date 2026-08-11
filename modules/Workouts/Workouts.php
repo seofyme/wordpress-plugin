@@ -49,8 +49,13 @@ class Workouts {
 				'post_type'      => array( 'post', 'page' ),
 				'post_status'    => 'publish',
 				'posts_per_page' => 25,
-				'meta_key'       => Post_Meta::CORNERSTONE,
-				'meta_value'     => '1',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required meta lookup.
+				'meta_query'     => array(
+					array(
+						'key'   => Post_Meta::CORNERSTONE,
+						'value' => '1',
+					),
+				),
 				'no_found_rows'  => true,
 			)
 		);
@@ -59,8 +64,13 @@ class Workouts {
 				'post_type'      => array( 'post', 'page' ),
 				'post_status'    => 'publish',
 				'posts_per_page' => 25,
-				'meta_key'       => Post_Meta::CORNERSTONE,
-				'meta_value'     => '1',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required meta lookup.
+				'meta_query'     => array(
+					array(
+						'key'   => Post_Meta::CORNERSTONE,
+						'value' => '1',
+					),
+				),
 				'date_query'     => array(
 					array(
 						'column' => 'post_modified',

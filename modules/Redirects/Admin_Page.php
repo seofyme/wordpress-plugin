@@ -40,8 +40,8 @@ class Admin_Page {
 					<input type="hidden" name="action" value="seofyme_add_redirect" />
 					<?php wp_nonce_field( 'seofyme_add_redirect' ); ?>
 					<table class="form-table">
-						<tr><th><?php esc_html_e( 'Old path / pattern', 'seofyme-seo' ); ?></th><td><input name="origin" class="regular-text" placeholder="/old-url or ^/blog/(.*)$" required /></td></tr>
-						<tr><th><?php esc_html_e( 'New URL', 'seofyme-seo' ); ?></th><td><input name="target" class="regular-text" placeholder="/new-url or /news/$1" required /></td></tr>
+						<tr><th><?php esc_html_e( 'Old path / pattern', 'seofyme-seo' ); ?></th><td><input type="text" name="origin" class="regular-text" placeholder="/old-url or ^/blog/(.*)$" required /></td></tr>
+						<tr><th><?php esc_html_e( 'New URL', 'seofyme-seo' ); ?></th><td><input type="text" name="target" class="regular-text" placeholder="/new-url or /news/$1" required /></td></tr>
 						<tr><th><?php esc_html_e( 'Format', 'seofyme-seo' ); ?></th><td><select name="format"><option value="plain">plain</option><option value="regex">regex</option></select></td></tr>
 						<tr><th><?php esc_html_e( 'Type', 'seofyme-seo' ); ?></th><td><select name="type"><option value="301">301</option><option value="302">302</option><option value="410">410</option></select></td></tr>
 					</table>

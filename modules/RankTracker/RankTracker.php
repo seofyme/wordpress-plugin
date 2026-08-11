@@ -72,8 +72,8 @@ class RankTracker {
 				<input type="hidden" name="action" value="seofyme_rank_add" />
 				<?php wp_nonce_field( 'seofyme_rank_add' ); ?>
 				<table class="form-table">
-					<tr><th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th><td><input name="keyword" class="regular-text" required /></td></tr>
-					<tr><th><?php esc_html_e( 'Target URL', 'seofyme-seo' ); ?></th><td><input name="url" class="regular-text" placeholder="<?php echo esc_attr( home_url( '/' ) ); ?>" /></td></tr>
+					<tr><th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th><td><input type="text" name="keyword" class="regular-text" required /></td></tr>
+					<tr><th><?php esc_html_e( 'Target URL', 'seofyme-seo' ); ?></th><td><input type="url" name="url" class="regular-text" placeholder="<?php echo esc_attr( home_url( '/' ) ); ?>" /></td></tr>
 					<tr><th><?php esc_html_e( 'Current position', 'seofyme-seo' ); ?></th><td><input name="position" type="number" min="1" max="100" class="small-text" value="10" /></td></tr>
 				</table>
 				<?php submit_button( __( 'Track keyword', 'seofyme-seo' ) ); ?>

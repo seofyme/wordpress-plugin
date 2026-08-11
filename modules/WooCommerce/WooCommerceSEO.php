@@ -53,8 +53,8 @@ class WooCommerceSEO {
 		wp_nonce_field( 'seofyme_woo', 'seofyme_woo_nonce' );
 		$gtin = get_post_meta( $post->ID, '_seofyme_gtin', true );
 		$brand = get_post_meta( $post->ID, '_seofyme_brand', true );
-		printf( '<p><label>%s<br><input class="widefat" name="seofyme_brand" value="%s" /></label></p>', esc_html__( 'Brand', 'seofyme-seo' ), esc_attr( $brand ) );
-		printf( '<p><label>%s<br><input class="widefat" name="seofyme_gtin" value="%s" /></label></p>', esc_html__( 'GTIN / barcode', 'seofyme-seo' ), esc_attr( $gtin ) );
+		printf( '<p><label>%s<br><input type="text" class="widefat" name="seofyme_brand" value="%s" /></label></p>', esc_html__( 'Brand', 'seofyme-seo' ), esc_attr( $brand ) );
+		printf( '<p><label>%s<br><input type="text" class="widefat" name="seofyme_gtin" value="%s" /></label></p>', esc_html__( 'GTIN / barcode', 'seofyme-seo' ), esc_attr( $gtin ) );
 	}
 
 	/**

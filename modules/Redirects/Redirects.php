@@ -100,7 +100,9 @@ class Redirects {
 		$type   = in_array( (int) $type, array( 301, 302, 307, 410, 451 ), true ) ? (int) $type : 301;
 		$format = ( 'regex' === $format ) ? 'regex' : 'plain';
 		$origin = ( 'regex' === $format ) ? trim( (string) $origin ) : $this->normalize( $origin );
-		$ok     = $wpdb->insert(
+		// Custom table — $wpdb helpers are required.
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$ok = $wpdb->insert(
 			$this->table(),
 			array(
 				'origin' => $origin,
@@ -121,6 +123,7 @@ class Redirects {
 	 */
 	public function delete( $id ) {
 		global $wpdb;
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
 		return (bool) $wpdb->delete( $this->table(), array( 'id' => (int) $id ), array( '%d' ) );
 	}
 
@@ -131,8 +134,8 @@ class Redirects {
 	 */
 	public function all() {
 		global $wpdb;
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		return $wpdb->get_results( "SELECT * FROM {$this->table()} ORDER BY id DESC LIMIT 500", ARRAY_A ) ?: array();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table read.
+		return $wpdb->get_results( 'SELECT * FROM `' . esc_sql( $this->table() ) . '` ORDER BY id DESC LIMIT 500', ARRAY_A ) ?: array();
 	}
 
 	/**
@@ -144,13 +147,21 @@ class Redirects {
 	public function find( $path ) {
 		global $wpdb;
 		$normalized = $this->normalize( $path );
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$row = $wpdb->get_row( $wpdb->prepare( "SELECT * FROM {$this->table()} WHERE origin = %s AND enabled = 1 AND format = 'plain' LIMIT 1", $normalized ), ARRAY_A );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table read.
+		$row = $wpdb->get_row(
+			$wpdb->prepare(
+				'SELECT * FROM `' . esc_sql( $this->table() ) . '` WHERE origin = %s AND enabled = 1 AND format = %s LIMIT 1',
+				$normalized,
+				'plain'
+			),
+			ARRAY_A
+		);
 		if ( $row ) {
 			return $row;
 		}
-		// phpcs:ignore WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		$regex_rows = $wpdb->get_results( "SELECT * FROM {$this->table()} WHERE enabled = 1 AND format = 'regex' ORDER BY id ASC", ARRAY_A ) ?: array();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table read.
+		$regex_rows = $wpdb->get_results( 'SELECT * FROM `' . esc_sql( $this->table() ) . '` WHERE enabled = 1 AND format = \'regex\' ORDER BY id ASC', ARRAY_A ) ?: array();
+
 		foreach ( $regex_rows as $candidate ) {
 			$pattern = '#' . str_replace( '#', '\\#', $candidate['origin'] ) . '#';
 			if ( @preg_match( $pattern, $normalized ) ) { // phpcs:ignore WordPress.PHP.NoSilencedErrors.Discouraged
@@ -177,13 +188,13 @@ class Redirects {
 			return;
 		}
 		$type = absint( $row['type'] );
-		if ( in_array( $type, array( 410, 451 ), true ) ) {
-			status_header( $type );
-			wp_die(
-				esc_html__( 'This content is no longer available.', 'seofyme-seo' ),
-				'',
-				array( 'response' => $type )
-			);
+		if ( 451 === $type ) {
+			status_header( 451 );
+			wp_die( esc_html__( 'This content is no longer available.', 'seofyme-seo' ), '', array( 'response' => 451 ) );
+		}
+		if ( 410 === $type ) {
+			status_header( 410 );
+			wp_die( esc_html__( 'This content is no longer available.', 'seofyme-seo' ), '', array( 'response' => 410 ) );
 		}
 		$target = $row['target'];
 		if ( 'regex' === ( $row['format'] ?? 'plain' ) && ! empty( $row['_match_path'] ) ) {

@@ -111,7 +111,7 @@ class ImageSEO {
 								<?php endif; ?>
 								<?php echo esc_html( $item['title'] ); ?>
 							</td>
-							<td><input class="widefat seofyme-image-alt" value="<?php echo esc_attr( $item['title'] ); ?>" /></td>
+							<td><input type="text" class="widefat seofyme-image-alt" value="<?php echo esc_attr( $item['title'] ); ?>" /></td>
 							<td><button type="button" class="button button-primary seofyme-image-save"><?php esc_html_e( 'Save', 'seofyme-seo' ); ?></button></td>
 						</tr>
 					<?php endforeach; ?>

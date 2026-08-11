@@ -105,7 +105,13 @@ class VideoSEO {
 				'post_type'      => 'any',
 				'post_status'    => 'publish',
 				'posts_per_page' => 500,
-				'meta_key'       => '_seofyme_videos',
+				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required meta lookup.
+				'meta_query'     => array(
+					array(
+						'key'     => '_seofyme_videos',
+						'compare' => 'EXISTS',
+					),
+				),
 				'no_found_rows'  => true,
 			)
 		);

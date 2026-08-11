@@ -73,12 +73,77 @@ class Generator {
 		if ( ! $post ) {
 			return new \WP_Error( 'not_found', 'Post not found' );
 		}
+
+		// Prefer Seofyme Cloud (product-scoped API — anti-null monetization path).
+		$cloud = $this->seofyme_cloud( $post, $kind );
+		if ( ! is_wp_error( $cloud ) || 'no_cloud_keys' !== $cloud->get_error_code() ) {
+			return $cloud;
+		}
+
 		$key = Options::get( 'ai_api_key', '' );
 		if ( ! $key ) {
 			return $this->fallback( $post, $kind );
 		}
 		$prompt = $this->prompt( $post, $kind );
 		return 'anthropic' === Options::get( 'ai_provider' ) ? $this->anthropic( $key, $prompt ) : $this->openai( $key, $prompt );
+	}
+
+	/**
+	 * Call Seofyme AI service via CacheRocket gateway.
+	 *
+	 * @param \WP_Post $post Post.
+	 * @param string   $kind Kind.
+	 * @return array|\WP_Error
+	 */
+	private function seofyme_cloud( $post, $kind ) {
+		$public = (string) Options::get( 'seofyme_public_key', '' );
+		$secret = (string) Options::get( 'seofyme_secret_key', '' );
+		if ( '' === $public || '' === $secret ) {
+			return new \WP_Error( 'no_cloud_keys', 'Seofyme Cloud keys not configured' );
+		}
+
+		$url = Options::cloud_api_base() . '/generate';
+
+		$res = wp_remote_post(
+			$url,
+			array(
+				'timeout' => 45,
+				'headers' => array(
+					'Content-Type'  => 'application/json',
+					'X-Product'     => 'seofyme',
+					'X-Public-Key'  => $public,
+					'X-Secret-Key'  => $secret,
+				),
+				'body'    => wp_json_encode(
+					array(
+						'kind'    => $kind,
+						'title'   => get_the_title( $post ),
+						'content' => wp_strip_all_tags( $post->post_content ),
+						'focus'   => Post_Meta::get( $post->ID, Post_Meta::FOCUS_KW ),
+					)
+				),
+			)
+		);
+
+		if ( is_wp_error( $res ) ) {
+			return $res;
+		}
+
+		$code = (int) wp_remote_retrieve_response_code( $res );
+		$body = json_decode( (string) wp_remote_retrieve_body( $res ), true );
+		if ( ! is_array( $body ) ) {
+			return new \WP_Error( 'parse_error', __( 'Invalid response from Seofyme Cloud.', 'seofyme-seo' ) );
+		}
+		if ( $code < 200 || $code >= 300 ) {
+			$msg = isset( $body['message'] ) ? (string) $body['message'] : __( 'Seofyme Cloud request failed.', 'seofyme-seo' );
+			return new \WP_Error( 'api_error', $msg );
+		}
+		$items = isset( $body['data']['items'] ) && is_array( $body['data']['items'] ) ? $body['data']['items'] : array();
+		$items = array_values( array_filter( array_map( 'strval', $items ) ) );
+		if ( empty( $items ) ) {
+			return new \WP_Error( 'parse_error', __( 'Seofyme Cloud returned no suggestions.', 'seofyme-seo' ) );
+		}
+		return $items;
 	}
 
 	/**
@@ -336,15 +401,12 @@ class Generator {
 	}
 
 	/**
-	 * PHP 7.4-safe list check (array_is_list is 8.1+).
+	 * List check compatible with PHP 7.4 / WP 6.0 (no array_is_list).
 	 *
 	 * @param array $arr Array.
 	 * @return bool
 	 */
 	private function is_list( array $arr ) {
-		if ( function_exists( 'array_is_list' ) ) {
-			return array_is_list( $arr );
-		}
 		if ( array() === $arr ) {
 			return true;
 		}

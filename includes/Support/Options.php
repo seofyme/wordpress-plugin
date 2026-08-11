@@ -18,6 +18,25 @@ class Options {
 
 	public const OPTION_KEY = 'seofyme_seo_options';
 
+	/** Fixed Cloud AI gateway path — not shown in the settings UI. */
+	public const CLOUD_API_BASE = 'https://api.cacherocket.com/web/v1/seofyme';
+
+	/**
+	 * Cloud AI API base URL (internal; filterable for staging only).
+	 *
+	 * @return string
+	 */
+	public static function cloud_api_base() {
+		/**
+		 * Filter the Seofyme Cloud AI base URL. Intended for staging/dev only.
+		 *
+		 * @param string $base Default production gateway path.
+		 */
+		$base = apply_filters( 'seofyme_cloud_api_base', self::CLOUD_API_BASE );
+		$base = is_string( $base ) ? untrailingslashit( $base ) : self::CLOUD_API_BASE;
+		return $base ? $base : self::CLOUD_API_BASE;
+	}
+
 	/**
 	 * Defaults.
 	 *
@@ -35,6 +54,8 @@ class Options {
 			'breadcrumbs'         => true,
 			'ai_provider'         => 'openai',
 			'ai_api_key'          => '',
+			'seofyme_public_key'  => '',
+			'seofyme_secret_key'  => '',
 			'bot_blocker'         => array(),
 			'llms_txt'            => true,
 			'indexnow_key'        => '',
@@ -143,6 +164,10 @@ class Options {
 		$out['organization_logo']    = isset( $input['organization_logo'] ) ? esc_url_raw( $input['organization_logo'] ) : '';
 		$out['ai_provider']          = isset( $input['ai_provider'] ) ? sanitize_key( $input['ai_provider'] ) : 'openai';
 		$out['ai_api_key']           = isset( $input['ai_api_key'] ) ? sanitize_text_field( $input['ai_api_key'] ) : '';
+		// API base is not user-configurable; always persist the fixed Cloud endpoint.
+		$out['seofyme_api_base']     = self::CLOUD_API_BASE;
+		$out['seofyme_public_key']   = isset( $input['seofyme_public_key'] ) ? sanitize_text_field( $input['seofyme_public_key'] ) : '';
+		$out['seofyme_secret_key']   = isset( $input['seofyme_secret_key'] ) ? sanitize_text_field( $input['seofyme_secret_key'] ) : '';
 		$out['indexnow_key']         = isset( $input['indexnow_key'] ) ? sanitize_text_field( $input['indexnow_key'] ) : '';
 		$out['bot_blocker']          = isset( $input['bot_blocker'] ) && is_array( $input['bot_blocker'] ) ? array_map( 'sanitize_text_field', $input['bot_blocker'] ) : array();
 		$out['whitelabel_name']      = isset( $input['whitelabel_name'] ) ? sanitize_text_field( $input['whitelabel_name'] ) : '';

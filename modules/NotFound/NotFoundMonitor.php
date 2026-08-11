@@ -68,13 +68,12 @@ class NotFoundMonitor {
 			return;
 		}
 		global $wpdb;
-		$table = $wpdb->prefix . self::TABLE;
-		$now   = current_time( 'mysql', true );
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
+		$now = current_time( 'mysql', true );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table write.
 		$wpdb->query(
 			$wpdb->prepare(
-				"INSERT INTO {$table} (url, hits, last_seen) VALUES (%s, 1, %s)
-				ON DUPLICATE KEY UPDATE hits = hits + 1, last_seen = VALUES(last_seen)",
+				'INSERT INTO `' . esc_sql( $wpdb->prefix . self::TABLE ) . '` (url, hits, last_seen) VALUES (%s, 1, %s)
+				ON DUPLICATE KEY UPDATE hits = hits + 1, last_seen = VALUES(last_seen)',
 				$path,
 				$now
 			)
@@ -89,9 +88,14 @@ class NotFoundMonitor {
 	 */
 	public function all( $limit = 100 ) {
 		global $wpdb;
-		$table = $wpdb->prefix . self::TABLE;
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.PreparedSQL.InterpolatedNotPrepared
-		return $wpdb->get_results( $wpdb->prepare( "SELECT * FROM {$table} ORDER BY hits DESC, last_seen DESC LIMIT %d", $limit ), ARRAY_A ) ?: array();
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching -- Custom table read.
+		return $wpdb->get_results(
+			$wpdb->prepare(
+				'SELECT * FROM `' . esc_sql( $wpdb->prefix . self::TABLE ) . '` ORDER BY hits DESC, last_seen DESC LIMIT %d',
+				$limit
+			),
+			ARRAY_A
+		) ?: array();
 	}
 
 	/**
@@ -168,8 +172,8 @@ class NotFoundMonitor {
 			wp_die( esc_html__( 'Unauthorized', 'seofyme-seo' ) );
 		}
 		global $wpdb;
-		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange
-		$wpdb->query( 'TRUNCATE TABLE ' . $wpdb->prefix . self::TABLE );
+		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching, WordPress.DB.DirectDatabaseQuery.SchemaChange, WordPress.DB.PreparedSQL.NotPrepared -- Table name cannot use placeholders.
+		$wpdb->query( 'TRUNCATE TABLE `' . esc_sql( $wpdb->prefix . self::TABLE ) . '`' );
 		wp_safe_redirect( admin_url( 'admin.php?page=seofyme-seo-404' ) );
 		exit;
 	}
