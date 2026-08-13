@@ -66,6 +66,10 @@ class Options {
 			'whitelabel_name'     => '',
 			'email_reports'       => false,
 			'report_email'        => '',
+			'gsc_client_id'       => '',
+			'gsc_client_secret'   => '',
+			'gsc_property'        => '',
+			'gsc_properties'      => array(),
 		);
 	}
 
@@ -177,6 +181,9 @@ class Options {
 		$out['bot_blocker']          = isset( $input['bot_blocker'] ) && is_array( $input['bot_blocker'] ) ? array_map( 'sanitize_text_field', $input['bot_blocker'] ) : array();
 		$out['whitelabel_name']      = isset( $input['whitelabel_name'] ) ? sanitize_text_field( $input['whitelabel_name'] ) : '';
 		$out['report_email']         = isset( $input['report_email'] ) ? sanitize_email( $input['report_email'] ) : '';
+		$out['gsc_client_id']        = isset( $input['gsc_client_id'] ) ? sanitize_text_field( $input['gsc_client_id'] ) : '';
+		$out['gsc_client_secret']    = isset( $input['gsc_client_secret'] ) ? sanitize_text_field( $input['gsc_client_secret'] ) : '';
+		// gsc_property / gsc_properties are managed by the Search Console connect flow.
 
 		foreach ( array( 'noindex_search', 'noindex_author', 'xml_sitemap', 'schema_enabled', 'breadcrumbs', 'schema_aggregate', 'whitelabel_enabled', 'email_reports', 'llms_txt' ) as $bool_key ) {
 			$out[ $bool_key ] = ! empty( $input[ $bool_key ] );

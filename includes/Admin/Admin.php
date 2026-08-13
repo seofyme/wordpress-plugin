@@ -7,6 +7,7 @@
 
 namespace SeofymeSEO\Admin;
 
+use SeofymeSEO\Modules\SearchConsole\SearchConsole;
 use SeofymeSEO\Support\Cloud_Account;
 use SeofymeSEO\Support\Options;
 
@@ -297,7 +298,7 @@ class Admin {
 		$opt  = Options::OPTION_KEY;
 		Page_Shell::open(
 			__( 'Settings', 'seofyme-seo' ),
-			__( 'Tune titles, schema, AI drafting, bot controls, and IndexNow.', 'seofyme-seo' )
+			__( 'Tune titles, schema, AI drafting, bot controls, IndexNow, and Search Console.', 'seofyme-seo' )
 		);
 		?>
 			<form method="post" action="options.php">
@@ -448,6 +449,8 @@ class Admin {
 					</div>
 				</section>
 
+				<?php SearchConsole::render_settings_fields(); ?>
+
 				<section class="sf-card">
 					<header class="sf-card__header">
 						<h2><?php esc_html_e( 'Agency / reports', 'seofyme-seo' ); ?></h2>
@@ -495,6 +498,8 @@ class Admin {
 					<button type="submit" class="sf-btn sf-btn--primary"><?php esc_html_e( 'Save settings', 'seofyme-seo' ); ?></button>
 				</div>
 			</form>
+
+			<?php SearchConsole::render_card( 'seofyme-seo-settings' ); ?>
 		<?php
 		Page_Shell::close();
 	}

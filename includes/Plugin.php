@@ -42,6 +42,7 @@ use SeofymeSEO\Modules\Revisions\SEORevisions;
 use SeofymeSEO\Modules\SiteAudit\SiteAudit;
 use SeofymeSEO\Modules\WooCommerce\WooCommerceSEO;
 use SeofymeSEO\Modules\RankTracker\RankTracker;
+use SeofymeSEO\Modules\SearchConsole\SearchConsole;
 use SeofymeSEO\Modules\LinkAssistant\LinkAssistant;
 use SeofymeSEO\Modules\WhiteLabel\WhiteLabel;
 use SeofymeSEO\Modules\Reports\EmailReports;
@@ -155,6 +156,7 @@ class Plugin {
 			new SiteAudit(),
 			new WooCommerceSEO(),
 			new RankTracker(),
+			new SearchConsole(),
 			new FrontendInspector(),
 			new Workouts(),
 			new EmailReports(),

@@ -8,6 +8,7 @@
 namespace SeofymeSEO\Modules\RankTracker;
 
 use SeofymeSEO\Admin\Page_Shell;
+use SeofymeSEO\Modules\SearchConsole\SearchConsole;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -61,10 +62,14 @@ class RankTracker {
 			return;
 		}
 		$rows = $this->all();
+		$gsc  = SearchConsole::is_connected();
 		Page_Shell::open(
 			__( 'Rank tracker', 'seofyme-seo' ),
-			__( 'Track focus keywords and log positions over time. Connect Search Console later for automation.', 'seofyme-seo' )
+			$gsc
+				? __( 'Track focus keywords and sync positions from Google Search Console.', 'seofyme-seo' )
+				: __( 'Track focus keywords and log positions over time. Connect Search Console to automate updates.', 'seofyme-seo' )
 		);
+		SearchConsole::render_card( 'seofyme-seo-ranks' );
 		?>
 		<section class="sf-card">
 			<header class="sf-card__header">

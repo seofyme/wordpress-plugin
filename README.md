@@ -5,7 +5,7 @@
 **Requires at least:** 6.0  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.8  
-**Stable tag:** 0.1.0  
+**Stable tag:** 0.2.0  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -24,12 +24,12 @@ Seofyme owns its meta keys (`_seofyme_*`), PHP namespaces (`SeofymeSEO\`), admin
 | Menu | What it does |
 |---|---|
 | **Dashboard** | Quick links to sitemap, schema graph, settings, redirects, bulk editor, workouts |
-| **Settings** | Titles, organization, optional BYO AI provider/key, AI bot blocker, llms.txt, IndexNow, white-label, weekly email reports |
+| **Settings** | Titles, organization, optional BYO AI provider/key, AI bot blocker, llms.txt, IndexNow, Search Console OAuth, white-label, weekly email reports |
 | **Site audit** | Technical health checks for the whole site |
 | **Redirects** | Create/manage 301/302/307/410/451 redirects, regex rules, CSV import |
 | **404 monitor** | Logs missing URLs and turns them into redirects |
 | **Link assistant** | Suggests internal links across existing content |
-| **Rank tracker** | Manual keyword → position tracking with history |
+| **Rank tracker** | Manual keyword → position tracking with history; optional Google Search Console sync |
 | **Bulk editor** | Draft or approve SEO titles/descriptions in bulk (AI-assisted) |
 | **Image SEO** | Find and fix missing image alt text |
 | **Workouts** | Orphaned content, cornerstone list, stale cornerstone reminders |
@@ -107,7 +107,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 - White-label menu name
 - Weekly email SEO summary
 - Author E-E-A-T profile fields + Person schema
-- Manual rank tracker
+- Manual rank tracker + Google Search Console connect/sync
 
 ## Installation
 
@@ -186,6 +186,14 @@ Without an API key, Seofyme still offers offline heuristic suggestions so you ca
 [seofyme_store_locator]
 ```
 
+### Search Console (rank sync)
+
+1. In Google Cloud Console, create an OAuth client and enable the **Search Console API**.
+2. Set the redirect URI to your site’s `…/wp-json/seofyme/v1/gsc/callback` (shown under **Settings → Google Search Console**).
+3. Paste the Client ID and Client Secret in **Seofyme SEO → Settings**, then **Save settings**.
+4. Click **Connect Search Console** (on Settings or Rank tracker) and authorize Google.
+5. Pick the Search Console property, then use **Sync positions** on Rank tracker to update tracked keywords from the last ~28 days of GSC data.
+
 ### AI visibility controls
 
 - **llms.txt** — enable under Settings → AI visibility. Lists cornerstone (or recent) pages for AI tools.
@@ -223,7 +231,8 @@ languages/                # Translation files
 | `modules/IndexNow/` | IndexNow key + ping |
 | `modules/LocalSEO/` | Locations + store locator |
 | `modules/VideoSEO/` / `NewsSEO/` | Media/news sitemaps |
-| `modules/FrontendInspector/` | Front-end editor panel |
+| `modules/RankTracker/` | Keyword position log + GSC sync |
+| `modules/SearchConsole/` | Google Search Console OAuth + property |
 | `modules/WooCommerce/` | Product SEO helpers |
 
 ## FAQ

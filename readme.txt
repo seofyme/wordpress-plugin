@@ -4,7 +4,7 @@ Tags: seo, sitemap, schema, redirects, meta
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.2.0
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -28,6 +28,10 @@ Seofyme SEO is an original WordPress SEO plugin. It helps you optimize titles an
 No. Seofyme SEO is original code under the SeofymeSEO namespace with `_seofyme_*` meta keys.
 
 == Changelog ==
+
+= 0.2.0 =
+* Connect Google Search Console via OAuth from Settings and Rank tracker
+* Sync tracked keyword positions from Search Console
 
 = 0.1.0 =
 * Public GitHub release of Seofyme SEO
