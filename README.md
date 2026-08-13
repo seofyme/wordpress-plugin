@@ -24,7 +24,7 @@ Seofyme owns its meta keys (`_seofyme_*`), PHP namespaces (`SeofymeSEO\`), admin
 | Menu | What it does |
 |---|---|
 | **Dashboard** | Quick links to sitemap, schema graph, settings, redirects, bulk editor, workouts |
-| **Settings** | Titles, organization, AI provider/key, AI bot blocker, llms.txt, IndexNow, white-label, weekly email reports |
+| **Settings** | Titles, organization, optional BYO AI provider/key, AI bot blocker, llms.txt, IndexNow, white-label, weekly email reports |
 | **Site audit** | Technical health checks for the whole site |
 | **Redirects** | Create/manage 301/302/307/410/451 redirects, regex rules, CSV import |
 | **404 monitor** | Logs missing URLs and turns them into redirects |
@@ -33,6 +33,7 @@ Seofyme owns its meta keys (`_seofyme_*`), PHP namespaces (`SeofymeSEO\`), admin
 | **Bulk editor** | Draft or approve SEO titles/descriptions in bulk (AI-assisted) |
 | **Image SEO** | Find and fix missing image alt text |
 | **Workouts** | Orphaned content, cornerstone list, stale cornerstone reminders |
+| **Account** | Connect Seofyme Cloud API keys, view subscription and monthly AI usage, refresh plan status |
 
 ### Editor (posts & pages)
 
@@ -132,18 +133,19 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 1. Open **Settings → Permalinks** and click **Save Changes** (no need to change anything).  
    This flushes rewrite rules for sitemaps, schema JSON, `llms.txt`, and IndexNow.
 2. Open **Seofyme SEO → Settings** and set your homepage title/description and organization name.
-3. (Optional) Add an OpenAI or Anthropic API key under **AI drafting**.
+3. Open **Seofyme SEO → Account** to connect Seofyme Cloud and sync your plan, or optionally add an OpenAI/Anthropic fallback under **Settings → BYO AI**.
 
 ## Usage
 
 ### First-hour checklist
 
 1. **Seofyme SEO → Settings** — homepage title/description, organization name/logo, XML sitemap + schema toggles.
-2. **Settings → Permalinks → Save** — if you have not already.
-3. Visit `/sitemap.xml` and `/seofyme-schema.json` in a browser to confirm they load.
-4. Edit a post — set a **focus keyphrase**, SEO title, and meta description; watch the analysis score update.
-5. Mark important guides as **Cornerstone content**.
-6. Open **Workouts** to find orphaned pages that need internal links.
+2. **Seofyme SEO → Account** — connect Cloud API keys and confirm the correct subscription and usage limits.
+3. **Settings → Permalinks → Save** — if you have not already.
+4. Visit `/sitemap.xml` and `/seofyme-schema.json` in a browser to confirm they load.
+5. Edit a post — set a **focus keyphrase**, SEO title, and meta description; watch the analysis score update.
+6. Mark important guides as **Cornerstone content**.
+7. Open **Workouts** to find orphaned pages that need internal links.
 
 ### Optimizing a single post
 
@@ -166,10 +168,11 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 
 ### AI drafting
 
-1. Under **Settings → AI drafting**, choose OpenAI or Anthropic and paste an API key.
-2. In the editor, open **AI draft** and generate titles, descriptions, social copy, optimize tips, or a summary.
-3. Click a suggestion to apply it to the matching field (nothing saves until you update the post).
-4. Use **Bulk editor** for many posts at once.
+1. Connect Seofyme Cloud under **Seofyme SEO → Account**. Use **Refresh plan** there to update the displayed subscription and monthly request/token usage.
+2. Optionally choose OpenAI or Anthropic under **Settings → BYO AI** as a fallback when Cloud credentials are empty.
+3. In the editor, open **AI draft** and generate titles, descriptions, social copy, optimize tips, or a summary.
+4. Click a suggestion to apply it to the matching field (nothing saves until you update the post).
+5. Use **Bulk editor** for many posts at once.
 
 Without an API key, Seofyme still offers offline heuristic suggestions so you can try the workflow.
 

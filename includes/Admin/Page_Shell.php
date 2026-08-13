@@ -8,6 +8,7 @@
 namespace SeofymeSEO\Admin;
 
 use SeofymeSEO\Modules\WhiteLabel\WhiteLabel;
+use SeofymeSEO\Support\Cloud_Account;
 
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
@@ -85,6 +86,12 @@ class Page_Shell {
 				'icon'  => 'dashicons-superhero',
 				'cap'   => 'edit_others_posts',
 			),
+			array(
+				'slug'  => 'seofyme-seo-account',
+				'label' => __( 'Account', 'seofyme-seo' ),
+				'icon'  => 'dashicons-admin-users',
+				'cap'   => 'manage_options',
+			),
 		);
 	}
 
@@ -101,6 +108,8 @@ class Page_Shell {
 		$logo    = SEOFYME_SEO_URL . 'assets/seofyme-logo.png';
 		?>
 		<div class="wrap sf-wrap">
+			<?php settings_errors( 'seofyme_messages' ); ?>
+			<?php settings_errors( 'general' ); ?>
 			<div class="sf-shell">
 				<aside class="sf-sidebar">
 					<div class="sf-brand">
@@ -135,7 +144,14 @@ class Page_Shell {
 					</ul>
 
 					<div class="sf-sidebar__foot">
-						<?php esc_html_e( 'Original WordPress SEO by Seofyme.', 'seofyme-seo' ); ?>
+						<?php
+						$status = Cloud_Account::get_status();
+						printf(
+							/* translators: %s: Seofyme subscription plan name. */
+							esc_html__( 'Plan: %s', 'seofyme-seo' ),
+							esc_html( isset( $status['planName'] ) ? (string) $status['planName'] : 'Free' )
+						);
+						?>
 						<br />
 						<a href="https://seofyme.com" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Open Seofyme.com', 'seofyme-seo' ); ?></a>
 					</div>

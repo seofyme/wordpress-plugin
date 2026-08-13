@@ -266,6 +266,40 @@
 	margin-top: 0.85rem;
 }
 
+.seofyme-account-actions {
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.seofyme-account-actions form {
+	margin: 0;
+}
+
+.seofyme-account-form {
+	display: grid;
+	gap: 14px;
+	margin-top: 18px;
+}
+
+.seofyme-account-form .seofyme-field {
+	margin: 0;
+}
+
+.seofyme-account-form .button {
+	justify-self: start;
+}
+
+.seofyme-account-table {
+	margin-top: 16px;
+}
+
+.seofyme-account-table th {
+	width: 230px;
+}
+
 /* Buttons — secondary first, primary last (higher specificity). */
 .sf-wrap .button,
 .seofyme-wrap .button,

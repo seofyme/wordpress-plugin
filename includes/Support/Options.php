@@ -166,8 +166,13 @@ class Options {
 		$out['ai_api_key']           = isset( $input['ai_api_key'] ) ? sanitize_text_field( $input['ai_api_key'] ) : '';
 		// API base is not user-configurable; always persist the fixed Cloud endpoint.
 		$out['seofyme_api_base']     = self::CLOUD_API_BASE;
-		$out['seofyme_public_key']   = isset( $input['seofyme_public_key'] ) ? sanitize_text_field( $input['seofyme_public_key'] ) : '';
-		$out['seofyme_secret_key']   = isset( $input['seofyme_secret_key'] ) ? sanitize_text_field( $input['seofyme_secret_key'] ) : '';
+		// Cloud credentials are managed on the Account page; preserve them on Settings saves.
+		if ( isset( $input['seofyme_public_key'] ) ) {
+			$out['seofyme_public_key'] = sanitize_text_field( $input['seofyme_public_key'] );
+		}
+		if ( isset( $input['seofyme_secret_key'] ) ) {
+			$out['seofyme_secret_key'] = sanitize_text_field( $input['seofyme_secret_key'] );
+		}
 		$out['indexnow_key']         = isset( $input['indexnow_key'] ) ? sanitize_text_field( $input['indexnow_key'] ) : '';
 		$out['bot_blocker']          = isset( $input['bot_blocker'] ) && is_array( $input['bot_blocker'] ) ? array_map( 'sanitize_text_field', $input['bot_blocker'] ) : array();
 		$out['whitelabel_name']      = isset( $input['whitelabel_name'] ) ? sanitize_text_field( $input['whitelabel_name'] ) : '';

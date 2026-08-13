@@ -7,6 +7,7 @@
 
 namespace SeofymeSEO\Admin;
 
+use SeofymeSEO\Support\Cloud_Account;
 use SeofymeSEO\Support\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -25,6 +26,7 @@ class Admin {
 	 */
 	public function register() {
 		add_action( 'admin_menu', array( $this, 'menus' ) );
+		add_action( 'admin_init', array( $this, 'handle_account_actions' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
 		add_action( 'admin_head', array( $this, 'menu_icon_styles' ) );
 		add_filter( 'plugin_action_links_' . SEOFYME_SEO_BASENAME, array( $this, 'action_links' ) );
@@ -79,6 +81,93 @@ class Admin {
 		add_submenu_page( 'seofyme-seo', __( 'Bulk editor', 'seofyme-seo' ), __( 'Bulk editor', 'seofyme-seo' ), 'edit_others_posts', 'seofyme-seo-bulk', array( $this, 'render_bulk' ) );
 		add_submenu_page( 'seofyme-seo', __( 'Image SEO', 'seofyme-seo' ), __( 'Image SEO', 'seofyme-seo' ), 'upload_files', 'seofyme-seo-images', array( $this, 'render_images' ) );
 		add_submenu_page( 'seofyme-seo', __( 'Workouts', 'seofyme-seo' ), __( 'Workouts', 'seofyme-seo' ), 'edit_others_posts', 'seofyme-seo-workouts', array( $this, 'render_workouts' ) );
+		add_submenu_page( 'seofyme-seo', __( 'Account', 'seofyme-seo' ), __( 'Account', 'seofyme-seo' ), 'manage_options', 'seofyme-seo-account', array( $this, 'render_account' ) );
+	}
+
+	/**
+	 * Save Cloud credentials and refresh subscription status.
+	 *
+	 * @return void
+	 */
+	public function handle_account_actions() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		if ( isset( $_POST['seofyme_save_account'] ) ) {
+			check_admin_referer( 'seofyme_save_account' );
+			$public = isset( $_POST['seofyme_public_key'] ) ? sanitize_text_field( wp_unslash( $_POST['seofyme_public_key'] ) ) : '';
+			$secret = isset( $_POST['seofyme_secret_key'] ) ? sanitize_text_field( wp_unslash( $_POST['seofyme_secret_key'] ) ) : '';
+
+			Options::update(
+				array(
+					'seofyme_public_key' => $public,
+					'seofyme_secret_key' => $secret,
+				)
+			);
+			Cloud_Account::clear_cache();
+
+			if ( '' !== $public && '' !== $secret ) {
+				$status = Cloud_Account::sync();
+				$error  = Cloud_Account::get_last_error();
+				if ( $error ) {
+					add_settings_error(
+						'seofyme_messages',
+						'account_save_error',
+						sprintf(
+							/* translators: %s: API error message. */
+							__( 'Credentials saved, but the account could not be refreshed: %s', 'seofyme-seo' ),
+							$error
+						),
+						'error'
+					);
+				} else {
+					add_settings_error(
+						'seofyme_messages',
+						'account_saved',
+						sprintf(
+							/* translators: %s: subscription plan name. */
+							__( 'Account connected. Current plan: %s.', 'seofyme-seo' ),
+							isset( $status['planName'] ) ? (string) $status['planName'] : 'Free'
+						),
+						'success'
+					);
+				}
+			} else {
+				Cloud_Account::sync();
+				add_settings_error( 'seofyme_messages', 'account_disconnected', __( 'Cloud credentials updated.', 'seofyme-seo' ), 'success' );
+			}
+		}
+
+		if ( isset( $_POST['seofyme_refresh_plan'] ) ) {
+			check_admin_referer( 'seofyme_refresh_plan' );
+			Cloud_Account::clear_cache();
+			$status = Cloud_Account::sync();
+			$error  = Cloud_Account::get_last_error();
+			if ( $error ) {
+				add_settings_error(
+					'seofyme_messages',
+					'plan_refresh_error',
+					sprintf(
+						/* translators: %s: API error message. */
+						__( 'Plan refresh failed: %s', 'seofyme-seo' ),
+						$error
+					),
+					'error'
+				);
+			} else {
+				add_settings_error(
+					'seofyme_messages',
+					'plan_refreshed',
+					sprintf(
+						/* translators: %s: subscription plan name. */
+						__( 'Plan status refreshed: %s.', 'seofyme-seo' ),
+						isset( $status['planName'] ) ? (string) $status['planName'] : 'Free'
+					),
+					'success'
+				);
+			}
+		}
 	}
 
 	/**
@@ -227,21 +316,6 @@ class Admin {
 				</section>
 
 				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'Seofyme Cloud AI', 'seofyme-seo' ); ?></h2>
-					<p class="description"><?php esc_html_e( 'Paste your Seofyme Cloud API keys. Cloud drafting is metered on your plan and cannot be bypassed locally.', 'seofyme-seo' ); ?></p>
-					<table class="form-table" role="presentation">
-						<tr>
-							<th><label for="seofyme_public_key"><?php esc_html_e( 'Public key', 'seofyme-seo' ); ?></label></th>
-							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[seofyme_public_key]" id="seofyme_public_key" value="<?php echo esc_attr( $o['seofyme_public_key'] ?? '' ); ?>" class="regular-text" autocomplete="off" /></td>
-						</tr>
-						<tr>
-							<th><label for="seofyme_secret_key"><?php esc_html_e( 'Secret key', 'seofyme-seo' ); ?></label></th>
-							<td><input type="password" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[seofyme_secret_key]" id="seofyme_secret_key" value="<?php echo esc_attr( $o['seofyme_secret_key'] ?? '' ); ?>" class="regular-text" autocomplete="off" /></td>
-						</tr>
-					</table>
-				</section>
-
-				<section class="seofyme-panel">
 					<h2><?php esc_html_e( 'BYO AI (optional fallback)', 'seofyme-seo' ); ?></h2>
 					<p class="description"><?php esc_html_e( 'Used only when Seofyme Cloud keys are empty.', 'seofyme-seo' ); ?></p>
 					<table class="form-table" role="presentation">
@@ -330,6 +404,119 @@ class Admin {
 
 				<?php submit_button( __( 'Save settings', 'seofyme-seo' ) ); ?>
 			</form>
+		<?php
+		Page_Shell::close();
+	}
+
+	/**
+	 * Cloud account and subscription page.
+	 *
+	 * @return void
+	 */
+	public function render_account() {
+		if ( ! current_user_can( 'manage_options' ) ) {
+			return;
+		}
+
+		$options   = Options::all();
+		$connected = Cloud_Account::is_connected();
+		$status    = Cloud_Account::get_status();
+		$error     = Cloud_Account::get_last_error();
+		$usage     = isset( $status['usage'] ) && is_array( $status['usage'] ) ? $status['usage'] : array();
+		$requests  = isset( $usage['requests'] ) && is_array( $usage['requests'] ) ? $usage['requests'] : array();
+		$tokens    = isset( $usage['tokens'] ) && is_array( $usage['tokens'] ) ? $usage['tokens'] : array();
+
+		$format_quota = static function ( $quota ) {
+			$used  = isset( $quota['used'] ) ? number_format_i18n( (int) $quota['used'] ) : '0';
+			$limit = array_key_exists( 'limit', $quota ) && null !== $quota['limit']
+				? number_format_i18n( (int) $quota['limit'] )
+				: __( 'Unlimited', 'seofyme-seo' );
+			return sprintf(
+				/* translators: 1: amount used, 2: plan limit. */
+				__( '%1$s of %2$s used', 'seofyme-seo' ),
+				$used,
+				$limit
+			);
+		};
+
+		Page_Shell::open(
+			__( 'Account', 'seofyme-seo' ),
+			__( 'Connect Seofyme Cloud, review your subscription, and refresh current AI usage.', 'seofyme-seo' )
+		);
+		?>
+			<div class="seofyme-account-actions">
+				<?php if ( $connected ) : ?>
+					<form method="post">
+						<?php wp_nonce_field( 'seofyme_refresh_plan' ); ?>
+						<button type="submit" name="seofyme_refresh_plan" value="1" class="button"><?php esc_html_e( 'Refresh plan', 'seofyme-seo' ); ?></button>
+					</form>
+				<?php endif; ?>
+				<a class="button button-primary" href="https://seofyme.com/account" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Manage account', 'seofyme-seo' ); ?></a>
+			</div>
+
+			<section class="seofyme-panel">
+				<h2><?php esc_html_e( 'API credentials', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Create Seofyme product API keys in your account, then connect this WordPress site.', 'seofyme-seo' ); ?></p>
+				<form method="post" class="seofyme-account-form">
+					<?php wp_nonce_field( 'seofyme_save_account' ); ?>
+					<div class="seofyme-field">
+						<label for="seofyme-account-public-key"><?php esc_html_e( 'Public API key', 'seofyme-seo' ); ?></label>
+						<input type="text" id="seofyme-account-public-key" name="seofyme_public_key" value="<?php echo esc_attr( $options['seofyme_public_key'] ?? '' ); ?>" class="regular-text" autocomplete="off" />
+					</div>
+					<div class="seofyme-field">
+						<label for="seofyme-account-secret-key"><?php esc_html_e( 'Secret API key', 'seofyme-seo' ); ?></label>
+						<input type="password" id="seofyme-account-secret-key" name="seofyme_secret_key" value="<?php echo esc_attr( $options['seofyme_secret_key'] ?? '' ); ?>" class="regular-text" autocomplete="new-password" />
+					</div>
+					<button type="submit" name="seofyme_save_account" value="1" class="button button-primary"><?php esc_html_e( 'Save credentials', 'seofyme-seo' ); ?></button>
+				</form>
+			</section>
+
+			<section class="seofyme-panel">
+				<h2><?php esc_html_e( 'Plan status', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Subscription and monthly usage are synced from Seofyme Cloud.', 'seofyme-seo' ); ?></p>
+				<?php if ( $error ) : ?>
+					<div class="notice notice-warning inline">
+						<p>
+							<?php
+							printf(
+								/* translators: %s: API error message. */
+								esc_html__( 'Last plan refresh failed: %s', 'seofyme-seo' ),
+								esc_html( $error )
+							);
+							?>
+						</p>
+					</div>
+				<?php endif; ?>
+				<table class="widefat seofyme-account-table">
+					<tbody>
+						<tr>
+							<th><?php esc_html_e( 'Connection', 'seofyme-seo' ); ?></th>
+							<td><?php echo $connected ? esc_html__( 'Connected', 'seofyme-seo' ) : esc_html__( 'Not connected', 'seofyme-seo' ); ?></td>
+						</tr>
+						<tr>
+							<th><?php esc_html_e( 'Plan', 'seofyme-seo' ); ?></th>
+							<td><?php echo esc_html( isset( $status['planName'] ) ? (string) $status['planName'] : 'Free' ); ?></td>
+						</tr>
+						<tr>
+							<th><?php esc_html_e( 'AI requests this month', 'seofyme-seo' ); ?></th>
+							<td><?php echo esc_html( $format_quota( $requests ) ); ?></td>
+						</tr>
+						<tr>
+							<th><?php esc_html_e( 'AI tokens this month', 'seofyme-seo' ); ?></th>
+							<td><?php echo esc_html( $format_quota( $tokens ) ); ?></td>
+						</tr>
+						<?php if ( ! empty( $usage['period'] ) ) : ?>
+							<tr>
+								<th><?php esc_html_e( 'Usage period', 'seofyme-seo' ); ?></th>
+								<td><?php echo esc_html( (string) $usage['period'] ); ?></td>
+							</tr>
+						<?php endif; ?>
+					</tbody>
+				</table>
+				<div class="seofyme-actions">
+					<a href="https://seofyme.com/pricing" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Compare plans', 'seofyme-seo' ); ?></a>
+				</div>
+			</section>
 		<?php
 		Page_Shell::close();
 	}

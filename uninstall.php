@@ -11,6 +11,9 @@ if ( ! defined( 'WP_UNINSTALL_PLUGIN' ) ) {
 
 delete_option( 'seofyme_seo_options' );
 delete_option( 'seofyme_rank_keywords' );
+delete_option( 'seofyme_cloud_account_last_good' );
+delete_option( 'seofyme_cloud_account_error' );
+delete_transient( 'seofyme_cloud_account_status' );
 
 global $wpdb;
 
