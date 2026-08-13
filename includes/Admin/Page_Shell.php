@@ -100,9 +100,10 @@ class Page_Shell {
 	 *
 	 * @param string $title Title.
 	 * @param string $subtitle Subtitle.
+	 * @param string $actions Pre-escaped action buttons rendered in the header.
 	 * @return void
 	 */
-	public static function open( $title, $subtitle = '' ) {
+	public static function open( $title, $subtitle = '', $actions = '' ) {
 		$brand   = class_exists( WhiteLabel::class ) ? WhiteLabel::brand() : 'Seofyme SEO';
 		$current = isset( $_GET['page'] ) ? sanitize_key( wp_unslash( $_GET['page'] ) ) : 'seofyme-seo'; // phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		$logo    = SEOFYME_SEO_URL . 'assets/seofyme-logo.png';
@@ -165,6 +166,11 @@ class Page_Shell {
 								<p><?php echo esc_html( $subtitle ); ?></p>
 							<?php endif; ?>
 						</div>
+						<?php if ( $actions ) : ?>
+							<div class="sf-actions">
+								<?php echo $actions; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- caller supplies escaped markup. ?>
+							</div>
+						<?php endif; ?>
 					</header>
 					<div class="sf-content seofyme-content">
 		<?php

@@ -439,44 +439,57 @@ class Admin {
 			);
 		};
 
+		ob_start();
+		if ( $connected ) :
+			?>
+			<form method="post">
+				<?php wp_nonce_field( 'seofyme_refresh_plan' ); ?>
+				<button type="submit" name="seofyme_refresh_plan" value="1" class="sf-btn sf-btn--secondary"><?php esc_html_e( 'Refresh plan', 'seofyme-seo' ); ?></button>
+			</form>
+			<?php
+		endif;
+		?>
+		<a class="sf-btn sf-btn--primary" href="https://seofyme.com/account" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Manage account', 'seofyme-seo' ); ?></a>
+		<?php
+		$actions = ob_get_clean();
+
 		Page_Shell::open(
 			__( 'Account', 'seofyme-seo' ),
-			__( 'Connect Seofyme Cloud, review your subscription, and refresh current AI usage.', 'seofyme-seo' )
+			__( 'Connect Seofyme Cloud, review your subscription, and refresh current AI usage.', 'seofyme-seo' ),
+			$actions
 		);
 		?>
-			<div class="seofyme-account-actions">
-				<?php if ( $connected ) : ?>
-					<form method="post">
-						<?php wp_nonce_field( 'seofyme_refresh_plan' ); ?>
-						<button type="submit" name="seofyme_refresh_plan" value="1" class="button"><?php esc_html_e( 'Refresh plan', 'seofyme-seo' ); ?></button>
-					</form>
-				<?php endif; ?>
-				<a class="button button-primary" href="https://seofyme.com/account" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Manage account', 'seofyme-seo' ); ?></a>
-			</div>
-
-			<section class="seofyme-panel">
-				<h2><?php esc_html_e( 'API credentials', 'seofyme-seo' ); ?></h2>
-				<p><?php esc_html_e( 'Create Seofyme product API keys in your account, then connect this WordPress site.', 'seofyme-seo' ); ?></p>
-				<form method="post" class="seofyme-account-form">
-					<?php wp_nonce_field( 'seofyme_save_account' ); ?>
-					<div class="seofyme-field">
-						<label for="seofyme-account-public-key"><?php esc_html_e( 'Public API key', 'seofyme-seo' ); ?></label>
-						<input type="text" id="seofyme-account-public-key" name="seofyme_public_key" value="<?php echo esc_attr( $options['seofyme_public_key'] ?? '' ); ?>" class="regular-text" autocomplete="off" />
+			<form method="post">
+				<?php wp_nonce_field( 'seofyme_save_account' ); ?>
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'API credentials', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Create Seofyme product API keys in your account, then connect this WordPress site.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body">
+						<div class="sf-field sf-field--stack">
+							<label class="sf-field__label" for="seofyme-account-public-key"><?php esc_html_e( 'Public API key', 'seofyme-seo' ); ?></label>
+							<input type="text" id="seofyme-account-public-key" name="seofyme_public_key" value="<?php echo esc_attr( $options['seofyme_public_key'] ?? '' ); ?>" class="sf-input" autocomplete="off" />
+						</div>
+						<div class="sf-field sf-field--stack">
+							<label class="sf-field__label" for="seofyme-account-secret-key"><?php esc_html_e( 'Secret API key', 'seofyme-seo' ); ?></label>
+							<input type="password" id="seofyme-account-secret-key" name="seofyme_secret_key" value="<?php echo esc_attr( $options['seofyme_secret_key'] ?? '' ); ?>" class="sf-input" autocomplete="new-password" />
+						</div>
 					</div>
-					<div class="seofyme-field">
-						<label for="seofyme-account-secret-key"><?php esc_html_e( 'Secret API key', 'seofyme-seo' ); ?></label>
-						<input type="password" id="seofyme-account-secret-key" name="seofyme_secret_key" value="<?php echo esc_attr( $options['seofyme_secret_key'] ?? '' ); ?>" class="regular-text" autocomplete="new-password" />
-					</div>
-					<button type="submit" name="seofyme_save_account" value="1" class="button button-primary"><?php esc_html_e( 'Save credentials', 'seofyme-seo' ); ?></button>
-				</form>
-			</section>
+				</section>
+				<div class="sf-savebar">
+					<button type="submit" name="seofyme_save_account" value="1" class="sf-btn sf-btn--primary"><?php esc_html_e( 'Save credentials', 'seofyme-seo' ); ?></button>
+				</div>
+			</form>
 
-			<section class="seofyme-panel">
-				<h2><?php esc_html_e( 'Plan status', 'seofyme-seo' ); ?></h2>
-				<p><?php esc_html_e( 'Subscription and monthly usage are synced from Seofyme Cloud.', 'seofyme-seo' ); ?></p>
-				<?php if ( $error ) : ?>
-					<div class="notice notice-warning inline">
-						<p>
+			<section class="sf-card">
+				<header class="sf-card__header">
+					<h2><?php esc_html_e( 'Plan status', 'seofyme-seo' ); ?></h2>
+					<p><?php esc_html_e( 'Subscription and monthly usage are synced from Seofyme Cloud.', 'seofyme-seo' ); ?></p>
+				</header>
+				<div class="sf-card__body">
+					<?php if ( $error ) : ?>
+						<div class="sf-notice sf-notice--warn">
 							<?php
 							printf(
 								/* translators: %s: API error message. */
@@ -484,37 +497,49 @@ class Admin {
 								esc_html( $error )
 							);
 							?>
-						</p>
-					</div>
-				<?php endif; ?>
-				<table class="widefat seofyme-account-table">
-					<tbody>
-						<tr>
-							<th><?php esc_html_e( 'Connection', 'seofyme-seo' ); ?></th>
-							<td><?php echo $connected ? esc_html__( 'Connected', 'seofyme-seo' ) : esc_html__( 'Not connected', 'seofyme-seo' ); ?></td>
-						</tr>
-						<tr>
-							<th><?php esc_html_e( 'Plan', 'seofyme-seo' ); ?></th>
-							<td><?php echo esc_html( isset( $status['planName'] ) ? (string) $status['planName'] : 'Free' ); ?></td>
-						</tr>
-						<tr>
-							<th><?php esc_html_e( 'AI requests this month', 'seofyme-seo' ); ?></th>
-							<td><?php echo esc_html( $format_quota( $requests ) ); ?></td>
-						</tr>
-						<tr>
-							<th><?php esc_html_e( 'AI tokens this month', 'seofyme-seo' ); ?></th>
-							<td><?php echo esc_html( $format_quota( $tokens ) ); ?></td>
-						</tr>
-						<?php if ( ! empty( $usage['period'] ) ) : ?>
+						</div>
+					<?php endif; ?>
+					<table class="sf-table">
+						<tbody>
 							<tr>
-								<th><?php esc_html_e( 'Usage period', 'seofyme-seo' ); ?></th>
-								<td><?php echo esc_html( (string) $usage['period'] ); ?></td>
+								<th><?php esc_html_e( 'Connection', 'seofyme-seo' ); ?></th>
+								<td>
+									<span class="sf-badge <?php echo esc_attr( $connected ? '' : 'sf-badge--muted' ); ?>">
+										<?php echo $connected ? esc_html__( 'Connected', 'seofyme-seo' ) : esc_html__( 'Not connected', 'seofyme-seo' ); ?>
+									</span>
+								</td>
 							</tr>
-						<?php endif; ?>
-					</tbody>
-				</table>
-				<div class="seofyme-actions">
-					<a href="https://seofyme.com/pricing" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Compare plans', 'seofyme-seo' ); ?></a>
+							<tr>
+								<th><?php esc_html_e( 'Plan', 'seofyme-seo' ); ?></th>
+								<td><?php echo esc_html( isset( $status['planName'] ) ? (string) $status['planName'] : 'Free' ); ?></td>
+							</tr>
+							<tr>
+								<th><?php esc_html_e( 'AI requests this month', 'seofyme-seo' ); ?></th>
+								<td><?php echo esc_html( $format_quota( $requests ) ); ?></td>
+							</tr>
+							<tr>
+								<th><?php esc_html_e( 'AI tokens this month', 'seofyme-seo' ); ?></th>
+								<td><?php echo esc_html( $format_quota( $tokens ) ); ?></td>
+							</tr>
+							<?php if ( ! empty( $usage['period'] ) ) : ?>
+								<tr>
+									<th><?php esc_html_e( 'Usage period', 'seofyme-seo' ); ?></th>
+									<td><?php echo esc_html( (string) $usage['period'] ); ?></td>
+								</tr>
+							<?php endif; ?>
+						</tbody>
+					</table>
+				</div>
+			</section>
+
+			<section class="sf-card">
+				<header class="sf-card__header">
+					<h2><?php esc_html_e( 'Manage subscription', 'seofyme-seo' ); ?></h2>
+					<p><?php esc_html_e( 'Compare plans or manage billing from your Seofyme account.', 'seofyme-seo' ); ?></p>
+				</header>
+				<div class="sf-card__body sf-card__body--flush">
+					<a class="sf-btn sf-btn--primary" href="https://seofyme.com/pricing" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Compare plans', 'seofyme-seo' ); ?></a>
+					<a class="sf-btn sf-btn--secondary" href="https://seofyme.com/account" target="_blank" rel="noopener noreferrer"><?php esc_html_e( 'Open Seofyme account', 'seofyme-seo' ); ?></a>
 				</div>
 			</section>
 		<?php
