@@ -55,6 +55,21 @@ class Head {
 	 * @return void
 	 */
 	public function output() {
+		/**
+		 * Filter the Seofyme generator meta content.
+		 *
+		 * Return an empty string to suppress the tag.
+		 *
+		 * @param string $generator Generator string, e.g. "Seofyme SEO 0.1.0".
+		 */
+		$generator = apply_filters(
+			'seofyme_seo_generator',
+			'Seofyme SEO ' . SEOFYME_SEO_VERSION
+		);
+		if ( is_string( $generator ) && '' !== $generator ) {
+			echo '<meta name="generator" content="' . esc_attr( $generator ) . '" />' . "\n";
+		}
+
 		if ( is_singular() ) {
 			$id          = get_queried_object_id();
 			$description = Post_Meta::resolved_description( $id );

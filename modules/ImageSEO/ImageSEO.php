@@ -96,28 +96,40 @@ class ImageSEO {
 		$items = $this->missing();
 		Page_Shell::open( __( 'Image SEO', 'seofyme-seo' ), __( 'Fill missing alt text in bulk. New uploads get a filename-based alt automatically.', 'seofyme-seo' ) );
 		?>
-		<section class="seofyme-panel">
-			<table class="widefat striped" id="seofyme-image-table">
-				<thead><tr><th><?php esc_html_e( 'Image', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'Alt text', 'seofyme-seo' ); ?></th><th></th></tr></thead>
-				<tbody>
-				<?php if ( empty( $items ) ) : ?>
-					<tr><td colspan="3"><?php esc_html_e( 'No images missing alt text in this scan.', 'seofyme-seo' ); ?></td></tr>
-				<?php else : ?>
-					<?php foreach ( $items as $item ) : ?>
-						<tr data-id="<?php echo esc_attr( (string) $item['id'] ); ?>">
-							<td>
-								<?php if ( $item['url'] ) : ?>
-									<img src="<?php echo esc_url( $item['url'] ); ?>" alt="" style="max-width:64px;height:auto;border-radius:8px;vertical-align:middle;margin-right:8px" />
-								<?php endif; ?>
-								<?php echo esc_html( $item['title'] ); ?>
-							</td>
-							<td><input type="text" class="widefat seofyme-image-alt" value="<?php echo esc_attr( $item['title'] ); ?>" /></td>
-							<td><button type="button" class="button button-primary seofyme-image-save"><?php esc_html_e( 'Save', 'seofyme-seo' ); ?></button></td>
+		<section class="sf-card">
+			<header class="sf-card__header">
+				<h2><?php esc_html_e( 'Missing alt text', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Images without alternative text in the media library.', 'seofyme-seo' ); ?></p>
+			</header>
+			<div class="sf-card__body sf-card__body--table">
+				<table class="sf-table sf-table--data" id="seofyme-image-table">
+					<thead>
+						<tr>
+							<th><?php esc_html_e( 'Image', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Alt text', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Actions', 'seofyme-seo' ); ?></th>
 						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+					<?php if ( empty( $items ) ) : ?>
+						<tr><td class="sf-table__empty" colspan="3"><?php esc_html_e( 'No images missing alt text in this scan.', 'seofyme-seo' ); ?></td></tr>
+					<?php else : ?>
+						<?php foreach ( $items as $item ) : ?>
+							<tr data-id="<?php echo esc_attr( (string) $item['id'] ); ?>">
+								<td>
+									<?php if ( $item['url'] ) : ?>
+										<img class="sf-table__thumb" src="<?php echo esc_url( $item['url'] ); ?>" alt="" />
+									<?php endif; ?>
+									<?php echo esc_html( $item['title'] ); ?>
+								</td>
+								<td><input type="text" class="sf-input sf-input--full seofyme-image-alt" value="<?php echo esc_attr( $item['title'] ); ?>" /></td>
+								<td><button type="button" class="sf-btn sf-btn--primary sf-btn--small seofyme-image-save"><?php esc_html_e( 'Save', 'seofyme-seo' ); ?></button></td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
 		</section>
 		<?php
 		Page_Shell::close();

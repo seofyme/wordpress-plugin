@@ -108,39 +108,61 @@ class NotFoundMonitor {
 			return;
 		}
 		$rows = $this->all();
-		Page_Shell::open( __( '404 monitor', 'seofyme-seo' ), __( 'See broken URLs visitors hit, then convert them into redirects.', 'seofyme-seo' ) );
+		ob_start();
 		?>
-		<section class="seofyme-panel">
-			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" style="margin-bottom:1rem">
-				<input type="hidden" name="action" value="seofyme_404_clear" />
-				<?php wp_nonce_field( 'seofyme_404_clear' ); ?>
-				<?php submit_button( __( 'Clear log', 'seofyme-seo' ), 'secondary', 'submit', false ); ?>
-			</form>
-			<table class="widefat striped">
-				<thead><tr><th><?php esc_html_e( 'URL', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'Hits', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'Last seen', 'seofyme-seo' ); ?></th><th></th></tr></thead>
-				<tbody>
-				<?php if ( empty( $rows ) ) : ?>
-					<tr><td colspan="4"><?php esc_html_e( 'No 404s logged yet.', 'seofyme-seo' ); ?></td></tr>
-				<?php else : ?>
-					<?php foreach ( $rows as $row ) : ?>
+		<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+			<input type="hidden" name="action" value="seofyme_404_clear" />
+			<?php wp_nonce_field( 'seofyme_404_clear' ); ?>
+			<button type="submit" class="sf-btn sf-btn--secondary"><?php esc_html_e( 'Clear log', 'seofyme-seo' ); ?></button>
+		</form>
+		<?php
+		$actions = ob_get_clean();
+
+		Page_Shell::open(
+			__( '404 monitor', 'seofyme-seo' ),
+			__( 'See broken URLs visitors hit, then convert them into redirects.', 'seofyme-seo' ),
+			$actions
+		);
+		?>
+		<section class="sf-card">
+			<header class="sf-card__header">
+				<h2><?php esc_html_e( 'Logged 404s', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Create a redirect from any broken URL below.', 'seofyme-seo' ); ?></p>
+			</header>
+			<div class="sf-card__body sf-card__body--table">
+				<table class="sf-table sf-table--data">
+					<thead>
 						<tr>
-							<td><code><?php echo esc_html( $row['url'] ); ?></code></td>
-							<td><?php echo esc_html( (string) $row['hits'] ); ?></td>
-							<td><?php echo esc_html( $row['last_seen'] ); ?></td>
-							<td>
-								<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="seofyme-inline-form">
-									<input type="hidden" name="action" value="seofyme_404_redirect" />
-									<input type="hidden" name="origin" value="<?php echo esc_attr( $row['url'] ); ?>" />
-									<?php wp_nonce_field( 'seofyme_404_redirect' ); ?>
-									<input type="text" name="target" class="regular-text" placeholder="/" required />
-									<button class="button button-primary"><?php esc_html_e( 'Redirect', 'seofyme-seo' ); ?></button>
-								</form>
-							</td>
+							<th><?php esc_html_e( 'URL', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Hits', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Last seen', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Actions', 'seofyme-seo' ); ?></th>
 						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+					<?php if ( empty( $rows ) ) : ?>
+						<tr><td class="sf-table__empty" colspan="4"><?php esc_html_e( 'No 404s logged yet.', 'seofyme-seo' ); ?></td></tr>
+					<?php else : ?>
+						<?php foreach ( $rows as $row ) : ?>
+							<tr>
+								<td><code><?php echo esc_html( $row['url'] ); ?></code></td>
+								<td><?php echo esc_html( (string) $row['hits'] ); ?></td>
+								<td><?php echo esc_html( $row['last_seen'] ); ?></td>
+								<td>
+									<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="sf-inline-form">
+										<input type="hidden" name="action" value="seofyme_404_redirect" />
+										<input type="hidden" name="origin" value="<?php echo esc_attr( $row['url'] ); ?>" />
+										<?php wp_nonce_field( 'seofyme_404_redirect' ); ?>
+										<input type="text" name="target" class="sf-input" placeholder="/" required />
+										<button type="submit" class="sf-btn sf-btn--primary sf-btn--small"><?php esc_html_e( 'Redirect', 'seofyme-seo' ); ?></button>
+									</form>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
 		</section>
 		<?php
 		Page_Shell::close();

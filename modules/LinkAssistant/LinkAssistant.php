@@ -82,39 +82,45 @@ class LinkAssistant {
 			__( 'Find orphaned pages and insert contextual internal links from related content.', 'seofyme-seo' )
 		);
 		?>
-		<section class="seofyme-panel">
-			<table class="widefat striped">
-				<thead>
-					<tr>
-						<th><?php esc_html_e( 'Orphaned page', 'seofyme-seo' ); ?></th>
-						<th><?php esc_html_e( 'Suggested source', 'seofyme-seo' ); ?></th>
-						<th><?php esc_html_e( 'Action', 'seofyme-seo' ); ?></th>
-					</tr>
-				</thead>
-				<tbody>
-				<?php if ( empty( $rows ) ) : ?>
-					<tr><td colspan="3"><?php esc_html_e( 'No linking opportunities found.', 'seofyme-seo' ); ?></td></tr>
-				<?php else : ?>
-					<?php foreach ( $rows as $row ) : ?>
+		<section class="sf-card">
+			<header class="sf-card__header">
+				<h2><?php esc_html_e( 'Linking opportunities', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Insert a contextual link from a related page into an orphaned page.', 'seofyme-seo' ); ?></p>
+			</header>
+			<div class="sf-card__body sf-card__body--table">
+				<table class="sf-table sf-table--data">
+					<thead>
 						<tr>
-							<td><a href="<?php echo esc_url( get_edit_post_link( $row['orphan']['id'] ) ); ?>"><?php echo esc_html( $row['orphan']['title'] ); ?></a></td>
-							<td><?php echo esc_html( $row['source_title'] ?: '—' ); ?></td>
-							<td>
-								<?php if ( $row['source_id'] ) : ?>
-									<button type="button" class="button button-primary seofyme-insert-link"
-										data-source="<?php echo esc_attr( (string) $row['source_id'] ); ?>"
-										data-target="<?php echo esc_attr( (string) $row['orphan']['id'] ); ?>"
-										data-title="<?php echo esc_attr( $row['orphan']['title'] ); ?>"
-										data-url="<?php echo esc_attr( $row['orphan']['url'] ); ?>">
-										<?php esc_html_e( 'Insert link', 'seofyme-seo' ); ?>
-									</button>
-								<?php endif; ?>
-							</td>
+							<th><?php esc_html_e( 'Orphaned page', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Suggested source', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Action', 'seofyme-seo' ); ?></th>
 						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+					<?php if ( empty( $rows ) ) : ?>
+						<tr><td class="sf-table__empty" colspan="3"><?php esc_html_e( 'No linking opportunities found.', 'seofyme-seo' ); ?></td></tr>
+					<?php else : ?>
+						<?php foreach ( $rows as $row ) : ?>
+							<tr>
+								<td><a href="<?php echo esc_url( get_edit_post_link( $row['orphan']['id'] ) ); ?>"><?php echo esc_html( $row['orphan']['title'] ); ?></a></td>
+								<td><?php echo esc_html( $row['source_title'] ?: '—' ); ?></td>
+								<td>
+									<?php if ( $row['source_id'] ) : ?>
+										<button type="button" class="sf-btn sf-btn--primary sf-btn--small seofyme-insert-link"
+											data-source="<?php echo esc_attr( (string) $row['source_id'] ); ?>"
+											data-target="<?php echo esc_attr( (string) $row['orphan']['id'] ); ?>"
+											data-title="<?php echo esc_attr( $row['orphan']['title'] ); ?>"
+											data-url="<?php echo esc_attr( $row['orphan']['url'] ); ?>">
+											<?php esc_html_e( 'Insert link', 'seofyme-seo' ); ?>
+										</button>
+									<?php endif; ?>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
 		</section>
 		<?php
 		Page_Shell::close();

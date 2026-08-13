@@ -66,54 +66,85 @@ class RankTracker {
 			__( 'Track focus keywords and log positions over time. Connect Search Console later for automation.', 'seofyme-seo' )
 		);
 		?>
-		<section class="seofyme-panel">
-			<h2><?php esc_html_e( 'Add keyword', 'seofyme-seo' ); ?></h2>
+		<section class="sf-card">
+			<header class="sf-card__header">
+				<h2><?php esc_html_e( 'Add keyword', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Start tracking a keyword and its target URL.', 'seofyme-seo' ); ?></p>
+			</header>
 			<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
 				<input type="hidden" name="action" value="seofyme_rank_add" />
 				<?php wp_nonce_field( 'seofyme_rank_add' ); ?>
-				<table class="form-table">
-					<tr><th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th><td><input type="text" name="keyword" class="regular-text" required /></td></tr>
-					<tr><th><?php esc_html_e( 'Target URL', 'seofyme-seo' ); ?></th><td><input type="url" name="url" class="regular-text" placeholder="<?php echo esc_attr( home_url( '/' ) ); ?>" /></td></tr>
-					<tr><th><?php esc_html_e( 'Current position', 'seofyme-seo' ); ?></th><td><input name="position" type="number" min="1" max="100" class="small-text" value="10" /></td></tr>
-				</table>
-				<?php submit_button( __( 'Track keyword', 'seofyme-seo' ) ); ?>
+				<div class="sf-card__body">
+					<div class="sf-field sf-field--stack">
+						<label class="sf-field__label" for="sf-rank-keyword"><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></label>
+						<input type="text" id="sf-rank-keyword" name="keyword" class="sf-input" required />
+					</div>
+					<div class="sf-field sf-field--stack">
+						<label class="sf-field__label" for="sf-rank-url"><?php esc_html_e( 'Target URL', 'seofyme-seo' ); ?></label>
+						<input type="url" id="sf-rank-url" name="url" class="sf-input" placeholder="<?php echo esc_attr( home_url( '/' ) ); ?>" />
+					</div>
+					<div class="sf-field">
+						<div class="sf-field__text">
+							<label class="sf-field__label" for="sf-rank-position"><?php esc_html_e( 'Current position', 'seofyme-seo' ); ?></label>
+						</div>
+						<div class="sf-field__control">
+							<input id="sf-rank-position" name="position" type="number" min="1" max="100" class="sf-input sf-input--small" value="10" />
+						</div>
+					</div>
+				</div>
+				<div class="sf-savebar">
+					<button type="submit" class="sf-btn sf-btn--primary"><?php esc_html_e( 'Track keyword', 'seofyme-seo' ); ?></button>
+				</div>
 			</form>
 		</section>
-		<section class="seofyme-panel">
-			<h2><?php esc_html_e( 'Tracked keywords', 'seofyme-seo' ); ?></h2>
-			<table class="widefat striped">
-				<thead><tr><th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'URL', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'Position', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'History', 'seofyme-seo' ); ?></th><th></th></tr></thead>
-				<tbody>
-				<?php if ( empty( $rows ) ) : ?>
-					<tr><td colspan="5"><?php esc_html_e( 'No keywords tracked yet.', 'seofyme-seo' ); ?></td></tr>
-				<?php else : ?>
-					<?php foreach ( $rows as $i => $row ) : ?>
+		<section class="sf-card">
+			<header class="sf-card__header">
+				<h2><?php esc_html_e( 'Tracked keywords', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Log new positions and review recent history.', 'seofyme-seo' ); ?></p>
+			</header>
+			<div class="sf-card__body sf-card__body--table">
+				<table class="sf-table sf-table--data">
+					<thead>
 						<tr>
-							<td><strong><?php echo esc_html( $row['keyword'] ); ?></strong></td>
-							<td><?php echo esc_html( $row['url'] ); ?></td>
-							<td>
-								<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="seofyme-inline-form">
-									<input type="hidden" name="action" value="seofyme_rank_update" />
-									<input type="hidden" name="index" value="<?php echo esc_attr( (string) $i ); ?>" />
-									<?php wp_nonce_field( 'seofyme_rank_update' ); ?>
-									<input type="number" name="position" min="1" max="100" value="<?php echo esc_attr( (string) ( $row['position'] ?? '' ) ); ?>" class="small-text" />
-									<button class="button"><?php esc_html_e( 'Log', 'seofyme-seo' ); ?></button>
-								</form>
-							</td>
-							<td><code><?php echo esc_html( implode( ' → ', array_slice( array_column( $row['history'] ?? array(), 'position' ), -6 ) ) ); ?></code></td>
-							<td>
-								<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
-									<input type="hidden" name="action" value="seofyme_rank_delete" />
-									<input type="hidden" name="index" value="<?php echo esc_attr( (string) $i ); ?>" />
-									<?php wp_nonce_field( 'seofyme_rank_delete' ); ?>
-									<button class="button-link-delete"><?php esc_html_e( 'Delete', 'seofyme-seo' ); ?></button>
-								</form>
-							</td>
+							<th><?php esc_html_e( 'Keyword', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'URL', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Position', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'History', 'seofyme-seo' ); ?></th>
+							<th><?php esc_html_e( 'Actions', 'seofyme-seo' ); ?></th>
 						</tr>
-					<?php endforeach; ?>
-				<?php endif; ?>
-				</tbody>
-			</table>
+					</thead>
+					<tbody>
+					<?php if ( empty( $rows ) ) : ?>
+						<tr><td class="sf-table__empty" colspan="5"><?php esc_html_e( 'No keywords tracked yet.', 'seofyme-seo' ); ?></td></tr>
+					<?php else : ?>
+						<?php foreach ( $rows as $i => $row ) : ?>
+							<tr>
+								<td><strong><?php echo esc_html( $row['keyword'] ); ?></strong></td>
+								<td><?php echo esc_html( $row['url'] ); ?></td>
+								<td>
+									<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>" class="sf-inline-form">
+										<input type="hidden" name="action" value="seofyme_rank_update" />
+										<input type="hidden" name="index" value="<?php echo esc_attr( (string) $i ); ?>" />
+										<?php wp_nonce_field( 'seofyme_rank_update' ); ?>
+										<input type="number" name="position" min="1" max="100" value="<?php echo esc_attr( (string) ( $row['position'] ?? '' ) ); ?>" class="sf-input sf-input--small" />
+										<button type="submit" class="sf-btn sf-btn--secondary sf-btn--small"><?php esc_html_e( 'Log', 'seofyme-seo' ); ?></button>
+									</form>
+								</td>
+								<td><code><?php echo esc_html( implode( ' → ', array_slice( array_column( $row['history'] ?? array(), 'position' ), -6 ) ) ); ?></code></td>
+								<td>
+									<form method="post" action="<?php echo esc_url( admin_url( 'admin-post.php' ) ); ?>">
+										<input type="hidden" name="action" value="seofyme_rank_delete" />
+										<input type="hidden" name="index" value="<?php echo esc_attr( (string) $i ); ?>" />
+										<?php wp_nonce_field( 'seofyme_rank_delete' ); ?>
+										<button type="submit" class="sf-btn sf-btn--danger sf-btn--small"><?php esc_html_e( 'Delete', 'seofyme-seo' ); ?></button>
+									</form>
+								</td>
+							</tr>
+						<?php endforeach; ?>
+					<?php endif; ?>
+					</tbody>
+				</table>
+			</div>
 		</section>
 		<?php
 		Page_Shell::close();

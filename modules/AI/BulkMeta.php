@@ -77,29 +77,42 @@ class BulkMeta {
 			__( 'Draft missing titles and descriptions, review each one, then approve to save.', 'seofyme-seo' )
 		);
 		?>
-			<section class="seofyme-panel">
-				<table class="widefat striped" id="seofyme-bulk-table">
-					<thead><tr><th><?php esc_html_e( 'Content', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'SEO title', 'seofyme-seo' ); ?></th><th><?php esc_html_e( 'Description', 'seofyme-seo' ); ?></th><th></th></tr></thead>
-					<tbody>
-					<?php if ( empty( $items ) ) : ?>
-						<tr><td colspan="4"><?php esc_html_e( 'No gaps found.', 'seofyme-seo' ); ?></td></tr>
-					<?php else : ?>
-						<?php foreach ( $items as $item ) : ?>
-							<tr data-id="<?php echo esc_attr( (string) $item['id'] ); ?>">
-								<td><strong><?php echo esc_html( $item['title'] ); ?></strong></td>
-								<td><input type="text" class="widefat seofyme-bulk-title" value="<?php echo esc_attr( $item['seo_title'] ); ?>" /></td>
-								<td><textarea class="widefat seofyme-bulk-desc" rows="3"><?php echo esc_textarea( $item['seo_desc'] ); ?></textarea></td>
-								<td>
-									<div class="sf-row-actions">
-										<button type="button" class="button seofyme-bulk-draft"><?php esc_html_e( 'AI draft', 'seofyme-seo' ); ?></button>
-										<button type="button" class="button button-primary seofyme-bulk-apply"><?php esc_html_e( 'Approve', 'seofyme-seo' ); ?></button>
-									</div>
-								</td>
+			<section class="sf-card">
+				<header class="sf-card__header">
+					<h2><?php esc_html_e( 'Missing meta', 'seofyme-seo' ); ?></h2>
+					<p><?php esc_html_e( 'Posts and pages without an SEO title or description.', 'seofyme-seo' ); ?></p>
+				</header>
+				<div class="sf-card__body sf-card__body--table">
+					<table class="sf-table sf-table--data" id="seofyme-bulk-table">
+						<thead>
+							<tr>
+								<th><?php esc_html_e( 'Content', 'seofyme-seo' ); ?></th>
+								<th><?php esc_html_e( 'SEO title', 'seofyme-seo' ); ?></th>
+								<th><?php esc_html_e( 'Description', 'seofyme-seo' ); ?></th>
+								<th><?php esc_html_e( 'Actions', 'seofyme-seo' ); ?></th>
 							</tr>
-						<?php endforeach; ?>
-					<?php endif; ?>
-					</tbody>
-				</table>
+						</thead>
+						<tbody>
+						<?php if ( empty( $items ) ) : ?>
+							<tr><td class="sf-table__empty" colspan="4"><?php esc_html_e( 'No gaps found.', 'seofyme-seo' ); ?></td></tr>
+						<?php else : ?>
+							<?php foreach ( $items as $item ) : ?>
+								<tr data-id="<?php echo esc_attr( (string) $item['id'] ); ?>">
+									<td><strong><?php echo esc_html( $item['title'] ); ?></strong></td>
+									<td><input type="text" class="sf-input sf-input--full seofyme-bulk-title" value="<?php echo esc_attr( $item['seo_title'] ); ?>" /></td>
+									<td><textarea class="sf-textarea sf-input--full seofyme-bulk-desc" rows="3"><?php echo esc_textarea( $item['seo_desc'] ); ?></textarea></td>
+									<td>
+										<div class="sf-table__actions">
+											<button type="button" class="sf-btn sf-btn--secondary sf-btn--small seofyme-bulk-draft"><?php esc_html_e( 'AI draft', 'seofyme-seo' ); ?></button>
+											<button type="button" class="sf-btn sf-btn--primary sf-btn--small seofyme-bulk-apply"><?php esc_html_e( 'Approve', 'seofyme-seo' ); ?></button>
+										</div>
+									</td>
+								</tr>
+							<?php endforeach; ?>
+						<?php endif; ?>
+						</tbody>
+					</table>
+				</div>
 			</section>
 		<?php
 		Page_Shell::close();

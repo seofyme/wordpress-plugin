@@ -108,12 +108,18 @@ class SiteAudit {
 			sprintf( /* translators: 1 good 2 total */ __( '%1$d of %2$d checks look healthy.', 'seofyme-seo' ), $good, count( $checks ) )
 		);
 		?>
-		<section class="seofyme-panel">
-			<ul class="seofyme-analysis" style="list-style:none;padding:0;margin:0;display:grid;gap:0.5rem">
-				<?php foreach ( $checks as $check ) : ?>
-					<li class="seofyme-check seofyme-check--<?php echo esc_attr( $check['status'] ); ?>"><?php echo esc_html( $check['label'] ); ?></li>
-				<?php endforeach; ?>
-			</ul>
+		<section class="sf-card">
+			<header class="sf-card__header">
+				<h2><?php esc_html_e( 'Health checks', 'seofyme-seo' ); ?></h2>
+				<p><?php esc_html_e( 'Technical SEO signals across your site configuration.', 'seofyme-seo' ); ?></p>
+			</header>
+			<div class="sf-card__body sf-card__body--flush">
+				<ul class="sf-checks">
+					<?php foreach ( $checks as $check ) : ?>
+						<li class="sf-check sf-check--<?php echo esc_attr( $check['status'] ); ?>"><?php echo esc_html( $check['label'] ); ?></li>
+					<?php endforeach; ?>
+				</ul>
+			</div>
 		</section>
 		<?php
 		Page_Shell::close();

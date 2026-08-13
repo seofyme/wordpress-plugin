@@ -225,38 +225,59 @@ class Admin {
 		}
 		$sitemap = home_url( '/sitemap.xml' );
 		$schema  = home_url( '/seofyme-schema.json' );
+
+		$links = array(
+			'seofyme-seo-settings'  => __( 'Settings', 'seofyme-seo' ),
+			'seofyme-seo-redirects' => __( 'Redirects', 'seofyme-seo' ),
+			'seofyme-seo-bulk'      => __( 'Bulk editor', 'seofyme-seo' ),
+			'seofyme-seo-workouts'  => __( 'Workouts', 'seofyme-seo' ),
+		);
+
+		ob_start();
+		?>
+		<a class="sf-btn sf-btn--secondary" href="<?php echo esc_url( admin_url( 'admin.php?page=seofyme-seo-audit' ) ); ?>"><?php esc_html_e( 'Run site audit', 'seofyme-seo' ); ?></a>
+		<a class="sf-btn sf-btn--primary" href="<?php echo esc_url( admin_url( 'admin.php?page=seofyme-seo-settings' ) ); ?>"><?php esc_html_e( 'Open settings', 'seofyme-seo' ); ?></a>
+		<?php
+		$actions = ob_get_clean();
+
 		Page_Shell::open(
 			__( 'Dashboard', 'seofyme-seo' ),
-			__( 'Content guidance, technical SEO, redirects, linking, and AI drafting — in one clean workspace.', 'seofyme-seo' )
+			__( 'Content guidance, technical SEO, redirects, linking, and AI drafting — in one clean workspace.', 'seofyme-seo' ),
+			$actions
 		);
 		?>
-			<div class="seofyme-cards">
-				<article class="seofyme-card">
-					<span class="seofyme-kicker"><?php esc_html_e( 'Technical', 'seofyme-seo' ); ?></span>
-					<h2><?php esc_html_e( 'XML sitemap', 'seofyme-seo' ); ?></h2>
-					<p><?php esc_html_e( 'Keep search engines in sync with your published content.', 'seofyme-seo' ); ?></p>
-					<div class="seofyme-actions">
-						<a class="button button-primary" href="<?php echo esc_url( $sitemap ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Open sitemap', 'seofyme-seo' ); ?></a>
+			<div class="sf-grid">
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'XML sitemap', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Keep search engines in sync with your published content.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body sf-card__body--flush">
+						<a class="sf-btn sf-btn--primary" href="<?php echo esc_url( $sitemap ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'Open sitemap', 'seofyme-seo' ); ?></a>
 					</div>
-				</article>
-				<article class="seofyme-card">
-					<span class="seofyme-kicker"><?php esc_html_e( 'Structured data', 'seofyme-seo' ); ?></span>
-					<h2><?php esc_html_e( 'Schema graph', 'seofyme-seo' ); ?></h2>
-					<p><?php esc_html_e( 'A single aggregated graph for machines and AI systems.', 'seofyme-seo' ); ?></p>
-					<div class="seofyme-actions">
-						<a class="button" href="<?php echo esc_url( $schema ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'View graph', 'seofyme-seo' ); ?></a>
+				</section>
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'Schema graph', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'A single aggregated graph for machines and AI systems.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body sf-card__body--flush">
+						<a class="sf-btn sf-btn--secondary" href="<?php echo esc_url( $schema ); ?>" target="_blank" rel="noopener"><?php esc_html_e( 'View graph', 'seofyme-seo' ); ?></a>
 					</div>
-				</article>
-				<article class="seofyme-card">
-					<span class="seofyme-kicker"><?php esc_html_e( 'Workflow', 'seofyme-seo' ); ?></span>
-					<h2><?php esc_html_e( 'Jump in', 'seofyme-seo' ); ?></h2>
-					<ul>
-						<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=seofyme-seo-settings' ) ); ?>"><?php esc_html_e( 'Settings', 'seofyme-seo' ); ?></a></li>
-						<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=seofyme-seo-redirects' ) ); ?>"><?php esc_html_e( 'Redirects', 'seofyme-seo' ); ?></a></li>
-						<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=seofyme-seo-bulk' ) ); ?>"><?php esc_html_e( 'Bulk editor', 'seofyme-seo' ); ?></a></li>
-						<li><a href="<?php echo esc_url( admin_url( 'admin.php?page=seofyme-seo-workouts' ) ); ?>"><?php esc_html_e( 'Workouts', 'seofyme-seo' ); ?></a></li>
-					</ul>
-				</article>
+				</section>
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'Jump in', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Shortcuts to the tools you use most.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body sf-card__body--flush">
+						<ul class="sf-list">
+							<?php foreach ( $links as $slug => $label ) : ?>
+								<li><a class="sf-list__link" href="<?php echo esc_url( admin_url( 'admin.php?page=' . $slug ) ); ?>"><?php echo esc_html( $label ); ?></a></li>
+							<?php endforeach; ?>
+						</ul>
+					</div>
+				</section>
 			</div>
 		<?php
 		Page_Shell::close();
@@ -273,136 +294,206 @@ class Admin {
 		}
 		$o    = Options::all();
 		$bots = \SeofymeSEO\Modules\BotBlocker\BotBlocker::known_bots();
+		$opt  = Options::OPTION_KEY;
 		Page_Shell::open(
 			__( 'Settings', 'seofyme-seo' ),
 			__( 'Tune titles, schema, AI drafting, bot controls, and IndexNow.', 'seofyme-seo' )
 		);
 		?>
-			<form method="post" action="options.php" class="seofyme-panel-stack">
+			<form method="post" action="options.php">
 				<?php settings_fields( 'seofyme_seo' ); ?>
-				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'General', 'seofyme-seo' ); ?></h2>
-					<table class="form-table" role="presentation">
-						<tr>
-							<th><label for="title_separator"><?php esc_html_e( 'Title separator', 'seofyme-seo' ); ?></label></th>
-							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[title_separator]" id="title_separator" value="<?php echo esc_attr( $o['title_separator'] ); ?>" class="small-text" /></td>
-						</tr>
-						<tr>
-							<th><label for="homepage_title"><?php esc_html_e( 'Homepage title', 'seofyme-seo' ); ?></label></th>
-							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[homepage_title]" id="homepage_title" value="<?php echo esc_attr( $o['homepage_title'] ); ?>" class="regular-text" /></td>
-						</tr>
-						<tr>
-							<th><label for="homepage_description"><?php esc_html_e( 'Homepage description', 'seofyme-seo' ); ?></label></th>
-							<td><textarea name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[homepage_description]" id="homepage_description" class="large-text" rows="3"><?php echo esc_textarea( $o['homepage_description'] ); ?></textarea></td>
-						</tr>
-						<tr>
-							<th><label for="organization_name"><?php esc_html_e( 'Organization name', 'seofyme-seo' ); ?></label></th>
-							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[organization_name]" id="organization_name" value="<?php echo esc_attr( $o['organization_name'] ); ?>" class="regular-text" /></td>
-						</tr>
-						<tr>
-							<th><label for="organization_logo"><?php esc_html_e( 'Organization logo URL', 'seofyme-seo' ); ?></label></th>
-							<td><input type="url" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[organization_logo]" id="organization_logo" value="<?php echo esc_attr( $o['organization_logo'] ); ?>" class="regular-text" /></td>
-						</tr>
-						<tr>
-							<th><?php esc_html_e( 'Features', 'seofyme-seo' ); ?></th>
-							<td class="seofyme-feature-toggles">
-								<label><input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[xml_sitemap]" value="1" <?php checked( $o['xml_sitemap'] ); ?> /> <?php esc_html_e( 'XML sitemaps', 'seofyme-seo' ); ?></label>
-								<label><input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[schema_enabled]" value="1" <?php checked( $o['schema_enabled'] ); ?> /> <?php esc_html_e( 'Structured data', 'seofyme-seo' ); ?></label>
-								<label><input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[schema_aggregate]" value="1" <?php checked( $o['schema_aggregate'] ); ?> /> <?php esc_html_e( 'Schema aggregation endpoint', 'seofyme-seo' ); ?></label>
-								<label><input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[noindex_search]" value="1" <?php checked( $o['noindex_search'] ); ?> /> <?php esc_html_e( 'Noindex search results', 'seofyme-seo' ); ?></label>
-							</td>
-						</tr>
-					</table>
-				</section>
 
-				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'BYO AI (optional fallback)', 'seofyme-seo' ); ?></h2>
-					<p class="description"><?php esc_html_e( 'Used only when Seofyme Cloud keys are empty.', 'seofyme-seo' ); ?></p>
-					<table class="form-table" role="presentation">
-						<tr>
-							<th><label for="ai_provider"><?php esc_html_e( 'Provider', 'seofyme-seo' ); ?></label></th>
-							<td>
-								<select name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[ai_provider]" id="ai_provider">
-									<option value="openai" <?php selected( $o['ai_provider'], 'openai' ); ?>>OpenAI</option>
-									<option value="anthropic" <?php selected( $o['ai_provider'], 'anthropic' ); ?>>Anthropic</option>
-								</select>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="ai_api_key"><?php esc_html_e( 'API key', 'seofyme-seo' ); ?></label></th>
-							<td><input type="password" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[ai_api_key]" id="ai_api_key" value="<?php echo esc_attr( $o['ai_api_key'] ); ?>" class="regular-text" autocomplete="off" /></td>
-						</tr>
-					</table>
-				</section>
-
-				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'AI visibility', 'seofyme-seo' ); ?></h2>
-					<table class="form-table" role="presentation">
-						<tr>
-							<th><?php esc_html_e( 'llms.txt', 'seofyme-seo' ); ?></th>
-							<td class="seofyme-feature-toggles">
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'General', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Site-wide title defaults, organization details, and core SEO features.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body">
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="title_separator"><?php esc_html_e( 'Title separator', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="text" class="sf-input sf-input--small" name="<?php echo esc_attr( $opt ); ?>[title_separator]" id="title_separator" value="<?php echo esc_attr( $o['title_separator'] ); ?>" />
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="homepage_title"><?php esc_html_e( 'Homepage title', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="text" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[homepage_title]" id="homepage_title" value="<?php echo esc_attr( $o['homepage_title'] ); ?>" />
+							</div>
+						</div>
+						<div class="sf-field sf-field--stack">
+							<label class="sf-field__label" for="homepage_description"><?php esc_html_e( 'Homepage description', 'seofyme-seo' ); ?></label>
+							<textarea class="sf-textarea" name="<?php echo esc_attr( $opt ); ?>[homepage_description]" id="homepage_description" rows="3"><?php echo esc_textarea( $o['homepage_description'] ); ?></textarea>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="organization_name"><?php esc_html_e( 'Organization name', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="text" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[organization_name]" id="organization_name" value="<?php echo esc_attr( $o['organization_name'] ); ?>" />
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="organization_logo"><?php esc_html_e( 'Organization logo URL', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="url" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[organization_logo]" id="organization_logo" value="<?php echo esc_attr( $o['organization_logo'] ); ?>" />
+							</div>
+						</div>
+						<div class="sf-field sf-field--stack">
+							<span class="sf-field__label"><?php esc_html_e( 'Features', 'seofyme-seo' ); ?></span>
+							<div class="sf-toggles">
 								<label>
-									<input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[llms_txt]" value="1" <?php checked( ! empty( $o['llms_txt'] ) ); ?> />
-									<?php esc_html_e( 'Publish llms.txt so AI tools can discover important pages', 'seofyme-seo' ); ?>
+									<span><?php esc_html_e( 'XML sitemaps', 'seofyme-seo' ); ?></span>
+									<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[xml_sitemap]" value="1" <?php checked( $o['xml_sitemap'] ); ?> />
 								</label>
-								<p class="description">
-									<a href="<?php echo esc_url( home_url( '/llms.txt' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( home_url( '/llms.txt' ) ); ?></a>
-									— <?php esc_html_e( 'Re-save Permalinks once after enabling if the URL 404s.', 'seofyme-seo' ); ?>
-								</p>
-							</td>
-						</tr>
-					</table>
-					<h3><?php esc_html_e( 'AI bot blocker', 'seofyme-seo' ); ?></h3>
-					<div class="seofyme-bot-grid">
-						<?php foreach ( $bots as $key => $label ) : ?>
-							<label>
-								<span><?php echo esc_html( $label ); ?></span>
-								<input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[bot_blocker][]" value="<?php echo esc_attr( $key ); ?>" <?php checked( in_array( $key, (array) $o['bot_blocker'], true ) ); ?> />
-							</label>
-						<?php endforeach; ?>
+								<label>
+									<span><?php esc_html_e( 'Structured data', 'seofyme-seo' ); ?></span>
+									<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[schema_enabled]" value="1" <?php checked( $o['schema_enabled'] ); ?> />
+								</label>
+								<label>
+									<span><?php esc_html_e( 'Schema aggregation endpoint', 'seofyme-seo' ); ?></span>
+									<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[schema_aggregate]" value="1" <?php checked( $o['schema_aggregate'] ); ?> />
+								</label>
+								<label>
+									<span><?php esc_html_e( 'Noindex search results', 'seofyme-seo' ); ?></span>
+									<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[noindex_search]" value="1" <?php checked( $o['noindex_search'] ); ?> />
+								</label>
+							</div>
+						</div>
 					</div>
 				</section>
 
-				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'IndexNow', 'seofyme-seo' ); ?></h2>
-					<table class="form-table" role="presentation">
-						<tr>
-							<th><label for="indexnow_key"><?php esc_html_e( 'Key', 'seofyme-seo' ); ?></label></th>
-							<td>
-								<input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[indexnow_key]" id="indexnow_key" value="<?php echo esc_attr( $o['indexnow_key'] ); ?>" class="regular-text" />
-								<p class="description"><?php esc_html_e( 'Leave empty to auto-generate.', 'seofyme-seo' ); ?></p>
-							</td>
-						</tr>
-					</table>
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'BYO AI (optional fallback)', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Used only when Seofyme Cloud keys are empty.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body">
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="ai_provider"><?php esc_html_e( 'Provider', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<select class="sf-select" name="<?php echo esc_attr( $opt ); ?>[ai_provider]" id="ai_provider">
+									<option value="openai" <?php selected( $o['ai_provider'], 'openai' ); ?>>OpenAI</option>
+									<option value="anthropic" <?php selected( $o['ai_provider'], 'anthropic' ); ?>>Anthropic</option>
+								</select>
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="ai_api_key"><?php esc_html_e( 'API key', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="password" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[ai_api_key]" id="ai_api_key" value="<?php echo esc_attr( $o['ai_api_key'] ); ?>" autocomplete="off" />
+							</div>
+						</div>
+					</div>
 				</section>
 
-				<section class="seofyme-panel">
-					<h2><?php esc_html_e( 'Agency / reports', 'seofyme-seo' ); ?></h2>
-					<table class="form-table" role="presentation">
-						<tr>
-							<th><?php esc_html_e( 'White-label', 'seofyme-seo' ); ?></th>
-							<td class="seofyme-feature-toggles">
-								<label><input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[whitelabel_enabled]" value="1" <?php checked( ! empty( $o['whitelabel_enabled'] ) ); ?> /> <?php esc_html_e( 'Enable white-label menu name', 'seofyme-seo' ); ?></label>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="whitelabel_name"><?php esc_html_e( 'Brand name', 'seofyme-seo' ); ?></label></th>
-							<td><input type="text" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[whitelabel_name]" id="whitelabel_name" value="<?php echo esc_attr( $o['whitelabel_name'] ); ?>" class="regular-text" placeholder="Acme SEO" /></td>
-						</tr>
-						<tr>
-							<th><?php esc_html_e( 'Email reports', 'seofyme-seo' ); ?></th>
-							<td class="seofyme-feature-toggles">
-								<label><input type="checkbox" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[email_reports]" value="1" <?php checked( ! empty( $o['email_reports'] ) ); ?> /> <?php esc_html_e( 'Send weekly SEO summary', 'seofyme-seo' ); ?></label>
-							</td>
-						</tr>
-						<tr>
-							<th><label for="report_email"><?php esc_html_e( 'Report email', 'seofyme-seo' ); ?></label></th>
-							<td><input type="email" name="<?php echo esc_attr( Options::OPTION_KEY ); ?>[report_email]" id="report_email" value="<?php echo esc_attr( $o['report_email'] ); ?>" class="regular-text" placeholder="<?php echo esc_attr( get_option( 'admin_email' ) ); ?>" /></td>
-						</tr>
-					</table>
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'AI visibility', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Control how AI systems discover and crawl your site.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body">
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="llms_txt"><?php esc_html_e( 'llms.txt', 'seofyme-seo' ); ?></label>
+								<p class="sf-field__desc">
+									<?php esc_html_e( 'Publish llms.txt so AI tools can discover important pages.', 'seofyme-seo' ); ?>
+									<a href="<?php echo esc_url( home_url( '/llms.txt' ) ); ?>" target="_blank" rel="noopener noreferrer"><?php echo esc_html( home_url( '/llms.txt' ) ); ?></a>
+								</p>
+							</div>
+							<div class="sf-field__control">
+								<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[llms_txt]" id="llms_txt" value="1" <?php checked( ! empty( $o['llms_txt'] ) ); ?> />
+							</div>
+						</div>
+						<div class="sf-field sf-field--stack">
+							<span class="sf-field__label"><?php esc_html_e( 'AI bot blocker', 'seofyme-seo' ); ?></span>
+							<p class="sf-field__desc"><?php esc_html_e( 'Block selected AI crawlers via robots.txt-style rules.', 'seofyme-seo' ); ?></p>
+							<div class="sf-checkgrid">
+								<?php foreach ( $bots as $key => $label ) : ?>
+									<label>
+										<span><?php echo esc_html( $label ); ?></span>
+										<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[bot_blocker][]" value="<?php echo esc_attr( $key ); ?>" <?php checked( in_array( $key, (array) $o['bot_blocker'], true ) ); ?> />
+									</label>
+								<?php endforeach; ?>
+							</div>
+						</div>
+					</div>
 				</section>
 
-				<?php submit_button( __( 'Save settings', 'seofyme-seo' ) ); ?>
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'IndexNow', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'Notify search engines instantly when content changes.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body">
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="indexnow_key"><?php esc_html_e( 'Key', 'seofyme-seo' ); ?></label>
+								<p class="sf-field__desc"><?php esc_html_e( 'Leave empty to auto-generate.', 'seofyme-seo' ); ?></p>
+							</div>
+							<div class="sf-field__control">
+								<input type="text" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[indexnow_key]" id="indexnow_key" value="<?php echo esc_attr( $o['indexnow_key'] ); ?>" />
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<section class="sf-card">
+					<header class="sf-card__header">
+						<h2><?php esc_html_e( 'Agency / reports', 'seofyme-seo' ); ?></h2>
+						<p><?php esc_html_e( 'White-label branding and weekly email summaries.', 'seofyme-seo' ); ?></p>
+					</header>
+					<div class="sf-card__body">
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="whitelabel_enabled"><?php esc_html_e( 'White-label', 'seofyme-seo' ); ?></label>
+								<p class="sf-field__desc"><?php esc_html_e( 'Enable white-label menu name.', 'seofyme-seo' ); ?></p>
+							</div>
+							<div class="sf-field__control">
+								<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[whitelabel_enabled]" id="whitelabel_enabled" value="1" <?php checked( ! empty( $o['whitelabel_enabled'] ) ); ?> />
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="whitelabel_name"><?php esc_html_e( 'Brand name', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="text" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[whitelabel_name]" id="whitelabel_name" value="<?php echo esc_attr( $o['whitelabel_name'] ); ?>" placeholder="Acme SEO" />
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="email_reports"><?php esc_html_e( 'Email reports', 'seofyme-seo' ); ?></label>
+								<p class="sf-field__desc"><?php esc_html_e( 'Send weekly SEO summary.', 'seofyme-seo' ); ?></p>
+							</div>
+							<div class="sf-field__control">
+								<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[email_reports]" id="email_reports" value="1" <?php checked( ! empty( $o['email_reports'] ) ); ?> />
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
+								<label class="sf-field__label" for="report_email"><?php esc_html_e( 'Report email', 'seofyme-seo' ); ?></label>
+							</div>
+							<div class="sf-field__control">
+								<input type="email" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[report_email]" id="report_email" value="<?php echo esc_attr( $o['report_email'] ); ?>" placeholder="<?php echo esc_attr( get_option( 'admin_email' ) ); ?>" />
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<div class="sf-savebar">
+					<button type="submit" class="sf-btn sf-btn--primary"><?php esc_html_e( 'Save settings', 'seofyme-seo' ); ?></button>
+				</div>
 			</form>
 		<?php
 		Page_Shell::close();
