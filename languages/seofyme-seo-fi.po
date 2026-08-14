@@ -1,0 +1,1396 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Seofyme SEO 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/seofyme/wordpress-plugin\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: seofyme-seo\n"
+
+#: includes/Analysis/Analyzer.php:56
+msgid "Focus keyphrase is set."
+msgstr "Kohdeavainfraasi on asetettu."
+
+#: includes/Analysis/Analyzer.php:59
+msgid "Add a focus keyphrase."
+msgstr "Lisää kohdeavainfraasi."
+
+#: includes/Analysis/Analyzer.php:64
+msgid "Focus keyphrase (or a word form) appears in the SEO title."
+msgstr "Kohdeavainfraasi (tai sanamuoto) esiintyy SEO-otsikossa."
+
+#: includes/Analysis/Analyzer.php:67
+msgid "Consider adding the focus keyphrase to the SEO title."
+msgstr "Harkitse kohdeavainfraasin lisäämistä SEO-otsikkoon."
+
+#: includes/Analysis/Analyzer.php:72
+msgid "Focus keyphrase (or a word form) appears in the content."
+msgstr "Kohdeavainfraasi (tai sanamuoto) esiintyy sisällössä."
+
+#: includes/Analysis/Analyzer.php:75
+msgid "Focus keyphrase was not found in the content."
+msgstr "Kohdeavainfraasia ei löytynyt sisällöstä."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:101
+msgid "Related keyphrase “%s” (or synonym/word form) is used."
+msgstr "Liittyvää avainfraasia “%s” (tai synonyymiä/sanamuotoa) käytetään."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:104
+msgid "Add related keyphrase “%s” or a synonym naturally in the text."
+msgstr ""
+"Lisää liittyvä avainfraasi “%s” tai synonyymi luonnollisesti tekstiin."
+
+#: includes/Analysis/Analyzer.php:114
+msgid "SEO title length looks good."
+msgstr "SEO-otsikon pituus näyttää hyvältä."
+
+#: includes/Analysis/Analyzer.php:117
+msgid "SEO title should usually be 30–60 characters."
+msgstr "SEO-otsikon tulisi yleensä olla 30–60 merkkiä."
+
+#: includes/Analysis/Analyzer.php:123
+msgid "Meta description length looks good."
+msgstr "Meta-kuvauksen pituus näyttää hyvältä."
+
+#: includes/Analysis/Analyzer.php:126
+msgid "Meta description should usually be 70–160 characters."
+msgstr "Meta-kuvauksen tulisi yleensä olla 70–160 merkkiä."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:131
+msgid "Content length is solid (%d words)."
+msgstr "Sisällön pituus on riittävä (%d sanaa)."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:134
+msgid "Content is short (%d words). Aim for 300+ for competitive topics."
+msgstr ""
+"Sisältö on lyhyt (%d sanaa). Tavoittele 300+ kilpailullisille aiheille."
+
+#: includes/Analysis/Analyzer.php:142
+msgid "Average sentence length is easy to read."
+msgstr "Keskimääräinen lausepituus on helppo lukea."
+
+#: includes/Analysis/Analyzer.php:145
+msgid "Sentences are a bit long — shorter sentences improve readability."
+msgstr ""
+"Lauseet ovat hieman pitkiä — lyhyemmät lauseet parantavat luettavuutta."
+
+#: includes/Analysis/Analyzer.php:150
+msgid "Content uses H2 subheadings."
+msgstr "Sisältö käyttää H2-väliotsikoita."
+
+#: includes/Analysis/Analyzer.php:153
+msgid "Add H2 subheadings to structure the page."
+msgstr "Lisää H2-väliotsikoita sivun rakenteeksi."
+
+#: includes/Admin/Metabox.php:44 includes/Admin/Admin.php:67
+#: includes/Admin/Admin.php:68
+msgid "Seofyme SEO"
+msgstr "Seofyme SEO"
+
+#: includes/Admin/Metabox.php:76
+msgid "Search preview"
+msgstr "Hakuesikatselu"
+
+#: includes/Admin/Metabox.php:79
+msgid "Meta description preview appears here."
+msgstr "Meta-kuvauksen esikatselu näkyy tässä."
+
+#: includes/Admin/Metabox.php:83
+msgid "Focus keyphrase"
+msgstr "Kohdeavainfraasi"
+
+#: includes/Admin/Metabox.php:87
+#: modules/FrontendInspector/FrontendInspector.php:69
+#: modules/AI/BulkMeta.php:90
+msgid "SEO title"
+msgstr "SEO-otsikko"
+
+#: includes/Admin/Metabox.php:89
+msgid "Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+msgstr "Muuttujat: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+
+#: includes/Admin/Metabox.php:92
+#: modules/FrontendInspector/FrontendInspector.php:70
+msgid "Meta description"
+msgstr "Meta-kuvaus"
+
+#: includes/Admin/Metabox.php:97
+msgid "Canonical URL"
+msgstr "Kanoninen URL"
+
+#: includes/Admin/Metabox.php:101
+msgid "Robots"
+msgstr "Robots"
+
+#: includes/Admin/Metabox.php:112 modules/Workouts/Workouts.php:110
+msgid "Cornerstone content"
+msgstr "Cornerstone-sisältö"
+
+#: includes/Admin/Metabox.php:120
+msgid "Content analysis"
+msgstr "Sisältöanalyysi"
+
+#. translators: %d: SEO score from 0 to 100.
+#: includes/Admin/Metabox.php:126
+msgid "%d / 100"
+msgstr "%d / 100"
+
+#: includes/Admin/Page_Shell.php:31 includes/Admin/Admin.php:76
+#: includes/Admin/Admin.php:247 modules/WhiteLabel/WhiteLabel.php:68
+msgid "Dashboard"
+msgstr "Hallintapaneeli"
+
+#: includes/Admin/Page_Shell.php:37 includes/Admin/Admin.php:77
+#: includes/Admin/Admin.php:215 includes/Admin/Admin.php:233
+#: includes/Admin/Admin.php:302
+msgid "Settings"
+msgstr "Asetukset"
+
+#: includes/Admin/Page_Shell.php:43 includes/Admin/Admin.php:78
+#: modules/SiteAudit/SiteAudit.php:107
+msgid "Site audit"
+msgstr "Sivuston auditointi"
+
+#: includes/Admin/Page_Shell.php:49 includes/Admin/Admin.php:79
+#: includes/Admin/Admin.php:234 modules/Redirects/Admin_Page.php:33
+msgid "Redirects"
+msgstr "Uudelleenohjaukset"
+
+#: includes/Admin/Page_Shell.php:55 includes/Admin/Admin.php:80
+#: modules/NotFound/NotFoundMonitor.php:122
+msgid "404 monitor"
+msgstr "404-seuranta"
+
+#: includes/Admin/Page_Shell.php:61 includes/Admin/Admin.php:81
+#: modules/LinkAssistant/LinkAssistant.php:81
+msgid "Link assistant"
+msgstr "Linkkiassistentti"
+
+#: includes/Admin/Page_Shell.php:67 includes/Admin/Admin.php:82
+#: modules/RankTracker/RankTracker.php:67
+msgid "Rank tracker"
+msgstr "Sijoitusten seuranta"
+
+#: includes/Admin/Page_Shell.php:73 includes/Admin/Admin.php:83
+#: includes/Admin/Admin.php:235 modules/AI/BulkMeta.php:76
+msgid "Bulk editor"
+msgstr "Massamuokkaus"
+
+#: includes/Admin/Page_Shell.php:79 includes/Admin/Admin.php:84
+#: modules/ImageSEO/ImageSEO.php:97
+msgid "Image SEO"
+msgstr "Kuva-SEO"
+
+#: includes/Admin/Page_Shell.php:85 includes/Admin/Admin.php:85
+#: includes/Admin/Admin.php:236 modules/Workouts/Workouts.php:86
+msgid "Workouts"
+msgstr "Harjoitukset"
+
+#: includes/Admin/Page_Shell.php:91 includes/Admin/Admin.php:86
+#: includes/Admin/Admin.php:555
+msgid "Account"
+msgstr "Tili"
+
+#: includes/Admin/Page_Shell.php:126
+msgid "SEO suite"
+msgstr "SEO-paketti"
+
+#. translators: %s: Seofyme subscription plan name.
+#: includes/Admin/Page_Shell.php:152
+msgid "Plan: %s"
+msgstr "Paketti: %s"
+
+#: includes/Admin/Page_Shell.php:157
+msgid "Open Seofyme.com"
+msgstr "Avaa Seofyme.com"
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:122
+msgid "Credentials saved, but the account could not be refreshed: %s"
+msgstr "Tunnukset tallennettiin, mutta tiliä ei voitu päivittää: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:133
+msgid "Account connected. Current plan: %s."
+msgstr "Tili yhdistetty. Nykyinen paketti: %s."
+
+#: includes/Admin/Admin.php:141
+msgid "Cloud credentials updated."
+msgstr "Cloud-tunnukset päivitetty."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:156
+msgid "Plan refresh failed: %s"
+msgstr "Paketin päivitys epäonnistui: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:167
+msgid "Plan status refreshed: %s."
+msgstr "Paketin tila päivitetty: %s."
+
+#: includes/Admin/Admin.php:241
+msgid "Run site audit"
+msgstr "Suorita sivuston auditointi"
+
+#: includes/Admin/Admin.php:242
+msgid "Open settings"
+msgstr "Avaa asetukset"
+
+#: includes/Admin/Admin.php:248
+msgid ""
+"Content guidance, technical SEO, redirects, linking, and AI drafting — in "
+"one clean workspace."
+msgstr ""
+"Sisältöohjaus, tekninen SEO, uudelleenohjaukset, linkitys ja "
+"tekoälyluonnokset — yhdessä selkeässä työtilassa."
+
+#: includes/Admin/Admin.php:255
+msgid "XML sitemap"
+msgstr "XML-sivustokartta"
+
+#: includes/Admin/Admin.php:256
+msgid "Keep search engines in sync with your published content."
+msgstr "Pidä hakukoneet synkronoituna julkaistuun sisältöösi."
+
+#: includes/Admin/Admin.php:259
+msgid "Open sitemap"
+msgstr "Avaa sivustokartta"
+
+#: includes/Admin/Admin.php:264
+msgid "Schema graph"
+msgstr "Schema-graafi"
+
+#: includes/Admin/Admin.php:265
+msgid "A single aggregated graph for machines and AI systems."
+msgstr "Yksi yhdistetty graafi koneille ja tekoälyjärjestelmille."
+
+#: includes/Admin/Admin.php:268
+msgid "View graph"
+msgstr "Näytä graafi"
+
+#: includes/Admin/Admin.php:273
+msgid "Jump in"
+msgstr "Aloita"
+
+#: includes/Admin/Admin.php:274
+msgid "Shortcuts to the tools you use most."
+msgstr "Pikakuvakkeet eniten käyttämiisi työkaluihin."
+
+#: includes/Admin/Admin.php:303
+msgid ""
+"Tune titles, schema, AI drafting, bot controls, IndexNow, and Search "
+"Console."
+msgstr ""
+"Säädä otsikoita, schemaa, tekoälyluonnoksia, bottiohjauksia, IndexNow’ta ja "
+"Search Consolea."
+
+#: includes/Admin/Admin.php:311
+msgid "General"
+msgstr "Yleiset"
+
+#: includes/Admin/Admin.php:312
+msgid "Site-wide title defaults, organization details, and core SEO features."
+msgstr ""
+"Sivustonlaajuiset otsikkoasetukset, organisaation tiedot ja keskeiset SEO-"
+"ominaisuudet."
+
+#: includes/Admin/Admin.php:317
+msgid "Title separator"
+msgstr "Otsikon erotin"
+
+#: includes/Admin/Admin.php:325
+msgid "Homepage title"
+msgstr "Etusivun otsikko"
+
+#: includes/Admin/Admin.php:332
+msgid "Homepage description"
+msgstr "Etusivun kuvaus"
+
+#: includes/Admin/Admin.php:337
+msgid "Organization name"
+msgstr "Organisaation nimi"
+
+#: includes/Admin/Admin.php:345
+msgid "Organization logo URL"
+msgstr "Organisaation logon URL"
+
+#: includes/Admin/Admin.php:352
+msgid "Features"
+msgstr "Ominaisuudet"
+
+#: includes/Admin/Admin.php:355
+msgid "XML sitemaps"
+msgstr "XML-sivustokartat"
+
+#: includes/Admin/Admin.php:359
+msgid "Structured data"
+msgstr "Rakenteinen data"
+
+#: includes/Admin/Admin.php:363
+msgid "Schema aggregation endpoint"
+msgstr "Schema-yhdistämisen päätepiste"
+
+#: includes/Admin/Admin.php:367
+msgid "Noindex search results"
+msgstr "Noindex hakutuloksille"
+
+#: includes/Admin/Admin.php:377
+msgid "BYO AI (optional fallback)"
+msgstr "BYO AI (valinnainen varavaihtoehto)"
+
+#: includes/Admin/Admin.php:378
+msgid "Used only when Seofyme Cloud keys are empty."
+msgstr "Käytetään vain, kun Seofyme Cloud -avaimet ovat tyhjiä."
+
+#: includes/Admin/Admin.php:383
+msgid "Provider"
+msgstr "Palveluntarjoaja"
+
+#: includes/Admin/Admin.php:394
+msgid "API key"
+msgstr "API-avain"
+
+#: includes/Admin/Admin.php:405
+msgid "AI visibility"
+msgstr "Tekoälyn näkyvyys"
+
+#: includes/Admin/Admin.php:406
+msgid "Control how AI systems discover and crawl your site."
+msgstr ""
+"Hallitse, miten tekoälyjärjestelmät löytävät ja indeksoivat sivustosi."
+
+#: includes/Admin/Admin.php:411
+msgid "llms.txt"
+msgstr "llms.txt"
+
+#: includes/Admin/Admin.php:413
+msgid "Publish llms.txt so AI tools can discover important pages."
+msgstr "Julkaise llms.txt, jotta tekoälytyökalut voivat löytää tärkeät sivut."
+
+#: includes/Admin/Admin.php:422
+msgid "AI bot blocker"
+msgstr "Tekoälybottien esto"
+
+#: includes/Admin/Admin.php:423
+msgid "Block selected AI crawlers via robots.txt-style rules."
+msgstr "Estä valitut tekoälycrawlereita robots.txt-tyylisillä säännöillä."
+
+#: includes/Admin/Admin.php:438
+msgid "IndexNow"
+msgstr "IndexNow"
+
+#: includes/Admin/Admin.php:439
+msgid "Notify search engines instantly when content changes."
+msgstr "Ilmoita hakukoneille heti, kun sisältö muuttuu."
+
+#: includes/Admin/Admin.php:444
+msgid "Key"
+msgstr "Avain"
+
+#: includes/Admin/Admin.php:445
+msgid "Leave empty to auto-generate."
+msgstr "Jätä tyhjäksi automaattista luontia varten."
+
+#: includes/Admin/Admin.php:458
+msgid "Agency / reports"
+msgstr "Toimisto / raportit"
+
+#: includes/Admin/Admin.php:459
+msgid "White-label branding and weekly email summaries."
+msgstr "White-label-brändäys ja viikoittaiset sähköpostiyhteenvedot."
+
+#: includes/Admin/Admin.php:464
+msgid "White-label"
+msgstr "White-label"
+
+#: includes/Admin/Admin.php:465
+msgid "Enable white-label menu name."
+msgstr "Ota white-label-valikon nimi käyttöön."
+
+#: includes/Admin/Admin.php:473
+msgid "Brand name"
+msgstr "Brändinimi"
+
+#: includes/Admin/Admin.php:481
+msgid "Email reports"
+msgstr "Sähköpostiraportit"
+
+#: includes/Admin/Admin.php:482
+msgid "Send weekly SEO summary."
+msgstr "Lähetä viikoittainen SEO-yhteenveto."
+
+#: includes/Admin/Admin.php:490
+msgid "Report email"
+msgstr "Raportin sähköposti"
+
+#: includes/Admin/Admin.php:500
+msgid "Save settings"
+msgstr "Tallenna asetukset"
+
+#: includes/Admin/Admin.php:531
+msgid "Unlimited"
+msgstr "Rajoittamaton"
+
+#. translators: 1: amount used, 2: plan limit.
+#: includes/Admin/Admin.php:534
+msgid "%1$s of %2$s used"
+msgstr "%1$s / %2$s käytetty"
+
+#: includes/Admin/Admin.php:545
+msgid "Refresh plan"
+msgstr "Päivitä paketti"
+
+#: includes/Admin/Admin.php:550
+msgid "Manage account"
+msgstr "Hallitse tiliä"
+
+#: includes/Admin/Admin.php:556
+msgid ""
+"Connect Seofyme Cloud, review your subscription, and refresh current AI "
+"usage."
+msgstr ""
+"Yhdistä Seofyme Cloud, tarkista tilauksesi ja päivitä nykyinen tekoälyn "
+"käyttö."
+
+#: includes/Admin/Admin.php:564
+msgid "API credentials"
+msgstr "API-tunnukset"
+
+#: includes/Admin/Admin.php:565
+msgid ""
+"Create Seofyme product API keys in your account, then connect this WordPress"
+" site."
+msgstr ""
+"Luo Seofyme-tuotteen API-avaimet tililläsi ja yhdistä sitten tämä WordPress-"
+"sivusto."
+
+#: includes/Admin/Admin.php:569
+msgid "Public API key"
+msgstr "Julkinen API-avain"
+
+#: includes/Admin/Admin.php:573
+msgid "Secret API key"
+msgstr "Salainen API-avain"
+
+#: includes/Admin/Admin.php:579
+msgid "Save credentials"
+msgstr "Tallenna tunnukset"
+
+#: includes/Admin/Admin.php:585
+msgid "Plan status"
+msgstr "Paketin tila"
+
+#: includes/Admin/Admin.php:586
+msgid "Subscription and monthly usage are synced from Seofyme Cloud."
+msgstr "Tilaus ja kuukausittainen käyttö synkronoidaan Seofyme Cloudista."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:594
+msgid "Last plan refresh failed: %s"
+msgstr "Viimeisin paketin päivitys epäonnistui: %s"
+
+#: includes/Admin/Admin.php:603
+msgid "Connection"
+msgstr "Yhteys"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Connected"
+msgstr "Yhdistetty"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Not connected"
+msgstr "Ei yhdistetty"
+
+#: includes/Admin/Admin.php:611
+msgid "Plan"
+msgstr "Paketti"
+
+#: includes/Admin/Admin.php:615
+msgid "AI requests this month"
+msgstr "Tekoälypyynnöt tässä kuussa"
+
+#: includes/Admin/Admin.php:619
+msgid "AI tokens this month"
+msgstr "Tekoälytunnisteet tässä kuussa"
+
+#: includes/Admin/Admin.php:624
+msgid "Usage period"
+msgstr "Käyttöjakso"
+
+#: includes/Admin/Admin.php:635
+msgid "Manage subscription"
+msgstr "Hallitse tilausta"
+
+#: includes/Admin/Admin.php:636
+msgid "Compare plans or manage billing from your Seofyme account."
+msgstr "Vertaa paketteja tai hallitse laskutusta Seofyme-tililläsi."
+
+#: includes/Admin/Admin.php:639
+msgid "Compare plans"
+msgstr "Vertaa paketteja"
+
+#: includes/Admin/Admin.php:640
+msgid "Open Seofyme account"
+msgstr "Avaa Seofyme-tili"
+
+#: includes/Support/Cloud_Account.php:119 modules/AI/Generator.php:135
+msgid "Invalid response from Seofyme Cloud."
+msgstr "Virheellinen vastaus Seofyme Cloudilta."
+
+#. translators: %d: HTTP status code.
+#: includes/Support/Cloud_Account.php:127
+msgid "Seofyme Cloud returned HTTP %d."
+msgstr "Seofyme Cloud palautti HTTP %d."
+
+#: includes/Support/Cloud_Account.php:135
+msgid "Seofyme Cloud returned an invalid plan."
+msgstr "Seofyme Cloud palautti virheellisen paketin."
+
+#: modules/FrontendInspector/FrontendInspector.php:66
+msgid "SEO"
+msgstr "SEO"
+
+#: modules/FrontendInspector/FrontendInspector.php:68
+msgid "Seofyme inspector"
+msgstr "Seofyme-tarkastaja"
+
+#: modules/FrontendInspector/FrontendInspector.php:71
+#: modules/ImageSEO/ImageSEO.php:126
+msgid "Save"
+msgstr "Tallenna"
+
+#: modules/WooCommerce/WooCommerceSEO.php:43
+msgid "Seofyme WooCommerce SEO"
+msgstr "Seofyme WooCommerce SEO"
+
+#: modules/WooCommerce/WooCommerceSEO.php:56
+msgid "Brand"
+msgstr "Brändi"
+
+#: modules/WooCommerce/WooCommerceSEO.php:57
+msgid "GTIN / barcode"
+msgstr "GTIN / viivakoodi"
+
+#: modules/Keyphrases/Keyphrases.php:43
+msgid "Related keyphrases"
+msgstr "Liittyvät avainfraasit"
+
+#: modules/Keyphrases/Keyphrases.php:62
+msgid ""
+"Optimize for up to 5 related keyphrases. Synonyms and word forms count "
+"toward a full SEO check for each."
+msgstr ""
+"Optimoi enintään 5 liittyvää avainfraasia. Synonyymit ja sanamuodot "
+"lasketaan mukaan kunkin täyteen SEO-tarkistukseen."
+
+#: modules/Keyphrases/Keyphrases.php:67
+msgid "Keyphrase"
+msgstr "Avainfraasi"
+
+#: modules/Keyphrases/Keyphrases.php:73
+msgid "Synonyms, comma-separated"
+msgstr "Synonyymit, pilkuilla erotettuna"
+
+#: modules/NotFound/NotFoundMonitor.php:116
+msgid "Clear log"
+msgstr "Tyhjennä loki"
+
+#: modules/NotFound/NotFoundMonitor.php:123
+msgid "See broken URLs visitors hit, then convert them into redirects."
+msgstr ""
+"Näe rikkinäiset URL-osoitteet, joihin kävijät osuvat, ja muunna ne "
+"uudelleenohjauksiksi."
+
+#: modules/NotFound/NotFoundMonitor.php:129
+msgid "Logged 404s"
+msgstr "Lokitetut 404-virheet"
+
+#: modules/NotFound/NotFoundMonitor.php:130
+msgid "Create a redirect from any broken URL below."
+msgstr "Luo uudelleenohjaus mistä tahansa rikkinäisestä URL-osoitteesta alla."
+
+#: modules/NotFound/NotFoundMonitor.php:136
+#: modules/RankTracker/RankTracker.php:115
+msgid "URL"
+msgstr "URL"
+
+#: modules/NotFound/NotFoundMonitor.php:137
+msgid "Hits"
+msgstr "Osumat"
+
+#: modules/NotFound/NotFoundMonitor.php:138
+msgid "Last seen"
+msgstr "Viimeksi nähty"
+
+#: modules/NotFound/NotFoundMonitor.php:139 modules/ImageSEO/ImageSEO.php:110
+#: modules/Redirects/Admin_Page.php:114 modules/AI/BulkMeta.php:92
+#: modules/RankTracker/RankTracker.php:118
+msgid "Actions"
+msgstr "Toiminnot"
+
+#: modules/NotFound/NotFoundMonitor.php:144
+msgid "No 404s logged yet."
+msgstr "Ei vielä lokitettuja 404-virheitä."
+
+#: modules/NotFound/NotFoundMonitor.php:157
+msgid "Redirect"
+msgstr "Uudelleenohjaa"
+
+#: modules/NotFound/NotFoundMonitor.php:178
+#: modules/NotFound/NotFoundMonitor.php:194
+#: modules/SearchConsole/SearchConsole.php:154
+#: modules/SearchConsole/SearchConsole.php:260
+#: modules/SearchConsole/SearchConsole.php:275
+#: modules/SearchConsole/SearchConsole.php:291
+#: modules/Redirects/Redirects.php:318 modules/RankTracker/RankTracker.php:165
+#: modules/RankTracker/RankTracker.php:187
+#: modules/RankTracker/RankTracker.php:209
+msgid "Unauthorized"
+msgstr "Ei valtuutettu"
+
+#: modules/Workouts/Workouts.php:87
+msgid ""
+"Guided tasks for orphaned pages, cornerstone content, and stale updates."
+msgstr ""
+"Ohjatut tehtävät orvoille sivuille, cornerstone-sisällölle ja vanhentuneille"
+" päivityksille."
+
+#: modules/Workouts/Workouts.php:93
+msgid "Orphaned content"
+msgstr "Orpo sisältö"
+
+#: modules/Workouts/Workouts.php:94
+msgid "Published pages with no internal links pointing to them."
+msgstr "Julkaistut sivut, joihin ei johda sisäisiä linkkejä."
+
+#: modules/Workouts/Workouts.php:99
+msgid "No orphaned posts found in the scan window."
+msgstr "Skannausikkunasta ei löytynyt orpoja artikkeleita."
+
+#: modules/Workouts/Workouts.php:111
+msgid "Pages marked as cornerstone in the editor."
+msgstr "Editorissa cornerstoneksi merkityt sivut."
+
+#: modules/Workouts/Workouts.php:116
+msgid "Mark pages as cornerstone in the editor to track them here."
+msgstr "Merkitse sivut cornerstoneksi editorissa seurataksesi niitä täällä."
+
+#: modules/Workouts/Workouts.php:127
+msgid "Stale cornerstone content"
+msgstr "Vanhentunut cornerstone-sisältö"
+
+#. translators: %d days
+#: modules/Workouts/Workouts.php:132
+msgid ""
+"Cornerstone pages not updated in the last %d days — refresh them to keep "
+"rankings healthy."
+msgstr ""
+"Cornerstone-sivuja ei ole päivitetty viimeiseen %d päivään — päivitä ne "
+"pitääksesi sijoitukset terveinä."
+
+#: modules/Workouts/Workouts.php:141
+msgid "All cornerstone content looks fresh."
+msgstr "Kaikki cornerstone-sisältö näyttää tuoreelta."
+
+#: modules/Workouts/Workouts.php:146
+msgid "ago"
+msgstr "sitten"
+
+#: modules/SearchConsole/SearchConsole.php:132
+msgid "Google Search Console connected."
+msgstr "Google Search Console yhdistetty."
+
+#: modules/SearchConsole/SearchConsole.php:133
+msgid "Search Console disconnected."
+msgstr "Search Console irrotettu."
+
+#: modules/SearchConsole/SearchConsole.php:134
+msgid "Search Console property saved."
+msgstr "Search Console -ominaisuus tallennettu."
+
+#: modules/SearchConsole/SearchConsole.php:135
+msgid "Positions synced from Search Console."
+msgstr "Sijoitukset synkronoitu Search Consolesta."
+
+#: modules/SearchConsole/SearchConsole.php:136
+msgid "Google authorization was cancelled."
+msgstr "Googlen valtuutus peruutettiin."
+
+#: modules/SearchConsole/SearchConsole.php:137
+msgid ""
+"Search Console connection failed. Check your Client ID/Secret and try again."
+msgstr ""
+"Search Console -yhteys epäonnistui. Tarkista Client ID/Secret ja yritä "
+"uudelleen."
+
+#: modules/SearchConsole/SearchConsole.php:138
+msgid "Add a Google Client ID and Client Secret before connecting."
+msgstr "Lisää Google Client ID ja Client Secret ennen yhdistämistä."
+
+#: modules/SearchConsole/SearchConsole.php:139
+msgid "Choose a Search Console property first."
+msgstr "Valitse ensin Search Console -ominaisuus."
+
+#: modules/SearchConsole/SearchConsole.php:140
+msgid "Could not sync positions from Search Console."
+msgstr "Sijoituksia ei voitu synkronoida Search Consolesta."
+
+#: modules/SearchConsole/SearchConsole.php:329
+msgid "Invalid token response from Google."
+msgstr "Virheellinen token-vastaus Googlelta."
+
+#: modules/SearchConsole/SearchConsole.php:345
+msgid "Search Console is not connected."
+msgstr "Search Consolea ei ole yhdistetty."
+
+#: modules/SearchConsole/SearchConsole.php:365
+msgid "Could not refresh Google access token."
+msgstr "Googlen käyttöoikeustokenia ei voitu päivittää."
+
+#: modules/SearchConsole/SearchConsole.php:447
+msgid "No Search Console property selected."
+msgstr "Search Console -ominaisuutta ei ole valittu."
+
+#: modules/SearchConsole/SearchConsole.php:484
+msgid "Invalid Search Console response."
+msgstr "Virheellinen Search Console -vastaus."
+
+#: modules/SearchConsole/SearchConsole.php:541
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:542
+msgid "OAuth credentials used to connect Search Console for rank automation."
+msgstr ""
+"OAuth-tunnukset Search Consolen yhdistämiseen sijoitusautomaatiota varten."
+
+#. translators: %s: OAuth redirect URI.
+#: modules/SearchConsole/SearchConsole.php:549
+msgid ""
+"Create an OAuth client in Google Cloud Console, enable the Search Console "
+"API, and set this redirect URI: %s"
+msgstr ""
+"Luo OAuth-asiakas Google Cloud Consolessa, ota Search Console API käyttöön "
+"ja aseta tämä uudelleenohjaus-URI: %s"
+
+#: modules/SearchConsole/SearchConsole.php:555
+msgid "Google Client ID"
+msgstr "Google Client ID"
+
+#: modules/SearchConsole/SearchConsole.php:559
+msgid "Google Client Secret"
+msgstr "Google Client Secret"
+
+#: modules/SearchConsole/SearchConsole.php:583
+#: modules/SearchConsole/SearchConsole.php:658
+msgid "Connect Search Console"
+msgstr "Yhdistä Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:584
+msgid ""
+"Authorize Google, pick a property, and sync keyword positions into the rank "
+"tracker."
+msgstr ""
+"Valtuuta Google, valitse ominaisuus ja synkronoi avainsanojen sijoitukset "
+"sijoitusten seurantaan."
+
+#: modules/SearchConsole/SearchConsole.php:589
+msgid "Status"
+msgstr "Tila"
+
+#: modules/SearchConsole/SearchConsole.php:603
+msgid ""
+"Save a Google Client ID and Client Secret in Settings before connecting."
+msgstr ""
+"Tallenna Google Client ID ja Client Secret Asetuksiin ennen yhdistämistä."
+
+#: modules/SearchConsole/SearchConsole.php:605
+msgid "Open Settings"
+msgstr "Avaa Asetukset"
+
+#: modules/SearchConsole/SearchConsole.php:617
+msgid "Property"
+msgstr "Ominaisuus"
+
+#: modules/SearchConsole/SearchConsole.php:633
+msgid "Save property"
+msgstr "Tallenna ominaisuus"
+
+#: modules/SearchConsole/SearchConsole.php:644
+msgid "Sync positions"
+msgstr "Synkronoi sijoitukset"
+
+#: modules/SearchConsole/SearchConsole.php:651
+msgid "Disconnect"
+msgstr "Irrota"
+
+#: modules/ImageSEO/ImageSEO.php:97
+msgid ""
+"Fill missing alt text in bulk. New uploads get a filename-based alt "
+"automatically."
+msgstr ""
+"Täytä puuttuvat alt-tekstit massana. Uudet lataukset saavat automaattisesti "
+"tiedostonimeen perustuvan altin."
+
+#: modules/ImageSEO/ImageSEO.php:101
+msgid "Missing alt text"
+msgstr "Puuttuva alt-teksti"
+
+#: modules/ImageSEO/ImageSEO.php:102
+msgid "Images without alternative text in the media library."
+msgstr "Kuvat ilman vaihtoehtoista tekstiä mediakirjastossa."
+
+#: modules/ImageSEO/ImageSEO.php:108
+msgid "Image"
+msgstr "Kuva"
+
+#: modules/ImageSEO/ImageSEO.php:109
+msgid "Alt text"
+msgstr "Alt-teksti"
+
+#: modules/ImageSEO/ImageSEO.php:115
+msgid "No images missing alt text in this scan."
+msgstr "Tässä skannauksessa ei ole kuvia ilman alt-tekstiä."
+
+#: modules/NewsSEO/NewsSEO.php:48
+msgid "News SEO"
+msgstr "Uutis-SEO"
+
+#: modules/NewsSEO/NewsSEO.php:62
+msgid "Include in news sitemap"
+msgstr "Sisällytä uutissivustokarttaan"
+
+#: modules/NewsSEO/NewsSEO.php:63
+msgid "Genres"
+msgstr "Genret"
+
+#: modules/Headline/HeadlineAnalyzer.php:35
+msgid "Headline analyzer"
+msgstr "Otsikkoanalyysi"
+
+#. translators: %d
+#: modules/Headline/HeadlineAnalyzer.php:47
+msgid "Score: %d / 100"
+msgstr "Pisteet: %d / 100"
+
+#: modules/Headline/HeadlineAnalyzer.php:70
+msgid "Length is in a strong CTR range."
+msgstr "Pituus on vahvalla CTR-alueella."
+
+#: modules/Headline/HeadlineAnalyzer.php:72
+msgid "Aim for roughly 40–60 characters."
+msgstr "Tavoittele noin 40–60 merkkiä."
+
+#: modules/Headline/HeadlineAnalyzer.php:78
+msgid "Use about 5–12 words."
+msgstr "Käytä noin 5–12 sanaa."
+
+#: modules/Headline/HeadlineAnalyzer.php:83
+msgid "Numbers in headlines often lift clicks."
+msgstr "Numerot otsikoissa lisäävät usein klikkauksia."
+
+#: modules/Headline/HeadlineAnalyzer.php:85
+msgid "Consider adding a number (e.g. “7 ways…”)."
+msgstr "Harkitse numeron lisäämistä (esim. “7 tapaa…”)."
+
+#: modules/Headline/HeadlineAnalyzer.php:93
+msgid "Power words detected."
+msgstr "Tehosanoja havaittu."
+
+#: modules/ContentPlanner/ContentPlanner.php:38
+msgid "Content planner"
+msgstr "Sisältösuunnittelija"
+
+#: modules/ContentPlanner/ContentPlanner.php:47
+msgid "Ideas drawn from your site topics, plus a structured starter draft."
+msgstr "Ideoita sivustosi aiheista sekä rakenteellinen aloitusluonnos."
+
+#: modules/ContentPlanner/ContentPlanner.php:48
+msgid "Suggest ideas"
+msgstr "Ehdota ideoita"
+
+#: modules/ContentPlanner/ContentPlanner.php:50
+msgid "Build starter draft"
+msgstr "Luo aloitusluonnos"
+
+#: modules/LinkAssistant/LinkAssistant.php:82
+msgid ""
+"Find orphaned pages and insert contextual internal links from related "
+"content."
+msgstr ""
+"Löydä orvot sivut ja lisää kontekstuaalisia sisäisiä linkkejä liittyvästä "
+"sisällöstä."
+
+#: modules/LinkAssistant/LinkAssistant.php:87
+msgid "Linking opportunities"
+msgstr "Linkitysmahdollisuudet"
+
+#: modules/LinkAssistant/LinkAssistant.php:88
+msgid "Insert a contextual link from a related page into an orphaned page."
+msgstr "Lisää kontekstuaalinen linkki liittyvältä sivulta orvolle sivulle."
+
+#: modules/LinkAssistant/LinkAssistant.php:94
+msgid "Orphaned page"
+msgstr "Orpo sivu"
+
+#: modules/LinkAssistant/LinkAssistant.php:95
+msgid "Suggested source"
+msgstr "Ehdotettu lähde"
+
+#: modules/LinkAssistant/LinkAssistant.php:96
+msgid "Action"
+msgstr "Toiminto"
+
+#: modules/LinkAssistant/LinkAssistant.php:101
+msgid "No linking opportunities found."
+msgstr "Linkitysmahdollisuuksia ei löytynyt."
+
+#: modules/LinkAssistant/LinkAssistant.php:114
+msgid "Insert link"
+msgstr "Lisää linkki"
+
+#. translators: %s link
+#: modules/LinkAssistant/LinkAssistant.php:151
+msgid "Related reading: %s"
+msgstr "Liittyvää luettavaa: %s"
+
+#: modules/SiteAudit/SiteAudit.php:41
+msgid "Site is public (not discouraging search engines)"
+msgstr "Sivusto on julkinen (ei estä hakukoneita)"
+
+#: modules/SiteAudit/SiteAudit.php:45
+msgid "XML sitemaps enabled"
+msgstr "XML-sivustokartat käytössä"
+
+#: modules/SiteAudit/SiteAudit.php:49
+msgid "Organization name set"
+msgstr "Organisaation nimi asetettu"
+
+#: modules/SiteAudit/SiteAudit.php:53
+msgid "Homepage meta description set"
+msgstr "Etusivun meta-kuvaus asetettu"
+
+#: modules/SiteAudit/SiteAudit.php:57
+msgid "Pretty permalinks enabled"
+msgstr "Kauniit permalinkit käytössä"
+
+#. translators: %d
+#: modules/SiteAudit/SiteAudit.php:76
+msgid "Recent posts/pages missing meta description: %d"
+msgstr "Viimeisimmät artikkelit/sivut ilman meta-kuvausta: %d"
+
+#: modules/SiteAudit/SiteAudit.php:82
+msgid "HTTPS detected for admin request"
+msgstr "HTTPS havaittu hallintapyynnölle"
+
+#: modules/SiteAudit/SiteAudit.php:88
+msgid "Site tagline is customized"
+msgstr "Sivuston iskulause on mukautettu"
+
+#. translators: 1 good 2 total
+#: modules/SiteAudit/SiteAudit.php:108
+msgid "%1$d of %2$d checks look healthy."
+msgstr "%1$d / %2$d tarkistusta näyttää terveeltä."
+
+#: modules/SiteAudit/SiteAudit.php:113
+msgid "Health checks"
+msgstr "Terveystarkistukset"
+
+#: modules/SiteAudit/SiteAudit.php:114
+msgid "Technical SEO signals across your site configuration."
+msgstr "Tekniset SEO-signaalit sivustosi asetuksissa."
+
+#: modules/Social/Social.php:42
+msgid "Social preview"
+msgstr "Sosiaalisen median esikatselu"
+
+#: modules/Social/Social.php:55
+msgid "Facebook title"
+msgstr "Facebook-otsikko"
+
+#: modules/Social/Social.php:56
+msgid "Facebook description"
+msgstr "Facebook-kuvaus"
+
+#: modules/Social/Social.php:57
+msgid "Facebook image URL"
+msgstr "Facebook-kuvan URL"
+
+#: modules/Social/Social.php:58
+msgid "X title"
+msgstr "X-otsikko"
+
+#: modules/Social/Social.php:59
+msgid "X description"
+msgstr "X-kuvaus"
+
+#: modules/Social/Social.php:60
+msgid "X image URL"
+msgstr "X-kuvan URL"
+
+#: modules/Redirects/Admin_Page.php:34
+msgid "Keep old URLs working when content moves — add one, or import a CSV."
+msgstr ""
+"Pidä vanhat URL-osoitteet toimivina sisällön siirtyessä — lisää yksi tai tuo"
+" CSV."
+
+#: modules/Redirects/Admin_Page.php:39 modules/Redirects/Admin_Page.php:79
+msgid "Add redirect"
+msgstr "Lisää uudelleenohjaus"
+
+#: modules/Redirects/Admin_Page.php:40
+msgid "Map an old path to a new destination."
+msgstr "Kohdista vanha polku uuteen kohteeseen."
+
+#: modules/Redirects/Admin_Page.php:47
+msgid "Old path / pattern"
+msgstr "Vanha polku / malli"
+
+#: modules/Redirects/Admin_Page.php:51
+msgid "New URL"
+msgstr "Uusi URL"
+
+#: modules/Redirects/Admin_Page.php:56 modules/Redirects/Admin_Page.php:112
+msgid "Format"
+msgstr "Muoto"
+
+#: modules/Redirects/Admin_Page.php:67 modules/Redirects/Admin_Page.php:113
+msgid "Type"
+msgstr "Tyyppi"
+
+#: modules/Redirects/Admin_Page.php:86
+msgid "Import CSV"
+msgstr "Tuo CSV"
+
+#: modules/Redirects/Admin_Page.php:87
+msgid "Format: origin, target, type (type optional)."
+msgstr "Muoto: lähde, kohde, tyyppi (tyyppi valinnainen)."
+
+#: modules/Redirects/Admin_Page.php:96
+msgid "Import"
+msgstr "Tuo"
+
+#: modules/Redirects/Admin_Page.php:103
+msgid "Existing redirects"
+msgstr "Olemassa olevat uudelleenohjaukset"
+
+#: modules/Redirects/Admin_Page.php:104
+msgid "All active redirects on this site."
+msgstr "Kaikki aktiiviset uudelleenohjaukset tällä sivustolla."
+
+#: modules/Redirects/Admin_Page.php:110
+msgid "Origin"
+msgstr "Lähde"
+
+#: modules/Redirects/Admin_Page.php:111
+msgid "Target"
+msgstr "Kohde"
+
+#: modules/Redirects/Admin_Page.php:119
+msgid "No redirects yet."
+msgstr "Ei vielä uudelleenohjauksia."
+
+#: modules/Redirects/Admin_Page.php:132
+#: modules/RankTracker/RankTracker.php:144
+msgid "Delete"
+msgstr "Poista"
+
+#: modules/Redirects/Redirects.php:193 modules/Redirects/Redirects.php:197
+msgid "This content is no longer available."
+msgstr "Tämä sisältö ei ole enää saatavilla."
+
+#: modules/Redirects/Redirects.php:253
+msgid "Seofyme detected a URL change. Create a 301 redirect?"
+msgstr "Seofyme havaitsi URL-muutoksen. Luodaanko 301-uudelleenohjaus?"
+
+#: modules/Redirects/Redirects.php:257
+msgid "Create redirect"
+msgstr "Luo uudelleenohjaus"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:40
+msgid "Default (Article/WebPage)"
+msgstr "Oletus (Article/WebPage)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:41
+msgid "FAQ"
+msgstr "FAQ"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:42
+msgid "HowTo"
+msgstr "HowTo"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:43
+msgid "Product"
+msgstr "Product"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:44
+msgid "Recipe"
+msgstr "Recipe"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:45
+msgid "Course"
+msgstr "Course"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:46
+msgid "Event"
+msgstr "Event"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:60
+msgid "Advanced schema"
+msgstr "Edistynyt schema"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:77
+msgid "Schema type"
+msgstr "Schema-tyyppi"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:84
+msgid "Extra JSON fields (optional)"
+msgstr "Lisä-JSON-kentät (valinnainen)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:85
+msgid "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+msgstr "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:88
+msgid "For FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. For HowTo: {\"steps\":[\"...\",\"...\"]}."
+msgstr "FAQ:lle: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. HowTo:lle: {\"steps\":[\"...\",\"...\"]}."
+
+#: modules/InternalLinking/Linking_Block.php:46
+msgid "Related internal links"
+msgstr "Liittyvät sisäiset linkit"
+
+#: modules/InternalLinking/Linking_Block.php:47
+msgid "Suggests related posts to strengthen site structure."
+msgstr "Ehdottaa liittyviä artikkeleita sivuston rakenteen vahvistamiseksi."
+
+#: modules/InternalLinking/Linking_Block.php:59
+#: modules/InternalLinking/Linking_Block.php:78
+msgid "Related reading"
+msgstr "Liittyvää luettavaa"
+
+#: modules/InternalLinking/InternalLinking.php:41
+msgid "Internal linking"
+msgstr "Sisäinen linkitys"
+
+#: modules/InternalLinking/InternalLinking.php:53
+msgid "Refresh suggestions"
+msgstr "Päivitä ehdotukset"
+
+#: modules/AI/BulkMeta.php:77
+msgid ""
+"Draft missing titles and descriptions, review each one, then approve to "
+"save."
+msgstr ""
+"Luo luonnokset puuttuvista otsikoista ja kuvauksista, tarkista kukin ja "
+"hyväksy tallentaaksesi."
+
+#: modules/AI/BulkMeta.php:82
+msgid "Missing meta"
+msgstr "Puuttuva meta"
+
+#: modules/AI/BulkMeta.php:83
+msgid "Posts and pages without an SEO title or description."
+msgstr "Artikkelit ja sivut ilman SEO-otsikkoa tai kuvausta."
+
+#: modules/AI/BulkMeta.php:89
+msgid "Content"
+msgstr "Sisältö"
+
+#: modules/AI/BulkMeta.php:91
+msgid "Description"
+msgstr "Kuvaus"
+
+#: modules/AI/BulkMeta.php:97
+msgid "No gaps found."
+msgstr "Puutteita ei löytynyt."
+
+#: modules/AI/BulkMeta.php:106 modules/AI/Generator.php:42
+msgid "AI draft"
+msgstr "Tekoälyluonnos"
+
+#: modules/AI/BulkMeta.php:107
+msgid "Approve"
+msgstr "Hyväksy"
+
+#: modules/AI/Generator.php:54
+msgid ""
+"Draft titles, metas, social copy, or optimization tips. Nothing saves until "
+"you click a suggestion."
+msgstr ""
+"Luo luonnoksia otsikoista, meta-teksteistä, some-teksteistä tai "
+"optimointivinkeistä. Mitään ei tallenneta ennen ehdotuksen klikkaamista."
+
+#: modules/AI/Generator.php:55
+msgid "Generate titles"
+msgstr "Generoi otsikot"
+
+#: modules/AI/Generator.php:56
+msgid "Generate descriptions"
+msgstr "Generoi kuvaukset"
+
+#: modules/AI/Generator.php:57
+msgid "Social titles"
+msgstr "Some-otsikot"
+
+#: modules/AI/Generator.php:58
+msgid "Social descriptions"
+msgstr "Some-kuvaukset"
+
+#: modules/AI/Generator.php:59
+msgid "Optimize keyphrase tips"
+msgstr "Avainfraasin optimointivinkit"
+
+#: modules/AI/Generator.php:60
+msgid "Summarize"
+msgstr "Tiivistä"
+
+#: modules/AI/Generator.php:138
+msgid "Seofyme Cloud request failed."
+msgstr "Seofyme Cloud -pyyntö epäonnistui."
+
+#: modules/AI/Generator.php:144
+msgid "Seofyme Cloud returned no suggestions."
+msgstr "Seofyme Cloud ei palauttanut ehdotuksia."
+
+#: modules/AI/Generator.php:314
+msgid "Invalid response from AI provider."
+msgstr "Virheellinen vastaus tekoälypalveluntarjoajalta."
+
+#. translators: %d: HTTP status code
+#: modules/AI/Generator.php:326
+msgid "AI provider returned HTTP %d."
+msgstr "Tekoälypalveluntarjoaja palautti HTTP %d."
+
+#: modules/AI/Generator.php:335
+msgid "Empty AI response."
+msgstr "Tyhjä tekoälyvastaus."
+
+#: modules/AI/Generator.php:340
+msgid "Could not parse AI response"
+msgstr "Tekoälyvastausta ei voitu jäsentää"
+
+#: modules/Revisions/SEORevisions.php:78
+msgid "SEO revisions"
+msgstr "SEO-versiot"
+
+#: modules/Revisions/SEORevisions.php:91
+msgid "No SEO revisions yet."
+msgstr "Ei vielä SEO-versioita."
+
+#: modules/Revisions/SEORevisions.php:99
+msgid "(empty title)"
+msgstr "(tyhjä otsikko)"
+
+#: modules/Revisions/SEORevisions.php:103
+msgid "Restore"
+msgstr "Palauta"
+
+#: modules/AuthorSEO/AuthorSEO.php:48
+msgid "Seofyme Author SEO (E-E-A-T)"
+msgstr "Seofyme Author SEO (E-E-A-T)"
+
+#: modules/AuthorSEO/AuthorSEO.php:50
+msgid "Job title"
+msgstr "Työnimike"
+
+#: modules/AuthorSEO/AuthorSEO.php:52
+msgid "Knows about"
+msgstr "Tuntee aiheet"
+
+#: modules/AuthorSEO/AuthorSEO.php:54
+msgid "SameAs profiles (comma URLs)"
+msgstr "SameAs-profiilit (pilkuilla erotetut URL:t)"
+
+#: modules/AuthorSEO/AuthorSEO.php:56
+msgid "Education"
+msgstr "Koulutus"
+
+#: modules/AuthorSEO/AuthorSEO.php:58
+msgid "Experience summary"
+msgstr "Kokemuksen yhteenveto"
+
+#: modules/RankTracker/RankTracker.php:69
+msgid "Track focus keywords and sync positions from Google Search Console."
+msgstr ""
+"Seuraa kohdeavainsanoja ja synkronoi sijoitukset Google Search Consolesta."
+
+#: modules/RankTracker/RankTracker.php:70
+msgid ""
+"Track focus keywords and log positions over time. Connect Search Console to "
+"automate updates."
+msgstr ""
+"Seuraa kohdeavainsanoja ja kirjaa sijoituksia ajan mittaan. Yhdistä Search "
+"Console päivittääksesi automaattisesti."
+
+#: modules/RankTracker/RankTracker.php:76
+msgid "Add keyword"
+msgstr "Lisää avainsana"
+
+#: modules/RankTracker/RankTracker.php:77
+msgid "Start tracking a keyword and its target URL."
+msgstr "Aloita avainsanan ja sen kohde-URL:n seuranta."
+
+#: modules/RankTracker/RankTracker.php:84
+#: modules/RankTracker/RankTracker.php:114
+msgid "Keyword"
+msgstr "Avainsana"
+
+#: modules/RankTracker/RankTracker.php:88
+msgid "Target URL"
+msgstr "Kohde-URL"
+
+#: modules/RankTracker/RankTracker.php:93
+msgid "Current position"
+msgstr "Nykyinen sijoitus"
+
+#: modules/RankTracker/RankTracker.php:101
+msgid "Track keyword"
+msgstr "Seuraa avainsanaa"
+
+#: modules/RankTracker/RankTracker.php:107
+msgid "Tracked keywords"
+msgstr "Seuratut avainsanat"
+
+#: modules/RankTracker/RankTracker.php:108
+msgid "Log new positions and review recent history."
+msgstr "Kirjaa uudet sijoitukset ja tarkastele lähiaikaan historiaa."
+
+#: modules/RankTracker/RankTracker.php:116
+msgid "Position"
+msgstr "Sijoitus"
+
+#: modules/RankTracker/RankTracker.php:117
+msgid "History"
+msgstr "Historia"
+
+#: modules/RankTracker/RankTracker.php:123
+msgid "No keywords tracked yet."
+msgstr "Ei vielä seurattuja avainsanoja."
+
+#: modules/RankTracker/RankTracker.php:135
+msgid "Log"
+msgstr "Kirjaa"
+
+#: modules/LocalSEO/LocalSEO.php:44
+msgid "Locations"
+msgstr "Sijainnit"
+
+#: modules/LocalSEO/LocalSEO.php:45
+msgid "Location"
+msgstr "Sijainti"
+
+#: modules/LocalSEO/LocalSEO.php:63
+msgid "Local business details"
+msgstr "Paikallisen yrityksen tiedot"
+
+#: modules/LocalSEO/LocalSEO.php:146
+msgid "No locations yet."
+msgstr "Ei vielä sijainteja."

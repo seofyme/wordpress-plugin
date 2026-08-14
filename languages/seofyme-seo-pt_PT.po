@@ -1,0 +1,1409 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Seofyme SEO 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/seofyme/wordpress-plugin\n"
+"Language-Team: Portuguese\n"
+"Language: pt_PT\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: seofyme-seo\n"
+
+#: includes/Analysis/Analyzer.php:56
+msgid "Focus keyphrase is set."
+msgstr "A palavra-chave principal está definida."
+
+#: includes/Analysis/Analyzer.php:59
+msgid "Add a focus keyphrase."
+msgstr "Adicione uma palavra-chave principal."
+
+#: includes/Analysis/Analyzer.php:64
+msgid "Focus keyphrase (or a word form) appears in the SEO title."
+msgstr ""
+"A palavra-chave principal (ou uma forma da palavra) aparece no título SEO."
+
+#: includes/Analysis/Analyzer.php:67
+msgid "Consider adding the focus keyphrase to the SEO title."
+msgstr "Considere adicionar a palavra-chave principal ao título SEO."
+
+#: includes/Analysis/Analyzer.php:72
+msgid "Focus keyphrase (or a word form) appears in the content."
+msgstr ""
+"A palavra-chave principal (ou uma forma da palavra) aparece no conteúdo."
+
+#: includes/Analysis/Analyzer.php:75
+msgid "Focus keyphrase was not found in the content."
+msgstr "A palavra-chave principal não foi encontrada no conteúdo."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:101
+msgid "Related keyphrase “%s” (or synonym/word form) is used."
+msgstr ""
+"A palavra-chave relacionada “%s” (ou sinónimo/forma da palavra) é usada."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:104
+msgid "Add related keyphrase “%s” or a synonym naturally in the text."
+msgstr ""
+"Adicione a palavra-chave relacionada “%s” ou um sinónimo de forma natural no"
+" texto."
+
+#: includes/Analysis/Analyzer.php:114
+msgid "SEO title length looks good."
+msgstr "O comprimento do título SEO parece bom."
+
+#: includes/Analysis/Analyzer.php:117
+msgid "SEO title should usually be 30–60 characters."
+msgstr "O título SEO deve ter normalmente 30–60 caracteres."
+
+#: includes/Analysis/Analyzer.php:123
+msgid "Meta description length looks good."
+msgstr "O comprimento da meta description parece bom."
+
+#: includes/Analysis/Analyzer.php:126
+msgid "Meta description should usually be 70–160 characters."
+msgstr "A meta description deve ter normalmente 70–160 caracteres."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:131
+msgid "Content length is solid (%d words)."
+msgstr "O comprimento do conteúdo é sólido (%d palavras)."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:134
+msgid "Content is short (%d words). Aim for 300+ for competitive topics."
+msgstr ""
+"O conteúdo é curto (%d palavras). Procure 300+ para temas competitivos."
+
+#: includes/Analysis/Analyzer.php:142
+msgid "Average sentence length is easy to read."
+msgstr "O comprimento médio das frases é fácil de ler."
+
+#: includes/Analysis/Analyzer.php:145
+msgid "Sentences are a bit long — shorter sentences improve readability."
+msgstr ""
+"As frases são um pouco longas — frases mais curtas melhoram a legibilidade."
+
+#: includes/Analysis/Analyzer.php:150
+msgid "Content uses H2 subheadings."
+msgstr "O conteúdo usa subtítulos H2."
+
+#: includes/Analysis/Analyzer.php:153
+msgid "Add H2 subheadings to structure the page."
+msgstr "Adicione subtítulos H2 para estruturar a página."
+
+#: includes/Admin/Metabox.php:44 includes/Admin/Admin.php:67
+#: includes/Admin/Admin.php:68
+msgid "Seofyme SEO"
+msgstr "Seofyme SEO"
+
+#: includes/Admin/Metabox.php:76
+msgid "Search preview"
+msgstr "Pré-visualização de pesquisa"
+
+#: includes/Admin/Metabox.php:79
+msgid "Meta description preview appears here."
+msgstr "A pré-visualização da meta description aparece aqui."
+
+#: includes/Admin/Metabox.php:83
+msgid "Focus keyphrase"
+msgstr "Palavra-chave principal"
+
+#: includes/Admin/Metabox.php:87
+#: modules/FrontendInspector/FrontendInspector.php:69
+#: modules/AI/BulkMeta.php:90
+msgid "SEO title"
+msgstr "Título SEO"
+
+#: includes/Admin/Metabox.php:89
+msgid "Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+msgstr "Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+
+#: includes/Admin/Metabox.php:92
+#: modules/FrontendInspector/FrontendInspector.php:70
+msgid "Meta description"
+msgstr "Meta descrição"
+
+#: includes/Admin/Metabox.php:97
+msgid "Canonical URL"
+msgstr "URL canónico"
+
+#: includes/Admin/Metabox.php:101
+msgid "Robots"
+msgstr "Robots"
+
+#: includes/Admin/Metabox.php:112 modules/Workouts/Workouts.php:110
+msgid "Cornerstone content"
+msgstr "Conteúdo cornerstone"
+
+#: includes/Admin/Metabox.php:120
+msgid "Content analysis"
+msgstr "Análise de conteúdo"
+
+#. translators: %d: SEO score from 0 to 100.
+#: includes/Admin/Metabox.php:126
+msgid "%d / 100"
+msgstr "%d / 100"
+
+#: includes/Admin/Page_Shell.php:31 includes/Admin/Admin.php:76
+#: includes/Admin/Admin.php:247 modules/WhiteLabel/WhiteLabel.php:68
+msgid "Dashboard"
+msgstr "Painel"
+
+#: includes/Admin/Page_Shell.php:37 includes/Admin/Admin.php:77
+#: includes/Admin/Admin.php:215 includes/Admin/Admin.php:233
+#: includes/Admin/Admin.php:302
+msgid "Settings"
+msgstr "Definições"
+
+#: includes/Admin/Page_Shell.php:43 includes/Admin/Admin.php:78
+#: modules/SiteAudit/SiteAudit.php:107
+msgid "Site audit"
+msgstr "Auditoria do site"
+
+#: includes/Admin/Page_Shell.php:49 includes/Admin/Admin.php:79
+#: includes/Admin/Admin.php:234 modules/Redirects/Admin_Page.php:33
+msgid "Redirects"
+msgstr "Redirecionamentos"
+
+#: includes/Admin/Page_Shell.php:55 includes/Admin/Admin.php:80
+#: modules/NotFound/NotFoundMonitor.php:122
+msgid "404 monitor"
+msgstr "Monitor 404"
+
+#: includes/Admin/Page_Shell.php:61 includes/Admin/Admin.php:81
+#: modules/LinkAssistant/LinkAssistant.php:81
+msgid "Link assistant"
+msgstr "Assistente de ligações"
+
+#: includes/Admin/Page_Shell.php:67 includes/Admin/Admin.php:82
+#: modules/RankTracker/RankTracker.php:67
+msgid "Rank tracker"
+msgstr "Monitor de posições"
+
+#: includes/Admin/Page_Shell.php:73 includes/Admin/Admin.php:83
+#: includes/Admin/Admin.php:235 modules/AI/BulkMeta.php:76
+msgid "Bulk editor"
+msgstr "Editor em massa"
+
+#: includes/Admin/Page_Shell.php:79 includes/Admin/Admin.php:84
+#: modules/ImageSEO/ImageSEO.php:97
+msgid "Image SEO"
+msgstr "SEO de imagens"
+
+#: includes/Admin/Page_Shell.php:85 includes/Admin/Admin.php:85
+#: includes/Admin/Admin.php:236 modules/Workouts/Workouts.php:86
+msgid "Workouts"
+msgstr "Treinos"
+
+#: includes/Admin/Page_Shell.php:91 includes/Admin/Admin.php:86
+#: includes/Admin/Admin.php:555
+msgid "Account"
+msgstr "Conta"
+
+#: includes/Admin/Page_Shell.php:126
+msgid "SEO suite"
+msgstr "Suite SEO"
+
+#. translators: %s: Seofyme subscription plan name.
+#: includes/Admin/Page_Shell.php:152
+msgid "Plan: %s"
+msgstr "Plano: %s"
+
+#: includes/Admin/Page_Shell.php:157
+msgid "Open Seofyme.com"
+msgstr "Abrir Seofyme.com"
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:122
+msgid "Credentials saved, but the account could not be refreshed: %s"
+msgstr "Credenciais guardadas, mas a conta não pôde ser atualizada: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:133
+msgid "Account connected. Current plan: %s."
+msgstr "Conta ligada. Plano atual: %s."
+
+#: includes/Admin/Admin.php:141
+msgid "Cloud credentials updated."
+msgstr "Credenciais Cloud atualizadas."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:156
+msgid "Plan refresh failed: %s"
+msgstr "Falha ao atualizar o plano: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:167
+msgid "Plan status refreshed: %s."
+msgstr "Estado do plano atualizado: %s."
+
+#: includes/Admin/Admin.php:241
+msgid "Run site audit"
+msgstr "Executar auditoria do site"
+
+#: includes/Admin/Admin.php:242
+msgid "Open settings"
+msgstr "Abrir definições"
+
+#: includes/Admin/Admin.php:248
+msgid ""
+"Content guidance, technical SEO, redirects, linking, and AI drafting — in "
+"one clean workspace."
+msgstr ""
+"Orientação de conteúdo, SEO técnico, redirecionamentos, ligações e rascunhos"
+" com IA — num espaço de trabalho limpo."
+
+#: includes/Admin/Admin.php:255
+msgid "XML sitemap"
+msgstr "Sitemap XML"
+
+#: includes/Admin/Admin.php:256
+msgid "Keep search engines in sync with your published content."
+msgstr ""
+"Mantenha os motores de busca sincronizados com o seu conteúdo publicado."
+
+#: includes/Admin/Admin.php:259
+msgid "Open sitemap"
+msgstr "Abrir sitemap"
+
+#: includes/Admin/Admin.php:264
+msgid "Schema graph"
+msgstr "Grafo de schema"
+
+#: includes/Admin/Admin.php:265
+msgid "A single aggregated graph for machines and AI systems."
+msgstr "Um único grafo agregado para máquinas e sistemas de IA."
+
+#: includes/Admin/Admin.php:268
+msgid "View graph"
+msgstr "Ver grafo"
+
+#: includes/Admin/Admin.php:273
+msgid "Jump in"
+msgstr "Começar"
+
+#: includes/Admin/Admin.php:274
+msgid "Shortcuts to the tools you use most."
+msgstr "Atalhos para as ferramentas que mais usa."
+
+#: includes/Admin/Admin.php:303
+msgid ""
+"Tune titles, schema, AI drafting, bot controls, IndexNow, and Search "
+"Console."
+msgstr ""
+"Ajuste títulos, schema, rascunhos com IA, controlos de bots, IndexNow e "
+"Search Console."
+
+#: includes/Admin/Admin.php:311
+msgid "General"
+msgstr "Geral"
+
+#: includes/Admin/Admin.php:312
+msgid "Site-wide title defaults, organization details, and core SEO features."
+msgstr ""
+"Predefinições de títulos do site, detalhes da organização e funcionalidades "
+"SEO principais."
+
+#: includes/Admin/Admin.php:317
+msgid "Title separator"
+msgstr "Separador de título"
+
+#: includes/Admin/Admin.php:325
+msgid "Homepage title"
+msgstr "Título da página inicial"
+
+#: includes/Admin/Admin.php:332
+msgid "Homepage description"
+msgstr "Descrição da página inicial"
+
+#: includes/Admin/Admin.php:337
+msgid "Organization name"
+msgstr "Nome da organização"
+
+#: includes/Admin/Admin.php:345
+msgid "Organization logo URL"
+msgstr "URL do logótipo da organização"
+
+#: includes/Admin/Admin.php:352
+msgid "Features"
+msgstr "Funcionalidades"
+
+#: includes/Admin/Admin.php:355
+msgid "XML sitemaps"
+msgstr "Sitemaps XML"
+
+#: includes/Admin/Admin.php:359
+msgid "Structured data"
+msgstr "Dados estruturados"
+
+#: includes/Admin/Admin.php:363
+msgid "Schema aggregation endpoint"
+msgstr "Endpoint de agregação de schema"
+
+#: includes/Admin/Admin.php:367
+msgid "Noindex search results"
+msgstr "Noindex nos resultados de pesquisa"
+
+#: includes/Admin/Admin.php:377
+msgid "BYO AI (optional fallback)"
+msgstr "BYO AI (fallback opcional)"
+
+#: includes/Admin/Admin.php:378
+msgid "Used only when Seofyme Cloud keys are empty."
+msgstr "Usado apenas quando as chaves do Seofyme Cloud estão vazias."
+
+#: includes/Admin/Admin.php:383
+msgid "Provider"
+msgstr "Fornecedor"
+
+#: includes/Admin/Admin.php:394
+msgid "API key"
+msgstr "Chave API"
+
+#: includes/Admin/Admin.php:405
+msgid "AI visibility"
+msgstr "Visibilidade de IA"
+
+#: includes/Admin/Admin.php:406
+msgid "Control how AI systems discover and crawl your site."
+msgstr "Controle como os sistemas de IA descobrem e rastreiam o seu site."
+
+#: includes/Admin/Admin.php:411
+msgid "llms.txt"
+msgstr "llms.txt"
+
+#: includes/Admin/Admin.php:413
+msgid "Publish llms.txt so AI tools can discover important pages."
+msgstr ""
+"Publique llms.txt para que as ferramentas de IA possam descobrir páginas "
+"importantes."
+
+#: includes/Admin/Admin.php:422
+msgid "AI bot blocker"
+msgstr "Bloqueador de bots de IA"
+
+#: includes/Admin/Admin.php:423
+msgid "Block selected AI crawlers via robots.txt-style rules."
+msgstr "Bloqueie crawlers de IA selecionados via regras no estilo robots.txt."
+
+#: includes/Admin/Admin.php:438
+msgid "IndexNow"
+msgstr "IndexNow"
+
+#: includes/Admin/Admin.php:439
+msgid "Notify search engines instantly when content changes."
+msgstr ""
+"Notifique os motores de busca instantaneamente quando o conteúdo muda."
+
+#: includes/Admin/Admin.php:444
+msgid "Key"
+msgstr "Chave"
+
+#: includes/Admin/Admin.php:445
+msgid "Leave empty to auto-generate."
+msgstr "Deixe vazio para gerar automaticamente."
+
+#: includes/Admin/Admin.php:458
+msgid "Agency / reports"
+msgstr "Agência / relatórios"
+
+#: includes/Admin/Admin.php:459
+msgid "White-label branding and weekly email summaries."
+msgstr "Marca white-label e resumos semanais por e-mail."
+
+#: includes/Admin/Admin.php:464
+msgid "White-label"
+msgstr "White-label"
+
+#: includes/Admin/Admin.php:465
+msgid "Enable white-label menu name."
+msgstr "Ativar nome de menu white-label."
+
+#: includes/Admin/Admin.php:473
+msgid "Brand name"
+msgstr "Nome da marca"
+
+#: includes/Admin/Admin.php:481
+msgid "Email reports"
+msgstr "Relatórios por e-mail"
+
+#: includes/Admin/Admin.php:482
+msgid "Send weekly SEO summary."
+msgstr "Enviar resumo SEO semanal."
+
+#: includes/Admin/Admin.php:490
+msgid "Report email"
+msgstr "E-mail do relatório"
+
+#: includes/Admin/Admin.php:500
+msgid "Save settings"
+msgstr "Guardar definições"
+
+#: includes/Admin/Admin.php:531
+msgid "Unlimited"
+msgstr "Ilimitado"
+
+#. translators: 1: amount used, 2: plan limit.
+#: includes/Admin/Admin.php:534
+msgid "%1$s of %2$s used"
+msgstr "%1$s de %2$s utilizados"
+
+#: includes/Admin/Admin.php:545
+msgid "Refresh plan"
+msgstr "Atualizar plano"
+
+#: includes/Admin/Admin.php:550
+msgid "Manage account"
+msgstr "Gerir conta"
+
+#: includes/Admin/Admin.php:556
+msgid ""
+"Connect Seofyme Cloud, review your subscription, and refresh current AI "
+"usage."
+msgstr ""
+"Ligue o Seofyme Cloud, reveja a sua subscrição e atualize o uso atual de IA."
+
+#: includes/Admin/Admin.php:564
+msgid "API credentials"
+msgstr "Credenciais API"
+
+#: includes/Admin/Admin.php:565
+msgid ""
+"Create Seofyme product API keys in your account, then connect this WordPress"
+" site."
+msgstr ""
+"Crie chaves API do produto Seofyme na sua conta e depois ligue este site "
+"WordPress."
+
+#: includes/Admin/Admin.php:569
+msgid "Public API key"
+msgstr "Chave API pública"
+
+#: includes/Admin/Admin.php:573
+msgid "Secret API key"
+msgstr "Chave API secreta"
+
+#: includes/Admin/Admin.php:579
+msgid "Save credentials"
+msgstr "Guardar credenciais"
+
+#: includes/Admin/Admin.php:585
+msgid "Plan status"
+msgstr "Estado do plano"
+
+#: includes/Admin/Admin.php:586
+msgid "Subscription and monthly usage are synced from Seofyme Cloud."
+msgstr ""
+"A subscrição e o uso mensal são sincronizados a partir do Seofyme Cloud."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:594
+msgid "Last plan refresh failed: %s"
+msgstr "A última atualização do plano falhou: %s"
+
+#: includes/Admin/Admin.php:603
+msgid "Connection"
+msgstr "Ligação"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Connected"
+msgstr "Ligado"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Not connected"
+msgstr "Não ligado"
+
+#: includes/Admin/Admin.php:611
+msgid "Plan"
+msgstr "Plano"
+
+#: includes/Admin/Admin.php:615
+msgid "AI requests this month"
+msgstr "Pedidos de IA este mês"
+
+#: includes/Admin/Admin.php:619
+msgid "AI tokens this month"
+msgstr "Tokens de IA este mês"
+
+#: includes/Admin/Admin.php:624
+msgid "Usage period"
+msgstr "Período de utilização"
+
+#: includes/Admin/Admin.php:635
+msgid "Manage subscription"
+msgstr "Gerir subscrição"
+
+#: includes/Admin/Admin.php:636
+msgid "Compare plans or manage billing from your Seofyme account."
+msgstr "Compare planos ou gira a faturação a partir da sua conta Seofyme."
+
+#: includes/Admin/Admin.php:639
+msgid "Compare plans"
+msgstr "Comparar planos"
+
+#: includes/Admin/Admin.php:640
+msgid "Open Seofyme account"
+msgstr "Abrir conta Seofyme"
+
+#: includes/Support/Cloud_Account.php:119 modules/AI/Generator.php:135
+msgid "Invalid response from Seofyme Cloud."
+msgstr "Resposta inválida do Seofyme Cloud."
+
+#. translators: %d: HTTP status code.
+#: includes/Support/Cloud_Account.php:127
+msgid "Seofyme Cloud returned HTTP %d."
+msgstr "O Seofyme Cloud devolveu HTTP %d."
+
+#: includes/Support/Cloud_Account.php:135
+msgid "Seofyme Cloud returned an invalid plan."
+msgstr "O Seofyme Cloud devolveu um plano inválido."
+
+#: modules/FrontendInspector/FrontendInspector.php:66
+msgid "SEO"
+msgstr "SEO"
+
+#: modules/FrontendInspector/FrontendInspector.php:68
+msgid "Seofyme inspector"
+msgstr "Inspetor Seofyme"
+
+#: modules/FrontendInspector/FrontendInspector.php:71
+#: modules/ImageSEO/ImageSEO.php:126
+msgid "Save"
+msgstr "Guardar"
+
+#: modules/WooCommerce/WooCommerceSEO.php:43
+msgid "Seofyme WooCommerce SEO"
+msgstr "Seofyme WooCommerce SEO"
+
+#: modules/WooCommerce/WooCommerceSEO.php:56
+msgid "Brand"
+msgstr "Marca"
+
+#: modules/WooCommerce/WooCommerceSEO.php:57
+msgid "GTIN / barcode"
+msgstr "GTIN / código de barras"
+
+#: modules/Keyphrases/Keyphrases.php:43
+msgid "Related keyphrases"
+msgstr "Palavras-chave relacionadas"
+
+#: modules/Keyphrases/Keyphrases.php:62
+msgid ""
+"Optimize for up to 5 related keyphrases. Synonyms and word forms count "
+"toward a full SEO check for each."
+msgstr ""
+"Otimize até 5 palavras-chave relacionadas. Sinónimos e formas da palavra "
+"contam para uma verificação SEO completa de cada uma."
+
+#: modules/Keyphrases/Keyphrases.php:67
+msgid "Keyphrase"
+msgstr "Palavra-chave"
+
+#: modules/Keyphrases/Keyphrases.php:73
+msgid "Synonyms, comma-separated"
+msgstr "Sinónimos, separados por vírgulas"
+
+#: modules/NotFound/NotFoundMonitor.php:116
+msgid "Clear log"
+msgstr "Limpar registo"
+
+#: modules/NotFound/NotFoundMonitor.php:123
+msgid "See broken URLs visitors hit, then convert them into redirects."
+msgstr ""
+"Veja os URLs quebrados que os visitantes encontram e converta-os em "
+"redirecionamentos."
+
+#: modules/NotFound/NotFoundMonitor.php:129
+msgid "Logged 404s"
+msgstr "404s registados"
+
+#: modules/NotFound/NotFoundMonitor.php:130
+msgid "Create a redirect from any broken URL below."
+msgstr "Crie um redirecionamento a partir de qualquer URL quebrado abaixo."
+
+#: modules/NotFound/NotFoundMonitor.php:136
+#: modules/RankTracker/RankTracker.php:115
+msgid "URL"
+msgstr "URL"
+
+#: modules/NotFound/NotFoundMonitor.php:137
+msgid "Hits"
+msgstr "Acessos"
+
+#: modules/NotFound/NotFoundMonitor.php:138
+msgid "Last seen"
+msgstr "Última visualização"
+
+#: modules/NotFound/NotFoundMonitor.php:139 modules/ImageSEO/ImageSEO.php:110
+#: modules/Redirects/Admin_Page.php:114 modules/AI/BulkMeta.php:92
+#: modules/RankTracker/RankTracker.php:118
+msgid "Actions"
+msgstr "Ações"
+
+#: modules/NotFound/NotFoundMonitor.php:144
+msgid "No 404s logged yet."
+msgstr "Ainda não há 404s registados."
+
+#: modules/NotFound/NotFoundMonitor.php:157
+msgid "Redirect"
+msgstr "Redirecionar"
+
+#: modules/NotFound/NotFoundMonitor.php:178
+#: modules/NotFound/NotFoundMonitor.php:194
+#: modules/SearchConsole/SearchConsole.php:154
+#: modules/SearchConsole/SearchConsole.php:260
+#: modules/SearchConsole/SearchConsole.php:275
+#: modules/SearchConsole/SearchConsole.php:291
+#: modules/Redirects/Redirects.php:318 modules/RankTracker/RankTracker.php:165
+#: modules/RankTracker/RankTracker.php:187
+#: modules/RankTracker/RankTracker.php:209
+msgid "Unauthorized"
+msgstr "Não autorizado"
+
+#: modules/Workouts/Workouts.php:87
+msgid ""
+"Guided tasks for orphaned pages, cornerstone content, and stale updates."
+msgstr ""
+"Tarefas guiadas para páginas órfãs, conteúdo cornerstone e atualizações "
+"desatualizadas."
+
+#: modules/Workouts/Workouts.php:93
+msgid "Orphaned content"
+msgstr "Conteúdo órfão"
+
+#: modules/Workouts/Workouts.php:94
+msgid "Published pages with no internal links pointing to them."
+msgstr "Páginas publicadas sem ligações internas a apontar para elas."
+
+#: modules/Workouts/Workouts.php:99
+msgid "No orphaned posts found in the scan window."
+msgstr "Nenhuma publicação órfã encontrada na janela de análise."
+
+#: modules/Workouts/Workouts.php:111
+msgid "Pages marked as cornerstone in the editor."
+msgstr "Páginas marcadas como cornerstone no editor."
+
+#: modules/Workouts/Workouts.php:116
+msgid "Mark pages as cornerstone in the editor to track them here."
+msgstr "Marque páginas como cornerstone no editor para as acompanhar aqui."
+
+#: modules/Workouts/Workouts.php:127
+msgid "Stale cornerstone content"
+msgstr "Conteúdo cornerstone desatualizado"
+
+#. translators: %d days
+#: modules/Workouts/Workouts.php:132
+msgid ""
+"Cornerstone pages not updated in the last %d days — refresh them to keep "
+"rankings healthy."
+msgstr ""
+"Páginas cornerstone não atualizadas nos últimos %d dias — atualize-as para "
+"manter as posições saudáveis."
+
+#: modules/Workouts/Workouts.php:141
+msgid "All cornerstone content looks fresh."
+msgstr "Todo o conteúdo cornerstone parece atualizado."
+
+#: modules/Workouts/Workouts.php:146
+msgid "ago"
+msgstr "atrás"
+
+#: modules/SearchConsole/SearchConsole.php:132
+msgid "Google Search Console connected."
+msgstr "Google Search Console ligado."
+
+#: modules/SearchConsole/SearchConsole.php:133
+msgid "Search Console disconnected."
+msgstr "Search Console desligado."
+
+#: modules/SearchConsole/SearchConsole.php:134
+msgid "Search Console property saved."
+msgstr "Propriedade do Search Console guardada."
+
+#: modules/SearchConsole/SearchConsole.php:135
+msgid "Positions synced from Search Console."
+msgstr "Posições sincronizadas a partir do Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:136
+msgid "Google authorization was cancelled."
+msgstr "A autorização do Google foi cancelada."
+
+#: modules/SearchConsole/SearchConsole.php:137
+msgid ""
+"Search Console connection failed. Check your Client ID/Secret and try again."
+msgstr ""
+"A ligação ao Search Console falhou. Verifique o Client ID/Secret e tente "
+"novamente."
+
+#: modules/SearchConsole/SearchConsole.php:138
+msgid "Add a Google Client ID and Client Secret before connecting."
+msgstr "Adicione um Google Client ID e Client Secret antes de ligar."
+
+#: modules/SearchConsole/SearchConsole.php:139
+msgid "Choose a Search Console property first."
+msgstr "Escolha primeiro uma propriedade do Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:140
+msgid "Could not sync positions from Search Console."
+msgstr "Não foi possível sincronizar as posições a partir do Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:329
+msgid "Invalid token response from Google."
+msgstr "Resposta de token inválida do Google."
+
+#: modules/SearchConsole/SearchConsole.php:345
+msgid "Search Console is not connected."
+msgstr "O Search Console não está ligado."
+
+#: modules/SearchConsole/SearchConsole.php:365
+msgid "Could not refresh Google access token."
+msgstr "Não foi possível atualizar o token de acesso do Google."
+
+#: modules/SearchConsole/SearchConsole.php:447
+msgid "No Search Console property selected."
+msgstr "Nenhuma propriedade do Search Console selecionada."
+
+#: modules/SearchConsole/SearchConsole.php:484
+msgid "Invalid Search Console response."
+msgstr "Resposta inválida do Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:541
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:542
+msgid "OAuth credentials used to connect Search Console for rank automation."
+msgstr ""
+"Credenciais OAuth usadas para ligar o Search Console para automatização de "
+"posições."
+
+#. translators: %s: OAuth redirect URI.
+#: modules/SearchConsole/SearchConsole.php:549
+msgid ""
+"Create an OAuth client in Google Cloud Console, enable the Search Console "
+"API, and set this redirect URI: %s"
+msgstr ""
+"Crie um cliente OAuth no Google Cloud Console, ative a Search Console API e "
+"defina este URI de redirecionamento: %s"
+
+#: modules/SearchConsole/SearchConsole.php:555
+msgid "Google Client ID"
+msgstr "Google Client ID"
+
+#: modules/SearchConsole/SearchConsole.php:559
+msgid "Google Client Secret"
+msgstr "Google Client Secret"
+
+#: modules/SearchConsole/SearchConsole.php:583
+#: modules/SearchConsole/SearchConsole.php:658
+msgid "Connect Search Console"
+msgstr "Ligar Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:584
+msgid ""
+"Authorize Google, pick a property, and sync keyword positions into the rank "
+"tracker."
+msgstr ""
+"Autorize o Google, escolha uma propriedade e sincronize as posições das "
+"palavras-chave no monitor de posições."
+
+#: modules/SearchConsole/SearchConsole.php:589
+msgid "Status"
+msgstr "Estado"
+
+#: modules/SearchConsole/SearchConsole.php:603
+msgid ""
+"Save a Google Client ID and Client Secret in Settings before connecting."
+msgstr ""
+"Guarde um Google Client ID e Client Secret nas Definições antes de ligar."
+
+#: modules/SearchConsole/SearchConsole.php:605
+msgid "Open Settings"
+msgstr "Abrir Definições"
+
+#: modules/SearchConsole/SearchConsole.php:617
+msgid "Property"
+msgstr "Propriedade"
+
+#: modules/SearchConsole/SearchConsole.php:633
+msgid "Save property"
+msgstr "Guardar propriedade"
+
+#: modules/SearchConsole/SearchConsole.php:644
+msgid "Sync positions"
+msgstr "Sincronizar posições"
+
+#: modules/SearchConsole/SearchConsole.php:651
+msgid "Disconnect"
+msgstr "Desligar"
+
+#: modules/ImageSEO/ImageSEO.php:97
+msgid ""
+"Fill missing alt text in bulk. New uploads get a filename-based alt "
+"automatically."
+msgstr ""
+"Preencha o texto alt em falta em massa. Novos envios obtêm automaticamente "
+"um alt baseado no nome do ficheiro."
+
+#: modules/ImageSEO/ImageSEO.php:101
+msgid "Missing alt text"
+msgstr "Texto alt em falta"
+
+#: modules/ImageSEO/ImageSEO.php:102
+msgid "Images without alternative text in the media library."
+msgstr "Imagens sem texto alternativo na biblioteca de multimédia."
+
+#: modules/ImageSEO/ImageSEO.php:108
+msgid "Image"
+msgstr "Imagem"
+
+#: modules/ImageSEO/ImageSEO.php:109
+msgid "Alt text"
+msgstr "Texto alt"
+
+#: modules/ImageSEO/ImageSEO.php:115
+msgid "No images missing alt text in this scan."
+msgstr "Nenhuma imagem sem texto alt nesta análise."
+
+#: modules/NewsSEO/NewsSEO.php:48
+msgid "News SEO"
+msgstr "SEO de notícias"
+
+#: modules/NewsSEO/NewsSEO.php:62
+msgid "Include in news sitemap"
+msgstr "Incluir no sitemap de notícias"
+
+#: modules/NewsSEO/NewsSEO.php:63
+msgid "Genres"
+msgstr "Géneros"
+
+#: modules/Headline/HeadlineAnalyzer.php:35
+msgid "Headline analyzer"
+msgstr "Analisador de títulos"
+
+#. translators: %d
+#: modules/Headline/HeadlineAnalyzer.php:47
+msgid "Score: %d / 100"
+msgstr "Pontuação: %d / 100"
+
+#: modules/Headline/HeadlineAnalyzer.php:70
+msgid "Length is in a strong CTR range."
+msgstr "O comprimento está num intervalo forte de CTR."
+
+#: modules/Headline/HeadlineAnalyzer.php:72
+msgid "Aim for roughly 40–60 characters."
+msgstr "Procure cerca de 40–60 caracteres."
+
+#: modules/Headline/HeadlineAnalyzer.php:78
+msgid "Use about 5–12 words."
+msgstr "Use cerca de 5–12 palavras."
+
+#: modules/Headline/HeadlineAnalyzer.php:83
+msgid "Numbers in headlines often lift clicks."
+msgstr "Números nos títulos aumentam frequentemente os cliques."
+
+#: modules/Headline/HeadlineAnalyzer.php:85
+msgid "Consider adding a number (e.g. “7 ways…”)."
+msgstr "Considere adicionar um número (ex.: “7 formas…”)."
+
+#: modules/Headline/HeadlineAnalyzer.php:93
+msgid "Power words detected."
+msgstr "Palavras de impacto detetadas."
+
+#: modules/ContentPlanner/ContentPlanner.php:38
+msgid "Content planner"
+msgstr "Planeador de conteúdo"
+
+#: modules/ContentPlanner/ContentPlanner.php:47
+msgid "Ideas drawn from your site topics, plus a structured starter draft."
+msgstr ""
+"Ideias baseadas nos tópicos do seu site, mais um rascunho inicial "
+"estruturado."
+
+#: modules/ContentPlanner/ContentPlanner.php:48
+msgid "Suggest ideas"
+msgstr "Sugerir ideias"
+
+#: modules/ContentPlanner/ContentPlanner.php:50
+msgid "Build starter draft"
+msgstr "Criar rascunho inicial"
+
+#: modules/LinkAssistant/LinkAssistant.php:82
+msgid ""
+"Find orphaned pages and insert contextual internal links from related "
+"content."
+msgstr ""
+"Encontre páginas órfãs e insira ligações internas contextuais a partir de "
+"conteúdo relacionado."
+
+#: modules/LinkAssistant/LinkAssistant.php:87
+msgid "Linking opportunities"
+msgstr "Oportunidades de ligação"
+
+#: modules/LinkAssistant/LinkAssistant.php:88
+msgid "Insert a contextual link from a related page into an orphaned page."
+msgstr ""
+"Insira uma ligação contextual de uma página relacionada numa página órfã."
+
+#: modules/LinkAssistant/LinkAssistant.php:94
+msgid "Orphaned page"
+msgstr "Página órfã"
+
+#: modules/LinkAssistant/LinkAssistant.php:95
+msgid "Suggested source"
+msgstr "Fonte sugerida"
+
+#: modules/LinkAssistant/LinkAssistant.php:96
+msgid "Action"
+msgstr "Ação"
+
+#: modules/LinkAssistant/LinkAssistant.php:101
+msgid "No linking opportunities found."
+msgstr "Nenhuma oportunidade de ligação encontrada."
+
+#: modules/LinkAssistant/LinkAssistant.php:114
+msgid "Insert link"
+msgstr "Inserir ligação"
+
+#. translators: %s link
+#: modules/LinkAssistant/LinkAssistant.php:151
+msgid "Related reading: %s"
+msgstr "Leitura relacionada: %s"
+
+#: modules/SiteAudit/SiteAudit.php:41
+msgid "Site is public (not discouraging search engines)"
+msgstr "O site é público (não desencoraja motores de busca)"
+
+#: modules/SiteAudit/SiteAudit.php:45
+msgid "XML sitemaps enabled"
+msgstr "Sitemaps XML ativados"
+
+#: modules/SiteAudit/SiteAudit.php:49
+msgid "Organization name set"
+msgstr "Nome da organização definido"
+
+#: modules/SiteAudit/SiteAudit.php:53
+msgid "Homepage meta description set"
+msgstr "Meta description da página inicial definida"
+
+#: modules/SiteAudit/SiteAudit.php:57
+msgid "Pretty permalinks enabled"
+msgstr "Permalinks amigáveis ativados"
+
+#. translators: %d
+#: modules/SiteAudit/SiteAudit.php:76
+msgid "Recent posts/pages missing meta description: %d"
+msgstr "Publicações/páginas recentes sem meta description: %d"
+
+#: modules/SiteAudit/SiteAudit.php:82
+msgid "HTTPS detected for admin request"
+msgstr "HTTPS detetado para pedido de administração"
+
+#: modules/SiteAudit/SiteAudit.php:88
+msgid "Site tagline is customized"
+msgstr "O slogan do site está personalizado"
+
+#. translators: 1 good 2 total
+#: modules/SiteAudit/SiteAudit.php:108
+msgid "%1$d of %2$d checks look healthy."
+msgstr "%1$d de %2$d verificações parecem saudáveis."
+
+#: modules/SiteAudit/SiteAudit.php:113
+msgid "Health checks"
+msgstr "Verificações de saúde"
+
+#: modules/SiteAudit/SiteAudit.php:114
+msgid "Technical SEO signals across your site configuration."
+msgstr "Sinais de SEO técnico na configuração do seu site."
+
+#: modules/Social/Social.php:42
+msgid "Social preview"
+msgstr "Pré-visualização social"
+
+#: modules/Social/Social.php:55
+msgid "Facebook title"
+msgstr "Título do Facebook"
+
+#: modules/Social/Social.php:56
+msgid "Facebook description"
+msgstr "Descrição do Facebook"
+
+#: modules/Social/Social.php:57
+msgid "Facebook image URL"
+msgstr "URL da imagem do Facebook"
+
+#: modules/Social/Social.php:58
+msgid "X title"
+msgstr "Título do X"
+
+#: modules/Social/Social.php:59
+msgid "X description"
+msgstr "Descrição do X"
+
+#: modules/Social/Social.php:60
+msgid "X image URL"
+msgstr "URL da imagem do X"
+
+#: modules/Redirects/Admin_Page.php:34
+msgid "Keep old URLs working when content moves — add one, or import a CSV."
+msgstr ""
+"Mantenha URLs antigos a funcionar quando o conteúdo muda — adicione um ou "
+"importe um CSV."
+
+#: modules/Redirects/Admin_Page.php:39 modules/Redirects/Admin_Page.php:79
+msgid "Add redirect"
+msgstr "Adicionar redirecionamento"
+
+#: modules/Redirects/Admin_Page.php:40
+msgid "Map an old path to a new destination."
+msgstr "Mapeie um caminho antigo para um novo destino."
+
+#: modules/Redirects/Admin_Page.php:47
+msgid "Old path / pattern"
+msgstr "Caminho / padrão antigo"
+
+#: modules/Redirects/Admin_Page.php:51
+msgid "New URL"
+msgstr "Novo URL"
+
+#: modules/Redirects/Admin_Page.php:56 modules/Redirects/Admin_Page.php:112
+msgid "Format"
+msgstr "Formato"
+
+#: modules/Redirects/Admin_Page.php:67 modules/Redirects/Admin_Page.php:113
+msgid "Type"
+msgstr "Tipo"
+
+#: modules/Redirects/Admin_Page.php:86
+msgid "Import CSV"
+msgstr "Importar CSV"
+
+#: modules/Redirects/Admin_Page.php:87
+msgid "Format: origin, target, type (type optional)."
+msgstr "Formato: origem, destino, tipo (tipo opcional)."
+
+#: modules/Redirects/Admin_Page.php:96
+msgid "Import"
+msgstr "Importar"
+
+#: modules/Redirects/Admin_Page.php:103
+msgid "Existing redirects"
+msgstr "Redirecionamentos existentes"
+
+#: modules/Redirects/Admin_Page.php:104
+msgid "All active redirects on this site."
+msgstr "Todos os redirecionamentos ativos neste site."
+
+#: modules/Redirects/Admin_Page.php:110
+msgid "Origin"
+msgstr "Origem"
+
+#: modules/Redirects/Admin_Page.php:111
+msgid "Target"
+msgstr "Destino"
+
+#: modules/Redirects/Admin_Page.php:119
+msgid "No redirects yet."
+msgstr "Ainda não há redirecionamentos."
+
+#: modules/Redirects/Admin_Page.php:132
+#: modules/RankTracker/RankTracker.php:144
+msgid "Delete"
+msgstr "Eliminar"
+
+#: modules/Redirects/Redirects.php:193 modules/Redirects/Redirects.php:197
+msgid "This content is no longer available."
+msgstr "Este conteúdo já não está disponível."
+
+#: modules/Redirects/Redirects.php:253
+msgid "Seofyme detected a URL change. Create a 301 redirect?"
+msgstr ""
+"O Seofyme detetou uma alteração de URL. Criar um redirecionamento 301?"
+
+#: modules/Redirects/Redirects.php:257
+msgid "Create redirect"
+msgstr "Criar redirecionamento"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:40
+msgid "Default (Article/WebPage)"
+msgstr "Predefinição (Article/WebPage)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:41
+msgid "FAQ"
+msgstr "FAQ"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:42
+msgid "HowTo"
+msgstr "HowTo"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:43
+msgid "Product"
+msgstr "Product"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:44
+msgid "Recipe"
+msgstr "Recipe"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:45
+msgid "Course"
+msgstr "Course"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:46
+msgid "Event"
+msgstr "Event"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:60
+msgid "Advanced schema"
+msgstr "Schema avançado"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:77
+msgid "Schema type"
+msgstr "Tipo de schema"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:84
+msgid "Extra JSON fields (optional)"
+msgstr "Campos JSON extra (opcional)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:85
+msgid "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+msgstr "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:88
+msgid "For FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. For HowTo: {\"steps\":[\"...\",\"...\"]}."
+msgstr "Para FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. Para HowTo: {\"steps\":[\"...\",\"...\"]}."
+
+#: modules/InternalLinking/Linking_Block.php:46
+msgid "Related internal links"
+msgstr "Ligações internas relacionadas"
+
+#: modules/InternalLinking/Linking_Block.php:47
+msgid "Suggests related posts to strengthen site structure."
+msgstr "Sugere publicações relacionadas para reforçar a estrutura do site."
+
+#: modules/InternalLinking/Linking_Block.php:59
+#: modules/InternalLinking/Linking_Block.php:78
+msgid "Related reading"
+msgstr "Leitura relacionada"
+
+#: modules/InternalLinking/InternalLinking.php:41
+msgid "Internal linking"
+msgstr "Ligações internas"
+
+#: modules/InternalLinking/InternalLinking.php:53
+msgid "Refresh suggestions"
+msgstr "Atualizar sugestões"
+
+#: modules/AI/BulkMeta.php:77
+msgid ""
+"Draft missing titles and descriptions, review each one, then approve to "
+"save."
+msgstr ""
+"Crie rascunhos de títulos e descrições em falta, reveja cada um e aprove "
+"para guardar."
+
+#: modules/AI/BulkMeta.php:82
+msgid "Missing meta"
+msgstr "Meta em falta"
+
+#: modules/AI/BulkMeta.php:83
+msgid "Posts and pages without an SEO title or description."
+msgstr "Publicações e páginas sem título SEO ou descrição."
+
+#: modules/AI/BulkMeta.php:89
+msgid "Content"
+msgstr "Conteúdo"
+
+#: modules/AI/BulkMeta.php:91
+msgid "Description"
+msgstr "Descrição"
+
+#: modules/AI/BulkMeta.php:97
+msgid "No gaps found."
+msgstr "Nenhuma lacuna encontrada."
+
+#: modules/AI/BulkMeta.php:106 modules/AI/Generator.php:42
+msgid "AI draft"
+msgstr "Rascunho IA"
+
+#: modules/AI/BulkMeta.php:107
+msgid "Approve"
+msgstr "Aprovar"
+
+#: modules/AI/Generator.php:54
+msgid ""
+"Draft titles, metas, social copy, or optimization tips. Nothing saves until "
+"you click a suggestion."
+msgstr ""
+"Crie rascunhos de títulos, metas, textos sociais ou dicas de otimização. "
+"Nada é guardado até clicar numa sugestão."
+
+#: modules/AI/Generator.php:55
+msgid "Generate titles"
+msgstr "Gerar títulos"
+
+#: modules/AI/Generator.php:56
+msgid "Generate descriptions"
+msgstr "Gerar descrições"
+
+#: modules/AI/Generator.php:57
+msgid "Social titles"
+msgstr "Títulos sociais"
+
+#: modules/AI/Generator.php:58
+msgid "Social descriptions"
+msgstr "Descrições sociais"
+
+#: modules/AI/Generator.php:59
+msgid "Optimize keyphrase tips"
+msgstr "Dicas de otimização da palavra-chave"
+
+#: modules/AI/Generator.php:60
+msgid "Summarize"
+msgstr "Resumir"
+
+#: modules/AI/Generator.php:138
+msgid "Seofyme Cloud request failed."
+msgstr "O pedido ao Seofyme Cloud falhou."
+
+#: modules/AI/Generator.php:144
+msgid "Seofyme Cloud returned no suggestions."
+msgstr "O Seofyme Cloud não devolveu sugestões."
+
+#: modules/AI/Generator.php:314
+msgid "Invalid response from AI provider."
+msgstr "Resposta inválida do fornecedor de IA."
+
+#. translators: %d: HTTP status code
+#: modules/AI/Generator.php:326
+msgid "AI provider returned HTTP %d."
+msgstr "O fornecedor de IA devolveu HTTP %d."
+
+#: modules/AI/Generator.php:335
+msgid "Empty AI response."
+msgstr "Resposta de IA vazia."
+
+#: modules/AI/Generator.php:340
+msgid "Could not parse AI response"
+msgstr "Não foi possível analisar a resposta de IA"
+
+#: modules/Revisions/SEORevisions.php:78
+msgid "SEO revisions"
+msgstr "Revisões SEO"
+
+#: modules/Revisions/SEORevisions.php:91
+msgid "No SEO revisions yet."
+msgstr "Ainda não há revisões SEO."
+
+#: modules/Revisions/SEORevisions.php:99
+msgid "(empty title)"
+msgstr "(título vazio)"
+
+#: modules/Revisions/SEORevisions.php:103
+msgid "Restore"
+msgstr "Restaurar"
+
+#: modules/AuthorSEO/AuthorSEO.php:48
+msgid "Seofyme Author SEO (E-E-A-T)"
+msgstr "Seofyme Author SEO (E-E-A-T)"
+
+#: modules/AuthorSEO/AuthorSEO.php:50
+msgid "Job title"
+msgstr "Cargo"
+
+#: modules/AuthorSEO/AuthorSEO.php:52
+msgid "Knows about"
+msgstr "Conhece sobre"
+
+#: modules/AuthorSEO/AuthorSEO.php:54
+msgid "SameAs profiles (comma URLs)"
+msgstr "Perfis SameAs (URLs separados por vírgulas)"
+
+#: modules/AuthorSEO/AuthorSEO.php:56
+msgid "Education"
+msgstr "Formação"
+
+#: modules/AuthorSEO/AuthorSEO.php:58
+msgid "Experience summary"
+msgstr "Resumo de experiência"
+
+#: modules/RankTracker/RankTracker.php:69
+msgid "Track focus keywords and sync positions from Google Search Console."
+msgstr ""
+"Acompanhe palavras-chave principais e sincronize posições a partir do Google"
+" Search Console."
+
+#: modules/RankTracker/RankTracker.php:70
+msgid ""
+"Track focus keywords and log positions over time. Connect Search Console to "
+"automate updates."
+msgstr ""
+"Acompanhe palavras-chave principais e registe posições ao longo do tempo. "
+"Ligue o Search Console para automatizar atualizações."
+
+#: modules/RankTracker/RankTracker.php:76
+msgid "Add keyword"
+msgstr "Adicionar palavra-chave"
+
+#: modules/RankTracker/RankTracker.php:77
+msgid "Start tracking a keyword and its target URL."
+msgstr "Comece a acompanhar uma palavra-chave e o seu URL de destino."
+
+#: modules/RankTracker/RankTracker.php:84
+#: modules/RankTracker/RankTracker.php:114
+msgid "Keyword"
+msgstr "Palavra-chave"
+
+#: modules/RankTracker/RankTracker.php:88
+msgid "Target URL"
+msgstr "URL de destino"
+
+#: modules/RankTracker/RankTracker.php:93
+msgid "Current position"
+msgstr "Posição atual"
+
+#: modules/RankTracker/RankTracker.php:101
+msgid "Track keyword"
+msgstr "Acompanhar palavra-chave"
+
+#: modules/RankTracker/RankTracker.php:107
+msgid "Tracked keywords"
+msgstr "Palavras-chave acompanhadas"
+
+#: modules/RankTracker/RankTracker.php:108
+msgid "Log new positions and review recent history."
+msgstr "Registe novas posições e reveja o histórico recente."
+
+#: modules/RankTracker/RankTracker.php:116
+msgid "Position"
+msgstr "Posição"
+
+#: modules/RankTracker/RankTracker.php:117
+msgid "History"
+msgstr "Histórico"
+
+#: modules/RankTracker/RankTracker.php:123
+msgid "No keywords tracked yet."
+msgstr "Ainda não há palavras-chave acompanhadas."
+
+#: modules/RankTracker/RankTracker.php:135
+msgid "Log"
+msgstr "Registar"
+
+#: modules/LocalSEO/LocalSEO.php:44
+msgid "Locations"
+msgstr "Localizações"
+
+#: modules/LocalSEO/LocalSEO.php:45
+msgid "Location"
+msgstr "Localização"
+
+#: modules/LocalSEO/LocalSEO.php:63
+msgid "Local business details"
+msgstr "Detalhes do negócio local"
+
+#: modules/LocalSEO/LocalSEO.php:146
+msgid "No locations yet."
+msgstr "Ainda não há localizações."

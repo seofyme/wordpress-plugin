@@ -210,12 +210,14 @@ When WooCommerce is active, Seofyme adds brand/GTIN fields on products, product 
 seofyme-seo.php           # Main plugin bootstrap
 readme.txt                # WordPress.org directory readme
 README.md                 # This GitHub documentation
+wpml-config.xml           # WPML field/option translation map
 uninstall.php             # Cleanup on plugin delete
 license.txt               # GPL-3.0
-includes/                 # Core: admin, analysis, frontend head, sitemap, schema, options
+bin/build-translations.py # Rebuild .po/.mo from languages/translations/*.json
+includes/                 # Core: admin, analysis, frontend head, sitemap, schema, options, WPML
 modules/                  # Feature modules (redirects, AI, local, video, news, …)
 assets/css|js             # Admin + front-end inspector + Gutenberg block assets
-languages/                # Translation files
+languages/                # POT/PO/MO + JSON translation maps (EU locales)
 ```
 
 ### Notable modules
@@ -241,6 +243,14 @@ languages/                # Translation files
 ### Is this a fork of Yoast, Rank Math, or AIOSEO?
 
 No. Seofyme SEO is original code under the `SeofymeSEO` namespace with `_seofyme_*` post meta keys only.
+
+### Is Seofyme SEO compatible with WPML?
+
+Yes. `wpml-config.xml` tells WPML which SEO titles, descriptions, social fields, schema, locations, and homepage settings to translate. With WPML active, Seofyme outputs hreflang tags (unless WPML already does) and language alternates in the XML sitemap. Use **WPML String Translation** for site-wide options such as the homepage title.
+
+### Which languages are included?
+
+UI translations ship for common EU locales: `bg_BG`, `hr`, `cs_CZ`, `da_DK`, `nl_NL`, `et`, `fi`, `fr_FR`, `de_DE`, `el`, `hu_HU`, `it_IT`, `lv`, `lt_LT`, `pl_PL`, `pt_PT`, `ro_RO`, `sk_SK`, `sl_SI`, `es_ES`, `sv_SE`. WordPress loads them from `languages/seofyme-seo-{locale}.mo` based on the site language. Source maps live in `languages/translations/`; rebuild with `bin/build-translations.py` (requires `polib`).
 
 ### Why do sitemaps or llms.txt 404?
 

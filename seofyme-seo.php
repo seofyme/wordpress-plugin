@@ -34,6 +34,11 @@ register_deactivation_hook( __FILE__, array( 'SeofymeSEO\\Plugin', 'deactivate' 
 add_action(
 	'plugins_loaded',
 	static function () {
+		load_plugin_textdomain(
+			'seofyme-seo',
+			false,
+			dirname( SEOFYME_SEO_BASENAME ) . '/languages'
+		);
 		SeofymeSEO\Plugin::instance()->init();
 	}
 );

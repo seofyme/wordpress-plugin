@@ -27,6 +27,14 @@ Seofyme SEO is an original WordPress SEO plugin. It helps you optimize titles an
 
 No. Seofyme SEO is original code under the SeofymeSEO namespace with `_seofyme_*` meta keys.
 
+= Is Seofyme SEO compatible with WPML? =
+
+Yes. A `wpml-config.xml` registers SEO titles, descriptions, social fields, schema, locations, and homepage settings for translation. With WPML active, Seofyme also outputs hreflang tags (unless WPML already does) and language alternates in the XML sitemap. Install WPML String Translation to translate site-wide options such as the homepage title.
+
+= Which languages are included? =
+
+The plugin ships UI translations for common EU locales: Bulgarian, Croatian, Czech, Danish, Dutch, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Polish, Portuguese (Portugal), Romanian, Slovak, Slovenian, Spanish, and Swedish. WordPress uses the site language (Settings → General) to load the matching `languages/seofyme-seo-{locale}.mo` file.
+
 == Changelog ==
 
 = 0.1.0 =

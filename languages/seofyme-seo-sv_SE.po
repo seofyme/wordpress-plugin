@@ -1,0 +1,1396 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Seofyme SEO 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/seofyme/wordpress-plugin\n"
+"Language-Team: Swedish\n"
+"Language: sv_SE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Domain: seofyme-seo\n"
+
+#: includes/Analysis/Analyzer.php:56
+msgid "Focus keyphrase is set."
+msgstr "Fokusnyckelordet är angivet."
+
+#: includes/Analysis/Analyzer.php:59
+msgid "Add a focus keyphrase."
+msgstr "Lägg till ett fokusnyckelord."
+
+#: includes/Analysis/Analyzer.php:64
+msgid "Focus keyphrase (or a word form) appears in the SEO title."
+msgstr "Fokusnyckelordet (eller en ordform) förekommer i SEO-titeln."
+
+#: includes/Analysis/Analyzer.php:67
+msgid "Consider adding the focus keyphrase to the SEO title."
+msgstr "Överväg att lägga till fokusnyckelordet i SEO-titeln."
+
+#: includes/Analysis/Analyzer.php:72
+msgid "Focus keyphrase (or a word form) appears in the content."
+msgstr "Fokusnyckelordet (eller en ordform) förekommer i innehållet."
+
+#: includes/Analysis/Analyzer.php:75
+msgid "Focus keyphrase was not found in the content."
+msgstr "Fokusnyckelordet hittades inte i innehållet."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:101
+msgid "Related keyphrase “%s” (or synonym/word form) is used."
+msgstr "Relaterat nyckelord “%s” (eller synonym/ordform) används."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:104
+msgid "Add related keyphrase “%s” or a synonym naturally in the text."
+msgstr ""
+"Lägg till det relaterade nyckelordet “%s” eller en synonym naturligt i "
+"texten."
+
+#: includes/Analysis/Analyzer.php:114
+msgid "SEO title length looks good."
+msgstr "SEO-titelns längd ser bra ut."
+
+#: includes/Analysis/Analyzer.php:117
+msgid "SEO title should usually be 30–60 characters."
+msgstr "SEO-titeln bör vanligtvis vara 30–60 tecken."
+
+#: includes/Analysis/Analyzer.php:123
+msgid "Meta description length looks good."
+msgstr "Meta-beskrivningens längd ser bra ut."
+
+#: includes/Analysis/Analyzer.php:126
+msgid "Meta description should usually be 70–160 characters."
+msgstr "Meta-beskrivningen bör vanligtvis vara 70–160 tecken."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:131
+msgid "Content length is solid (%d words)."
+msgstr "Innehållslängden är solid (%d ord)."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:134
+msgid "Content is short (%d words). Aim for 300+ for competitive topics."
+msgstr ""
+"Innehållet är kort (%d ord). Sikta på 300+ för konkurrensutsatta ämnen."
+
+#: includes/Analysis/Analyzer.php:142
+msgid "Average sentence length is easy to read."
+msgstr "Genomsnittlig meningslängd är lätt att läsa."
+
+#: includes/Analysis/Analyzer.php:145
+msgid "Sentences are a bit long — shorter sentences improve readability."
+msgstr "Meningarna är lite långa — kortare meningar förbättrar läsbarheten."
+
+#: includes/Analysis/Analyzer.php:150
+msgid "Content uses H2 subheadings."
+msgstr "Innehållet använder H2-underrubriker."
+
+#: includes/Analysis/Analyzer.php:153
+msgid "Add H2 subheadings to structure the page."
+msgstr "Lägg till H2-underrubriker för att strukturera sidan."
+
+#: includes/Admin/Metabox.php:44 includes/Admin/Admin.php:67
+#: includes/Admin/Admin.php:68
+msgid "Seofyme SEO"
+msgstr "Seofyme SEO"
+
+#: includes/Admin/Metabox.php:76
+msgid "Search preview"
+msgstr "Sökförhandsvisning"
+
+#: includes/Admin/Metabox.php:79
+msgid "Meta description preview appears here."
+msgstr "Förhandsvisning av meta-beskrivning visas här."
+
+#: includes/Admin/Metabox.php:83
+msgid "Focus keyphrase"
+msgstr "Fokusnyckelord"
+
+#: includes/Admin/Metabox.php:87
+#: modules/FrontendInspector/FrontendInspector.php:69
+#: modules/AI/BulkMeta.php:90
+msgid "SEO title"
+msgstr "SEO-titel"
+
+#: includes/Admin/Metabox.php:89
+msgid "Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+msgstr "Variabler: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+
+#: includes/Admin/Metabox.php:92
+#: modules/FrontendInspector/FrontendInspector.php:70
+msgid "Meta description"
+msgstr "Meta-beskrivning"
+
+#: includes/Admin/Metabox.php:97
+msgid "Canonical URL"
+msgstr "Kanonisk URL"
+
+#: includes/Admin/Metabox.php:101
+msgid "Robots"
+msgstr "Robots"
+
+#: includes/Admin/Metabox.php:112 modules/Workouts/Workouts.php:110
+msgid "Cornerstone content"
+msgstr "Hörnstensinnehåll"
+
+#: includes/Admin/Metabox.php:120
+msgid "Content analysis"
+msgstr "Innehållsanalys"
+
+#. translators: %d: SEO score from 0 to 100.
+#: includes/Admin/Metabox.php:126
+msgid "%d / 100"
+msgstr "%d / 100"
+
+#: includes/Admin/Page_Shell.php:31 includes/Admin/Admin.php:76
+#: includes/Admin/Admin.php:247 modules/WhiteLabel/WhiteLabel.php:68
+msgid "Dashboard"
+msgstr "Instrumentpanel"
+
+#: includes/Admin/Page_Shell.php:37 includes/Admin/Admin.php:77
+#: includes/Admin/Admin.php:215 includes/Admin/Admin.php:233
+#: includes/Admin/Admin.php:302
+msgid "Settings"
+msgstr "Inställningar"
+
+#: includes/Admin/Page_Shell.php:43 includes/Admin/Admin.php:78
+#: modules/SiteAudit/SiteAudit.php:107
+msgid "Site audit"
+msgstr "Webbplatsgranskning"
+
+#: includes/Admin/Page_Shell.php:49 includes/Admin/Admin.php:79
+#: includes/Admin/Admin.php:234 modules/Redirects/Admin_Page.php:33
+msgid "Redirects"
+msgstr "Omdirigeringar"
+
+#: includes/Admin/Page_Shell.php:55 includes/Admin/Admin.php:80
+#: modules/NotFound/NotFoundMonitor.php:122
+msgid "404 monitor"
+msgstr "404-övervakning"
+
+#: includes/Admin/Page_Shell.php:61 includes/Admin/Admin.php:81
+#: modules/LinkAssistant/LinkAssistant.php:81
+msgid "Link assistant"
+msgstr "Länkhjälp"
+
+#: includes/Admin/Page_Shell.php:67 includes/Admin/Admin.php:82
+#: modules/RankTracker/RankTracker.php:67
+msgid "Rank tracker"
+msgstr "Positionsövervakning"
+
+#: includes/Admin/Page_Shell.php:73 includes/Admin/Admin.php:83
+#: includes/Admin/Admin.php:235 modules/AI/BulkMeta.php:76
+msgid "Bulk editor"
+msgstr "Massredigerare"
+
+#: includes/Admin/Page_Shell.php:79 includes/Admin/Admin.php:84
+#: modules/ImageSEO/ImageSEO.php:97
+msgid "Image SEO"
+msgstr "Bild-SEO"
+
+#: includes/Admin/Page_Shell.php:85 includes/Admin/Admin.php:85
+#: includes/Admin/Admin.php:236 modules/Workouts/Workouts.php:86
+msgid "Workouts"
+msgstr "Träningspass"
+
+#: includes/Admin/Page_Shell.php:91 includes/Admin/Admin.php:86
+#: includes/Admin/Admin.php:555
+msgid "Account"
+msgstr "Konto"
+
+#: includes/Admin/Page_Shell.php:126
+msgid "SEO suite"
+msgstr "SEO-svit"
+
+#. translators: %s: Seofyme subscription plan name.
+#: includes/Admin/Page_Shell.php:152
+msgid "Plan: %s"
+msgstr "Plan: %s"
+
+#: includes/Admin/Page_Shell.php:157
+msgid "Open Seofyme.com"
+msgstr "Öppna Seofyme.com"
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:122
+msgid "Credentials saved, but the account could not be refreshed: %s"
+msgstr "Uppgifterna sparades, men kontot kunde inte uppdateras: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:133
+msgid "Account connected. Current plan: %s."
+msgstr "Konto anslutet. Aktuell plan: %s."
+
+#: includes/Admin/Admin.php:141
+msgid "Cloud credentials updated."
+msgstr "Cloud-uppgifter uppdaterade."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:156
+msgid "Plan refresh failed: %s"
+msgstr "Uppdatering av plan misslyckades: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:167
+msgid "Plan status refreshed: %s."
+msgstr "Planstatus uppdaterad: %s."
+
+#: includes/Admin/Admin.php:241
+msgid "Run site audit"
+msgstr "Kör webbplatsgranskning"
+
+#: includes/Admin/Admin.php:242
+msgid "Open settings"
+msgstr "Öppna inställningar"
+
+#: includes/Admin/Admin.php:248
+msgid ""
+"Content guidance, technical SEO, redirects, linking, and AI drafting — in "
+"one clean workspace."
+msgstr ""
+"Innehållsvägledning, teknisk SEO, omdirigeringar, länkning och AI-utkast — i"
+" en ren arbetsyta."
+
+#: includes/Admin/Admin.php:255
+msgid "XML sitemap"
+msgstr "XML-sitemap"
+
+#: includes/Admin/Admin.php:256
+msgid "Keep search engines in sync with your published content."
+msgstr "Håll sökmotorer synkroniserade med ditt publicerade innehåll."
+
+#: includes/Admin/Admin.php:259
+msgid "Open sitemap"
+msgstr "Öppna sitemap"
+
+#: includes/Admin/Admin.php:264
+msgid "Schema graph"
+msgstr "Schema-graf"
+
+#: includes/Admin/Admin.php:265
+msgid "A single aggregated graph for machines and AI systems."
+msgstr "En enda aggregerad graf för maskiner och AI-system."
+
+#: includes/Admin/Admin.php:268
+msgid "View graph"
+msgstr "Visa graf"
+
+#: includes/Admin/Admin.php:273
+msgid "Jump in"
+msgstr "Kom igång"
+
+#: includes/Admin/Admin.php:274
+msgid "Shortcuts to the tools you use most."
+msgstr "Genvägar till verktygen du använder mest."
+
+#: includes/Admin/Admin.php:303
+msgid ""
+"Tune titles, schema, AI drafting, bot controls, IndexNow, and Search "
+"Console."
+msgstr ""
+"Finjustera titlar, schema, AI-utkast, botkontroller, IndexNow och Search "
+"Console."
+
+#: includes/Admin/Admin.php:311
+msgid "General"
+msgstr "Allmänt"
+
+#: includes/Admin/Admin.php:312
+msgid "Site-wide title defaults, organization details, and core SEO features."
+msgstr ""
+"Standardtitlar för hela webbplatsen, organisationsuppgifter och centrala "
+"SEO-funktioner."
+
+#: includes/Admin/Admin.php:317
+msgid "Title separator"
+msgstr "Titelavgränsare"
+
+#: includes/Admin/Admin.php:325
+msgid "Homepage title"
+msgstr "Startsidesrubrik"
+
+#: includes/Admin/Admin.php:332
+msgid "Homepage description"
+msgstr "Startsidesbeskrivning"
+
+#: includes/Admin/Admin.php:337
+msgid "Organization name"
+msgstr "Organisationsnamn"
+
+#: includes/Admin/Admin.php:345
+msgid "Organization logo URL"
+msgstr "URL till organisationslogotyp"
+
+#: includes/Admin/Admin.php:352
+msgid "Features"
+msgstr "Funktioner"
+
+#: includes/Admin/Admin.php:355
+msgid "XML sitemaps"
+msgstr "XML-sitemaps"
+
+#: includes/Admin/Admin.php:359
+msgid "Structured data"
+msgstr "Strukturerad data"
+
+#: includes/Admin/Admin.php:363
+msgid "Schema aggregation endpoint"
+msgstr "Endpoint för schemaaggregering"
+
+#: includes/Admin/Admin.php:367
+msgid "Noindex search results"
+msgstr "Noindex på sökresultat"
+
+#: includes/Admin/Admin.php:377
+msgid "BYO AI (optional fallback)"
+msgstr "BYO AI (valfri fallback)"
+
+#: includes/Admin/Admin.php:378
+msgid "Used only when Seofyme Cloud keys are empty."
+msgstr "Används endast när Seofyme Cloud-nycklar är tomma."
+
+#: includes/Admin/Admin.php:383
+msgid "Provider"
+msgstr "Leverantör"
+
+#: includes/Admin/Admin.php:394
+msgid "API key"
+msgstr "API-nyckel"
+
+#: includes/Admin/Admin.php:405
+msgid "AI visibility"
+msgstr "AI-synlighet"
+
+#: includes/Admin/Admin.php:406
+msgid "Control how AI systems discover and crawl your site."
+msgstr "Styr hur AI-system upptäcker och crawl:ar din webbplats."
+
+#: includes/Admin/Admin.php:411
+msgid "llms.txt"
+msgstr "llms.txt"
+
+#: includes/Admin/Admin.php:413
+msgid "Publish llms.txt so AI tools can discover important pages."
+msgstr "Publicera llms.txt så att AI-verktyg kan upptäcka viktiga sidor."
+
+#: includes/Admin/Admin.php:422
+msgid "AI bot blocker"
+msgstr "AI-botblockerare"
+
+#: includes/Admin/Admin.php:423
+msgid "Block selected AI crawlers via robots.txt-style rules."
+msgstr "Blockera valda AI-crawlers via regler i robots.txt-stil."
+
+#: includes/Admin/Admin.php:438
+msgid "IndexNow"
+msgstr "IndexNow"
+
+#: includes/Admin/Admin.php:439
+msgid "Notify search engines instantly when content changes."
+msgstr "Meddela sökmotorer omedelbart när innehållet ändras."
+
+#: includes/Admin/Admin.php:444
+msgid "Key"
+msgstr "Nyckel"
+
+#: includes/Admin/Admin.php:445
+msgid "Leave empty to auto-generate."
+msgstr "Lämna tomt för att generera automatiskt."
+
+#: includes/Admin/Admin.php:458
+msgid "Agency / reports"
+msgstr "Byrå / rapporter"
+
+#: includes/Admin/Admin.php:459
+msgid "White-label branding and weekly email summaries."
+msgstr "White-label-varumärke och veckovisa e-postsammamfattningar."
+
+#: includes/Admin/Admin.php:464
+msgid "White-label"
+msgstr "White-label"
+
+#: includes/Admin/Admin.php:465
+msgid "Enable white-label menu name."
+msgstr "Aktivera white-label-menynamn."
+
+#: includes/Admin/Admin.php:473
+msgid "Brand name"
+msgstr "Varumärkesnamn"
+
+#: includes/Admin/Admin.php:481
+msgid "Email reports"
+msgstr "E-postrapporter"
+
+#: includes/Admin/Admin.php:482
+msgid "Send weekly SEO summary."
+msgstr "Skicka veckovis SEO-sammanfattning."
+
+#: includes/Admin/Admin.php:490
+msgid "Report email"
+msgstr "Rapport-e-post"
+
+#: includes/Admin/Admin.php:500
+msgid "Save settings"
+msgstr "Spara inställningar"
+
+#: includes/Admin/Admin.php:531
+msgid "Unlimited"
+msgstr "Obegränsat"
+
+#. translators: 1: amount used, 2: plan limit.
+#: includes/Admin/Admin.php:534
+msgid "%1$s of %2$s used"
+msgstr "%1$s av %2$s använda"
+
+#: includes/Admin/Admin.php:545
+msgid "Refresh plan"
+msgstr "Uppdatera plan"
+
+#: includes/Admin/Admin.php:550
+msgid "Manage account"
+msgstr "Hantera konto"
+
+#: includes/Admin/Admin.php:556
+msgid ""
+"Connect Seofyme Cloud, review your subscription, and refresh current AI "
+"usage."
+msgstr ""
+"Anslut Seofyme Cloud, granska din prenumeration och uppdatera aktuell AI-"
+"användning."
+
+#: includes/Admin/Admin.php:564
+msgid "API credentials"
+msgstr "API-uppgifter"
+
+#: includes/Admin/Admin.php:565
+msgid ""
+"Create Seofyme product API keys in your account, then connect this WordPress"
+" site."
+msgstr ""
+"Skapa Seofyme-produktens API-nycklar i ditt konto och anslut sedan denna "
+"WordPress-webbplats."
+
+#: includes/Admin/Admin.php:569
+msgid "Public API key"
+msgstr "Publik API-nyckel"
+
+#: includes/Admin/Admin.php:573
+msgid "Secret API key"
+msgstr "Hemlig API-nyckel"
+
+#: includes/Admin/Admin.php:579
+msgid "Save credentials"
+msgstr "Spara uppgifter"
+
+#: includes/Admin/Admin.php:585
+msgid "Plan status"
+msgstr "Planstatus"
+
+#: includes/Admin/Admin.php:586
+msgid "Subscription and monthly usage are synced from Seofyme Cloud."
+msgstr "Prenumeration och månatlig användning synkas från Seofyme Cloud."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:594
+msgid "Last plan refresh failed: %s"
+msgstr "Senaste planuppdatering misslyckades: %s"
+
+#: includes/Admin/Admin.php:603
+msgid "Connection"
+msgstr "Anslutning"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Connected"
+msgstr "Ansluten"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Not connected"
+msgstr "Inte ansluten"
+
+#: includes/Admin/Admin.php:611
+msgid "Plan"
+msgstr "Plan"
+
+#: includes/Admin/Admin.php:615
+msgid "AI requests this month"
+msgstr "AI-förfrågningar denna månad"
+
+#: includes/Admin/Admin.php:619
+msgid "AI tokens this month"
+msgstr "AI-tokens denna månad"
+
+#: includes/Admin/Admin.php:624
+msgid "Usage period"
+msgstr "Användningsperiod"
+
+#: includes/Admin/Admin.php:635
+msgid "Manage subscription"
+msgstr "Hantera prenumeration"
+
+#: includes/Admin/Admin.php:636
+msgid "Compare plans or manage billing from your Seofyme account."
+msgstr "Jämför planer eller hantera fakturering från ditt Seofyme-konto."
+
+#: includes/Admin/Admin.php:639
+msgid "Compare plans"
+msgstr "Jämför planer"
+
+#: includes/Admin/Admin.php:640
+msgid "Open Seofyme account"
+msgstr "Öppna Seofyme-konto"
+
+#: includes/Support/Cloud_Account.php:119 modules/AI/Generator.php:135
+msgid "Invalid response from Seofyme Cloud."
+msgstr "Ogiltigt svar från Seofyme Cloud."
+
+#. translators: %d: HTTP status code.
+#: includes/Support/Cloud_Account.php:127
+msgid "Seofyme Cloud returned HTTP %d."
+msgstr "Seofyme Cloud returnerade HTTP %d."
+
+#: includes/Support/Cloud_Account.php:135
+msgid "Seofyme Cloud returned an invalid plan."
+msgstr "Seofyme Cloud returnerade en ogiltig plan."
+
+#: modules/FrontendInspector/FrontendInspector.php:66
+msgid "SEO"
+msgstr "SEO"
+
+#: modules/FrontendInspector/FrontendInspector.php:68
+msgid "Seofyme inspector"
+msgstr "Seofyme-inspektör"
+
+#: modules/FrontendInspector/FrontendInspector.php:71
+#: modules/ImageSEO/ImageSEO.php:126
+msgid "Save"
+msgstr "Spara"
+
+#: modules/WooCommerce/WooCommerceSEO.php:43
+msgid "Seofyme WooCommerce SEO"
+msgstr "Seofyme WooCommerce SEO"
+
+#: modules/WooCommerce/WooCommerceSEO.php:56
+msgid "Brand"
+msgstr "Varumärke"
+
+#: modules/WooCommerce/WooCommerceSEO.php:57
+msgid "GTIN / barcode"
+msgstr "GTIN / streckkod"
+
+#: modules/Keyphrases/Keyphrases.php:43
+msgid "Related keyphrases"
+msgstr "Relaterade nyckelord"
+
+#: modules/Keyphrases/Keyphrases.php:62
+msgid ""
+"Optimize for up to 5 related keyphrases. Synonyms and word forms count "
+"toward a full SEO check for each."
+msgstr ""
+"Optimera för upp till 5 relaterade nyckelord. Synonymer och ordformer räknas"
+" i en fullständig SEO-kontroll för varje."
+
+#: modules/Keyphrases/Keyphrases.php:67
+msgid "Keyphrase"
+msgstr "Nyckelord"
+
+#: modules/Keyphrases/Keyphrases.php:73
+msgid "Synonyms, comma-separated"
+msgstr "Synonymer, kommaseparerade"
+
+#: modules/NotFound/NotFoundMonitor.php:116
+msgid "Clear log"
+msgstr "Rensa logg"
+
+#: modules/NotFound/NotFoundMonitor.php:123
+msgid "See broken URLs visitors hit, then convert them into redirects."
+msgstr ""
+"Se trasiga URL:er som besökare träffar och omvandla dem till omdirigeringar."
+
+#: modules/NotFound/NotFoundMonitor.php:129
+msgid "Logged 404s"
+msgstr "Loggade 404:or"
+
+#: modules/NotFound/NotFoundMonitor.php:130
+msgid "Create a redirect from any broken URL below."
+msgstr "Skapa en omdirigering från valfri trasig URL nedan."
+
+#: modules/NotFound/NotFoundMonitor.php:136
+#: modules/RankTracker/RankTracker.php:115
+msgid "URL"
+msgstr "URL"
+
+#: modules/NotFound/NotFoundMonitor.php:137
+msgid "Hits"
+msgstr "Träffar"
+
+#: modules/NotFound/NotFoundMonitor.php:138
+msgid "Last seen"
+msgstr "Senast sedd"
+
+#: modules/NotFound/NotFoundMonitor.php:139 modules/ImageSEO/ImageSEO.php:110
+#: modules/Redirects/Admin_Page.php:114 modules/AI/BulkMeta.php:92
+#: modules/RankTracker/RankTracker.php:118
+msgid "Actions"
+msgstr "Åtgärder"
+
+#: modules/NotFound/NotFoundMonitor.php:144
+msgid "No 404s logged yet."
+msgstr "Inga 404:or loggade ännu."
+
+#: modules/NotFound/NotFoundMonitor.php:157
+msgid "Redirect"
+msgstr "Omdirigera"
+
+#: modules/NotFound/NotFoundMonitor.php:178
+#: modules/NotFound/NotFoundMonitor.php:194
+#: modules/SearchConsole/SearchConsole.php:154
+#: modules/SearchConsole/SearchConsole.php:260
+#: modules/SearchConsole/SearchConsole.php:275
+#: modules/SearchConsole/SearchConsole.php:291
+#: modules/Redirects/Redirects.php:318 modules/RankTracker/RankTracker.php:165
+#: modules/RankTracker/RankTracker.php:187
+#: modules/RankTracker/RankTracker.php:209
+msgid "Unauthorized"
+msgstr "Obehörig"
+
+#: modules/Workouts/Workouts.php:87
+msgid ""
+"Guided tasks for orphaned pages, cornerstone content, and stale updates."
+msgstr ""
+"Guidade uppgifter för föräldralösa sidor, hörnstensinnehåll och föråldrade "
+"uppdateringar."
+
+#: modules/Workouts/Workouts.php:93
+msgid "Orphaned content"
+msgstr "Föräldralöst innehåll"
+
+#: modules/Workouts/Workouts.php:94
+msgid "Published pages with no internal links pointing to them."
+msgstr "Publicerade sidor utan interna länkar som pekar på dem."
+
+#: modules/Workouts/Workouts.php:99
+msgid "No orphaned posts found in the scan window."
+msgstr "Inga föräldralösa inlägg hittades i skanningsfönstret."
+
+#: modules/Workouts/Workouts.php:111
+msgid "Pages marked as cornerstone in the editor."
+msgstr "Sidor markerade som hörnsten i redigeraren."
+
+#: modules/Workouts/Workouts.php:116
+msgid "Mark pages as cornerstone in the editor to track them here."
+msgstr "Markera sidor som hörnsten i redigeraren för att spåra dem här."
+
+#: modules/Workouts/Workouts.php:127
+msgid "Stale cornerstone content"
+msgstr "Föråldrat hörnstensinnehåll"
+
+#. translators: %d days
+#: modules/Workouts/Workouts.php:132
+msgid ""
+"Cornerstone pages not updated in the last %d days — refresh them to keep "
+"rankings healthy."
+msgstr ""
+"Hörnstenssidor som inte uppdaterats under de senaste %d dagarna — uppdatera "
+"dem för att behålla hälsosamma rankingar."
+
+#: modules/Workouts/Workouts.php:141
+msgid "All cornerstone content looks fresh."
+msgstr "Allt hörnstensinnehåll ser fräscht ut."
+
+#: modules/Workouts/Workouts.php:146
+msgid "ago"
+msgstr "sedan"
+
+#: modules/SearchConsole/SearchConsole.php:132
+msgid "Google Search Console connected."
+msgstr "Google Search Console ansluten."
+
+#: modules/SearchConsole/SearchConsole.php:133
+msgid "Search Console disconnected."
+msgstr "Search Console frånkopplad."
+
+#: modules/SearchConsole/SearchConsole.php:134
+msgid "Search Console property saved."
+msgstr "Search Console-egendom sparad."
+
+#: modules/SearchConsole/SearchConsole.php:135
+msgid "Positions synced from Search Console."
+msgstr "Positioner synkade från Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:136
+msgid "Google authorization was cancelled."
+msgstr "Google-auktoriseringen avbröts."
+
+#: modules/SearchConsole/SearchConsole.php:137
+msgid ""
+"Search Console connection failed. Check your Client ID/Secret and try again."
+msgstr ""
+"Anslutning till Search Console misslyckades. Kontrollera Client ID/Secret "
+"och försök igen."
+
+#: modules/SearchConsole/SearchConsole.php:138
+msgid "Add a Google Client ID and Client Secret before connecting."
+msgstr "Lägg till ett Google Client ID och Client Secret innan du ansluter."
+
+#: modules/SearchConsole/SearchConsole.php:139
+msgid "Choose a Search Console property first."
+msgstr "Välj först en Search Console-egendom."
+
+#: modules/SearchConsole/SearchConsole.php:140
+msgid "Could not sync positions from Search Console."
+msgstr "Kunde inte synka positioner från Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:329
+msgid "Invalid token response from Google."
+msgstr "Ogiltigt tokensvar från Google."
+
+#: modules/SearchConsole/SearchConsole.php:345
+msgid "Search Console is not connected."
+msgstr "Search Console är inte ansluten."
+
+#: modules/SearchConsole/SearchConsole.php:365
+msgid "Could not refresh Google access token."
+msgstr "Kunde inte uppdatera Googles åtkomsttoken."
+
+#: modules/SearchConsole/SearchConsole.php:447
+msgid "No Search Console property selected."
+msgstr "Ingen Search Console-egendom vald."
+
+#: modules/SearchConsole/SearchConsole.php:484
+msgid "Invalid Search Console response."
+msgstr "Ogiltigt svar från Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:541
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:542
+msgid "OAuth credentials used to connect Search Console for rank automation."
+msgstr ""
+"OAuth-uppgifter som används för att ansluta Search Console för "
+"positionsautomatisering."
+
+#. translators: %s: OAuth redirect URI.
+#: modules/SearchConsole/SearchConsole.php:549
+msgid ""
+"Create an OAuth client in Google Cloud Console, enable the Search Console "
+"API, and set this redirect URI: %s"
+msgstr ""
+"Skapa en OAuth-klient i Google Cloud Console, aktivera Search Console API "
+"och ange denna omdirigerings-URI: %s"
+
+#: modules/SearchConsole/SearchConsole.php:555
+msgid "Google Client ID"
+msgstr "Google Client ID"
+
+#: modules/SearchConsole/SearchConsole.php:559
+msgid "Google Client Secret"
+msgstr "Google Client Secret"
+
+#: modules/SearchConsole/SearchConsole.php:583
+#: modules/SearchConsole/SearchConsole.php:658
+msgid "Connect Search Console"
+msgstr "Anslut Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:584
+msgid ""
+"Authorize Google, pick a property, and sync keyword positions into the rank "
+"tracker."
+msgstr ""
+"Auktorisera Google, välj en egendom och synka nyckelordspositioner till "
+"positionsövervakningen."
+
+#: modules/SearchConsole/SearchConsole.php:589
+msgid "Status"
+msgstr "Status"
+
+#: modules/SearchConsole/SearchConsole.php:603
+msgid ""
+"Save a Google Client ID and Client Secret in Settings before connecting."
+msgstr ""
+"Spara ett Google Client ID och Client Secret i Inställningar innan du "
+"ansluter."
+
+#: modules/SearchConsole/SearchConsole.php:605
+msgid "Open Settings"
+msgstr "Öppna Inställningar"
+
+#: modules/SearchConsole/SearchConsole.php:617
+msgid "Property"
+msgstr "Egendom"
+
+#: modules/SearchConsole/SearchConsole.php:633
+msgid "Save property"
+msgstr "Spara egendom"
+
+#: modules/SearchConsole/SearchConsole.php:644
+msgid "Sync positions"
+msgstr "Synka positioner"
+
+#: modules/SearchConsole/SearchConsole.php:651
+msgid "Disconnect"
+msgstr "Koppla från"
+
+#: modules/ImageSEO/ImageSEO.php:97
+msgid ""
+"Fill missing alt text in bulk. New uploads get a filename-based alt "
+"automatically."
+msgstr ""
+"Fyll i saknad alt-text i bulk. Nya uppladdningar får automatiskt alt baserad"
+" på filnamn."
+
+#: modules/ImageSEO/ImageSEO.php:101
+msgid "Missing alt text"
+msgstr "Saknad alt-text"
+
+#: modules/ImageSEO/ImageSEO.php:102
+msgid "Images without alternative text in the media library."
+msgstr "Bilder utan alternativtext i mediabiblioteket."
+
+#: modules/ImageSEO/ImageSEO.php:108
+msgid "Image"
+msgstr "Bild"
+
+#: modules/ImageSEO/ImageSEO.php:109
+msgid "Alt text"
+msgstr "Alt-text"
+
+#: modules/ImageSEO/ImageSEO.php:115
+msgid "No images missing alt text in this scan."
+msgstr "Inga bilder saknar alt-text i denna skanning."
+
+#: modules/NewsSEO/NewsSEO.php:48
+msgid "News SEO"
+msgstr "Nyhets-SEO"
+
+#: modules/NewsSEO/NewsSEO.php:62
+msgid "Include in news sitemap"
+msgstr "Inkludera i nyhetssitemap"
+
+#: modules/NewsSEO/NewsSEO.php:63
+msgid "Genres"
+msgstr "Genrer"
+
+#: modules/Headline/HeadlineAnalyzer.php:35
+msgid "Headline analyzer"
+msgstr "Rubrikanalysator"
+
+#. translators: %d
+#: modules/Headline/HeadlineAnalyzer.php:47
+msgid "Score: %d / 100"
+msgstr "Poäng: %d / 100"
+
+#: modules/Headline/HeadlineAnalyzer.php:70
+msgid "Length is in a strong CTR range."
+msgstr "Längden ligger i ett starkt CTR-intervall."
+
+#: modules/Headline/HeadlineAnalyzer.php:72
+msgid "Aim for roughly 40–60 characters."
+msgstr "Sikta på ungefär 40–60 tecken."
+
+#: modules/Headline/HeadlineAnalyzer.php:78
+msgid "Use about 5–12 words."
+msgstr "Använd cirka 5–12 ord."
+
+#: modules/Headline/HeadlineAnalyzer.php:83
+msgid "Numbers in headlines often lift clicks."
+msgstr "Siffror i rubriker ökar ofta klicken."
+
+#: modules/Headline/HeadlineAnalyzer.php:85
+msgid "Consider adding a number (e.g. “7 ways…”)."
+msgstr "Överväg att lägga till en siffra (t.ex. “7 sätt…”)."
+
+#: modules/Headline/HeadlineAnalyzer.php:93
+msgid "Power words detected."
+msgstr "Starka ord upptäckta."
+
+#: modules/ContentPlanner/ContentPlanner.php:38
+msgid "Content planner"
+msgstr "Innehållsplanerare"
+
+#: modules/ContentPlanner/ContentPlanner.php:47
+msgid "Ideas drawn from your site topics, plus a structured starter draft."
+msgstr "Idéer utifrån dina webbplatsämnen, plus ett strukturerat startutkast."
+
+#: modules/ContentPlanner/ContentPlanner.php:48
+msgid "Suggest ideas"
+msgstr "Föreslå idéer"
+
+#: modules/ContentPlanner/ContentPlanner.php:50
+msgid "Build starter draft"
+msgstr "Skapa startutkast"
+
+#: modules/LinkAssistant/LinkAssistant.php:82
+msgid ""
+"Find orphaned pages and insert contextual internal links from related "
+"content."
+msgstr ""
+"Hitta föräldralösa sidor och infoga kontextuella interna länkar från "
+"relaterat innehåll."
+
+#: modules/LinkAssistant/LinkAssistant.php:87
+msgid "Linking opportunities"
+msgstr "Länkmöjligheter"
+
+#: modules/LinkAssistant/LinkAssistant.php:88
+msgid "Insert a contextual link from a related page into an orphaned page."
+msgstr ""
+"Infoga en kontextuell länk från en relaterad sida till en föräldralös sida."
+
+#: modules/LinkAssistant/LinkAssistant.php:94
+msgid "Orphaned page"
+msgstr "Föräldralös sida"
+
+#: modules/LinkAssistant/LinkAssistant.php:95
+msgid "Suggested source"
+msgstr "Föreslagen källa"
+
+#: modules/LinkAssistant/LinkAssistant.php:96
+msgid "Action"
+msgstr "Åtgärd"
+
+#: modules/LinkAssistant/LinkAssistant.php:101
+msgid "No linking opportunities found."
+msgstr "Inga länkmöjligheter hittades."
+
+#: modules/LinkAssistant/LinkAssistant.php:114
+msgid "Insert link"
+msgstr "Infoga länk"
+
+#. translators: %s link
+#: modules/LinkAssistant/LinkAssistant.php:151
+msgid "Related reading: %s"
+msgstr "Relaterad läsning: %s"
+
+#: modules/SiteAudit/SiteAudit.php:41
+msgid "Site is public (not discouraging search engines)"
+msgstr "Webbplatsen är offentlig (avskräcker inte sökmotorer)"
+
+#: modules/SiteAudit/SiteAudit.php:45
+msgid "XML sitemaps enabled"
+msgstr "XML-sitemaps aktiverade"
+
+#: modules/SiteAudit/SiteAudit.php:49
+msgid "Organization name set"
+msgstr "Organisationsnamn angivet"
+
+#: modules/SiteAudit/SiteAudit.php:53
+msgid "Homepage meta description set"
+msgstr "Startsides meta-beskrivning angiven"
+
+#: modules/SiteAudit/SiteAudit.php:57
+msgid "Pretty permalinks enabled"
+msgstr "Snygga permalänkar aktiverade"
+
+#. translators: %d
+#: modules/SiteAudit/SiteAudit.php:76
+msgid "Recent posts/pages missing meta description: %d"
+msgstr "Senaste inlägg/sidor utan meta-beskrivning: %d"
+
+#: modules/SiteAudit/SiteAudit.php:82
+msgid "HTTPS detected for admin request"
+msgstr "HTTPS upptäckt för adminbegäran"
+
+#: modules/SiteAudit/SiteAudit.php:88
+msgid "Site tagline is customized"
+msgstr "Webbplatsens slogan är anpassad"
+
+#. translators: 1 good 2 total
+#: modules/SiteAudit/SiteAudit.php:108
+msgid "%1$d of %2$d checks look healthy."
+msgstr "%1$d av %2$d kontroller ser friska ut."
+
+#: modules/SiteAudit/SiteAudit.php:113
+msgid "Health checks"
+msgstr "Hälsokontroller"
+
+#: modules/SiteAudit/SiteAudit.php:114
+msgid "Technical SEO signals across your site configuration."
+msgstr "Tekniska SEO-signaler i din webbplatskonfiguration."
+
+#: modules/Social/Social.php:42
+msgid "Social preview"
+msgstr "Social förhandsvisning"
+
+#: modules/Social/Social.php:55
+msgid "Facebook title"
+msgstr "Facebook-titel"
+
+#: modules/Social/Social.php:56
+msgid "Facebook description"
+msgstr "Facebook-beskrivning"
+
+#: modules/Social/Social.php:57
+msgid "Facebook image URL"
+msgstr "Facebook-bild-URL"
+
+#: modules/Social/Social.php:58
+msgid "X title"
+msgstr "X-titel"
+
+#: modules/Social/Social.php:59
+msgid "X description"
+msgstr "X-beskrivning"
+
+#: modules/Social/Social.php:60
+msgid "X image URL"
+msgstr "X-bild-URL"
+
+#: modules/Redirects/Admin_Page.php:34
+msgid "Keep old URLs working when content moves — add one, or import a CSV."
+msgstr ""
+"Håll gamla URL:er fungerande när innehåll flyttas — lägg till en eller "
+"importera en CSV."
+
+#: modules/Redirects/Admin_Page.php:39 modules/Redirects/Admin_Page.php:79
+msgid "Add redirect"
+msgstr "Lägg till omdirigering"
+
+#: modules/Redirects/Admin_Page.php:40
+msgid "Map an old path to a new destination."
+msgstr "Mappa en gammal sökväg till en ny destination."
+
+#: modules/Redirects/Admin_Page.php:47
+msgid "Old path / pattern"
+msgstr "Gammal sökväg / mönster"
+
+#: modules/Redirects/Admin_Page.php:51
+msgid "New URL"
+msgstr "Ny URL"
+
+#: modules/Redirects/Admin_Page.php:56 modules/Redirects/Admin_Page.php:112
+msgid "Format"
+msgstr "Format"
+
+#: modules/Redirects/Admin_Page.php:67 modules/Redirects/Admin_Page.php:113
+msgid "Type"
+msgstr "Typ"
+
+#: modules/Redirects/Admin_Page.php:86
+msgid "Import CSV"
+msgstr "Importera CSV"
+
+#: modules/Redirects/Admin_Page.php:87
+msgid "Format: origin, target, type (type optional)."
+msgstr "Format: ursprung, mål, typ (typ valfri)."
+
+#: modules/Redirects/Admin_Page.php:96
+msgid "Import"
+msgstr "Importera"
+
+#: modules/Redirects/Admin_Page.php:103
+msgid "Existing redirects"
+msgstr "Befintliga omdirigeringar"
+
+#: modules/Redirects/Admin_Page.php:104
+msgid "All active redirects on this site."
+msgstr "Alla aktiva omdirigeringar på denna webbplats."
+
+#: modules/Redirects/Admin_Page.php:110
+msgid "Origin"
+msgstr "Ursprung"
+
+#: modules/Redirects/Admin_Page.php:111
+msgid "Target"
+msgstr "Mål"
+
+#: modules/Redirects/Admin_Page.php:119
+msgid "No redirects yet."
+msgstr "Inga omdirigeringar ännu."
+
+#: modules/Redirects/Admin_Page.php:132
+#: modules/RankTracker/RankTracker.php:144
+msgid "Delete"
+msgstr "Ta bort"
+
+#: modules/Redirects/Redirects.php:193 modules/Redirects/Redirects.php:197
+msgid "This content is no longer available."
+msgstr "Detta innehåll är inte längre tillgängligt."
+
+#: modules/Redirects/Redirects.php:253
+msgid "Seofyme detected a URL change. Create a 301 redirect?"
+msgstr "Seofyme upptäckte en URL-ändring. Skapa en 301-omdirigering?"
+
+#: modules/Redirects/Redirects.php:257
+msgid "Create redirect"
+msgstr "Skapa omdirigering"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:40
+msgid "Default (Article/WebPage)"
+msgstr "Standard (Article/WebPage)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:41
+msgid "FAQ"
+msgstr "FAQ"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:42
+msgid "HowTo"
+msgstr "HowTo"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:43
+msgid "Product"
+msgstr "Product"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:44
+msgid "Recipe"
+msgstr "Recipe"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:45
+msgid "Course"
+msgstr "Course"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:46
+msgid "Event"
+msgstr "Event"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:60
+msgid "Advanced schema"
+msgstr "Avancerat schema"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:77
+msgid "Schema type"
+msgstr "Schematyp"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:84
+msgid "Extra JSON fields (optional)"
+msgstr "Extra JSON-fält (valfritt)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:85
+msgid "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+msgstr "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:88
+msgid "For FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. For HowTo: {\"steps\":[\"...\",\"...\"]}."
+msgstr "För FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. För HowTo: {\"steps\":[\"...\",\"...\"]}."
+
+#: modules/InternalLinking/Linking_Block.php:46
+msgid "Related internal links"
+msgstr "Relaterade interna länkar"
+
+#: modules/InternalLinking/Linking_Block.php:47
+msgid "Suggests related posts to strengthen site structure."
+msgstr "Föreslår relaterade inlägg för att stärka webbplatsstrukturen."
+
+#: modules/InternalLinking/Linking_Block.php:59
+#: modules/InternalLinking/Linking_Block.php:78
+msgid "Related reading"
+msgstr "Relaterad läsning"
+
+#: modules/InternalLinking/InternalLinking.php:41
+msgid "Internal linking"
+msgstr "Intern länkning"
+
+#: modules/InternalLinking/InternalLinking.php:53
+msgid "Refresh suggestions"
+msgstr "Uppdatera förslag"
+
+#: modules/AI/BulkMeta.php:77
+msgid ""
+"Draft missing titles and descriptions, review each one, then approve to "
+"save."
+msgstr ""
+"Skapa utkast till saknade titlar och beskrivningar, granska varje och "
+"godkänn för att spara."
+
+#: modules/AI/BulkMeta.php:82
+msgid "Missing meta"
+msgstr "Saknad meta"
+
+#: modules/AI/BulkMeta.php:83
+msgid "Posts and pages without an SEO title or description."
+msgstr "Inlägg och sidor utan SEO-titel eller beskrivning."
+
+#: modules/AI/BulkMeta.php:89
+msgid "Content"
+msgstr "Innehåll"
+
+#: modules/AI/BulkMeta.php:91
+msgid "Description"
+msgstr "Beskrivning"
+
+#: modules/AI/BulkMeta.php:97
+msgid "No gaps found."
+msgstr "Inga luckor hittades."
+
+#: modules/AI/BulkMeta.php:106 modules/AI/Generator.php:42
+msgid "AI draft"
+msgstr "AI-utkast"
+
+#: modules/AI/BulkMeta.php:107
+msgid "Approve"
+msgstr "Godkänn"
+
+#: modules/AI/Generator.php:54
+msgid ""
+"Draft titles, metas, social copy, or optimization tips. Nothing saves until "
+"you click a suggestion."
+msgstr ""
+"Skapa utkast till titlar, meta, social text eller optimeringstips. Inget "
+"sparas förrän du klickar på ett förslag."
+
+#: modules/AI/Generator.php:55
+msgid "Generate titles"
+msgstr "Generera titlar"
+
+#: modules/AI/Generator.php:56
+msgid "Generate descriptions"
+msgstr "Generera beskrivningar"
+
+#: modules/AI/Generator.php:57
+msgid "Social titles"
+msgstr "Sociala titlar"
+
+#: modules/AI/Generator.php:58
+msgid "Social descriptions"
+msgstr "Sociala beskrivningar"
+
+#: modules/AI/Generator.php:59
+msgid "Optimize keyphrase tips"
+msgstr "Tips för nyckelordsoptimering"
+
+#: modules/AI/Generator.php:60
+msgid "Summarize"
+msgstr "Sammanfatta"
+
+#: modules/AI/Generator.php:138
+msgid "Seofyme Cloud request failed."
+msgstr "Seofyme Cloud-förfrågan misslyckades."
+
+#: modules/AI/Generator.php:144
+msgid "Seofyme Cloud returned no suggestions."
+msgstr "Seofyme Cloud returnerade inga förslag."
+
+#: modules/AI/Generator.php:314
+msgid "Invalid response from AI provider."
+msgstr "Ogiltigt svar från AI-leverantör."
+
+#. translators: %d: HTTP status code
+#: modules/AI/Generator.php:326
+msgid "AI provider returned HTTP %d."
+msgstr "AI-leverantören returnerade HTTP %d."
+
+#: modules/AI/Generator.php:335
+msgid "Empty AI response."
+msgstr "Tomt AI-svar."
+
+#: modules/AI/Generator.php:340
+msgid "Could not parse AI response"
+msgstr "Kunde inte tolka AI-svar"
+
+#: modules/Revisions/SEORevisions.php:78
+msgid "SEO revisions"
+msgstr "SEO-revisioner"
+
+#: modules/Revisions/SEORevisions.php:91
+msgid "No SEO revisions yet."
+msgstr "Inga SEO-revisioner ännu."
+
+#: modules/Revisions/SEORevisions.php:99
+msgid "(empty title)"
+msgstr "(tom titel)"
+
+#: modules/Revisions/SEORevisions.php:103
+msgid "Restore"
+msgstr "Återställ"
+
+#: modules/AuthorSEO/AuthorSEO.php:48
+msgid "Seofyme Author SEO (E-E-A-T)"
+msgstr "Seofyme Author SEO (E-E-A-T)"
+
+#: modules/AuthorSEO/AuthorSEO.php:50
+msgid "Job title"
+msgstr "Jobbtitel"
+
+#: modules/AuthorSEO/AuthorSEO.php:52
+msgid "Knows about"
+msgstr "Kan om"
+
+#: modules/AuthorSEO/AuthorSEO.php:54
+msgid "SameAs profiles (comma URLs)"
+msgstr "SameAs-profiler (kommaseparerade URL:er)"
+
+#: modules/AuthorSEO/AuthorSEO.php:56
+msgid "Education"
+msgstr "Utbildning"
+
+#: modules/AuthorSEO/AuthorSEO.php:58
+msgid "Experience summary"
+msgstr "Erfarenhetssammanfattning"
+
+#: modules/RankTracker/RankTracker.php:69
+msgid "Track focus keywords and sync positions from Google Search Console."
+msgstr "Spåra fokusnyckelord och synka positioner från Google Search Console."
+
+#: modules/RankTracker/RankTracker.php:70
+msgid ""
+"Track focus keywords and log positions over time. Connect Search Console to "
+"automate updates."
+msgstr ""
+"Spåra fokusnyckelord och logga positioner över tid. Anslut Search Console "
+"för att automatisera uppdateringar."
+
+#: modules/RankTracker/RankTracker.php:76
+msgid "Add keyword"
+msgstr "Lägg till nyckelord"
+
+#: modules/RankTracker/RankTracker.php:77
+msgid "Start tracking a keyword and its target URL."
+msgstr "Börja spåra ett nyckelord och dess mål-URL."
+
+#: modules/RankTracker/RankTracker.php:84
+#: modules/RankTracker/RankTracker.php:114
+msgid "Keyword"
+msgstr "Nyckelord"
+
+#: modules/RankTracker/RankTracker.php:88
+msgid "Target URL"
+msgstr "Mål-URL"
+
+#: modules/RankTracker/RankTracker.php:93
+msgid "Current position"
+msgstr "Aktuell position"
+
+#: modules/RankTracker/RankTracker.php:101
+msgid "Track keyword"
+msgstr "Spåra nyckelord"
+
+#: modules/RankTracker/RankTracker.php:107
+msgid "Tracked keywords"
+msgstr "Spårade nyckelord"
+
+#: modules/RankTracker/RankTracker.php:108
+msgid "Log new positions and review recent history."
+msgstr "Logga nya positioner och granska senaste historik."
+
+#: modules/RankTracker/RankTracker.php:116
+msgid "Position"
+msgstr "Position"
+
+#: modules/RankTracker/RankTracker.php:117
+msgid "History"
+msgstr "Historik"
+
+#: modules/RankTracker/RankTracker.php:123
+msgid "No keywords tracked yet."
+msgstr "Inga nyckelord spårade ännu."
+
+#: modules/RankTracker/RankTracker.php:135
+msgid "Log"
+msgstr "Logga"
+
+#: modules/LocalSEO/LocalSEO.php:44
+msgid "Locations"
+msgstr "Platser"
+
+#: modules/LocalSEO/LocalSEO.php:45
+msgid "Location"
+msgstr "Plats"
+
+#: modules/LocalSEO/LocalSEO.php:63
+msgid "Local business details"
+msgstr "Uppgifter om lokalt företag"
+
+#: modules/LocalSEO/LocalSEO.php:146
+msgid "No locations yet."
+msgstr "Inga platser ännu."

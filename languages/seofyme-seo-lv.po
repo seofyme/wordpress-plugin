@@ -1,0 +1,1394 @@
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Seofyme SEO 0.1.0\n"
+"Report-Msgid-Bugs-To: https://github.com/seofyme/wordpress-plugin\n"
+"Language-Team: Latvian\n"
+"Language: lv\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n != 0 ? 1 : 2);\n"
+"X-Domain: seofyme-seo\n"
+
+#: includes/Analysis/Analyzer.php:56
+msgid "Focus keyphrase is set."
+msgstr "Fokusa atslēgfāze ir iestatīta."
+
+#: includes/Analysis/Analyzer.php:59
+msgid "Add a focus keyphrase."
+msgstr "Pievienojiet fokusa atslēgfāzi."
+
+#: includes/Analysis/Analyzer.php:64
+msgid "Focus keyphrase (or a word form) appears in the SEO title."
+msgstr "Fokusa atslēgfāze (vai vārda forma) ir SEO virsrakstā."
+
+#: includes/Analysis/Analyzer.php:67
+msgid "Consider adding the focus keyphrase to the SEO title."
+msgstr "Apsveriet fokusa atslēgfāzes pievienošanu SEO virsrakstam."
+
+#: includes/Analysis/Analyzer.php:72
+msgid "Focus keyphrase (or a word form) appears in the content."
+msgstr "Fokusa atslēgfāze (vai vārda forma) ir saturā."
+
+#: includes/Analysis/Analyzer.php:75
+msgid "Focus keyphrase was not found in the content."
+msgstr "Fokusa atslēgfāze saturā netika atrasta."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:101
+msgid "Related keyphrase “%s” (or synonym/word form) is used."
+msgstr "Saistītā atslēgfāze „%s“ (vai sinonīms/vārda forma) tiek izmantota."
+
+#. translators: %s keyphrase
+#: includes/Analysis/Analyzer.php:104
+msgid "Add related keyphrase “%s” or a synonym naturally in the text."
+msgstr "Pievienojiet saistīto atslēgfāzi „%s“ vai sinonīmu dabiski tekstā."
+
+#: includes/Analysis/Analyzer.php:114
+msgid "SEO title length looks good."
+msgstr "SEO virsraksta garums izskatās labs."
+
+#: includes/Analysis/Analyzer.php:117
+msgid "SEO title should usually be 30–60 characters."
+msgstr "SEO virsrakstam parasti jābūt 30–60 rakstzīmēm."
+
+#: includes/Analysis/Analyzer.php:123
+msgid "Meta description length looks good."
+msgstr "Meta apraksta garums izskatās labs."
+
+#: includes/Analysis/Analyzer.php:126
+msgid "Meta description should usually be 70–160 characters."
+msgstr "Meta aprakstam parasti jābūt 70–160 rakstzīmēm."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:131
+msgid "Content length is solid (%d words)."
+msgstr "Satura garums ir solīds (%d vārdi)."
+
+#. translators: %d words
+#: includes/Analysis/Analyzer.php:134
+msgid "Content is short (%d words). Aim for 300+ for competitive topics."
+msgstr "Saturs ir īss (%d vārdi). Mērķējiet uz 300+ konkurētspējīgām tēmām."
+
+#: includes/Analysis/Analyzer.php:142
+msgid "Average sentence length is easy to read."
+msgstr "Vidējais teikuma garums ir viegli lasāms."
+
+#: includes/Analysis/Analyzer.php:145
+msgid "Sentences are a bit long — shorter sentences improve readability."
+msgstr "Teikumi ir nedaudz gari — īsāki teikumi uzlabo lasāmību."
+
+#: includes/Analysis/Analyzer.php:150
+msgid "Content uses H2 subheadings."
+msgstr "Saturā tiek izmantoti H2 apakšvirsraksti."
+
+#: includes/Analysis/Analyzer.php:153
+msgid "Add H2 subheadings to structure the page."
+msgstr "Pievienojiet H2 apakšvirsrakstus lapas strukturēšanai."
+
+#: includes/Admin/Metabox.php:44 includes/Admin/Admin.php:67
+#: includes/Admin/Admin.php:68
+msgid "Seofyme SEO"
+msgstr "Seofyme SEO"
+
+#: includes/Admin/Metabox.php:76
+msgid "Search preview"
+msgstr "Meklēšanas priekšskatījums"
+
+#: includes/Admin/Metabox.php:79
+msgid "Meta description preview appears here."
+msgstr "Šeit tiek rādīts meta apraksta priekšskatījums."
+
+#: includes/Admin/Metabox.php:83
+msgid "Focus keyphrase"
+msgstr "Fokusa atslēgfāze"
+
+#: includes/Admin/Metabox.php:87
+#: modules/FrontendInspector/FrontendInspector.php:69
+#: modules/AI/BulkMeta.php:90
+msgid "SEO title"
+msgstr "SEO virsraksts"
+
+#: includes/Admin/Metabox.php:89
+msgid "Vars: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+msgstr "Main.: %%title%% %%sitename%% %%sep%% %%focuskw%%"
+
+#: includes/Admin/Metabox.php:92
+#: modules/FrontendInspector/FrontendInspector.php:70
+msgid "Meta description"
+msgstr "Meta apraksts"
+
+#: includes/Admin/Metabox.php:97
+msgid "Canonical URL"
+msgstr "Kanoniskais URL"
+
+#: includes/Admin/Metabox.php:101
+msgid "Robots"
+msgstr "Robots"
+
+#: includes/Admin/Metabox.php:112 modules/Workouts/Workouts.php:110
+msgid "Cornerstone content"
+msgstr "Pamatsaturs"
+
+#: includes/Admin/Metabox.php:120
+msgid "Content analysis"
+msgstr "Satura analīze"
+
+#. translators: %d: SEO score from 0 to 100.
+#: includes/Admin/Metabox.php:126
+msgid "%d / 100"
+msgstr "%d / 100"
+
+#: includes/Admin/Page_Shell.php:31 includes/Admin/Admin.php:76
+#: includes/Admin/Admin.php:247 modules/WhiteLabel/WhiteLabel.php:68
+msgid "Dashboard"
+msgstr "Informācijas panelis"
+
+#: includes/Admin/Page_Shell.php:37 includes/Admin/Admin.php:77
+#: includes/Admin/Admin.php:215 includes/Admin/Admin.php:233
+#: includes/Admin/Admin.php:302
+msgid "Settings"
+msgstr "Iestatījumi"
+
+#: includes/Admin/Page_Shell.php:43 includes/Admin/Admin.php:78
+#: modules/SiteAudit/SiteAudit.php:107
+msgid "Site audit"
+msgstr "Vietnes audits"
+
+#: includes/Admin/Page_Shell.php:49 includes/Admin/Admin.php:79
+#: includes/Admin/Admin.php:234 modules/Redirects/Admin_Page.php:33
+msgid "Redirects"
+msgstr "Novirzīšanas"
+
+#: includes/Admin/Page_Shell.php:55 includes/Admin/Admin.php:80
+#: modules/NotFound/NotFoundMonitor.php:122
+msgid "404 monitor"
+msgstr "404 monitors"
+
+#: includes/Admin/Page_Shell.php:61 includes/Admin/Admin.php:81
+#: modules/LinkAssistant/LinkAssistant.php:81
+msgid "Link assistant"
+msgstr "Saišu palīgs"
+
+#: includes/Admin/Page_Shell.php:67 includes/Admin/Admin.php:82
+#: modules/RankTracker/RankTracker.php:67
+msgid "Rank tracker"
+msgstr "Pozīciju izsekošana"
+
+#: includes/Admin/Page_Shell.php:73 includes/Admin/Admin.php:83
+#: includes/Admin/Admin.php:235 modules/AI/BulkMeta.php:76
+msgid "Bulk editor"
+msgstr "Masveida redaktors"
+
+#: includes/Admin/Page_Shell.php:79 includes/Admin/Admin.php:84
+#: modules/ImageSEO/ImageSEO.php:97
+msgid "Image SEO"
+msgstr "Attēlu SEO"
+
+#: includes/Admin/Page_Shell.php:85 includes/Admin/Admin.php:85
+#: includes/Admin/Admin.php:236 modules/Workouts/Workouts.php:86
+msgid "Workouts"
+msgstr "Treniņi"
+
+#: includes/Admin/Page_Shell.php:91 includes/Admin/Admin.php:86
+#: includes/Admin/Admin.php:555
+msgid "Account"
+msgstr "Konts"
+
+#: includes/Admin/Page_Shell.php:126
+msgid "SEO suite"
+msgstr "SEO komplekts"
+
+#. translators: %s: Seofyme subscription plan name.
+#: includes/Admin/Page_Shell.php:152
+msgid "Plan: %s"
+msgstr "Plāns: %s"
+
+#: includes/Admin/Page_Shell.php:157
+msgid "Open Seofyme.com"
+msgstr "Atvērt Seofyme.com"
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:122
+msgid "Credentials saved, but the account could not be refreshed: %s"
+msgstr "Akreditācijas dati saglabāti, bet kontu neizdevās atsvaidzināt: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:133
+msgid "Account connected. Current plan: %s."
+msgstr "Konts savienots. Pašreizējais plāns: %s."
+
+#: includes/Admin/Admin.php:141
+msgid "Cloud credentials updated."
+msgstr "Cloud akreditācijas dati atjaunināti."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:156
+msgid "Plan refresh failed: %s"
+msgstr "Plāna atsvaidzināšana neizdevās: %s"
+
+#. translators: %s: subscription plan name.
+#: includes/Admin/Admin.php:167
+msgid "Plan status refreshed: %s."
+msgstr "Plāna statuss atsvaidzināts: %s."
+
+#: includes/Admin/Admin.php:241
+msgid "Run site audit"
+msgstr "Palaist vietnes auditu"
+
+#: includes/Admin/Admin.php:242
+msgid "Open settings"
+msgstr "Atvērt iestatījumus"
+
+#: includes/Admin/Admin.php:248
+msgid ""
+"Content guidance, technical SEO, redirects, linking, and AI drafting — in "
+"one clean workspace."
+msgstr ""
+"Satura vadība, tehniskais SEO, novirzīšanas, saistīšana un AI melnraksti — "
+"vienā pārskatāmā darba vietā."
+
+#: includes/Admin/Admin.php:255
+msgid "XML sitemap"
+msgstr "XML vietnes karte"
+
+#: includes/Admin/Admin.php:256
+msgid "Keep search engines in sync with your published content."
+msgstr "Uzturiet meklētājprogrammas sinhronizācijā ar jūsu publicēto saturu."
+
+#: includes/Admin/Admin.php:259
+msgid "Open sitemap"
+msgstr "Atvērt vietnes karti"
+
+#: includes/Admin/Admin.php:264
+msgid "Schema graph"
+msgstr "Schema grafiks"
+
+#: includes/Admin/Admin.php:265
+msgid "A single aggregated graph for machines and AI systems."
+msgstr "Viens agregēts grafiks mašīnām un AI sistēmām."
+
+#: includes/Admin/Admin.php:268
+msgid "View graph"
+msgstr "Skatīt grafiku"
+
+#: includes/Admin/Admin.php:273
+msgid "Jump in"
+msgstr "Sāciet"
+
+#: includes/Admin/Admin.php:274
+msgid "Shortcuts to the tools you use most."
+msgstr "Īsceļi uz rīkiem, ko izmantojat visbiežāk."
+
+#: includes/Admin/Admin.php:303
+msgid ""
+"Tune titles, schema, AI drafting, bot controls, IndexNow, and Search "
+"Console."
+msgstr ""
+"Pielāgojiet virsrakstus, shēmu, AI melnrakstus, botu kontroli, IndexNow un "
+"Search Console."
+
+#: includes/Admin/Admin.php:311
+msgid "General"
+msgstr "Vispārīgi"
+
+#: includes/Admin/Admin.php:312
+msgid "Site-wide title defaults, organization details, and core SEO features."
+msgstr ""
+"Visas vietnes virsrakstu noklusējumi, organizācijas dati un pamata SEO "
+"funkcijas."
+
+#: includes/Admin/Admin.php:317
+msgid "Title separator"
+msgstr "Virsraksta atdalītājs"
+
+#: includes/Admin/Admin.php:325
+msgid "Homepage title"
+msgstr "Sākumlapas virsraksts"
+
+#: includes/Admin/Admin.php:332
+msgid "Homepage description"
+msgstr "Sākumlapas apraksts"
+
+#: includes/Admin/Admin.php:337
+msgid "Organization name"
+msgstr "Organizācijas nosaukums"
+
+#: includes/Admin/Admin.php:345
+msgid "Organization logo URL"
+msgstr "Organizācijas logotipa URL"
+
+#: includes/Admin/Admin.php:352
+msgid "Features"
+msgstr "Funkcijas"
+
+#: includes/Admin/Admin.php:355
+msgid "XML sitemaps"
+msgstr "XML vietnes kartes"
+
+#: includes/Admin/Admin.php:359
+msgid "Structured data"
+msgstr "Strukturētie dati"
+
+#: includes/Admin/Admin.php:363
+msgid "Schema aggregation endpoint"
+msgstr "Shēmas agregācijas galapunkts"
+
+#: includes/Admin/Admin.php:367
+msgid "Noindex search results"
+msgstr "Noindex meklēšanas rezultāti"
+
+#: includes/Admin/Admin.php:377
+msgid "BYO AI (optional fallback)"
+msgstr "BYO AI (izvēles rezerves variants)"
+
+#: includes/Admin/Admin.php:378
+msgid "Used only when Seofyme Cloud keys are empty."
+msgstr "Izmantots tikai tad, kad Seofyme Cloud atslēgas ir tukšas."
+
+#: includes/Admin/Admin.php:383
+msgid "Provider"
+msgstr "Nodrošinātājs"
+
+#: includes/Admin/Admin.php:394
+msgid "API key"
+msgstr "API atslēga"
+
+#: includes/Admin/Admin.php:405
+msgid "AI visibility"
+msgstr "AI redzamība"
+
+#: includes/Admin/Admin.php:406
+msgid "Control how AI systems discover and crawl your site."
+msgstr "Kontrolējiet, kā AI sistēmas atklāj un pārmeklē jūsu vietni."
+
+#: includes/Admin/Admin.php:411
+msgid "llms.txt"
+msgstr "llms.txt"
+
+#: includes/Admin/Admin.php:413
+msgid "Publish llms.txt so AI tools can discover important pages."
+msgstr "Publicējiet llms.txt, lai AI rīki varētu atklāt svarīgas lapas."
+
+#: includes/Admin/Admin.php:422
+msgid "AI bot blocker"
+msgstr "AI botu bloķētājs"
+
+#: includes/Admin/Admin.php:423
+msgid "Block selected AI crawlers via robots.txt-style rules."
+msgstr "Bloķējiet atlasītos AI crawlerus ar robots.txt stila noteikumiem."
+
+#: includes/Admin/Admin.php:438
+msgid "IndexNow"
+msgstr "IndexNow"
+
+#: includes/Admin/Admin.php:439
+msgid "Notify search engines instantly when content changes."
+msgstr "Nekavējoties paziņojiet meklētājprogrammām, kad saturs mainās."
+
+#: includes/Admin/Admin.php:444
+msgid "Key"
+msgstr "Atslēga"
+
+#: includes/Admin/Admin.php:445
+msgid "Leave empty to auto-generate."
+msgstr "Atstājiet tukšu automātiskai ģenerēšanai."
+
+#: includes/Admin/Admin.php:458
+msgid "Agency / reports"
+msgstr "Aģentūra / pārskati"
+
+#: includes/Admin/Admin.php:459
+msgid "White-label branding and weekly email summaries."
+msgstr "White-label zīmols un iknedēļas e-pasta kopsavilkumi."
+
+#: includes/Admin/Admin.php:464
+msgid "White-label"
+msgstr "White-label"
+
+#: includes/Admin/Admin.php:465
+msgid "Enable white-label menu name."
+msgstr "Iespējot white-label izvēlnes nosaukumu."
+
+#: includes/Admin/Admin.php:473
+msgid "Brand name"
+msgstr "Zīmola nosaukums"
+
+#: includes/Admin/Admin.php:481
+msgid "Email reports"
+msgstr "E-pasta pārskati"
+
+#: includes/Admin/Admin.php:482
+msgid "Send weekly SEO summary."
+msgstr "Sūtīt iknedēļas SEO kopsavilkumu."
+
+#: includes/Admin/Admin.php:490
+msgid "Report email"
+msgstr "Pārskatu e-pasts"
+
+#: includes/Admin/Admin.php:500
+msgid "Save settings"
+msgstr "Saglabāt iestatījumus"
+
+#: includes/Admin/Admin.php:531
+msgid "Unlimited"
+msgstr "Neierobežots"
+
+#. translators: 1: amount used, 2: plan limit.
+#: includes/Admin/Admin.php:534
+msgid "%1$s of %2$s used"
+msgstr "Izmantots %1$s no %2$s"
+
+#: includes/Admin/Admin.php:545
+msgid "Refresh plan"
+msgstr "Atsvaidzināt plānu"
+
+#: includes/Admin/Admin.php:550
+msgid "Manage account"
+msgstr "Pārvaldīt kontu"
+
+#: includes/Admin/Admin.php:556
+msgid ""
+"Connect Seofyme Cloud, review your subscription, and refresh current AI "
+"usage."
+msgstr ""
+"Savienojiet Seofyme Cloud, pārskatiet abonementu un atsvaidziniet pašreizējo"
+" AI lietojumu."
+
+#: includes/Admin/Admin.php:564
+msgid "API credentials"
+msgstr "API akreditācijas dati"
+
+#: includes/Admin/Admin.php:565
+msgid ""
+"Create Seofyme product API keys in your account, then connect this WordPress"
+" site."
+msgstr ""
+"Izveidojiet Seofyme produkta API atslēgas savā kontā, pēc tam savienojiet šo"
+" WordPress vietni."
+
+#: includes/Admin/Admin.php:569
+msgid "Public API key"
+msgstr "Publiskā API atslēga"
+
+#: includes/Admin/Admin.php:573
+msgid "Secret API key"
+msgstr "Slepenā API atslēga"
+
+#: includes/Admin/Admin.php:579
+msgid "Save credentials"
+msgstr "Saglabāt akreditācijas datus"
+
+#: includes/Admin/Admin.php:585
+msgid "Plan status"
+msgstr "Plāna statuss"
+
+#: includes/Admin/Admin.php:586
+msgid "Subscription and monthly usage are synced from Seofyme Cloud."
+msgstr "Abonements un mēneša lietojums tiek sinhronizēti no Seofyme Cloud."
+
+#. translators: %s: API error message.
+#: includes/Admin/Admin.php:594
+msgid "Last plan refresh failed: %s"
+msgstr "Pēdējā plāna atsvaidzināšana neizdevās: %s"
+
+#: includes/Admin/Admin.php:603
+msgid "Connection"
+msgstr "Savienojums"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Connected"
+msgstr "Savienots"
+
+#: includes/Admin/Admin.php:606 modules/SearchConsole/SearchConsole.php:593
+msgid "Not connected"
+msgstr "Nav savienots"
+
+#: includes/Admin/Admin.php:611
+msgid "Plan"
+msgstr "Plāns"
+
+#: includes/Admin/Admin.php:615
+msgid "AI requests this month"
+msgstr "AI pieprasījumi šomēnes"
+
+#: includes/Admin/Admin.php:619
+msgid "AI tokens this month"
+msgstr "AI žetoni šomēnes"
+
+#: includes/Admin/Admin.php:624
+msgid "Usage period"
+msgstr "Lietojuma periods"
+
+#: includes/Admin/Admin.php:635
+msgid "Manage subscription"
+msgstr "Pārvaldīt abonementu"
+
+#: includes/Admin/Admin.php:636
+msgid "Compare plans or manage billing from your Seofyme account."
+msgstr "Salīdziniet plānus vai pārvaldiet norēķinus no sava Seofyme konta."
+
+#: includes/Admin/Admin.php:639
+msgid "Compare plans"
+msgstr "Salīdzināt plānus"
+
+#: includes/Admin/Admin.php:640
+msgid "Open Seofyme account"
+msgstr "Atvērt Seofyme kontu"
+
+#: includes/Support/Cloud_Account.php:119 modules/AI/Generator.php:135
+msgid "Invalid response from Seofyme Cloud."
+msgstr "Nederīga atbilde no Seofyme Cloud."
+
+#. translators: %d: HTTP status code.
+#: includes/Support/Cloud_Account.php:127
+msgid "Seofyme Cloud returned HTTP %d."
+msgstr "Seofyme Cloud atgrieza HTTP %d."
+
+#: includes/Support/Cloud_Account.php:135
+msgid "Seofyme Cloud returned an invalid plan."
+msgstr "Seofyme Cloud atgrieza nederīgu plānu."
+
+#: modules/FrontendInspector/FrontendInspector.php:66
+msgid "SEO"
+msgstr "SEO"
+
+#: modules/FrontendInspector/FrontendInspector.php:68
+msgid "Seofyme inspector"
+msgstr "Seofyme inspector"
+
+#: modules/FrontendInspector/FrontendInspector.php:71
+#: modules/ImageSEO/ImageSEO.php:126
+msgid "Save"
+msgstr "Saglabāt"
+
+#: modules/WooCommerce/WooCommerceSEO.php:43
+msgid "Seofyme WooCommerce SEO"
+msgstr "Seofyme WooCommerce SEO"
+
+#: modules/WooCommerce/WooCommerceSEO.php:56
+msgid "Brand"
+msgstr "Zīmols"
+
+#: modules/WooCommerce/WooCommerceSEO.php:57
+msgid "GTIN / barcode"
+msgstr "GTIN / svītrkods"
+
+#: modules/Keyphrases/Keyphrases.php:43
+msgid "Related keyphrases"
+msgstr "Saistītās atslēgfāzes"
+
+#: modules/Keyphrases/Keyphrases.php:62
+msgid ""
+"Optimize for up to 5 related keyphrases. Synonyms and word forms count "
+"toward a full SEO check for each."
+msgstr ""
+"Optimizējiet līdz 5 saistītām atslēgfāzēm. Sinonīmi un vārdu formas tiek "
+"ieskaitīti pilnīgā SEO pārbaudē katrai."
+
+#: modules/Keyphrases/Keyphrases.php:67
+msgid "Keyphrase"
+msgstr "Atslēgfāze"
+
+#: modules/Keyphrases/Keyphrases.php:73
+msgid "Synonyms, comma-separated"
+msgstr "Sinonīmi, atdalīti ar komatu"
+
+#: modules/NotFound/NotFoundMonitor.php:116
+msgid "Clear log"
+msgstr "Notīrīt žurnālu"
+
+#: modules/NotFound/NotFoundMonitor.php:123
+msgid "See broken URLs visitors hit, then convert them into redirects."
+msgstr ""
+"Skatiet bojātos URL, uz kuriem nonāk apmeklētāji, pēc tam pārveidojiet tos "
+"par novirzīšanām."
+
+#: modules/NotFound/NotFoundMonitor.php:129
+msgid "Logged 404s"
+msgstr "Reģistrētie 404"
+
+#: modules/NotFound/NotFoundMonitor.php:130
+msgid "Create a redirect from any broken URL below."
+msgstr "Izveidojiet novirzīšanu no jebkura bojāta URL zemāk."
+
+#: modules/NotFound/NotFoundMonitor.php:136
+#: modules/RankTracker/RankTracker.php:115
+msgid "URL"
+msgstr "URL"
+
+#: modules/NotFound/NotFoundMonitor.php:137
+msgid "Hits"
+msgstr "Apmeklējumi"
+
+#: modules/NotFound/NotFoundMonitor.php:138
+msgid "Last seen"
+msgstr "Pēdējo reizi redzēts"
+
+#: modules/NotFound/NotFoundMonitor.php:139 modules/ImageSEO/ImageSEO.php:110
+#: modules/Redirects/Admin_Page.php:114 modules/AI/BulkMeta.php:92
+#: modules/RankTracker/RankTracker.php:118
+msgid "Actions"
+msgstr "Darbības"
+
+#: modules/NotFound/NotFoundMonitor.php:144
+msgid "No 404s logged yet."
+msgstr "Vēl nav reģistrētu 404."
+
+#: modules/NotFound/NotFoundMonitor.php:157
+msgid "Redirect"
+msgstr "Novirzīt"
+
+#: modules/NotFound/NotFoundMonitor.php:178
+#: modules/NotFound/NotFoundMonitor.php:194
+#: modules/SearchConsole/SearchConsole.php:154
+#: modules/SearchConsole/SearchConsole.php:260
+#: modules/SearchConsole/SearchConsole.php:275
+#: modules/SearchConsole/SearchConsole.php:291
+#: modules/Redirects/Redirects.php:318 modules/RankTracker/RankTracker.php:165
+#: modules/RankTracker/RankTracker.php:187
+#: modules/RankTracker/RankTracker.php:209
+msgid "Unauthorized"
+msgstr "Neautorizēts"
+
+#: modules/Workouts/Workouts.php:87
+msgid ""
+"Guided tasks for orphaned pages, cornerstone content, and stale updates."
+msgstr ""
+"Vadīti uzdevumi bāreņu lapām, pamatsaturam un novecojušiem atjauninājumiem."
+
+#: modules/Workouts/Workouts.php:93
+msgid "Orphaned content"
+msgstr "Bāreņu saturs"
+
+#: modules/Workouts/Workouts.php:94
+msgid "Published pages with no internal links pointing to them."
+msgstr "Publicētas lapas bez iekšējām saitēm, kas uz tām norāda."
+
+#: modules/Workouts/Workouts.php:99
+msgid "No orphaned posts found in the scan window."
+msgstr "Skenēšanas logā bāreņu ieraksti nav atrasti."
+
+#: modules/Workouts/Workouts.php:111
+msgid "Pages marked as cornerstone in the editor."
+msgstr "Redaktorā kā pamata atzīmētās lapas."
+
+#: modules/Workouts/Workouts.php:116
+msgid "Mark pages as cornerstone in the editor to track them here."
+msgstr "Atzīmējiet lapas kā pamata redaktorā, lai tās izsekotu šeit."
+
+#: modules/Workouts/Workouts.php:127
+msgid "Stale cornerstone content"
+msgstr "Novecojis pamatsaturs"
+
+#. translators: %d days
+#: modules/Workouts/Workouts.php:132
+msgid ""
+"Cornerstone pages not updated in the last %d days — refresh them to keep "
+"rankings healthy."
+msgstr ""
+"Pamata lapas nav atjauninātas pēdējās %d dienās — atsvaidziniet tās, lai "
+"saglabātu veselīgas pozīcijas."
+
+#: modules/Workouts/Workouts.php:141
+msgid "All cornerstone content looks fresh."
+msgstr "Viss pamatsaturs izskatās svaigs."
+
+#: modules/Workouts/Workouts.php:146
+msgid "ago"
+msgstr "pirms"
+
+#: modules/SearchConsole/SearchConsole.php:132
+msgid "Google Search Console connected."
+msgstr "Google Search Console savienots."
+
+#: modules/SearchConsole/SearchConsole.php:133
+msgid "Search Console disconnected."
+msgstr "Search Console atvienots."
+
+#: modules/SearchConsole/SearchConsole.php:134
+msgid "Search Console property saved."
+msgstr "Search Console īpašums saglabāts."
+
+#: modules/SearchConsole/SearchConsole.php:135
+msgid "Positions synced from Search Console."
+msgstr "Pozīcijas sinhronizētas no Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:136
+msgid "Google authorization was cancelled."
+msgstr "Google autorizācija tika atcelta."
+
+#: modules/SearchConsole/SearchConsole.php:137
+msgid ""
+"Search Console connection failed. Check your Client ID/Secret and try again."
+msgstr ""
+"Savienojums ar Search Console neizdevās. Pārbaudiet Client ID/Secret un "
+"mēģiniet vēlreiz."
+
+#: modules/SearchConsole/SearchConsole.php:138
+msgid "Add a Google Client ID and Client Secret before connecting."
+msgstr "Pirms savienošanas pievienojiet Google Client ID un Client Secret."
+
+#: modules/SearchConsole/SearchConsole.php:139
+msgid "Choose a Search Console property first."
+msgstr "Vispirms izvēlieties Search Console īpašumu."
+
+#: modules/SearchConsole/SearchConsole.php:140
+msgid "Could not sync positions from Search Console."
+msgstr "Neizdevās sinhronizēt pozīcijas no Search Console."
+
+#: modules/SearchConsole/SearchConsole.php:329
+msgid "Invalid token response from Google."
+msgstr "Nederīga žetona atbilde no Google."
+
+#: modules/SearchConsole/SearchConsole.php:345
+msgid "Search Console is not connected."
+msgstr "Search Console nav savienots."
+
+#: modules/SearchConsole/SearchConsole.php:365
+msgid "Could not refresh Google access token."
+msgstr "Neizdevās atsvaidzināt Google access token."
+
+#: modules/SearchConsole/SearchConsole.php:447
+msgid "No Search Console property selected."
+msgstr "Nav atlasīts Search Console īpašums."
+
+#: modules/SearchConsole/SearchConsole.php:484
+msgid "Invalid Search Console response."
+msgstr "Nederīga Search Console atbilde."
+
+#: modules/SearchConsole/SearchConsole.php:541
+msgid "Google Search Console"
+msgstr "Google Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:542
+msgid "OAuth credentials used to connect Search Console for rank automation."
+msgstr ""
+"OAuth akreditācijas dati Search Console savienošanai pozīciju "
+"automatizācijai."
+
+#. translators: %s: OAuth redirect URI.
+#: modules/SearchConsole/SearchConsole.php:549
+msgid ""
+"Create an OAuth client in Google Cloud Console, enable the Search Console "
+"API, and set this redirect URI: %s"
+msgstr ""
+"Izveidojiet OAuth klientu Google Cloud Console, iespējojiet Search Console "
+"API un iestatiet šo redirect URI: %s"
+
+#: modules/SearchConsole/SearchConsole.php:555
+msgid "Google Client ID"
+msgstr "Google Client ID"
+
+#: modules/SearchConsole/SearchConsole.php:559
+msgid "Google Client Secret"
+msgstr "Google Client Secret"
+
+#: modules/SearchConsole/SearchConsole.php:583
+#: modules/SearchConsole/SearchConsole.php:658
+msgid "Connect Search Console"
+msgstr "Savienot Search Console"
+
+#: modules/SearchConsole/SearchConsole.php:584
+msgid ""
+"Authorize Google, pick a property, and sync keyword positions into the rank "
+"tracker."
+msgstr ""
+"Autorizējiet Google, izvēlieties īpašumu un sinhronizējiet atslēgvārdu "
+"pozīcijas pozīciju izsekošanā."
+
+#: modules/SearchConsole/SearchConsole.php:589
+msgid "Status"
+msgstr "Statuss"
+
+#: modules/SearchConsole/SearchConsole.php:603
+msgid ""
+"Save a Google Client ID and Client Secret in Settings before connecting."
+msgstr ""
+"Pirms savienošanas saglabājiet Google Client ID un Client Secret "
+"iestatījumos."
+
+#: modules/SearchConsole/SearchConsole.php:605
+msgid "Open Settings"
+msgstr "Atvērt iestatījumus"
+
+#: modules/SearchConsole/SearchConsole.php:617
+msgid "Property"
+msgstr "Īpašums"
+
+#: modules/SearchConsole/SearchConsole.php:633
+msgid "Save property"
+msgstr "Saglabāt īpašumu"
+
+#: modules/SearchConsole/SearchConsole.php:644
+msgid "Sync positions"
+msgstr "Sinhronizēt pozīcijas"
+
+#: modules/SearchConsole/SearchConsole.php:651
+msgid "Disconnect"
+msgstr "Atvienot"
+
+#: modules/ImageSEO/ImageSEO.php:97
+msgid ""
+"Fill missing alt text in bulk. New uploads get a filename-based alt "
+"automatically."
+msgstr ""
+"Masveidā aizpildiet trūkstošo alt tekstu. Jauniem augšupielādēm automātiski "
+"tiek piešķirts alt pēc faila nosaukuma."
+
+#: modules/ImageSEO/ImageSEO.php:101
+msgid "Missing alt text"
+msgstr "Trūkst alt teksta"
+
+#: modules/ImageSEO/ImageSEO.php:102
+msgid "Images without alternative text in the media library."
+msgstr "Attēli bez alternatīvā teksta multivides bibliotēkā."
+
+#: modules/ImageSEO/ImageSEO.php:108
+msgid "Image"
+msgstr "Attēls"
+
+#: modules/ImageSEO/ImageSEO.php:109
+msgid "Alt text"
+msgstr "Alt teksts"
+
+#: modules/ImageSEO/ImageSEO.php:115
+msgid "No images missing alt text in this scan."
+msgstr "Šajā skenēšanā nav attēlu bez alt teksta."
+
+#: modules/NewsSEO/NewsSEO.php:48
+msgid "News SEO"
+msgstr "Ziņu SEO"
+
+#: modules/NewsSEO/NewsSEO.php:62
+msgid "Include in news sitemap"
+msgstr "Iekļaut ziņu kartē"
+
+#: modules/NewsSEO/NewsSEO.php:63
+msgid "Genres"
+msgstr "Žanri"
+
+#: modules/Headline/HeadlineAnalyzer.php:35
+msgid "Headline analyzer"
+msgstr "Virsrakstu analizators"
+
+#. translators: %d
+#: modules/Headline/HeadlineAnalyzer.php:47
+msgid "Score: %d / 100"
+msgstr "Vērtējums: %d / 100"
+
+#: modules/Headline/HeadlineAnalyzer.php:70
+msgid "Length is in a strong CTR range."
+msgstr "Garums ir spēcīgā CTR diapazonā."
+
+#: modules/Headline/HeadlineAnalyzer.php:72
+msgid "Aim for roughly 40–60 characters."
+msgstr "Mērķējiet aptuveni uz 40–60 rakstzīmēm."
+
+#: modules/Headline/HeadlineAnalyzer.php:78
+msgid "Use about 5–12 words."
+msgstr "Izmantojiet aptuveni 5–12 vārdus."
+
+#: modules/Headline/HeadlineAnalyzer.php:83
+msgid "Numbers in headlines often lift clicks."
+msgstr "Skaitļi virsrakstos bieži palielina klikšķus."
+
+#: modules/Headline/HeadlineAnalyzer.php:85
+msgid "Consider adding a number (e.g. “7 ways…”)."
+msgstr "Apsveriet skaitļa pievienošanu (piem., „7 veidi…“)."
+
+#: modules/Headline/HeadlineAnalyzer.php:93
+msgid "Power words detected."
+msgstr "Konstatēti spēcīgi vārdi."
+
+#: modules/ContentPlanner/ContentPlanner.php:38
+msgid "Content planner"
+msgstr "Satura plānotājs"
+
+#: modules/ContentPlanner/ContentPlanner.php:47
+msgid "Ideas drawn from your site topics, plus a structured starter draft."
+msgstr "Idejas no jūsu vietnes tēmām plus strukturēts sākuma melnraksts."
+
+#: modules/ContentPlanner/ContentPlanner.php:48
+msgid "Suggest ideas"
+msgstr "Ieteikt idejas"
+
+#: modules/ContentPlanner/ContentPlanner.php:50
+msgid "Build starter draft"
+msgstr "Izveidot sākuma melnrakstu"
+
+#: modules/LinkAssistant/LinkAssistant.php:82
+msgid ""
+"Find orphaned pages and insert contextual internal links from related "
+"content."
+msgstr ""
+"Atrodiet bāreņu lapas un ievietojiet kontekstualas iekšējās saites no "
+"saistītā satura."
+
+#: modules/LinkAssistant/LinkAssistant.php:87
+msgid "Linking opportunities"
+msgstr "Sasaistes iespējas"
+
+#: modules/LinkAssistant/LinkAssistant.php:88
+msgid "Insert a contextual link from a related page into an orphaned page."
+msgstr "Ievietojiet kontekstualu saiti no saistītas lapas bāreņu lapā."
+
+#: modules/LinkAssistant/LinkAssistant.php:94
+msgid "Orphaned page"
+msgstr "Bāreņu lapa"
+
+#: modules/LinkAssistant/LinkAssistant.php:95
+msgid "Suggested source"
+msgstr "Ieteiktais avots"
+
+#: modules/LinkAssistant/LinkAssistant.php:96
+msgid "Action"
+msgstr "Darbība"
+
+#: modules/LinkAssistant/LinkAssistant.php:101
+msgid "No linking opportunities found."
+msgstr "Sasaistes iespējas nav atrastas."
+
+#: modules/LinkAssistant/LinkAssistant.php:114
+msgid "Insert link"
+msgstr "Ievietot saiti"
+
+#. translators: %s link
+#: modules/LinkAssistant/LinkAssistant.php:151
+msgid "Related reading: %s"
+msgstr "Saistītais lasījums: %s"
+
+#: modules/SiteAudit/SiteAudit.php:41
+msgid "Site is public (not discouraging search engines)"
+msgstr "Vietne ir publiska (neatbaida meklētājprogrammas)"
+
+#: modules/SiteAudit/SiteAudit.php:45
+msgid "XML sitemaps enabled"
+msgstr "XML vietnes kartes iespējotas"
+
+#: modules/SiteAudit/SiteAudit.php:49
+msgid "Organization name set"
+msgstr "Organizācijas nosaukums iestatīts"
+
+#: modules/SiteAudit/SiteAudit.php:53
+msgid "Homepage meta description set"
+msgstr "Sākumlapas meta apraksts iestatīts"
+
+#: modules/SiteAudit/SiteAudit.php:57
+msgid "Pretty permalinks enabled"
+msgstr "Skaistas pastāvīgās saites iespējotas"
+
+#. translators: %d
+#: modules/SiteAudit/SiteAudit.php:76
+msgid "Recent posts/pages missing meta description: %d"
+msgstr "Nesenie ieraksti/lapas bez meta apraksta: %d"
+
+#: modules/SiteAudit/SiteAudit.php:82
+msgid "HTTPS detected for admin request"
+msgstr "HTTPS konstatēts admin pieprasījumam"
+
+#: modules/SiteAudit/SiteAudit.php:88
+msgid "Site tagline is customized"
+msgstr "Vietnes sauklis ir pielāgots"
+
+#. translators: 1 good 2 total
+#: modules/SiteAudit/SiteAudit.php:108
+msgid "%1$d of %2$d checks look healthy."
+msgstr "%1$d no %2$d pārbaudēm izskatās veselīgas."
+
+#: modules/SiteAudit/SiteAudit.php:113
+msgid "Health checks"
+msgstr "Veselības pārbaudes"
+
+#: modules/SiteAudit/SiteAudit.php:114
+msgid "Technical SEO signals across your site configuration."
+msgstr "Tehniskie SEO signāli jūsu vietnes konfigurācijā."
+
+#: modules/Social/Social.php:42
+msgid "Social preview"
+msgstr "Sociālais priekšskatījums"
+
+#: modules/Social/Social.php:55
+msgid "Facebook title"
+msgstr "Facebook virsraksts"
+
+#: modules/Social/Social.php:56
+msgid "Facebook description"
+msgstr "Facebook apraksts"
+
+#: modules/Social/Social.php:57
+msgid "Facebook image URL"
+msgstr "Facebook attēla URL"
+
+#: modules/Social/Social.php:58
+msgid "X title"
+msgstr "X virsraksts"
+
+#: modules/Social/Social.php:59
+msgid "X description"
+msgstr "X apraksts"
+
+#: modules/Social/Social.php:60
+msgid "X image URL"
+msgstr "X attēla URL"
+
+#: modules/Redirects/Admin_Page.php:34
+msgid "Keep old URLs working when content moves — add one, or import a CSV."
+msgstr ""
+"Saglabājiet vecos URL darbojošos, kad saturs tiek pārvietots — pievienojiet "
+"vienu vai importējiet CSV."
+
+#: modules/Redirects/Admin_Page.php:39 modules/Redirects/Admin_Page.php:79
+msgid "Add redirect"
+msgstr "Pievienot novirzīšanu"
+
+#: modules/Redirects/Admin_Page.php:40
+msgid "Map an old path to a new destination."
+msgstr "Kartējiet veco ceļu uz jaunu galamērķi."
+
+#: modules/Redirects/Admin_Page.php:47
+msgid "Old path / pattern"
+msgstr "Vecais ceļš / modelis"
+
+#: modules/Redirects/Admin_Page.php:51
+msgid "New URL"
+msgstr "Jauns URL"
+
+#: modules/Redirects/Admin_Page.php:56 modules/Redirects/Admin_Page.php:112
+msgid "Format"
+msgstr "Formāts"
+
+#: modules/Redirects/Admin_Page.php:67 modules/Redirects/Admin_Page.php:113
+msgid "Type"
+msgstr "Tips"
+
+#: modules/Redirects/Admin_Page.php:86
+msgid "Import CSV"
+msgstr "Importēt CSV"
+
+#: modules/Redirects/Admin_Page.php:87
+msgid "Format: origin, target, type (type optional)."
+msgstr "Formāts: origin, target, type (type neobligāti)."
+
+#: modules/Redirects/Admin_Page.php:96
+msgid "Import"
+msgstr "Importēt"
+
+#: modules/Redirects/Admin_Page.php:103
+msgid "Existing redirects"
+msgstr "Esošās novirzīšanas"
+
+#: modules/Redirects/Admin_Page.php:104
+msgid "All active redirects on this site."
+msgstr "Visas aktīvās novirzīšanas šajā vietnē."
+
+#: modules/Redirects/Admin_Page.php:110
+msgid "Origin"
+msgstr "Avots"
+
+#: modules/Redirects/Admin_Page.php:111
+msgid "Target"
+msgstr "Mērķis"
+
+#: modules/Redirects/Admin_Page.php:119
+msgid "No redirects yet."
+msgstr "Vēl nav novirzīšanu."
+
+#: modules/Redirects/Admin_Page.php:132
+#: modules/RankTracker/RankTracker.php:144
+msgid "Delete"
+msgstr "Dzēst"
+
+#: modules/Redirects/Redirects.php:193 modules/Redirects/Redirects.php:197
+msgid "This content is no longer available."
+msgstr "Šis saturs vairs nav pieejams."
+
+#: modules/Redirects/Redirects.php:253
+msgid "Seofyme detected a URL change. Create a 301 redirect?"
+msgstr "Seofyme konstatēja URL izmaiņu. Izveidot 301 novirzīšanu?"
+
+#: modules/Redirects/Redirects.php:257
+msgid "Create redirect"
+msgstr "Izveidot novirzīšanu"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:40
+msgid "Default (Article/WebPage)"
+msgstr "Noklusējums (Article/WebPage)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:41
+msgid "FAQ"
+msgstr "FAQ"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:42
+msgid "HowTo"
+msgstr "HowTo"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:43
+msgid "Product"
+msgstr "Product"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:44
+msgid "Recipe"
+msgstr "Recipe"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:45
+msgid "Course"
+msgstr "Course"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:46
+msgid "Event"
+msgstr "Event"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:60
+msgid "Advanced schema"
+msgstr "Papildu shēma"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:77
+msgid "Schema type"
+msgstr "Shēmas tips"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:84
+msgid "Extra JSON fields (optional)"
+msgstr "Papildu JSON lauki (neobligāti)"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:85
+msgid "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+msgstr "{\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}"
+
+#: modules/AdvancedSchema/AdvancedSchema.php:88
+msgid "For FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. For HowTo: {\"steps\":[\"...\",\"...\"]}."
+msgstr "FAQ: {\"questions\":[{\"q\":\"...\",\"a\":\"...\"}]}. HowTo: {\"steps\":[\"...\",\"...\"]}."
+
+#: modules/InternalLinking/Linking_Block.php:46
+msgid "Related internal links"
+msgstr "Saistītās iekšējās saites"
+
+#: modules/InternalLinking/Linking_Block.php:47
+msgid "Suggests related posts to strengthen site structure."
+msgstr "Iesaka saistītos ierakstus vietnes struktūras stiprināšanai."
+
+#: modules/InternalLinking/Linking_Block.php:59
+#: modules/InternalLinking/Linking_Block.php:78
+msgid "Related reading"
+msgstr "Saistītais lasījums"
+
+#: modules/InternalLinking/InternalLinking.php:41
+msgid "Internal linking"
+msgstr "Iekšējā sasaistīšana"
+
+#: modules/InternalLinking/InternalLinking.php:53
+msgid "Refresh suggestions"
+msgstr "Atsvaidzināt ieteikumus"
+
+#: modules/AI/BulkMeta.php:77
+msgid ""
+"Draft missing titles and descriptions, review each one, then approve to "
+"save."
+msgstr ""
+"Sagatavojiet trūkstošos virsrakstus un aprakstus, pārskatiet katru, pēc tam "
+"apstipriniet saglabāšanai."
+
+#: modules/AI/BulkMeta.php:82
+msgid "Missing meta"
+msgstr "Trūkst meta"
+
+#: modules/AI/BulkMeta.php:83
+msgid "Posts and pages without an SEO title or description."
+msgstr "Ieraksti un lapas bez SEO virsraksta vai apraksta."
+
+#: modules/AI/BulkMeta.php:89
+msgid "Content"
+msgstr "Saturs"
+
+#: modules/AI/BulkMeta.php:91
+msgid "Description"
+msgstr "Apraksts"
+
+#: modules/AI/BulkMeta.php:97
+msgid "No gaps found."
+msgstr "Trūkumi nav atrasti."
+
+#: modules/AI/BulkMeta.php:106 modules/AI/Generator.php:42
+msgid "AI draft"
+msgstr "AI melnraksts"
+
+#: modules/AI/BulkMeta.php:107
+msgid "Approve"
+msgstr "Apstiprināt"
+
+#: modules/AI/Generator.php:54
+msgid ""
+"Draft titles, metas, social copy, or optimization tips. Nothing saves until "
+"you click a suggestion."
+msgstr ""
+"Sagatavojiet virsrakstus, meta, sociālos tekstus vai optimizācijas padomus. "
+"Nekas netiek saglabāts, līdz noklikšķināt uz ieteikuma."
+
+#: modules/AI/Generator.php:55
+msgid "Generate titles"
+msgstr "Ģenerēt virsrakstus"
+
+#: modules/AI/Generator.php:56
+msgid "Generate descriptions"
+msgstr "Ģenerēt aprakstus"
+
+#: modules/AI/Generator.php:57
+msgid "Social titles"
+msgstr "Sociālie virsraksti"
+
+#: modules/AI/Generator.php:58
+msgid "Social descriptions"
+msgstr "Sociālie apraksti"
+
+#: modules/AI/Generator.php:59
+msgid "Optimize keyphrase tips"
+msgstr "Atslēgfāzes optimizācijas padomi"
+
+#: modules/AI/Generator.php:60
+msgid "Summarize"
+msgstr "Apkopot"
+
+#: modules/AI/Generator.php:138
+msgid "Seofyme Cloud request failed."
+msgstr "Seofyme Cloud pieprasījums neizdevās."
+
+#: modules/AI/Generator.php:144
+msgid "Seofyme Cloud returned no suggestions."
+msgstr "Seofyme Cloud neatgrieza ieteikumus."
+
+#: modules/AI/Generator.php:314
+msgid "Invalid response from AI provider."
+msgstr "Nederīga atbilde no AI nodrošinātāja."
+
+#. translators: %d: HTTP status code
+#: modules/AI/Generator.php:326
+msgid "AI provider returned HTTP %d."
+msgstr "AI nodrošinātājs atgrieza HTTP %d."
+
+#: modules/AI/Generator.php:335
+msgid "Empty AI response."
+msgstr "Tukša AI atbilde."
+
+#: modules/AI/Generator.php:340
+msgid "Could not parse AI response"
+msgstr "Neizdevās parsēt AI atbildi"
+
+#: modules/Revisions/SEORevisions.php:78
+msgid "SEO revisions"
+msgstr "SEO versijas"
+
+#: modules/Revisions/SEORevisions.php:91
+msgid "No SEO revisions yet."
+msgstr "Vēl nav SEO versiju."
+
+#: modules/Revisions/SEORevisions.php:99
+msgid "(empty title)"
+msgstr "(tukšs virsraksts)"
+
+#: modules/Revisions/SEORevisions.php:103
+msgid "Restore"
+msgstr "Atjaunot"
+
+#: modules/AuthorSEO/AuthorSEO.php:48
+msgid "Seofyme Author SEO (E-E-A-T)"
+msgstr "Seofyme Author SEO (E-E-A-T)"
+
+#: modules/AuthorSEO/AuthorSEO.php:50
+msgid "Job title"
+msgstr "Amats"
+
+#: modules/AuthorSEO/AuthorSEO.php:52
+msgid "Knows about"
+msgstr "Zina par"
+
+#: modules/AuthorSEO/AuthorSEO.php:54
+msgid "SameAs profiles (comma URLs)"
+msgstr "SameAs profili (URL atdalīti ar komatu)"
+
+#: modules/AuthorSEO/AuthorSEO.php:56
+msgid "Education"
+msgstr "Izglītība"
+
+#: modules/AuthorSEO/AuthorSEO.php:58
+msgid "Experience summary"
+msgstr "Pieredzes kopsavilkums"
+
+#: modules/RankTracker/RankTracker.php:69
+msgid "Track focus keywords and sync positions from Google Search Console."
+msgstr ""
+"Izsekojiet fokusa atslēgvārdus un sinhronizējiet pozīcijas no Google Search "
+"Console."
+
+#: modules/RankTracker/RankTracker.php:70
+msgid ""
+"Track focus keywords and log positions over time. Connect Search Console to "
+"automate updates."
+msgstr ""
+"Izsekojiet fokusa atslēgvārdus un reģistrējiet pozīcijas laika gaitā. "
+"Savienojiet Search Console atjauninājumu automatizācijai."
+
+#: modules/RankTracker/RankTracker.php:76
+msgid "Add keyword"
+msgstr "Pievienot atslēgvārdu"
+
+#: modules/RankTracker/RankTracker.php:77
+msgid "Start tracking a keyword and its target URL."
+msgstr "Sāciet izsekot atslēgvārdu un tā mērķa URL."
+
+#: modules/RankTracker/RankTracker.php:84
+#: modules/RankTracker/RankTracker.php:114
+msgid "Keyword"
+msgstr "Atslēgvārds"
+
+#: modules/RankTracker/RankTracker.php:88
+msgid "Target URL"
+msgstr "Mērķa URL"
+
+#: modules/RankTracker/RankTracker.php:93
+msgid "Current position"
+msgstr "Pašreizējā pozīcija"
+
+#: modules/RankTracker/RankTracker.php:101
+msgid "Track keyword"
+msgstr "Izsekot atslēgvārdu"
+
+#: modules/RankTracker/RankTracker.php:107
+msgid "Tracked keywords"
+msgstr "Izsekotie atslēgvārdi"
+
+#: modules/RankTracker/RankTracker.php:108
+msgid "Log new positions and review recent history."
+msgstr "Reģistrējiet jaunās pozīcijas un pārskatiet neseno vēsturi."
+
+#: modules/RankTracker/RankTracker.php:116
+msgid "Position"
+msgstr "Pozīcija"
+
+#: modules/RankTracker/RankTracker.php:117
+msgid "History"
+msgstr "Vēsture"
+
+#: modules/RankTracker/RankTracker.php:123
+msgid "No keywords tracked yet."
+msgstr "Vēl nav izsekotu atslēgvārdu."
+
+#: modules/RankTracker/RankTracker.php:135
+msgid "Log"
+msgstr "Reģistrēt"
+
+#: modules/LocalSEO/LocalSEO.php:44
+msgid "Locations"
+msgstr "Atrašanās vietas"
+
+#: modules/LocalSEO/LocalSEO.php:45
+msgid "Location"
+msgstr "Atrašanās vieta"
+
+#: modules/LocalSEO/LocalSEO.php:63
+msgid "Local business details"
+msgstr "Vietējā uzņēmuma dati"
+
+#: modules/LocalSEO/LocalSEO.php:146
+msgid "No locations yet."
+msgstr "Vēl nav atrašanās vietu."

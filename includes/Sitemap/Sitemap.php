@@ -96,7 +96,10 @@ class Sitemap {
 			return;
 		}
 
-		$q = new \WP_Query(
+		$prev_lang = apply_filters( 'wpml_current_language', null );
+
+		$args = apply_filters(
+			'seofyme_sitemap_query_args',
 			array(
 				'post_type'      => $type,
 				'post_status'    => 'publish',
@@ -106,18 +109,35 @@ class Sitemap {
 			)
 		);
 
+		$q = new \WP_Query( $args );
+
+		$urlset_attrs = apply_filters(
+			'seofyme_sitemap_urlset_attrs',
+			'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+		);
+
 		echo '<?xml version="1.0" encoding="UTF-8"?>';
-		echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">';
+		echo '<urlset ' . $urlset_attrs . '>';
 		foreach ( $q->posts as $post ) {
 			$robots = Post_Meta::get( $post->ID, Post_Meta::ROBOTS, 'index,follow' );
 			if ( false !== strpos( $robots, 'noindex' ) ) {
 				continue;
 			}
-			echo '<url>';
-			echo '<loc>' . esc_url( get_permalink( $post ) ) . '</loc>';
-			echo '<lastmod>' . esc_html( get_the_modified_date( 'c', $post ) ) . '</lastmod>';
-			echo '</url>';
+			$inner  = '<loc>' . esc_url( get_permalink( $post ) ) . '</loc>';
+			$inner .= '<lastmod>' . esc_html( get_the_modified_date( 'c', $post ) ) . '</lastmod>';
+			/**
+			 * Filter inner <url> markup (e.g. WPML xhtml:link alternates).
+			 *
+			 * @param string   $inner Inner XML.
+			 * @param \WP_Post $post  Post.
+			 */
+			$inner = apply_filters( 'seofyme_sitemap_url_entry', $inner, $post );
+			echo '<url>' . $inner . '</url>';
 		}
 		echo '</urlset>';
+
+		if ( $prev_lang ) {
+			do_action( 'wpml_switch_language', $prev_lang );
+		}
 	}
 }

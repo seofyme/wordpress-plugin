@@ -10,6 +10,7 @@ namespace SeofymeSEO;
 use SeofymeSEO\Admin\Admin;
 use SeofymeSEO\Admin\Metabox;
 use SeofymeSEO\Analysis\Analyzer;
+use SeofymeSEO\Compatibility\WPML;
 use SeofymeSEO\Frontend\Head;
 use SeofymeSEO\Frontend\Robots;
 use SeofymeSEO\Schema\Graph;
@@ -132,6 +133,7 @@ class Plugin {
 			new Head(),
 			new Robots(),
 			new Sitemap(),
+			new WPML(),
 			new Graph(),
 			new Analyzer(),
 			new Redirects(),

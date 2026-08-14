@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+	Seofyme SEO — WPML language configuration.
+	@see https://wpml.org/documentation/support/language-configuration-files/
+-->
+<wpml-config>
+	<custom-fields>
+		<!-- Core SEO meta (per language) -->
+		<custom-field action="translate" style="line" label="SEO title">_seofyme_title</custom-field>
+		<custom-field action="translate" style="textarea" label="Meta description">_seofyme_description</custom-field>
+		<custom-field action="translate" style="line" label="Focus keyphrase">_seofyme_focus_keyphrase</custom-field>
+		<custom-field action="translate" encoding="json" style="line" label="Related keyphrases">_seofyme_keyphrases</custom-field>
+		<custom-field action="translate" style="line" label="Canonical URL">_seofyme_canonical</custom-field>
+
+		<!-- Social -->
+		<custom-field action="translate" style="line" label="Facebook title">_seofyme_og_title</custom-field>
+		<custom-field action="translate" style="textarea" label="Facebook description">_seofyme_og_description</custom-field>
+		<custom-field action="copy-once">_seofyme_og_image</custom-field>
+		<custom-field action="translate" style="line" label="X title">_seofyme_twitter_title</custom-field>
+		<custom-field action="translate" style="textarea" label="X description">_seofyme_twitter_description</custom-field>
+		<custom-field action="copy-once">_seofyme_twitter_image</custom-field>
+
+		<!-- Synced non-text SEO settings -->
+		<custom-field action="copy">_seofyme_robots</custom-field>
+		<custom-field action="copy">_seofyme_cornerstone</custom-field>
+
+		<!-- Schema -->
+		<custom-field action="copy">_seofyme_schema_type</custom-field>
+		<custom-field action="translate" encoding="json" label="Schema data">_seofyme_schema_data</custom-field>
+
+		<!-- News / Video / Woo -->
+		<custom-field action="copy">_seofyme_news_include</custom-field>
+		<custom-field action="translate" style="line" label="News genres">_seofyme_news_genres</custom-field>
+		<custom-field action="copy-once">_seofyme_videos</custom-field>
+		<custom-field action="translate" style="line" label="Brand">_seofyme_brand</custom-field>
+		<custom-field action="copy">_seofyme_gtin</custom-field>
+
+		<!-- Local SEO location fields -->
+		<custom-field action="translate" style="line" label="Business name">_seofyme_local_business_name</custom-field>
+		<custom-field action="copy">_seofyme_local_phone</custom-field>
+		<custom-field action="copy">_seofyme_local_email</custom-field>
+		<custom-field action="translate" style="line" label="Street">_seofyme_local_street</custom-field>
+		<custom-field action="translate" style="line" label="City">_seofyme_local_city</custom-field>
+		<custom-field action="translate" style="line" label="Region">_seofyme_local_region</custom-field>
+		<custom-field action="copy">_seofyme_local_postal</custom-field>
+		<custom-field action="translate" style="line" label="Country">_seofyme_local_country</custom-field>
+		<custom-field action="copy">_seofyme_local_lat</custom-field>
+		<custom-field action="copy">_seofyme_local_lng</custom-field>
+		<custom-field action="translate" style="line" label="Opening hours">_seofyme_local_opening_hours</custom-field>
+		<custom-field action="copy-once">_seofyme_local_maps_embed</custom-field>
+
+		<!-- Internal history — do not sync into translations -->
+		<custom-field action="ignore">_seofyme_seo_revisions</custom-field>
+	</custom-fields>
+
+	<custom-fields-texts>
+		<key name="_seofyme_keyphrases">
+			<key name="*">
+				<key name="keyphrase" />
+				<key name="synonyms" />
+			</key>
+		</key>
+		<key name="_seofyme_schema_data">
+			<key name="questions">
+				<key name="*">
+					<key name="q" />
+					<key name="a" />
+				</key>
+			</key>
+			<key name="steps">
+				<key name="*" />
+			</key>
+			<key name="name" />
+			<key name="description" />
+			<key name="headline" />
+		</key>
+	</custom-fields-texts>
+
+	<custom-types>
+		<custom-type translate="1">seofyme_location</custom-type>
+	</custom-types>
+
+	<admin-texts>
+		<key name="seofyme_seo_options">
+			<key name="homepage_title" />
+			<key name="homepage_description" />
+			<key name="organization_name" />
+			<key name="title_separator" />
+			<key name="whitelabel_name" />
+		</key>
+	</admin-texts>
+
+	<gutenberg-blocks>
+		<gutenberg-block type="seofyme/related-links" translate="1" label="Related internal links">
+			<key name="title" />
+		</gutenberg-block>
+	</gutenberg-blocks>
+
+	<shortcodes>
+		<shortcode>
+			<tag>seofyme_store_locator</tag>
+		</shortcode>
+	</shortcodes>
+</wpml-config>
