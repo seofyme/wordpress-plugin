@@ -31,6 +31,8 @@ No. Seofyme SEO is original code under the SeofymeSEO namespace with `_seofyme_*
 
 = 0.1.0 =
 * Public GitHub release of Seofyme SEO
+* Public REST ping endpoint (`/wp-json/cacherocket/v1/ping`) so CacheRocket can verify the plugin is still installed
+* Notify CacheRocket on uninstall so connected installs are marked disconnected
 
 = 1.1.1 =
 * Yoast free-vs-Premium comparison gaps: word-form keyphrase analysis, full checks per related keyphrase/synonym, llms.txt, stale cornerstone workout, related-links Gutenberg block, AI social titles/descriptions

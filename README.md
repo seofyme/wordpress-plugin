@@ -62,6 +62,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 | `/video-sitemap.xml` | Video sitemap (when videos are detected) |
 | News sitemap routes | News SEO module |
 | `/{indexnow-key}.txt` | IndexNow ownership key file |
+| `/wp-json/cacherocket/v1/ping` | Public install probe for CacheRocket (plugin still installed) |
 
 ### Feature map
 
@@ -265,6 +266,8 @@ Running two full SEO plugins usually duplicates titles, sitemaps, and schema. Pr
 
 - Public GitHub release of Seofyme SEO.
 - Core on-page SEO, sitemaps, schema, redirects, multi-keyphrase, linking, social, AI drafting, Local/Video/News SEO, IndexNow, llms.txt, workouts, audits, and related bundled modules.
+- Public REST ping endpoint (`/wp-json/cacherocket/v1/ping`) so CacheRocket can verify the plugin is still installed.
+- Notify CacheRocket on uninstall so connected installs are marked disconnected.
 
 ### Earlier development tags
 
