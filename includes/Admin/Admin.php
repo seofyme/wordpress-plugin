@@ -9,6 +9,7 @@ namespace SeofymeSEO\Admin;
 
 use SeofymeSEO\Modules\SearchConsole\SearchConsole;
 use SeofymeSEO\Support\Cloud_Account;
+use SeofymeSEO\Support\Heartbeat;
 use SeofymeSEO\Support\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -109,6 +110,7 @@ class Admin {
 			Cloud_Account::clear_cache();
 
 			if ( '' !== $public && '' !== $secret ) {
+				Heartbeat::send( true );
 				$status = Cloud_Account::sync();
 				$error  = Cloud_Account::get_last_error();
 				if ( $error ) {

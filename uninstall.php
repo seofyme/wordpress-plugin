@@ -74,7 +74,9 @@ delete_option( 'seofyme_rank_keywords' );
 delete_option( 'seofyme_gsc_auth' );
 delete_option( 'seofyme_cloud_account_last_good' );
 delete_option( 'seofyme_cloud_account_error' );
+delete_option( 'seofyme_last_heartbeat' );
 delete_transient( 'seofyme_cloud_account_status' );
+delete_transient( 'seofyme_heartbeat_sent' );
 
 global $wpdb;
 

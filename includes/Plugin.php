@@ -14,6 +14,7 @@ use SeofymeSEO\Frontend\Head;
 use SeofymeSEO\Frontend\Robots;
 use SeofymeSEO\Schema\Graph;
 use SeofymeSEO\Sitemap\Sitemap;
+use SeofymeSEO\Support\Heartbeat;
 use SeofymeSEO\Support\Options;
 use SeofymeSEO\Support\Rest;
 use SeofymeSEO\Modules\Redirects\Redirects;
@@ -124,6 +125,7 @@ class Plugin {
 		$this->services = array(
 			new Options(),
 			new Rest(),
+			new Heartbeat(),
 			new WhiteLabel(),
 			new Admin(),
 			new Metabox(),
