@@ -55,12 +55,12 @@ class WPML {
 			return;
 		}
 
-		$languages = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => true ) );
+		$languages = apply_filters( 'wpml_active_languages', null, array( 'skip_missing' => true ) ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 		if ( ! is_array( $languages ) || count( $languages ) < 2 ) {
 			return;
 		}
 
-		$default = apply_filters( 'wpml_default_language', null );
+		$default = apply_filters( 'wpml_default_language', null ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 		foreach ( $languages as $lang ) {
 			if ( empty( $lang['language_code'] ) || empty( $lang['url'] ) ) {
 				continue;
@@ -81,13 +81,13 @@ class WPML {
 	 * @return bool
 	 */
 	private static function wpml_outputs_hreflang() {
-		$seo = apply_filters( 'wpml_setting', null, 'seo' );
+		$seo = apply_filters( 'wpml_setting', null, 'seo' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 		if ( is_array( $seo ) && ! empty( $seo['head_langs'] ) ) {
 			return true;
 		}
 
 		// WPML SEO add-on / older setting shapes.
-		if ( defined( 'WPML_SEO_VERSION' ) && apply_filters( 'wpml_setting', false, 'seo_head_langs' ) ) {
+		if ( defined( 'WPML_SEO_VERSION' ) && apply_filters( 'wpml_setting', false, 'seo_head_langs' ) ) { // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 			return true;
 		}
 
@@ -107,7 +107,7 @@ class WPML {
 		$args['suppress_filters'] = false;
 
 		// Ask WPML not to limit the query to the current language.
-		do_action( 'wpml_switch_language', 'all' );
+		do_action( 'wpml_switch_language', 'all' ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 
 		return $args;
 	}
@@ -115,13 +115,17 @@ class WPML {
 	/**
 	 * xmlns for xhtml:link alternates.
 	 *
-	 * @param string $attrs Existing attributes string.
-	 * @return string
+	 * @param array<string, string> $attrs Existing attribute map.
+	 * @return array<string, string>
 	 */
 	public function sitemap_urlset_attrs( $attrs ) {
-		$attrs = is_string( $attrs ) ? $attrs : '';
-		if ( false === strpos( $attrs, 'xhtml' ) ) {
-			$attrs .= ' xmlns:xhtml="http://www.w3.org/1999/xhtml"';
+		if ( ! is_array( $attrs ) ) {
+			$attrs = array(
+				'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9',
+			);
+		}
+		if ( empty( $attrs['xmlns:xhtml'] ) ) {
+			$attrs['xmlns:xhtml'] = 'http://www.w3.org/1999/xhtml';
 		}
 		return $attrs;
 	}
@@ -139,8 +143,8 @@ class WPML {
 		}
 
 		$type         = 'post_' . $post->post_type;
-		$trid         = apply_filters( 'wpml_element_trid', null, $post->ID, $type );
-		$translations = $trid ? apply_filters( 'wpml_get_element_translations', null, $trid, $type ) : null;
+		$trid         = apply_filters( 'wpml_element_trid', null, $post->ID, $type ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
+		$translations = $trid ? apply_filters( 'wpml_get_element_translations', null, $trid, $type ) : null; // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 		if ( ! is_array( $translations ) || empty( $translations ) ) {
 			return $xml;
 		}

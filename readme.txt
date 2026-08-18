@@ -1,10 +1,10 @@
 === Seofyme SEO ===
-Contributors: seofyme
+Contributors: cacherocket, seofyme
 Tags: seo, sitemap, schema, redirects, meta
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 7.4
-Stable tag: 0.1.0
+Stable tag: 0.1.1
 License: GPLv3 or later
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -31,11 +31,17 @@ No. Seofyme SEO is original code under the SeofymeSEO namespace with `_seofyme_*
 
 Yes. A `wpml-config.xml` registers SEO titles, descriptions, social fields, schema, locations, and homepage settings for translation. With WPML active, Seofyme also outputs hreflang tags (unless WPML already does) and language alternates in the XML sitemap. Install WPML String Translation to translate site-wide options such as the homepage title.
 
-= Which languages are included? =
+= How are translations handled? =
 
-The plugin ships UI translations for common EU locales: Bulgarian, Croatian, Czech, Danish, Dutch, Estonian, Finnish, French, German, Greek, Hungarian, Italian, Latvian, Lithuanian, Polish, Portuguese (Portugal), Romanian, Slovak, Slovenian, Spanish, and Swedish. WordPress uses the site language (Settings → General) to load the matching `languages/seofyme-seo-{locale}.mo` file.
+The plugin is internationalized with the `seofyme-seo` text domain. Translation files are not bundled. After the plugin is published on WordPress.org, community translations are managed at [translate.wordpress.org](https://translate.wordpress.org/) and delivered automatically through the WordPress translation update system.
 
 == Changelog ==
+
+= 0.1.1 =
+* WordPress.org review readiness: Plugin/Author URI on seofyme.com, enqueue admin menu CSS via `wp_add_inline_style`
+* Remove bundled `.po`/`.mo` locale files (keep `.pot` template only); community translations via translate.wordpress.org
+* Remove manual `load_plugin_textdomain()`; WordPress.org loads translations for the `seofyme-seo` slug automatically
+* Escape sitemap URL-set attributes; add ABSPATH guard to Plugin.php; silence WPML third-party hook false positives
 
 = 0.1.0 =
 * Public GitHub release of Seofyme SEO

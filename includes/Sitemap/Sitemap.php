@@ -96,7 +96,7 @@ class Sitemap {
 			return;
 		}
 
-		$prev_lang = apply_filters( 'wpml_current_language', null );
+		$prev_lang = apply_filters( 'wpml_current_language', null ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 
 		$args = apply_filters(
 			'seofyme_sitemap_query_args',
@@ -113,31 +113,48 @@ class Sitemap {
 
 		$urlset_attrs = apply_filters(
 			'seofyme_sitemap_urlset_attrs',
-			'xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"'
+			array(
+				'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9',
+			)
 		);
+		if ( ! is_array( $urlset_attrs ) ) {
+			$urlset_attrs = array(
+				'xmlns' => 'http://www.sitemaps.org/schemas/sitemap/0.9',
+			);
+		}
 
 		echo '<?xml version="1.0" encoding="UTF-8"?>';
-		echo '<urlset ' . $urlset_attrs . '>';
+		echo '<urlset';
+		foreach ( $urlset_attrs as $attr_name => $attr_value ) {
+			$attr_name = preg_replace( '/[^a-zA-Z0-9:_-]/', '', (string) $attr_name );
+			if ( '' === $attr_name ) {
+				continue;
+			}
+			echo ' ' . esc_attr( $attr_name ) . '="' . esc_attr( (string) $attr_value ) . '"';
+		}
+		echo '>';
 		foreach ( $q->posts as $post ) {
 			$robots = Post_Meta::get( $post->ID, Post_Meta::ROBOTS, 'index,follow' );
 			if ( false !== strpos( $robots, 'noindex' ) ) {
 				continue;
 			}
 			$inner  = '<loc>' . esc_url( get_permalink( $post ) ) . '</loc>';
-			$inner .= '<lastmod>' . esc_html( get_the_modified_date( 'c', $post ) ) . '</lastmod>';
+			$inner .= '<lastmod>' . esc_xml( get_the_modified_date( 'c', $post ) ) . '</lastmod>';
 			/**
 			 * Filter inner <url> markup (e.g. WPML xhtml:link alternates).
+			 *
+			 * Callbacks must return escaped XML only.
 			 *
 			 * @param string   $inner Inner XML.
 			 * @param \WP_Post $post  Post.
 			 */
 			$inner = apply_filters( 'seofyme_sitemap_url_entry', $inner, $post );
-			echo '<url>' . $inner . '</url>';
+			echo '<url>' . $inner . '</url>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Built with esc_url/esc_xml; filter must return escaped XML.
 		}
 		echo '</urlset>';
 
 		if ( $prev_lang ) {
-			do_action( 'wpml_switch_language', $prev_lang );
+			do_action( 'wpml_switch_language', $prev_lang ); // phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WPML API.
 		}
 	}
 }

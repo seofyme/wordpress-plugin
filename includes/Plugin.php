@@ -7,6 +7,10 @@
 
 namespace SeofymeSEO;
 
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
+}
+
 use SeofymeSEO\Admin\Admin;
 use SeofymeSEO\Admin\Metabox;
 use SeofymeSEO\Analysis\Analyzer;

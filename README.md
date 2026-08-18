@@ -1,11 +1,11 @@
 # Seofyme SEO — WordPress Plugin
 
-**Contributors:** Seofyme  
+**Contributors:** cacherocket, seofyme  
 **Tags:** seo, sitemap, schema, redirects, meta, openai, local-seo  
 **Requires at least:** 6.0  
 **Requires PHP:** 7.4  
 **Tested up to:** 6.8  
-**Stable tag:** 0.1.0  
+**Stable tag:** 0.1.1  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,19 +21,19 @@ Seofyme owns its meta keys (`_seofyme_*`), PHP namespaces (`SeofymeSEO\`), admin
 
 ### Admin pages
 
-| Menu | What it does |
-|---|---|
-| **Dashboard** | Quick links to sitemap, schema graph, settings, redirects, bulk editor, workouts |
-| **Settings** | Titles, organization, optional BYO AI provider/key, AI bot blocker, llms.txt, IndexNow, Search Console OAuth, white-label, weekly email reports |
-| **Site audit** | Technical health checks for the whole site |
-| **Redirects** | Create/manage 301/302/307/410/451 redirects, regex rules, CSV import |
-| **404 monitor** | Logs missing URLs and turns them into redirects |
-| **Link assistant** | Suggests internal links across existing content |
-| **Rank tracker** | Manual keyword → position tracking with history; optional Google Search Console sync |
-| **Bulk editor** | Draft or approve SEO titles/descriptions in bulk (AI-assisted) |
-| **Image SEO** | Find and fix missing image alt text |
-| **Workouts** | Orphaned content, cornerstone list, stale cornerstone reminders |
-| **Account** | Connect Seofyme Cloud API keys, view subscription and monthly AI usage, refresh plan status |
+| Menu               | What it does                                                                                                                                    |
+| ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Dashboard**      | Quick links to sitemap, schema graph, settings, redirects, bulk editor, workouts                                                                |
+| **Settings**       | Titles, organization, optional BYO AI provider/key, AI bot blocker, llms.txt, IndexNow, Search Console OAuth, white-label, weekly email reports |
+| **Site audit**     | Technical health checks for the whole site                                                                                                      |
+| **Redirects**      | Create/manage 301/302/307/410/451 redirects, regex rules, CSV import                                                                            |
+| **404 monitor**    | Logs missing URLs and turns them into redirects                                                                                                 |
+| **Link assistant** | Suggests internal links across existing content                                                                                                 |
+| **Rank tracker**   | Manual keyword → position tracking with history; optional Google Search Console sync                                                            |
+| **Bulk editor**    | Draft or approve SEO titles/descriptions in bulk (AI-assisted)                                                                                  |
+| **Image SEO**      | Find and fix missing image alt text                                                                                                             |
+| **Workouts**       | Orphaned content, cornerstone list, stale cornerstone reminders                                                                                 |
+| **Account**        | Connect Seofyme Cloud API keys, view subscription and monthly AI usage, refresh plan status                                                     |
 
 ### Editor (posts & pages)
 
@@ -53,26 +53,28 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 
 ### Public endpoints (after Permalinks flush)
 
-| URL | Purpose |
-|---|---|
-| `/sitemap.xml` | XML sitemap index |
-| `/sitemap-{post_type}.xml` | Per-type sitemaps |
-| `/seofyme-schema.json` | Aggregated Schema.org graph |
-| `/llms.txt` | AI-discovery file (cornerstone / important pages) |
-| `/video-sitemap.xml` | Video sitemap (when videos are detected) |
-| News sitemap routes | News SEO module |
-| `/{indexnow-key}.txt` | IndexNow ownership key file |
+| URL                            | Purpose                                                       |
+| ------------------------------ | ------------------------------------------------------------- |
+| `/sitemap.xml`                 | XML sitemap index                                             |
+| `/sitemap-{post_type}.xml`     | Per-type sitemaps                                             |
+| `/seofyme-schema.json`         | Aggregated Schema.org graph                                   |
+| `/llms.txt`                    | AI-discovery file (cornerstone / important pages)             |
+| `/video-sitemap.xml`           | Video sitemap (when videos are detected)                      |
+| News sitemap routes            | News SEO module                                               |
+| `/{indexnow-key}.txt`          | IndexNow ownership key file                                   |
 | `/wp-json/cacherocket/v1/ping` | Public install probe for CacheRocket (plugin still installed) |
 
 ### Feature map
 
 **On-page SEO**
+
 - SEO title, meta description, canonical, robots
 - Focus keyphrase + readability/content analysis
 - Word forms and synonym matching for focus + related keyphrases
 - SERP preview in the editor
 
 **Technical SEO**
+
 - XML sitemaps
 - Schema.org JSON-LD (Organization, WebSite, Article/WebPage, plus advanced types)
 - Schema aggregation endpoint
@@ -82,6 +84,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 - Site audit
 
 **Site structure**
+
 - Redirect manager (plain + regex) with slug-change prompts
 - CSV redirect import
 - 404 monitor → redirect workflow
@@ -90,6 +93,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 - Orphaned content + cornerstone + stale cornerstone workouts
 
 **Content & AI**
+
 - AI titles, meta descriptions, social titles/descriptions (OpenAI or Anthropic API key)
 - Offline heuristic fallbacks when no API key is set
 - Optimize tips + summarize
@@ -97,6 +101,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 - Content planner / starter drafts
 
 **Social & local & media**
+
 - Open Graph / X previews and tags
 - Local SEO locations CPT + `[seofyme_store_locator]` shortcode
 - Video SEO detection + video sitemap
@@ -105,6 +110,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 - WooCommerce product brand/GTIN fields + product schema helpers (when WooCommerce is active)
 
 **Agency extras**
+
 - White-label menu name
 - Weekly email SEO summary
 - Author E-E-A-T profile fields + Person schema
@@ -213,30 +219,29 @@ README.md                 # This GitHub documentation
 wpml-config.xml           # WPML field/option translation map
 uninstall.php             # Cleanup on plugin delete
 license.txt               # GPL-3.0
-bin/build-translations.py # Rebuild .po/.mo from languages/translations/*.json
 includes/                 # Core: admin, analysis, frontend head, sitemap, schema, options, WPML
 modules/                  # Feature modules (redirects, AI, local, video, news, …)
 assets/css|js             # Admin + front-end inspector + Gutenberg block assets
-languages/                # POT/PO/MO + JSON translation maps (EU locales)
+languages/                # Translation template (.pot); community translations via translate.wordpress.org
 ```
 
 ### Notable modules
 
-| Path | Module |
-|---|---|
-| `modules/Redirects/` | Redirect runtime + admin + CSV |
-| `modules/Keyphrases/` | Related keyphrases + synonyms |
-| `modules/InternalLinking/` | Suggestions, orphaned content, related-links block |
-| `modules/Social/` | Open Graph / X |
-| `modules/AI/` | Generator + bulk meta |
-| `modules/BotBlocker/` | AI crawler robots rules |
-| `modules/LlmsTxt/` | `/llms.txt` |
-| `modules/IndexNow/` | IndexNow key + ping |
-| `modules/LocalSEO/` | Locations + store locator |
-| `modules/VideoSEO/` / `NewsSEO/` | Media/news sitemaps |
-| `modules/RankTracker/` | Keyword position log + GSC sync |
-| `modules/SearchConsole/` | Google Search Console OAuth + property |
-| `modules/WooCommerce/` | Product SEO helpers |
+| Path                             | Module                                             |
+| -------------------------------- | -------------------------------------------------- |
+| `modules/Redirects/`             | Redirect runtime + admin + CSV                     |
+| `modules/Keyphrases/`            | Related keyphrases + synonyms                      |
+| `modules/InternalLinking/`       | Suggestions, orphaned content, related-links block |
+| `modules/Social/`                | Open Graph / X                                     |
+| `modules/AI/`                    | Generator + bulk meta                              |
+| `modules/BotBlocker/`            | AI crawler robots rules                            |
+| `modules/LlmsTxt/`               | `/llms.txt`                                        |
+| `modules/IndexNow/`              | IndexNow key + ping                                |
+| `modules/LocalSEO/`              | Locations + store locator                          |
+| `modules/VideoSEO/` / `NewsSEO/` | Media/news sitemaps                                |
+| `modules/RankTracker/`           | Keyword position log + GSC sync                    |
+| `modules/SearchConsole/`         | Google Search Console OAuth + property             |
+| `modules/WooCommerce/`           | Product SEO helpers                                |
 
 ## FAQ
 
@@ -248,9 +253,9 @@ No. Seofyme SEO is original code under the `SeofymeSEO` namespace with `_seofyme
 
 Yes. `wpml-config.xml` tells WPML which SEO titles, descriptions, social fields, schema, locations, and homepage settings to translate. With WPML active, Seofyme outputs hreflang tags (unless WPML already does) and language alternates in the XML sitemap. Use **WPML String Translation** for site-wide options such as the homepage title.
 
-### Which languages are included?
+### How are translations handled?
 
-UI translations ship for common EU locales: `bg_BG`, `hr`, `cs_CZ`, `da_DK`, `nl_NL`, `et`, `fi`, `fr_FR`, `de_DE`, `el`, `hu_HU`, `it_IT`, `lv`, `lt_LT`, `pl_PL`, `pt_PT`, `ro_RO`, `sk_SK`, `sl_SI`, `es_ES`, `sv_SE`. WordPress loads them from `languages/seofyme-seo-{locale}.mo` based on the site language. Source maps live in `languages/translations/`; rebuild with `bin/build-translations.py` (requires `polib`).
+The plugin is internationalized with the `seofyme-seo` text domain (no manual `load_plugin_textdomain()`). Translation files are **not** bundled. After publication on WordPress.org, community translations are managed at [translate.wordpress.org](https://translate.wordpress.org/) and delivered through the standard WordPress translation update system.
 
 ### Why do sitemaps or llms.txt 404?
 
@@ -272,6 +277,13 @@ Running two full SEO plugins usually duplicates titles, sitemaps, and schema. Pr
 
 ## Changelog
 
+### 0.1.1
+
+- WordPress.org review readiness: Plugin/Author URI on seofyme.com, enqueue admin menu CSS via `wp_add_inline_style`.
+- Remove bundled `.po`/`.mo` locale files (keep `.pot` template only); community translations via translate.wordpress.org.
+- Remove manual `load_plugin_textdomain()`; WordPress.org loads translations for the `seofyme-seo` slug automatically.
+- Escape sitemap URL-set attributes; add ABSPATH guard to Plugin.php; silence WPML third-party hook false positives.
+
 ### 0.1.0
 
 - Public GitHub release of Seofyme SEO.
@@ -284,6 +296,10 @@ Running two full SEO plugins usually duplicates titles, sitemaps, and schema. Pr
 Internal milestones `1.0.0`–`1.1.1` covered UI polish, premium-parity modules, word-form analysis, and AI hardening before the public `0.1.0` tag. See [`readme.txt`](readme.txt) for the detailed list.
 
 ## Upgrade Notice
+
+### 0.1.1
+
+WordPress.org packaging fixes: no bundled locale translations, safer asset enqueue and sitemap escaping. Clear any page cache after updating.
 
 ### 0.1.0
 

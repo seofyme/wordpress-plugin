@@ -29,8 +29,8 @@ class Admin {
 	public function register() {
 		add_action( 'admin_menu', array( $this, 'menus' ) );
 		add_action( 'admin_init', array( $this, 'handle_account_actions' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_menu_icon_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'assets' ) );
-		add_action( 'admin_head', array( $this, 'menu_icon_styles' ) );
 		add_filter( 'plugin_action_links_' . SEOFYME_SEO_BASENAME, array( $this, 'action_links' ) );
 	}
 
@@ -39,22 +39,12 @@ class Admin {
 	 *
 	 * @return void
 	 */
-	public function menu_icon_styles() {
-		?>
-		<style>
-			#adminmenu #toplevel_page_seofyme-seo .wp-menu-image img {
-				width: 20px;
-				height: 20px;
-				padding: 7px 0 0;
-				opacity: 0.85;
-			}
-			#adminmenu #toplevel_page_seofyme-seo:hover .wp-menu-image img,
-			#adminmenu #toplevel_page_seofyme-seo.wp-has-current-submenu .wp-menu-image img,
-			#adminmenu #toplevel_page_seofyme-seo.current .wp-menu-image img {
-				opacity: 1;
-			}
-		</style>
-		<?php
+	public function enqueue_menu_icon_styles() {
+		$css = '#adminmenu #toplevel_page_seofyme-seo .wp-menu-image img{width:20px;height:20px;padding:7px 0 0;opacity:.85;}#adminmenu #toplevel_page_seofyme-seo:hover .wp-menu-image img,#adminmenu #toplevel_page_seofyme-seo.wp-has-current-submenu .wp-menu-image img,#adminmenu #toplevel_page_seofyme-seo.current .wp-menu-image img{opacity:1;}';
+
+		wp_register_style( 'seofyme-seo-admin-menu', false, array(), SEOFYME_SEO_VERSION );
+		wp_enqueue_style( 'seofyme-seo-admin-menu' );
+		wp_add_inline_style( 'seofyme-seo-admin-menu', $css );
 	}
 
 	/**
