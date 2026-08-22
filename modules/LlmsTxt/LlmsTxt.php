@@ -65,7 +65,7 @@ class LlmsTxt {
 	 * @return bool
 	 */
 	private function is_direct_request() {
-		$uri = isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : ''; // phpcs:ignore
+		$uri = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		$path = wp_parse_url( home_url( $uri ), PHP_URL_PATH );
 		$base = wp_parse_url( home_url( '/' ), PHP_URL_PATH );
 		$rel  = '/' === $base ? $path : preg_replace( '#^' . preg_quote( untrailingslashit( $base ), '#' ) . '#', '', (string) $path );

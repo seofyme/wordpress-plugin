@@ -7,6 +7,8 @@
 
 namespace SeofymeSEO\Modules\AuthorSEO;
 
+use SeofymeSEO\Schema\Json_Ld;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -111,6 +113,6 @@ class AuthorSEO {
 		if ( $same ) {
 			$data['sameAs'] = array_values( $same );
 		}
-		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+		Json_Ld::print_script( $data );
 	}
 }

@@ -7,6 +7,8 @@
 
 namespace SeofymeSEO\Modules\LocalSEO;
 
+use SeofymeSEO\Schema\Json_Ld;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -91,9 +93,18 @@ class LocalSEO {
 		if ( ! current_user_can( 'edit_post', $post_id ) ) {
 			return;
 		}
-		$data = isset( $_POST['seofyme_local'] ) && is_array( $_POST['seofyme_local'] ) ? wp_unslash( $_POST['seofyme_local'] ) : array(); // phpcs:ignore
-		foreach ( $data as $key => $value ) {
-			update_post_meta( $post_id, '_seofyme_local_' . sanitize_key( $key ), sanitize_text_field( $value ) );
+		$data = isset( $_POST['seofyme_local'] ) && is_array( $_POST['seofyme_local'] ) ? wp_unslash( $_POST['seofyme_local'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- Sanitized per-field below.
+		$allowed = array( 'business_name', 'phone', 'email', 'street', 'city', 'region', 'postal', 'country', 'lat', 'lng', 'opening_hours', 'maps_embed' );
+		foreach ( $allowed as $key ) {
+			$value = isset( $data[ $key ] ) ? (string) $data[ $key ] : '';
+			if ( 'email' === $key ) {
+				$value = sanitize_email( $value );
+			} elseif ( in_array( $key, array( 'maps_embed' ), true ) ) {
+				$value = esc_url_raw( $value );
+			} else {
+				$value = sanitize_text_field( $value );
+			}
+			update_post_meta( $post_id, '_seofyme_local_' . $key, $value );
 		}
 	}
 
@@ -132,7 +143,7 @@ class LocalSEO {
 		if ( $get( 'opening_hours' ) ) {
 			$data['openingHours'] = $get( 'opening_hours' );
 		}
-		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+		Json_Ld::print_script( $data );
 	}
 
 	/**

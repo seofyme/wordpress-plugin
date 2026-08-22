@@ -58,6 +58,7 @@ class Options {
 			'seofyme_secret_key'  => '',
 			'bot_blocker'         => array(),
 			'llms_txt'            => true,
+			'indexnow_enabled'    => false,
 			'indexnow_key'        => '',
 			'schema_aggregate'    => true,
 			'organization_name'   => '',
@@ -185,7 +186,7 @@ class Options {
 		$out['gsc_client_secret']    = isset( $input['gsc_client_secret'] ) ? sanitize_text_field( $input['gsc_client_secret'] ) : '';
 		// gsc_property / gsc_properties are managed by the Search Console connect flow.
 
-		foreach ( array( 'noindex_search', 'noindex_author', 'xml_sitemap', 'schema_enabled', 'breadcrumbs', 'schema_aggregate', 'whitelabel_enabled', 'email_reports', 'llms_txt' ) as $bool_key ) {
+		foreach ( array( 'noindex_search', 'noindex_author', 'xml_sitemap', 'schema_enabled', 'breadcrumbs', 'schema_aggregate', 'whitelabel_enabled', 'email_reports', 'llms_txt', 'indexnow_enabled' ) as $bool_key ) {
 			$out[ $bool_key ] = ! empty( $input[ $bool_key ] );
 		}
 

@@ -1,11 +1,11 @@
 # Seofyme SEO — WordPress Plugin
 
 **Contributors:** cacherocket, seofyme  
-**Tags:** seo, sitemap, schema, redirects, meta, openai, local-seo  
+**Tags:** seo, sitemap, schema, redirects, meta, local-seo  
 **Requires at least:** 6.0  
 **Requires PHP:** 7.4  
-**Tested up to:** 6.8  
-**Stable tag:** 0.1.1  
+**Tested up to:** 7.1  
+**Stable tag:** 0.1.2  
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,7 +78,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 - XML sitemaps
 - Schema.org JSON-LD (Organization, WebSite, Article/WebPage, plus advanced types)
 - Schema aggregation endpoint
-- IndexNow pings on publish
+- IndexNow pings on publish (opt-in, off by default)
 - `llms.txt` publishing
 - AI training bot blocker via `robots.txt` rules
 - Site audit
@@ -94,8 +94,8 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 
 **Content & AI**
 
-- AI titles, meta descriptions, social titles/descriptions (OpenAI or Anthropic API key)
-- Offline heuristic fallbacks when no API key is set
+- AI titles, meta descriptions, social titles/descriptions via WordPress AI Client (WP 7.0+), Seofyme Cloud, or optional OpenAI/Anthropic API key
+- Offline heuristic fallbacks when no provider is configured
 - Optimize tips + summarize
 - Bulk meta editor with approve/apply
 - Content planner / starter drafts
@@ -163,7 +163,7 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 5. Use **Refresh suggestions** under Internal linking and link to related posts.
 6. Fill **Social preview** fields (or use AI → Social titles / Social descriptions).
 7. Optionally pick an **Advanced schema** type for FAQ/HowTo/etc.
-8. Publish — IndexNow will ping when the post becomes published (if configured).
+8. Publish — if IndexNow is enabled under Settings, Seofyme will ping when the post becomes published.
 
 ### Redirects & 404s
 
@@ -176,12 +176,13 @@ Logged-in editors also get a **front-end SEO inspector** to tweak title/descript
 ### AI drafting
 
 1. Connect Seofyme Cloud under **Seofyme SEO → Account**. Use **Refresh plan** there to update the displayed subscription and monthly request/token usage.
-2. Optionally choose OpenAI or Anthropic under **Settings → BYO AI** as a fallback when Cloud credentials are empty.
-3. In the editor, open **AI draft** and generate titles, descriptions, social copy, optimize tips, or a summary.
-4. Click a suggestion to apply it to the matching field (nothing saves until you update the post).
-5. Use **Bulk editor** for many posts at once.
+2. On WordPress 7.0+, configure a site-level provider under **Settings → AI / Connectors** (WordPress AI Client). Seofyme uses this when Cloud keys are empty.
+3. Optionally choose OpenAI or Anthropic under **Settings → BYO AI** as a last-resort fallback when Cloud credentials are empty and no WordPress AI provider is configured.
+4. In the editor, open **AI draft** and generate titles, descriptions, social copy, optimize tips, or a summary.
+5. Click a suggestion to apply it to the matching field (nothing saves until you update the post).
+6. Use **Bulk editor** for many posts at once.
 
-Without an API key, Seofyme still offers offline heuristic suggestions so you can try the workflow.
+Without Cloud keys, a WordPress AI provider, or a BYO API key, Seofyme still offers offline heuristic suggestions so you can try the workflow.
 
 ### Local SEO
 
@@ -263,7 +264,11 @@ Save **Settings → Permalinks** once after install or update. That flushes rewr
 
 ### Do I need an AI API key?
 
-No. Core SEO works without it. AI drafting uses your own OpenAI/Anthropic key when you want cloud suggestions; otherwise offline heuristics are used.
+No. Core SEO works without it. On WordPress 7.0+, Seofyme prefers the site-level WordPress AI Client. You can also connect Seofyme Cloud or paste an OpenAI/Anthropic key under BYO AI. Otherwise offline heuristics are used.
+
+### Is IndexNow on by default?
+
+No. Enable it under **Seofyme SEO → Settings**. Until then, no URLs are submitted to IndexNow.
 
 ### Will Seofyme conflict with another SEO plugin?
 
@@ -275,7 +280,61 @@ Running two full SEO plugins usually duplicates titles, sitemaps, and schema. Pr
 - Post meta: `_seofyme_*`
 - Custom tables: redirects + 404 monitor (created on activate/update)
 
+## External services
+
+This plugin can connect to third-party services. Core SEO (titles, sitemaps, schema, redirects, and on-page analysis) works without any remote call. Remote services are used only when an administrator opts in (Cloud keys, IndexNow toggle, Search Console OAuth, or a BYO AI API key), or when WordPress 7.0+ has a site-level AI provider configured.
+
+### Seofyme Cloud / CacheRocket
+
+Optional hosted AI drafting, plan/usage status, and connected-install heartbeat. Used when you save Seofyme Cloud API keys under Seofyme SEO → Account.
+
+Data sent: your public/secret API keys, site URL and domain, plugin/WordPress/PHP versions (heartbeat), and — when generating drafts — the post title, stripped post content, and focus keyphrase. On uninstall, a disconnect notice is sent so the connected install can be marked disconnected. CacheRocket may also request the public REST ping endpoint on this site (`/wp-json/cacherocket/v1/ping`) to confirm the plugin is still installed.
+
+This service is provided by CacheRocket: [Terms](https://cacherocket.com/terms-and-conditions), [Privacy Policy](https://cacherocket.com/privacy-policy).
+
+### WordPress AI Client
+
+On WordPress 7.0 or later, AI drafting prefers the core AI Client when Seofyme Cloud keys are empty. The site owner chooses and configures the provider once (Settings → AI / Connectors). Credentials are managed by WordPress, not by this plugin. Data sent is the drafting prompt (post title, excerpt, and focus keyphrase) to whichever provider the site owner has configured.
+
+### OpenAI
+
+Optional fallback for AI title/meta suggestions when Seofyme Cloud keys are empty and the WordPress AI Client has no provider. Used only if an administrator pastes an OpenAI API key under Settings → BYO AI and selects OpenAI.
+
+Data sent: the API key and a prompt containing the post title, a short content excerpt, and focus keyphrase, when an editor clicks Generate in the AI draft box.
+
+This service is provided by OpenAI: [Terms](https://openai.com/policies/terms-of-use), [Privacy Policy](https://openai.com/policies/privacy-policy).
+
+### Anthropic
+
+Optional fallback for AI title/meta suggestions when Seofyme Cloud keys are empty and the WordPress AI Client has no provider. Used only if an administrator pastes an Anthropic API key under Settings → BYO AI and selects Anthropic.
+
+Data sent: the API key and a prompt containing the post title, a short content excerpt, and focus keyphrase, when an editor clicks Generate in the AI draft box.
+
+This service is provided by Anthropic: [Terms](https://www.anthropic.com/legal/terms), [Privacy Policy](https://www.anthropic.com/legal/privacy).
+
+### Google Search Console
+
+Optional rank sync. Used only after an administrator saves Google OAuth client credentials and completes the Connect Search Console flow.
+
+Data sent: OAuth client ID/secret, refresh token (to `https://oauth2.googleapis.com/token` and `https://accounts.google.com/o/oauth2/v2/auth`), the connected Google account email (`https://www.googleapis.com/oauth2/v2/userinfo`), and Search Analytics queries for tracked keywords (`https://www.googleapis.com/webmasters/v3/`).
+
+This service is provided by Google: [Terms](https://policies.google.com/terms), [Privacy Policy](https://policies.google.com/privacy), [Google APIs Terms](https://developers.google.com/terms).
+
+### IndexNow
+
+Optional instant URL submission to participating search engines. Off by default. Used only after an administrator enables IndexNow under Settings.
+
+Data sent: the site host, the IndexNow key, the key file URL, and the published public post URL, to `https://api.indexnow.org/indexnow` when a public post is published.
+
+This service is provided by IndexNow (Microsoft Bing, Yandex, and other participating engines): [Terms](https://www.indexnow.org/terms), [Privacy Policy](https://privacy.microsoft.com/privacystatement).
+
 ## Changelog
+
+### 0.1.2
+
+- WordPress.org review: sanitize advanced schema JSON, encode JSON-LD with `JSON_HEX_TAG`, IndexNow opt-in off by default.
+- Prefer the WordPress AI Client when available; document all external services.
+- Tested up to WordPress 7.1.
 
 ### 0.1.1
 
@@ -297,6 +356,10 @@ Internal milestones `1.0.0`–`1.1.1` covered UI polish, premium-parity modules,
 
 ## Upgrade Notice
 
+### 0.1.2
+
+IndexNow is now off until you enable it under Settings. JSON-LD output and advanced schema input handling are hardened.
+
 ### 0.1.1
 
 WordPress.org packaging fixes: no bundled locale translations, safer asset enqueue and sitemap escaping. Clear any page cache after updating.
@@ -307,6 +370,7 @@ First public GitHub release. After updating, open **Settings → Permalinks** an
 
 ## Support
 
+- Email: [wordpress-plugin@seofyme.com](mailto:wordpress-plugin@seofyme.com)
 - Site: [seofyme.com](https://seofyme.com)
 - GitHub: [github.com/seofyme/wordpress-plugin](https://github.com/seofyme/wordpress-plugin)
 - Issues: [github.com/seofyme/wordpress-plugin/issues](https://github.com/seofyme/wordpress-plugin/issues)

@@ -77,7 +77,8 @@ class SiteAudit {
 			'status' => ( 0 === $missing_desc ) ? 'good' : ( $missing_desc > 10 ? 'bad' : 'ok' ),
 		);
 
-		$ssl = is_ssl() || ( isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) && 'https' === $_SERVER['HTTP_X_FORWARDED_PROTO'] );
+		$forwarded = isset( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_X_FORWARDED_PROTO'] ) ) : '';
+		$ssl       = is_ssl() || ( 'https' === $forwarded );
 		$checks[] = array(
 			'label'  => __( 'HTTPS detected for admin request', 'seofyme-seo' ),
 			'status' => $ssl ? 'good' : 'ok',

@@ -8,6 +8,7 @@
 namespace SeofymeSEO\Modules\SchemaAggregator;
 
 use SeofymeSEO\Modules\LocalSEO\LocalSEO;
+use SeofymeSEO\Schema\Json_Ld;
 use SeofymeSEO\Support\Options;
 
 if ( ! defined( 'ABSPATH' ) ) {
@@ -68,7 +69,7 @@ class SchemaAggregator {
 			return;
 		}
 		header( 'Content-Type: application/ld+json; charset=utf-8' );
-		echo wp_json_encode( $this->graph(), JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT );
+		echo Json_Ld::encode( $this->graph(), JSON_PRETTY_PRINT ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- JSON encoded with JSON_HEX_TAG.
 		exit;
 	}
 

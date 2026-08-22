@@ -7,6 +7,7 @@
 
 namespace SeofymeSEO\Modules\WooCommerce;
 
+use SeofymeSEO\Schema\Json_Ld;
 use SeofymeSEO\Support\Options;
 use SeofymeSEO\Support\Post_Meta;
 
@@ -126,7 +127,7 @@ class WooCommerceSEO {
 				'reviewCount' => max( 1, (int) $product->get_review_count() ),
 			);
 		}
-		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+		Json_Ld::print_script( $data );
 	}
 
 }

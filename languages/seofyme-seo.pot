@@ -1,13 +1,13 @@
 # SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# Copyright (C) 2026 Seofyme
 # This file is distributed under the same license as the Seofyme SEO package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# NOOBBase <wordpress-plugin@seofyme.com>, 2026.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Seofyme SEO 0.1.1\n"
-"Report-Msgid-Bugs-To: https://github.com/seofyme/wordpress-plugin\n"
+"Project-Id-Version: Seofyme SEO 0.1.2\n"
+"Report-Msgid-Bugs-To: wordpress-plugin@seofyme.com\n"
 "POT-Creation-Date: 2026-08-14 11:36+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"

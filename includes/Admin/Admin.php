@@ -365,7 +365,7 @@ class Admin {
 				<section class="sf-card">
 					<header class="sf-card__header">
 						<h2><?php esc_html_e( 'BYO AI (optional fallback)', 'seofyme-seo' ); ?></h2>
-						<p><?php esc_html_e( 'Used only when Seofyme Cloud keys are empty.', 'seofyme-seo' ); ?></p>
+						<p><?php esc_html_e( 'Used only when Seofyme Cloud keys are empty and the WordPress AI Client has no site-level provider.', 'seofyme-seo' ); ?></p>
 					</header>
 					<div class="sf-card__body">
 						<div class="sf-field">
@@ -426,13 +426,22 @@ class Admin {
 				<section class="sf-card">
 					<header class="sf-card__header">
 						<h2><?php esc_html_e( 'IndexNow', 'seofyme-seo' ); ?></h2>
-						<p><?php esc_html_e( 'Notify search engines instantly when content changes.', 'seofyme-seo' ); ?></p>
+						<p><?php esc_html_e( 'Optionally notify participating search engines when you publish. Off by default.', 'seofyme-seo' ); ?></p>
 					</header>
 					<div class="sf-card__body">
 						<div class="sf-field">
 							<div class="sf-field__text">
+								<label class="sf-field__label" for="indexnow_enabled"><?php esc_html_e( 'Enable IndexNow', 'seofyme-seo' ); ?></label>
+								<p class="sf-field__desc"><?php esc_html_e( 'When enabled, each newly published public URL is submitted to api.indexnow.org. Nothing is sent until you turn this on.', 'seofyme-seo' ); ?></p>
+							</div>
+							<div class="sf-field__control">
+								<input class="sf-check-input" type="checkbox" name="<?php echo esc_attr( $opt ); ?>[indexnow_enabled]" id="indexnow_enabled" value="1" <?php checked( ! empty( $o['indexnow_enabled'] ) ); ?> />
+							</div>
+						</div>
+						<div class="sf-field">
+							<div class="sf-field__text">
 								<label class="sf-field__label" for="indexnow_key"><?php esc_html_e( 'Key', 'seofyme-seo' ); ?></label>
-								<p class="sf-field__desc"><?php esc_html_e( 'Leave empty to auto-generate.', 'seofyme-seo' ); ?></p>
+								<p class="sf-field__desc"><?php esc_html_e( 'Optional. Leave empty to generate a key after IndexNow is enabled.', 'seofyme-seo' ); ?></p>
 							</div>
 							<div class="sf-field__control">
 								<input type="text" class="sf-input" name="<?php echo esc_attr( $opt ); ?>[indexnow_key]" id="indexnow_key" value="<?php echo esc_attr( $o['indexnow_key'] ); ?>" />

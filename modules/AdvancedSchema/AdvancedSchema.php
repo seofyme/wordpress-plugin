@@ -7,6 +7,8 @@
 
 namespace SeofymeSEO\Modules\AdvancedSchema;
 
+use SeofymeSEO\Schema\Json_Ld;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -83,7 +85,7 @@ class AdvancedSchema {
 			'<p><label>%s<br><textarea class="widefat" rows="5" name="seofyme_schema_data" placeholder="%s">%s</textarea></label></p>',
 			esc_html__( 'Extra JSON fields (optional)', 'seofyme-seo' ),
 			esc_attr__( '{"questions":[{"q":"...","a":"..."}]}', 'seofyme-seo' ),
-			esc_textarea( wp_json_encode( $data ) === '[]' || wp_json_encode( $data ) === '{}' ? '' : wp_json_encode( $data, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES ) )
+			esc_textarea( wp_json_encode( $data ) === '[]' || wp_json_encode( $data ) === '{}' ? '' : Json_Ld::encode( $data, JSON_PRETTY_PRINT ) )
 		);
 		echo '<p class="description">' . esc_html__( 'For FAQ: {"questions":[{"q":"...","a":"..."}]}. For HowTo: {"steps":["...","..."]}.', 'seofyme-seo' ) . '</p>';
 	}
@@ -102,10 +104,17 @@ class AdvancedSchema {
 			return;
 		}
 		$type = isset( $_POST['seofyme_schema_type'] ) ? sanitize_text_field( wp_unslash( $_POST['seofyme_schema_type'] ) ) : '';
+		if ( ! array_key_exists( $type, self::types() ) ) {
+			$type = '';
+		}
 		update_post_meta( $post_id, self::META, $type );
-		$raw = isset( $_POST['seofyme_schema_data'] ) ? wp_unslash( $_POST['seofyme_schema_data'] ) : ''; // phpcs:ignore
-		$decoded = json_decode( is_string( $raw ) ? $raw : '', true );
-		update_post_meta( $post_id, self::DATA, is_array( $decoded ) ? $decoded : array() );
+
+		$raw = '';
+		if ( isset( $_POST['seofyme_schema_data'] ) ) {
+			$raw = sanitize_textarea_field( wp_unslash( $_POST['seofyme_schema_data'] ) );
+		}
+		$decoded = json_decode( $raw, true );
+		update_post_meta( $post_id, self::DATA, is_array( $decoded ) ? $this->sanitize_schema_data( $decoded ) : array() );
 	}
 
 	/**
@@ -128,8 +137,63 @@ class AdvancedSchema {
 		}
 		$graph = $this->build( $type, $id, $data );
 		if ( $graph ) {
-			echo '<script type="application/ld+json">' . wp_json_encode( $graph, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+			Json_Ld::print_script( $graph );
 		}
+	}
+
+	/**
+	 * Recursively sanitize decoded schema JSON.
+	 *
+	 * json_decode() does not sanitize values. Walk the tree and apply the
+	 * most restrictive WordPress sanitizer for each leaf.
+	 *
+	 * @param mixed $value Value.
+	 * @param int   $depth Depth.
+	 * @return mixed
+	 */
+	private function sanitize_schema_data( $value, $depth = 0 ) {
+		if ( $depth > 8 ) {
+			return '';
+		}
+
+		if ( is_array( $value ) ) {
+			$clean = array();
+			foreach ( $value as $key => $item ) {
+				if ( is_int( $key ) ) {
+					$clean_key = $key;
+				} else {
+					$clean_key = preg_replace( '/[^A-Za-z0-9_-]/', '', (string) $key );
+					if ( '' === $clean_key ) {
+						continue;
+					}
+				}
+				$clean[ $clean_key ] = $this->sanitize_schema_data( $item, $depth + 1 );
+			}
+			return $clean;
+		}
+
+		if ( is_bool( $value ) || is_int( $value ) || is_float( $value ) ) {
+			return $value;
+		}
+
+		if ( ! is_string( $value ) ) {
+			return '';
+		}
+
+		$trimmed = trim( $value );
+		if ( '' === $trimmed ) {
+			return '';
+		}
+
+		if ( preg_match( '#^https?://#i', $trimmed ) ) {
+			return esc_url_raw( $trimmed );
+		}
+
+		if ( is_email( $trimmed ) ) {
+			return sanitize_email( $trimmed );
+		}
+
+		return sanitize_textarea_field( $trimmed );
 	}
 
 	/**

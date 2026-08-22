@@ -80,11 +80,17 @@ class Generator {
 			return $cloud;
 		}
 
+		$prompt = $this->prompt( $post, $kind );
+
+		$wp_ai = $this->wordpress_ai_client( $prompt );
+		if ( ! is_wp_error( $wp_ai ) || 'no_wp_ai' !== $wp_ai->get_error_code() ) {
+			return $wp_ai;
+		}
+
 		$key = Options::get( 'ai_api_key', '' );
 		if ( ! $key ) {
 			return $this->fallback( $post, $kind );
 		}
-		$prompt = $this->prompt( $post, $kind );
 		return 'anthropic' === Options::get( 'ai_provider' ) ? $this->anthropic( $key, $prompt ) : $this->openai( $key, $prompt );
 	}
 
@@ -139,7 +145,14 @@ class Generator {
 			return new \WP_Error( 'api_error', $msg );
 		}
 		$items = isset( $body['data']['items'] ) && is_array( $body['data']['items'] ) ? $body['data']['items'] : array();
-		$items = array_values( array_filter( array_map( 'strval', $items ) ) );
+		$items = array_values(
+			array_filter(
+				array_map( 'sanitize_text_field', array_map( 'strval', $items ) ),
+				static function ( $item ) {
+					return '' !== $item;
+				}
+			)
+		);
 		if ( empty( $items ) ) {
 			return new \WP_Error( 'parse_error', __( 'Seofyme Cloud returned no suggestions.', 'seofyme-seo' ) );
 		}
@@ -228,6 +241,74 @@ class Generator {
 			wp_html_excerpt( ( $focus ?: $base ) . ' Explained', 60 ),
 			wp_html_excerpt( 'How to ' . $base, 60 ),
 			wp_html_excerpt( $base . ' — Tips & Best Practices', 60 ),
+		);
+	}
+
+	/**
+	 * Generate via the WordPress AI Client when a site-level provider is configured.
+	 *
+	 * @param string $prompt Prompt.
+	 * @return array|\WP_Error
+	 */
+	private function wordpress_ai_client( $prompt ) {
+		if ( ! function_exists( 'wp_ai_client_prompt' ) ) {
+			return new \WP_Error( 'no_wp_ai', 'WordPress AI Client not available' );
+		}
+
+		$builder = wp_ai_client_prompt( $prompt );
+		if ( ! is_object( $builder ) ) {
+			return new \WP_Error( 'no_wp_ai', 'WordPress AI Client not available' );
+		}
+
+		if ( method_exists( $builder, 'using_system_instruction' ) ) {
+			$builder = $builder->using_system_instruction( 'You are an SEO assistant. Always reply with a JSON object: {"items":["..."]} where items is an array of strings. No markdown.' );
+		}
+
+		if ( method_exists( $builder, 'is_supported_for_text_generation' ) && ! $builder->is_supported_for_text_generation() ) {
+			return new \WP_Error( 'no_wp_ai', 'No AI provider configured in WordPress' );
+		}
+
+		if ( method_exists( $builder, 'as_json_response' ) ) {
+			$builder = $builder->as_json_response(
+				array(
+					'type'                 => 'object',
+					'additionalProperties' => false,
+					'properties'           => array(
+						'items' => array(
+							'type'  => 'array',
+							'items' => array( 'type' => 'string' ),
+						),
+					),
+					'required'             => array( 'items' ),
+				)
+			);
+		}
+
+		if ( ! method_exists( $builder, 'generate_text' ) ) {
+			return new \WP_Error( 'no_wp_ai', 'WordPress AI Client not available' );
+		}
+
+		$text = $builder->generate_text();
+		if ( is_wp_error( $text ) ) {
+			$message = strtolower( $text->get_error_message() );
+			if ( false !== strpos( $message, 'no provider' ) || false !== strpos( $message, 'not configured' ) || false !== strpos( $message, 'no model' ) ) {
+				return new \WP_Error( 'no_wp_ai', $text->get_error_message() );
+			}
+			return $text;
+		}
+
+		$items = $this->extract_items( (string) $text );
+		if ( empty( $items ) ) {
+			return new \WP_Error( 'parse_error', __( 'Could not parse AI response', 'seofyme-seo' ) );
+		}
+
+		return array_values(
+			array_filter(
+				array_map( 'sanitize_text_field', $items ),
+				static function ( $item ) {
+					return '' !== $item;
+				}
+			)
 		);
 	}
 

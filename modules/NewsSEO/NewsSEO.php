@@ -7,6 +7,8 @@
 
 namespace SeofymeSEO\Modules\NewsSEO;
 
+use SeofymeSEO\Schema\Json_Ld;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -106,7 +108,7 @@ class NewsSEO {
 			'author'        => array( '@type' => 'Person', 'name' => get_the_author_meta( 'display_name', (int) get_post_field( 'post_author', $id ) ) ),
 			'publisher'     => array( '@type' => 'Organization', 'name' => get_bloginfo( 'name' ) ),
 		);
-		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+		Json_Ld::print_script( $data );
 	}
 
 	/**

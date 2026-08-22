@@ -4,8 +4,8 @@
  * Plugin Name: Seofyme SEO
  * Plugin URI:  https://seofyme.com/wordpress
  * Description: Original all-in-one WordPress SEO — on-page guidance, sitemaps, schema, redirects, multi-keyphrase, internal linking, AI drafting, Local/Video/News SEO, llms.txt.
- * Version:     0.1.1
- * Author:      NOOBBase
+ * Version:     0.1.2
+ * Author:      NOOBBase <wordpress-plugin@seofyme.com>
  * Author URI:  https://seofyme.com
  * Text Domain: seofyme-seo
  * Domain Path: /languages
@@ -20,7 +20,7 @@ if (! defined('ABSPATH')) {
 	exit;
 }
 
-define('SEOFYME_SEO_VERSION', '0.1.1');
+define('SEOFYME_SEO_VERSION', '0.1.2');
 define('SEOFYME_SEO_FILE', __FILE__);
 define('SEOFYME_SEO_PATH', plugin_dir_path(__FILE__));
 define('SEOFYME_SEO_URL', plugin_dir_url(__FILE__));

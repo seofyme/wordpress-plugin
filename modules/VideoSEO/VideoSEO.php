@@ -7,6 +7,8 @@
 
 namespace SeofymeSEO\Modules\VideoSEO;
 
+use SeofymeSEO\Schema\Json_Ld;
+
 if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
@@ -84,7 +86,7 @@ class VideoSEO {
 				'uploadDate'   => get_the_date( 'c' ),
 				'contentUrl'   => $video['content'] ?? '',
 			);
-			echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+			Json_Ld::print_script( $data );
 		}
 	}
 

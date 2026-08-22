@@ -97,6 +97,6 @@ class Graph {
 			'@graph'   => $graph,
 		);
 
-		echo '<script type="application/ld+json">' . wp_json_encode( $data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+		Json_Ld::print_script( $data );
 	}
 }

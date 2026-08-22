@@ -14,7 +14,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
- * Submits URLs to IndexNow.
+ * Submits URLs to IndexNow when the administrator has opted in.
  */
 class IndexNow {
 
@@ -29,16 +29,33 @@ class IndexNow {
 	}
 
 	/**
+	 * Whether IndexNow submissions are enabled.
+	 *
+	 * Off by default until an administrator opts in under Settings.
+	 *
+	 * @return bool
+	 */
+	public function is_enabled() {
+		return (bool) Options::get( 'indexnow_enabled', false );
+	}
+
+	/**
 	 * Key.
+	 *
+	 * A key is generated only after IndexNow has been enabled.
 	 *
 	 * @return string
 	 */
 	public function key() {
 		$key = Options::get( 'indexnow_key', '' );
-		if ( ! $key ) {
-			$key = wp_generate_password( 32, false, false );
-			Options::update( array( 'indexnow_key' => $key ) );
+		if ( $key ) {
+			return (string) $key;
 		}
+		if ( ! $this->is_enabled() ) {
+			return '';
+		}
+		$key = wp_generate_password( 32, false, false );
+		Options::update( array( 'indexnow_key' => $key ) );
 		return $key;
 	}
 
@@ -48,7 +65,13 @@ class IndexNow {
 	 * @return void
 	 */
 	public function serve_key() {
-		$key  = $this->key();
+		if ( ! $this->is_enabled() ) {
+			return;
+		}
+		$key = $this->key();
+		if ( '' === $key ) {
+			return;
+		}
 		$uri  = isset( $_SERVER['REQUEST_URI'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 		$path = wp_parse_url( $uri, PHP_URL_PATH );
 		if ( $path === '/' . $key . '.txt' ) {
@@ -67,6 +90,9 @@ class IndexNow {
 	 * @return void
 	 */
 	public function on_transition( $new, $old, $post ) {
+		if ( ! $this->is_enabled() ) {
+			return;
+		}
 		if ( 'publish' !== $new || ! is_post_type_viewable( $post->post_type ) ) {
 			return;
 		}
@@ -83,7 +109,13 @@ class IndexNow {
 	 * @return bool
 	 */
 	public function submit( array $urls ) {
+		if ( ! $this->is_enabled() ) {
+			return false;
+		}
 		$key = $this->key();
+		if ( '' === $key ) {
+			return false;
+		}
 		$res = wp_remote_post(
 			'https://api.indexnow.org/indexnow',
 			array(
