@@ -1,6 +1,6 @@
 # Seofyme SEO — WordPress Plugin
 
-**Contributors:** cacherocket, seofyme  
+**Contributors:** cacherocket  
 **Tags:** seo, sitemap, schema, redirects, meta, local-seo  
 **Requires at least:** 6.0  
 **Requires PHP:** 7.4  
@@ -9,7 +9,9 @@
 **License:** GPLv3 or later  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html
 
-Seofyme SEO is an **original** all-in-one WordPress SEO plugin: on-page guidance, XML sitemaps, Schema.org JSON-LD, redirects, multi-keyphrase analysis, internal linking, social previews, AI drafting, Local/Video/News SEO, IndexNow, and more.
+Original all-in-one WordPress SEO. Local toolkit free forever. Connect Seofyme Cloud for hosted AI and audits.
+
+Seofyme SEO is an **original** plugin: on-page guidance, XML sitemaps, Schema.org JSON-LD, redirects, multi-keyphrase analysis, internal linking, social previews, AI drafting, Local/Video/News SEO, IndexNow, and more.
 
 > WordPress.org uses [`readme.txt`](readme.txt). This `README.md` is the public GitHub documentation.
 >
